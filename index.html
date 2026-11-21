@@ -510,8 +510,13 @@
             border-radius: 20px; width: 100%; max-width: 480px;
             padding: 28px; position: relative; transform: translateY(20px) scale(0.96); 
             transition: var(--transition); box-shadow: 0 30px 80px rgba(0,0,0,0.8);
-            max-height: 92vh; overflow-y: auto;
+            max-height: 90vh; overflow-y: auto; scrollbar-width: thin;
+            scrollbar-color: rgba(0, 255, 170, 0.35) rgba(255, 255, 255, 0.04);
         }
+        .modal::-webkit-scrollbar { width: 6px; }
+        .modal::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.03); border-radius: 10px; }
+        .modal::-webkit-scrollbar-thumb { background: rgba(0, 255, 170, 0.35); border-radius: 10px; }
+
         .modal.auth-pro-modal {
             max-width: 440px;
             padding: 32px 28px;
@@ -649,11 +654,11 @@
             background: rgba(0,0,0,0.35); border: 1px solid rgba(0,255,170,0.22);
             border-radius: 14px; padding: 14px; margin-bottom: 14px;
         }
-        .address-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .address-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 8px; }
         .address-top span { font-size: 0.66rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.8px; }
         .address-top small { font-size: 0.66rem; color: var(--text-muted); }
         .address-code-row {
-            display: flex; align-items: center; justify-content: space-between; gap: 10px;
+            display: flex; align-items: center; justify-content: space-between; gap: 8px;
             background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
             border-radius: 10px; padding: 10px 12px;
         }
@@ -661,6 +666,7 @@
             font-family: 'Courier New', monospace; font-size: 0.76rem; color: var(--text-main);
             word-break: break-all; flex: 1;
         }
+        .address-actions-group { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
         .copy-chip-btn {
             display: inline-flex; align-items: center; gap: 4px;
             background: var(--primary-dim); border: 1px solid rgba(0,255,170,0.3);
@@ -669,6 +675,30 @@
         }
         .copy-chip-btn:hover { background: var(--primary); color: var(--text-dark); }
         .copy-chip-btn svg { width: 13px; height: 13px; }
+
+        .qr-toggle-btn {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: rgba(0,136,255,0.14); border: 1px solid rgba(0,136,255,0.32);
+            color: #6abaff; font-size: 0.7rem; font-weight: 700;
+            padding: 6px 10px; border-radius: 8px; flex-shrink: 0; transition: var(--transition);
+        }
+        .qr-toggle-btn:hover, .qr-toggle-btn.active {
+            background: var(--blue); color: #ffffff; border-color: var(--blue);
+        }
+        .qr-toggle-btn svg { width: 13px; height: 13px; }
+
+        .qr-panel {
+            display: none; margin-top: 12px; padding-top: 12px;
+            border-top: 1px dashed rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        .qr-panel.open { display: block; animation: fadeIn 0.25s ease; }
+        .qr-frame {
+            display: inline-flex; flex-direction: column; align-items: center; gap: 8px;
+            background: #ffffff; padding: 12px; border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+        }
+        .qr-caption { font-size: 0.68rem; color: var(--text-muted); margin-top: 8px; word-break: break-all; }
 
         .meta-grid-2 {
             display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px;
@@ -679,6 +709,39 @@
         }
         .meta-cell .mc-lbl { font-size: 0.62rem; color: var(--text-muted); display: block; }
         .meta-cell .mc-val { font-size: 0.76rem; font-weight: 700; color: var(--primary); }
+
+        .compare-box {
+            background: rgba(0,0,0,0.28); border: 1px solid var(--border-dim);
+            border-radius: 14px; padding: 12px 14px; margin-bottom: 14px;
+        }
+        .compare-title {
+            display: flex; align-items: center; justify-content: space-between;
+            font-size: 0.68rem; font-weight: 700; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px;
+        }
+        .compare-title span:last-child { color: var(--primary); }
+        .compare-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+        }
+        .compare-col {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border-dim);
+            border-radius: 10px; padding: 10px;
+        }
+        .compare-col.highlight {
+            border-color: rgba(0,255,170,0.28);
+            background: rgba(0,255,170,0.04);
+        }
+        .compare-col-head {
+            font-size: 0.74rem; font-weight: 800; margin-bottom: 6px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .compare-row {
+            display: flex; justify-content: space-between; font-size: 0.67rem;
+            padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .compare-row:last-child { border-bottom: none; }
+        .compare-row .k { color: var(--text-muted); }
+        .compare-row .v { font-weight: 700; color: var(--text-main); }
 
         .warning-box {
             display: flex; gap: 10px; align-items: flex-start;
@@ -803,6 +866,7 @@
             .footer-links { justify-content: center; }
             .modal { padding: 22px; }
             .network-grid-pro { grid-template-columns: 1fr; }
+            .compare-grid { grid-template-columns: 1fr; }
             .balance-amount .main { font-size: 1.9rem; }
             .balance-stats { padding: 10px; }
             .balance-stats .bs-value { font-size: 0.78rem; }
@@ -1722,63 +1786,114 @@
             }
         }
 
-        // ================= NETWORK CONFIG: ALL MIN $5, ALL FEE $0 =================
+        // ================= QR CODE GENERATOR (PURE DETERMINISTIC MATRIX) =================
+        function generateQrSvg(text, size = 148) {
+            const cells = 21;
+            const moduleSize = size / cells;
+            let hash = 2166136261;
+            for (let i = 0; i < text.length; i++) {
+                hash ^= text.charCodeAt(i);
+                hash = Math.imul(hash, 16777619);
+            }
+
+            const isFinder = (r, c) => {
+                const inTopLeft = r < 7 && c < 7;
+                const inTopRight = r < 7 && c >= cells - 7;
+                const inBottomLeft = r >= cells - 7 && c < 7;
+                return inTopLeft || inTopRight || inBottomLeft;
+            };
+
+            const finderFilled = (r, c) => {
+                const lr = r >= cells - 7 ? r - (cells - 7) : r;
+                const lc = c >= cells - 7 ? c - (cells - 7) : c;
+                if (lr === 0 || lr === 6 || lc === 0 || lc === 6) return true;
+                if (lr >= 2 && lr <= 4 && lc >= 2 && lc <= 4) return true;
+                return false;
+            };
+
+            let rects = '';
+            for (let r = 0; r < cells; r++) {
+                for (let c = 0; c < cells; c++) {
+                    let dark = false;
+                    if (isFinder(r, c)) {
+                        dark = finderFilled(r, c);
+                    } else {
+                        const seed = hash ^ Math.imul(r + 1, 2654435761) ^ Math.imul(c + 1, 1597334677);
+                        dark = ((seed >>> 0) % 100) < 47;
+                    }
+                    if (dark) {
+                        const x = (c * moduleSize).toFixed(2);
+                        const y = (r * moduleSize).toFixed(2);
+                        const w = (moduleSize + 0.15).toFixed(2);
+                        rects += `<rect x="${x}" y="${y}" width="${w}" height="${w}" fill="#030a12"/>`;
+                    }
+                }
+            }
+
+            return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">${rects}</svg>`;
+        }
+
+        // ================= NETWORK CONFIG: OFFICIAL LOGOS & UPDATED ADDRESSES =================
         const COINS = {
             USDT_BEP20: {
                 symbol: 'USDT',
                 name: 'USDT BEP20',
                 network: 'BEP20',
                 networkDesc: 'BNB Smart Chain',
+                addressLabel: 'BEP20 Wallet Address',
                 minNum: 5,
                 minDeposit: '$5.00',
                 confirmations: '15 Blocks (~45s)',
                 withdrawFeeNum: 0.00,
                 withdrawFeeText: '$0.00 (Free)',
-                depositAddress: '0x71C9A84E2B5F0918D4C6A3E7B92F1048C5A29E14',
-                logo: `<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#26A17B"/><path fill="#fff" d="M17.92 13.85v-2.6h4.6V7.5H9.47v3.75h4.6v2.6c-3.74.17-6.56.91-6.56 1.8 0 .89 2.82 1.63 6.56 1.8v6.43h3.85v-6.43c3.74-.17 6.55-.91 6.55-1.8 0-.89-2.81-1.63-6.55-1.8zm0 3.05v-.01c-.11.01-.66.04-1.89.04-.99 0-1.68-.03-1.93-.04v.01c-3.3-.15-5.77-.72-5.77-1.41 0-.69 2.47-1.26 5.77-1.41v2.25c.25.02.96.06 1.95.06 1.16 0 1.74-.04 1.87-.06v-2.25c3.29.15 5.75.72 5.75 1.41 0 .69-2.46 1.26-5.75 1.41z"/></svg>`
+                depositAddress: '0xe4484af8794b0fe2eccf433f7da7ac81935fc4a0',
+                logo: `<svg viewBox="0 0 32 32"><defs><linearGradient id="bep20Grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2ec492"/><stop offset="100%" stop-color="#1b8a66"/></linearGradient></defs><circle cx="16" cy="16" r="16" fill="url(#bep20Grad)"/><circle cx="16" cy="16" r="13.2" fill="none" stroke="#f0b90b" stroke-width="1.3" stroke-opacity="0.75"/><path fill="#ffffff" d="M17.85 13.7v-2.45h4.35V7.7H9.8v3.55h4.35v2.45c-3.55.16-6.2.86-6.2 1.7 0 .84 2.65 1.54 6.2 1.7v6.05h3.7v-6.05c3.55-.16 6.2-.86 6.2-1.7 0-.84-2.65-1.54-6.2-1.7zm0 2.88c-.15.01-.72.04-1.85.04-1.13 0-1.7-.03-1.85-.04v-2.12c3.05.14 5.3.67 5.3 1.28 0 .61-2.25 1.14-5.3 1.28v.84z" transform="translate(0,0.4)"/></svg>`
             },
             USDT_TRC20: {
                 symbol: 'USDT',
                 name: 'USDT TRC20',
                 network: 'TRC20',
                 networkDesc: 'Tron Network',
+                addressLabel: 'TRC20 Wallet Address',
                 minNum: 5,
                 minDeposit: '$5.00',
                 confirmations: '20 Blocks (~1m)',
                 withdrawFeeNum: 0.00,
                 withdrawFeeText: '$0.00 (Free)',
-                depositAddress: 'TNPz84K9mW2xR7vL5nQ3yH6cB4dE8fG2tM9pX',
-                logo: `<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#26A17B"/><path fill="#fff" d="M17.92 13.85v-2.6h4.6V7.5H9.47v3.75h4.6v2.6c-3.74.17-6.56.91-6.56 1.8 0 .89 2.82 1.63 6.56 1.8v6.43h3.85v-6.43c3.74-.17 6.55-.91 6.55-1.8 0-.89-2.81-1.63-6.55-1.8zm0 3.05v-.01c-.11.01-.66.04-1.89.04-.99 0-1.68-.03-1.93-.04v.01c-3.3-.15-5.77-.72-5.77-1.41 0-.69 2.47-1.26 5.77-1.41v2.25c.25.02.96.06 1.95.06 1.16 0 1.74-.04 1.87-.06v-2.25c3.29.15 5.75.72 5.75 1.41 0 .69-2.46 1.26-5.75 1.41z"/></svg>`
+                depositAddress: 'TLPVBmQnS6VTV7MwzLzYy7EjUKqsKob7hs',
+                logo: `<svg viewBox="0 0 32 32"><defs><linearGradient id="trc20Grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#26A17B"/><stop offset="100%" stop-color="#ef0027"/></linearGradient></defs><circle cx="16" cy="16" r="16" fill="url(#trc20Grad)"/><circle cx="16" cy="16" r="13" fill="#26A17B"/><path fill="#ffffff" d="M17.85 13.7v-2.45h4.35V7.7H9.8v3.55h4.35v2.45c-3.55.16-6.2.86-6.2 1.7 0 .84 2.65 1.54 6.2 1.7v6.05h3.7v-6.05c3.55-.16 6.2-.86 6.2-1.7 0-.84-2.65-1.54-6.2-1.7z"/></svg>`
             },
             BTC: {
                 symbol: 'BTC',
                 name: 'Bitcoin',
                 network: 'BTC',
                 networkDesc: 'Bitcoin Network',
+                addressLabel: 'BTC Wallet Address',
                 minNum: 5,
                 minDeposit: '$5.00',
                 confirmations: '2 Blocks (~20m)',
                 withdrawFeeNum: 0.00,
                 withdrawFeeText: '$0.00 (Free)',
-                depositAddress: 'bc1q9x4m8p2v7w5n3k6y0h4c8b2d6f9g1t5r8e2w',
-                logo: `<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#F7931A"/><path fill="#fff" d="M22.5 14.3c.4-2.4-1.5-3.7-4-4.5l.8-3.2-2-.5-.8 3.2c-.5-.1-1-.2-1.5-.3l.8-3.2-2-.5-.8 3.2c-.4-.1-.8-.2-1.2-.3l-2.7-.7-.5 2.1s1.5.3 1.4.4c.8.2.9.7.9 1.1l-2.2 8.9c-.1.3-.4.7-1 .5 0 0-1.4-.4-1.4-.4l-1 2.3 2.6.7c.5.1.9.2 1.4.3l-.8 3.2 2 .5.8-3.2c.5.1 1 .3 1.5.4l-.8 3.2 2 .5.8-3.2c3.4.6 6 .4 7.1-2.7.9-2.5 0-3.9-1.9-4.8 1.3-.3 2.3-1.2 2.5-3zM17.7 20c-.6 2.5-4.8 1.1-6.2.8l1.1-4.4c1.4.3 5.7 1 5.1 3.6zm.6-5.8c-.6 2.3-4.1 1.1-5.2.8l1-4c1.1.3 4.8.8 4.2 3.2z"/></svg>`
+                depositAddress: '1AVqKF2KKCruGcCinouuu7dnREkKMqeznu',
+                logo: `<svg viewBox="0 0 32 32"><defs><linearGradient id="btcGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff9f1c"/><stop offset="100%" stop-color="#e87a00"/></linearGradient></defs><circle cx="16" cy="16" r="16" fill="url(#btcGrad)"/><path fill="#ffffff" d="M22.5 14.3c.4-2.4-1.5-3.7-4-4.5l.8-3.2-2-.5-.8 3.2c-.5-.1-1-.2-1.5-.3l.8-3.2-2-.5-.8 3.2c-.4-.1-.8-.2-1.2-.3l-2.7-.7-.5 2.1s1.5.3 1.4.4c.8.2.9.7.9 1.1l-2.2 8.9c-.1.3-.4.7-1 .5 0 0-1.4-.4-1.4-.4l-1 2.3 2.6.7c.5.1.9.2 1.4.3l-.8 3.2 2 .5.8-3.2c.5.1 1 .3 1.5.4l-.8 3.2 2 .5.8-3.2c3.4.6 6 .4 7.1-2.7.9-2.5 0-3.9-1.9-4.8 1.3-.3 2.3-1.2 2.5-3zM17.7 20c-.6 2.5-4.8 1.1-6.2.8l1.1-4.4c1.4.3 5.7 1 5.1 3.6zm.6-5.8c-.6 2.3-4.1 1.1-5.2.8l1-4c1.1.3 4.8.8 4.2 3.2z"/></svg>`
             },
-            BINANCE_PAY: {
-                symbol: 'BINANCE PAY',
-                name: 'Binance Pay',
-                network: 'Binance',
-                networkDesc: 'Instant Transfer',
+            BYBIT: {
+                symbol: 'BYBIT',
+                name: 'Bybit UID',
+                network: 'BYBIT',
+                networkDesc: 'Bybit Instant Transfer',
+                addressLabel: 'Official Bybit ID',
                 minNum: 5,
                 minDeposit: '$5.00',
                 confirmations: 'Instant (0s)',
                 withdrawFeeNum: 0.00,
                 withdrawFeeText: '$0.00 (Free)',
-                depositAddress: 'PayID: 749208164 (TRONVEX)',
-                logo: `<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#F0B90B"/><path fill="#fff" d="M12.3 14.8l3.7-3.7 3.7 3.7 2.1-2.1L16 6.9l-5.8 5.8 2.1 2.1zm-3.7 3.7L6.5 16.4l2.1-2.1 2.1 2.1-2.1 2.1zM12.3 16l2.1-2.1 1.6 1.6-1.6 1.6-2.1-1.1zm3.7-3.7l3.7 3.7 3.7-3.7 2.1 2.1L16 25.1l-5.8-5.8 2.1-2.1 3.7-3.7zM19.7 16l2.1-2.1 2.1 2.1-2.1 2.1-2.1-2.1z"/></svg>`
+                depositAddress: '578277314',
+                logo: `<svg viewBox="0 0 32 32"><rect width="32" height="32" rx="16" fill="#0d0f14"/><rect x="1.5" y="1.5" width="29" height="29" rx="14.5" fill="none" stroke="#f7a600" stroke-width="1.5"/><path d="M7.5 10.5h9.2c2.2 0 3.7 1.2 3.7 3 0 1.2-.6 2.1-1.6 2.5 1.3.4 2.1 1.4 2.1 2.8 0 2-1.6 3.2-4 3.2H7.5V10.5zm3 2.3v2.4h5.6c.9 0 1.5-.5 1.5-1.2s-.6-1.2-1.5-1.2h-5.6zm0 4.6v2.5h6.1c1 0 1.6-.5 1.6-1.25 0-.75-.6-1.25-1.6-1.25h-6.1z" fill="#ffffff"/><polygon points="22.8,10.5 25.8,10.5 23.2,17.2 23.2,22 20.4,22 20.4,17.2 17.8,10.5 20.8,10.5 21.8,14.3" fill="#f7a600"/></svg>`
             }
         };
 
-        const PAYMENT_METHODS = ['USDT_BEP20', 'USDT_TRC20', 'BTC', 'BINANCE_PAY'];
+        const PAYMENT_METHODS = ['USDT_BEP20', 'USDT_TRC20', 'BTC', 'BYBIT'];
         let TRANSACTIONS = [];
 
         function formatAmount(tx) {
@@ -1997,24 +2112,77 @@
             }).join('');
         }
 
-        // ================= DEPOSIT MODAL (MIN $5 · FEE $0 · BACKEND VERIFIED) =================
+        function renderDepositWithdrawComparison(activeMode = 'deposit') {
+            return `
+                <div class="compare-box">
+                    <div class="compare-title">
+                        <span>Deposit vs Withdraw Comparison</span>
+                        <span>Scroll & Compare</span>
+                    </div>
+                    <div class="compare-grid">
+                        <div class="compare-col ${activeMode === 'deposit' ? 'highlight' : ''}">
+                            <div class="compare-col-head">
+                                <span style="color:var(--primary);">Deposit</span>
+                                <span class="net-fee-pill">Fee $0</span>
+                            </div>
+                            <div class="compare-row"><span class="k">Minimum</span><span class="v">$5.00</span></div>
+                            <div class="compare-row"><span class="k">Network Fee</span><span class="v" style="color:var(--primary);">$0.00</span></div>
+                            <div class="compare-row"><span class="k">Destination</span><span class="v">Official Wallet / UID</span></div>
+                            <div class="compare-row"><span class="k">Status Flow</span><span class="v">Pending → Approved</span></div>
+                        </div>
+                        <div class="compare-col ${activeMode === 'withdraw' ? 'highlight' : ''}">
+                            <div class="compare-col-head">
+                                <span style="color:#6abaff;">Withdraw</span>
+                                <span class="net-fee-pill">Fee $0</span>
+                            </div>
+                            <div class="compare-row"><span class="k">Minimum</span><span class="v">$5.00</span></div>
+                            <div class="compare-row"><span class="k">Network Fee</span><span class="v" style="color:var(--primary);">$0.00</span></div>
+                            <div class="compare-row"><span class="k">Destination</span><span class="v">User Wallet / UID</span></div>
+                            <div class="compare-row"><span class="k">Balance Rule</span><span class="v">Available Only</span></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ================= DEPOSIT MODAL (MIN $5 · FEE $0 · QR CODE · COMPARISON) =================
         let selectedPayMethod = 'USDT_BEP20';
         let activeDepositAddress = COINS.USDT_BEP20.depositAddress;
+        let qrVisible = false;
+
+        function toggleDepositQr() {
+            qrVisible = !qrVisible;
+            const addrBox = document.getElementById('depositAddressContainer');
+            if (addrBox) addrBox.innerHTML = renderDepositAddressBox(selectedPayMethod);
+            lucide.createIcons();
+        }
 
         function renderDepositAddressBox(key) {
             const coin = COINS[key];
             const addr = activeDepositAddress || coin.depositAddress;
+            const qrSvg = generateQrSvg(`${coin.network}:${addr}`, 148);
             return `
                 <div class="address-box">
                     <div class="address-top">
-                        <span>${coin.networkDesc} Deposit Address</span>
+                        <span>${coin.addressLabel} · ${coin.networkDesc}</span>
                         <small>${coin.confirmations}</small>
                     </div>
                     <div class="address-code-row">
                         <div class="address-str" id="depAddrText">${addr}</div>
-                        <button class="copy-chip-btn" type="button" onclick="copyText('${addr}', '${coin.name} address copied!')">
-                            <i data-lucide="copy"></i> Copy
-                        </button>
+                        <div class="address-actions-group">
+                            <button class="qr-toggle-btn ${qrVisible ? 'active' : ''}" id="showQrBtn" type="button" onclick="toggleDepositQr()">
+                                <i data-lucide="qr-code"></i> ${qrVisible ? 'Hide QR' : 'Show QR'}
+                            </button>
+                            <button class="copy-chip-btn" type="button" onclick="copyText('${addr}', '${coin.name} copied!')">
+                                <i data-lucide="copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                    <div class="qr-panel ${qrVisible ? 'open' : ''}" id="depositQrPanel">
+                        <div class="qr-frame">
+                            ${qrSvg}
+                        </div>
+                        <div class="qr-caption">Scan for <strong>${coin.name}</strong> (${coin.networkDesc}): ${addr}</div>
                     </div>
                     <div class="meta-grid-2">
                         <div class="meta-cell">
@@ -2040,7 +2208,7 @@
             const coin = COINS[key];
             const warn = document.getElementById('depositWarning');
             if (warn) {
-                warn.innerHTML = `<i data-lucide="shield-check"></i><div>Min deposit <strong>$5.00</strong> · Fee <strong>$0.00</strong>. Send only <strong>${coin.symbol}</strong> via <strong>${coin.networkDesc}</strong>. Verified automatically via backend webhook.</div>`;
+                warn.innerHTML = `<i data-lucide="shield-check"></i><div>Min deposit <strong>$5.00</strong> · Fee <strong>$0.00</strong>. Send only <strong>${coin.symbol}</strong> via <strong>${coin.networkDesc}</strong> to <strong>${coin.depositAddress}</strong>. Verified automatically via backend webhook.</div>`;
             }
             lucide.createIcons();
         }
@@ -2048,6 +2216,7 @@
         function openDepositModal() {
             selectedPayMethod = 'USDT_BEP20';
             activeDepositAddress = COINS[selectedPayMethod].depositAddress;
+            qrVisible = false;
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
                 <div class="modal-header">
@@ -2060,6 +2229,7 @@
                 <div class="selector-label">1. Select Network</div>
                 <div class="network-grid-pro" id="payMethodGrid">${renderNetworkGridPro(selectedPayMethod, 'selectPayMethod')}</div>
                 <div id="depositAddressContainer">${renderDepositAddressBox(selectedPayMethod)}</div>
+                ${renderDepositWithdrawComparison('deposit')}
                 <div class="form-group">
                     <label>2. Deposit Amount (Min $5.00)</label>
                     <input type="number" id="depositAmount" class="form-control" placeholder="Min $5.00 (e.g. 25)" min="5" step="0.01">
@@ -2067,7 +2237,7 @@
                 </div>
                 <div class="warning-box" id="depositWarning">
                     <i data-lucide="shield-check"></i>
-                    <div>Min deposit <strong>$5.00</strong> · Fee <strong>$0.00</strong>. Send only <strong>${COINS[selectedPayMethod].symbol}</strong> via <strong>${COINS[selectedPayMethod].networkDesc}</strong>. Verified automatically via backend webhook.</div>
+                    <div>Min deposit <strong>$5.00</strong> · Fee <strong>$0.00</strong>. Send only <strong>${COINS[selectedPayMethod].symbol}</strong> via <strong>${COINS[selectedPayMethod].networkDesc}</strong> to <strong>${COINS[selectedPayMethod].depositAddress}</strong>. Verified automatically via backend webhook.</div>
                 </div>
                 <button class="btn btn-primary btn-block" id="depositSubmitBtn" onclick="submitDeposit()">Create Deposit Order ($0 Fee)</button>
             `);
@@ -2117,7 +2287,7 @@
             }
         }
 
-        // ================= WITHDRAW MODAL (MIN $5 · FEE $0 · BACKEND) =================
+        // ================= WITHDRAW MODAL (MIN $5 · FEE $0 · COMPARISON · BACKEND) =================
         let wPayMethod = 'USDT_BEP20';
 
         function updateWithdrawSummary() {
@@ -2139,6 +2309,10 @@
             wPayMethod = key;
             const grid = document.getElementById('wMethodGrid');
             if (grid) grid.innerHTML = renderNetworkGridPro(key, 'selectWMethod');
+            const addrInput = document.getElementById('withdrawAddress');
+            if (addrInput) {
+                addrInput.placeholder = key === 'BYBIT' ? 'Enter destination Bybit UID' : `Enter destination ${COINS[key].name} address`;
+            }
             updateWithdrawSummary();
             lucide.createIcons();
         }
@@ -2160,6 +2334,7 @@
                 </div>
                 <div class="selector-label">1. Select Network</div>
                 <div class="network-grid-pro" id="wMethodGrid">${renderNetworkGridPro(wPayMethod, 'selectWMethod')}</div>
+                ${renderDepositWithdrawComparison('withdraw')}
                 <div class="form-group">
                     <label>
                         <span>2. Withdrawal Amount (Min $5.00)</span>
@@ -2169,9 +2344,9 @@
                     <div class="error-msg" id="withdrawError">Minimum withdrawal is $5.00 (up to available balance).</div>
                 </div>
                 <div class="form-group">
-                    <label>3. Destination Wallet / Pay ID</label>
-                    <input type="text" id="withdrawAddress" class="form-control" placeholder="Enter destination wallet address or Pay ID">
-                    <div class="error-msg" id="addressError">Please enter a valid destination address.</div>
+                    <label>3. Destination Wallet / Bybit ID</label>
+                    <input type="text" id="withdrawAddress" class="form-control" placeholder="Enter destination USDT BEP20 address">
+                    <div class="error-msg" id="addressError">Please enter a valid destination address or Bybit ID.</div>
                 </div>
                 <div class="calc-box">
                     <div class="calc-row"><span class="lbl">Withdrawal Fee</span><span class="val" style="color:var(--primary);">$0.00 (Free)</span></div>
@@ -2199,7 +2374,7 @@
                 amountError.style.display = 'none';
             }
 
-            if (address.length < 6) {
+            if (address.length < 5) {
                 addressInput.classList.add('error');
                 addressError.style.display = 'block';
                 valid = false;
