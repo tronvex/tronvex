@@ -575,6 +575,7 @@
         .form-group label { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
         .max-btn { color: var(--primary); font-size: 0.7rem; font-weight: 700; cursor: pointer; }
         .max-btn:hover { text-decoration: underline; }
+        .max-btn.disabled-timer { color: var(--text-muted); cursor: not-allowed; text-decoration: none; opacity: 0.75; }
         .form-control {
             width: 100%; padding: 12px 14px; background: var(--bg-glass); border: 1px solid var(--border-dim);
             border-radius: 10px; color: white; font-size: 0.9rem; transition: var(--transition);
@@ -1238,6 +1239,49 @@
         let completedCyclesCount = 0;
         let activeInvestmentsCount = 0;
 
+        // ================= OTP COOLDOWN TIMER STATE =================
+        let otpCooldownUntil = 0;
+        let otpTimerInterval = null;
+        let otpSendingInProgress = false;
+
+        function getOtpRemainingSeconds() {
+            return Math.max(0, Math.ceil((otpCooldownUntil - Date.now()) / 1000));
+        }
+
+        function updateOtpBtnUI() {
+            const otpBtn = document.getElementById('sendOtpBtn');
+            if (!otpBtn) return;
+            const rem = getOtpRemainingSeconds();
+            if (rem > 0) {
+                otpBtn.textContent = `Resend (${rem}s)`;
+                otpBtn.classList.add('disabled-timer');
+                otpBtn.setAttribute('aria-disabled', 'true');
+            } else if (otpSendingInProgress) {
+                otpBtn.textContent = 'Sending...';
+                otpBtn.classList.add('disabled-timer');
+                otpBtn.setAttribute('aria-disabled', 'true');
+            } else {
+                otpBtn.textContent = 'Send Code';
+                otpBtn.classList.remove('disabled-timer');
+                otpBtn.setAttribute('aria-disabled', 'false');
+            }
+        }
+
+        function startOtpCooldown(seconds = 60) {
+            otpCooldownUntil = Date.now() + seconds * 1000;
+            updateOtpBtnUI();
+            if (otpTimerInterval) {
+                clearInterval(otpTimerInterval);
+            }
+            otpTimerInterval = setInterval(() => {
+                updateOtpBtnUI();
+                if (getOtpRemainingSeconds() <= 0 && !otpSendingInProgress) {
+                    clearInterval(otpTimerInterval);
+                    otpTimerInterval = null;
+                }
+            }, 250);
+        }
+
         // ================= AUTH STATE + TOKEN =================
         const AUTH_STORAGE_KEY = 'tronvex_real_session_v1';
         let authState = {
@@ -1480,9 +1524,15 @@
                     ${isLogin ? 'Login' : 'Verify Code & Sign Up'}
                 </button>
             `);
+
+            if (!isLogin) {
+                updateOtpBtnUI();
+            }
         }
 
         async function sendSignupOtp() {
+            if (otpSendingInProgress || getOtpRemainingSeconds() > 0) return;
+
             const emailEl = document.getElementById('authEmailInput');
             const email = emailEl ? emailEl.value.trim() : '';
             if (!email || !email.includes('@') || !email.includes('.')) {
@@ -1493,8 +1543,8 @@
             emailEl.classList.remove('error');
             document.getElementById('authEmailError').style.display = 'none';
 
-            const otpBtn = document.getElementById('sendOtpBtn');
-            if (otpBtn) otpBtn.textContent = 'Sending...';
+            otpSendingInProgress = true;
+            updateOtpBtnUI();
 
             try {
                 await apiRequest('/api/auth/send-code', {
@@ -1502,11 +1552,13 @@
                     body: JSON.stringify({ email })
                 });
                 authState.otpSent = true;
+                otpSendingInProgress = false;
+                startOtpCooldown(60);
                 showToast('6-digit verification code sent to ' + email, 'success');
             } catch (err) {
+                otpSendingInProgress = false;
+                updateOtpBtnUI();
                 showToast(err.message, 'error');
-            } finally {
-                if (otpBtn) otpBtn.textContent = 'Send Code';
             }
         }
 
