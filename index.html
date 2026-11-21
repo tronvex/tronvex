@@ -489,20 +489,210 @@
         .modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.88); backdrop-filter: blur(14px);
             z-index: 1000; display: flex; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden; transition: var(--transition); padding: 16px;
+            opacity: 0; visibility: hidden; transition: var(--transition); padding: 14px;
         }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal {
             background: var(--bg-surface); border: 1px solid var(--border-dim);
             border-radius: 20px; width: 100%; max-width: 480px;
-            padding: 28px; position: relative; transform: translateY(20px) scale(0.96); 
+            padding: 24px; position: relative; transform: translateY(20px) scale(0.96); 
             transition: var(--transition); box-shadow: 0 30px 80px rgba(0,0,0,0.8);
-            max-height: 90vh; overflow-y: auto; scrollbar-width: thin;
-            scrollbar-color: rgba(0, 255, 170, 0.35) rgba(255, 255, 255, 0.04);
+            max-height: 92vh; overflow-y: auto; scrollbar-width: none;
         }
-        .modal::-webkit-scrollbar { width: 6px; }
-        .modal::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.03); border-radius: 10px; }
-        .modal::-webkit-scrollbar-thumb { background: rgba(0, 255, 170, 0.35); border-radius: 10px; }
+        .modal::-webkit-scrollbar { display: none; }
+
+        /* Compact No-Scroll Professional Wallet Modal */
+        .modal.wallet-pro-modal {
+            max-width: 460px;
+            padding: 20px 22px;
+            background:
+                radial-gradient(circle at 85% 8%, rgba(0,255,170,0.08), transparent 45%),
+                radial-gradient(circle at 12% 92%, rgba(0,136,255,0.07), transparent 45%),
+                #061220;
+            border: 1px solid rgba(0,255,170,0.22);
+            border-radius: 22px;
+            overflow-y: visible;
+        }
+        .wallet-top-bar {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 10px; margin-bottom: 12px; padding-right: 30px;
+        }
+        .wallet-brand-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .wallet-brand-pill span {
+            font-size: 0.92rem; font-weight: 800; letter-spacing: -0.3px;
+        }
+        .wallet-badge-secure {
+            display: inline-flex; align-items: center; gap: 4px;
+            font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
+            color: var(--primary); background: rgba(0,255,170,0.1);
+            border: 1px solid rgba(0,255,170,0.24); padding: 4px 9px; border-radius: 50px;
+        }
+        .wallet-mode-switch {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+            background: rgba(0,0,0,0.38); border: 1px solid var(--border-dim);
+            border-radius: 12px; padding: 4px; margin-bottom: 12px;
+        }
+        .wallet-mode-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            padding: 8px 10px; border-radius: 9px;
+            font-size: 0.76rem; font-weight: 700; color: var(--text-muted);
+            transition: var(--transition);
+        }
+        .wallet-mode-btn svg { width: 14px; height: 14px; }
+        .wallet-mode-btn.active.dep {
+            background: var(--primary); color: var(--text-dark);
+        }
+        .wallet-mode-btn.active.wdr {
+            background: var(--blue); color: #ffffff;
+        }
+        .wallet-stepper {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+            margin-bottom: 12px; padding: 8px 10px;
+            background: rgba(0,0,0,0.25); border: 1px solid var(--border-dim);
+            border-radius: 11px;
+        }
+        .w-step {
+            display: flex; align-items: center; justify-content: center; gap: 5px;
+            font-size: 0.64rem; font-weight: 700; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .w-step .w-num {
+            width: 17px; height: 17px; border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 0.62rem; font-weight: 800;
+            background: rgba(255,255,255,0.06); color: var(--text-muted);
+            border: 1px solid var(--border-dim);
+        }
+        .w-step.active { color: var(--primary); }
+        .w-step.active .w-num {
+            background: var(--primary); color: var(--text-dark); border-color: var(--primary);
+        }
+
+        .wallet-section-label {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.68rem; font-weight: 700; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 7px;
+        }
+
+        .wallet-net-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px;
+            margin-bottom: 12px;
+        }
+        .wallet-net-card {
+            display: flex; align-items: center; gap: 9px;
+            background: rgba(255,255,255,0.025); border: 1px solid var(--border-dim);
+            border-radius: 12px; padding: 8px 10px; cursor: pointer;
+            transition: var(--transition); position: relative; text-align: left;
+        }
+        .wallet-net-card:hover {
+            border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05);
+        }
+        .wallet-net-card.active {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(0,255,170,0.12), rgba(0,136,255,0.05));
+            box-shadow: 0 0 0 1px rgba(0,255,170,0.25);
+        }
+        .wallet-net-logo {
+            width: 30px; height: 30px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+        }
+        .wallet-net-logo svg { width: 100%; height: 100%; }
+        .wallet-net-meta { flex: 1; min-width: 0; }
+        .wallet-net-title {
+            font-size: 0.76rem; font-weight: 800; color: var(--text-main);
+            line-height: 1.15; display: block;
+        }
+        .wallet-net-sub {
+            font-size: 0.62rem; color: var(--text-muted); font-weight: 500;
+            display: block; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .wallet-net-tick {
+            width: 16px; height: 16px; border-radius: 50%;
+            border: 1.5px solid var(--border-dim);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 9px; font-weight: 800; flex-shrink: 0;
+        }
+        .wallet-net-card.active .wallet-net-tick {
+            background: var(--primary); border-color: var(--primary); color: var(--text-dark);
+        }
+
+        .wallet-addr-panel {
+            background: rgba(0,0,0,0.34); border: 1px solid rgba(0,255,170,0.2);
+            border-radius: 13px; padding: 10px 12px; margin-bottom: 12px;
+        }
+        .wallet-addr-head {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 6px; gap: 6px;
+        }
+        .wallet-addr-head span {
+            font-size: 0.63rem; font-weight: 700; color: var(--primary);
+            text-transform: uppercase; letter-spacing: 0.7px;
+        }
+        .wallet-addr-head small {
+            font-size: 0.62rem; color: var(--text-muted); font-weight: 600;
+        }
+        .wallet-addr-line {
+            display: flex; align-items: center; justify-content: space-between; gap: 7px;
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
+            border-radius: 9px; padding: 7px 9px;
+        }
+        .wallet-addr-code {
+            font-family: 'Courier New', monospace; font-size: 0.71rem;
+            color: var(--text-main); word-break: break-all; flex: 1; line-height: 1.3;
+        }
+        .wallet-mini-btn {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 5px 8px; border-radius: 7px; font-size: 0.66rem; font-weight: 700;
+            flex-shrink: 0; transition: var(--transition);
+        }
+        .wallet-mini-btn svg { width: 12px; height: 12px; }
+        .wallet-mini-btn.qr {
+            background: rgba(0,136,255,0.14); border: 1px solid rgba(0,136,255,0.3); color: #6abaff;
+        }
+        .wallet-mini-btn.qr:hover, .wallet-mini-btn.qr.active {
+            background: var(--blue); color: #fff; border-color: var(--blue);
+        }
+        .wallet-mini-btn.cp {
+            background: var(--primary-dim); border: 1px solid rgba(0,255,170,0.3); color: var(--primary);
+        }
+        .wallet-mini-btn.cp:hover {
+            background: var(--primary); color: var(--text-dark);
+        }
+
+        .wallet-inline-row {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+            margin-bottom: 10px;
+        }
+        .wallet-compact-group {
+            margin-bottom: 10px;
+        }
+        .wallet-compact-group label {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.68rem; color: var(--text-muted); margin-bottom: 5px; font-weight: 600;
+        }
+        .wallet-compact-control {
+            width: 100%; padding: 9px 11px;
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
+            border-radius: 10px; color: #fff; font-size: 0.82rem; font-weight: 600;
+            transition: var(--transition);
+        }
+        .wallet-compact-control:focus {
+            outline: none; border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0,255,170,0.08);
+        }
+        .wallet-compact-control.error { border-color: var(--danger); }
+
+        .wallet-avail-strip {
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0,136,255,0.08); border: 1px solid rgba(0,136,255,0.22);
+            border-radius: 10px; padding: 8px 11px; margin-bottom: 10px;
+            font-size: 0.72rem;
+        }
+        .wallet-avail-strip strong { color: var(--primary); font-size: 0.82rem; }
 
         .modal.auth-pro-modal {
             max-width: 440px;
@@ -542,7 +732,7 @@
 
         .modal-overlay.active .modal { transform: translateY(0) scale(1); }
         .modal-close { 
-            position: absolute; top: 16px; right: 16px; width: 30px; height: 30px; 
+            position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; 
             border-radius: 50%; background: var(--bg-glass); color: var(--text-muted); 
             display: flex; align-items: center; justify-content: center; 
             transition: var(--transition); cursor: pointer; z-index: 10;
@@ -584,93 +774,20 @@
         }
         .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0, 255, 170, 0.08); }
         .form-control.error { border-color: var(--danger); }
-        .error-msg { color: var(--danger); font-size: 0.72rem; margin-top: 5px; display: none; font-weight: 500; }
-
-        .network-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 16px; }
-        .network-item {
-            display: flex; align-items: center; gap: 10px;
-            background: var(--bg-glass); border: 1px solid var(--border-dim);
-            border-radius: 10px; padding: 10px 12px; cursor: pointer;
-            transition: var(--transition); position: relative;
-        }
-        .network-item:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
-        .network-item.active { border-color: var(--primary); background: var(--primary-dim); }
-        .network-logo { width: 26px; height: 26px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .network-logo svg { width: 100%; height: 100%; }
-        .network-info { flex: 1; min-width: 0; }
-        .network-info h5 { font-size: 0.76rem; font-weight: 700; line-height: 1.2; }
-        .network-info span { font-size: 0.62rem; color: var(--text-muted); display: block; }
-        .network-check { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--border-dim); display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; }
-        .network-item.active .network-check { border-color: var(--primary); background: var(--primary); color: var(--text-dark); }
-
-        .address-box {
-            background: rgba(0,0,0,0.35); border: 1px solid rgba(0,255,170,0.22);
-            border-radius: 14px; padding: 14px; margin-bottom: 16px;
-        }
-        .address-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 8px; }
-        .address-top span { font-size: 0.66rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.8px; }
-        .address-top small { font-size: 0.66rem; color: var(--text-muted); }
-        .address-code-row {
-            display: flex; align-items: center; justify-content: space-between; gap: 8px;
-            background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
-            border-radius: 10px; padding: 10px 12px;
-        }
-        .address-str {
-            font-family: 'Courier New', monospace; font-size: 0.76rem; color: var(--text-main);
-            word-break: break-all; flex: 1;
-        }
-        .address-actions-group { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
-        .copy-chip-btn {
-            display: inline-flex; align-items: center; gap: 4px;
-            background: var(--primary-dim); border: 1px solid rgba(0,255,170,0.3);
-            color: var(--primary); font-size: 0.7rem; font-weight: 700;
-            padding: 6px 10px; border-radius: 8px; flex-shrink: 0; transition: var(--transition);
-        }
-        .copy-chip-btn:hover { background: var(--primary); color: var(--text-dark); }
-        .copy-chip-btn svg { width: 13px; height: 13px; }
-
-        .qr-toggle-btn {
-            display: inline-flex; align-items: center; gap: 4px;
-            background: rgba(0,136,255,0.14); border: 1px solid rgba(0,136,255,0.32);
-            color: #6abaff; font-size: 0.7rem; font-weight: 700;
-            padding: 6px 10px; border-radius: 8px; flex-shrink: 0; transition: var(--transition);
-        }
-        .qr-toggle-btn:hover, .qr-toggle-btn.active {
-            background: var(--blue); color: #ffffff; border-color: var(--blue);
-        }
-        .qr-toggle-btn svg { width: 13px; height: 13px; }
+        .error-msg { color: var(--danger); font-size: 0.68rem; margin-top: 4px; display: none; font-weight: 600; }
 
         .qr-panel {
-            display: none; margin-top: 12px; padding-top: 12px;
+            display: none; margin-top: 10px; padding-top: 10px;
             border-top: 1px dashed rgba(255,255,255,0.1);
             text-align: center;
         }
         .qr-panel.open { display: block; animation: fadeIn 0.25s ease; }
         .qr-frame {
-            display: inline-flex; flex-direction: column; align-items: center; gap: 8px;
-            background: #ffffff; padding: 12px; border-radius: 14px;
+            display: inline-flex; flex-direction: column; align-items: center; gap: 6px;
+            background: #ffffff; padding: 10px; border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.45);
         }
-        .qr-caption { font-size: 0.68rem; color: var(--text-muted); margin-top: 8px; word-break: break-all; }
-
-        .meta-grid-2 {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px;
-        }
-        .meta-cell {
-            background: rgba(255,255,255,0.02); border: 1px solid var(--border-dim);
-            border-radius: 8px; padding: 8px 10px;
-        }
-        .meta-cell .mc-lbl { font-size: 0.62rem; color: var(--text-muted); display: block; }
-        .meta-cell .mc-val { font-size: 0.76rem; font-weight: 700; color: var(--primary); }
-
-        .warning-box {
-            display: flex; gap: 10px; align-items: flex-start;
-            background: rgba(0, 255, 170, 0.06); border: 1px solid rgba(0, 255, 170, 0.22);
-            padding: 12px 14px; border-radius: 10px; margin-bottom: 16px;
-            font-size: 0.72rem; color: var(--text-muted); line-height: 1.5;
-        }
-        .warning-box svg { width: 16px; height: 16px; color: var(--primary); flex-shrink: 0; margin-top: 1px; }
-        .warning-box strong { color: var(--primary); }
+        .qr-caption { font-size: 0.65rem; color: var(--text-muted); margin-top: 6px; word-break: break-all; }
 
         .calc-box {
             background: rgba(0,0,0,0.25); border: 1px solid var(--border-dim);
@@ -782,8 +899,9 @@
             .features-grid { grid-template-columns: 1fr; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-links { justify-content: center; }
-            .modal { padding: 22px; }
-            .network-grid { grid-template-columns: 1fr; }
+            .modal { padding: 20px; }
+            .modal.wallet-pro-modal { padding: 16px; }
+            .wallet-inline-row { grid-template-columns: 1fr; gap: 8px; }
             .balance-amount .main { font-size: 1.9rem; }
             .balance-stats { padding: 10px; }
             .balance-stats .bs-value { font-size: 0.78rem; }
@@ -834,7 +952,7 @@
                 <div class="balance-card">
                     <div class="balance-top">
                         <div class="balance-label"><i data-lucide="wallet"></i> Total Balance</div>
-                        <div class="balance-chip"><i data-lucide="shield-check"></i> Min $5 · 0% Fee</div>
+                        <div class="balance-chip"><i data-lucide="shield-check"></i> Min $5</div>
                     </div>
                     <div class="balance-amount">
                         <div class="main" id="totalBalanceMain">$0<span>.00</span></div>
@@ -850,8 +968,8 @@
                             <span class="bs-value gold" id="lockedBalanceText">$0.00</span>
                         </div>
                         <div class="bs-item">
-                            <span class="bs-label">Fee</span>
-                            <span class="bs-value" style="color:var(--primary);">$0.00</span>
+                            <span class="bs-label">Minimum</span>
+                            <span class="bs-value" style="color:var(--primary);">$5.00</span>
                         </div>
                     </div>
                     <div class="balance-actions">
@@ -893,7 +1011,7 @@
                         </div>
                         <ul class="plan-features">
                             <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
-                            <li><i data-lucide="check-circle-2"></i> $5 Min · $0 Fee</li>
+                            <li><i data-lucide="check-circle-2"></i> $5 Minimum</li>
                             <li><i data-lucide="check-circle-2"></i> Automated Payouts</li>
                         </ul>
                         <button class="btn-invest" onclick="requireAuth(() => openInvestModal('STARTER', 5, 100))">Invest <i data-lucide="arrow-right" style="width:12px;"></i></button>
@@ -968,7 +1086,7 @@
                 <div class="hero-content">
                     <div class="hero-tag"><i data-lucide="shield-check"></i> Trusted Platform</div>
                     <h1>Grow your <span class="text-gradient">USDT</span><br>with confidence</h1>
-                    <p>Zero deposit & withdrawal fees · $5 minimum across all networks · Fixed 5-day cycles.</p>
+                    <p>Multi-network USDT & crypto settlements · $5 minimum across all networks · Fixed 5-day cycles.</p>
                     <div class="hero-stats">
                         <div class="hero-stat-item">
                             <div class="hero-stat-icon"><i data-lucide="trending-up"></i></div>
@@ -987,8 +1105,8 @@
                         <div class="hero-stat-item">
                             <div class="hero-stat-icon"><i data-lucide="badge-check"></i></div>
                             <div>
-                                <div class="hero-stat-value">$0.00</div>
-                                <div class="hero-stat-label">Transfer Fee</div>
+                                <div class="hero-stat-value">5 Days</div>
+                                <div class="hero-stat-label">Cycle Length</div>
                             </div>
                         </div>
                     </div>
@@ -1002,7 +1120,7 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="zap"></i></div>
-                    <div class="feature-text"><h4>$0 Fee Transfers</h4><p>Deposit and withdraw starting from $5 with zero fee.</p></div>
+                    <div class="feature-text"><h4>Fast Settlements</h4><p>Deposit and withdraw starting from $5 across supported networks.</p></div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="headphones"></i></div>
@@ -1173,7 +1291,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 TRONVEX. All rights reserved. Capital at risk; verify terms and network fees before transacting.
+                &copy; 2026 TRONVEX. All rights reserved. Capital at risk; verify terms before transacting.
             </div>
         </div>
     </footer>
@@ -1465,6 +1583,7 @@
             const isLogin = mode === 'login';
             const isForgot = mode === 'forgot';
             const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('wallet-pro-modal');
             modalBox.classList.add('auth-pro-modal');
 
             openModal(`
@@ -1880,7 +1999,7 @@
             }
         }
 
-        function generateQrSvg(text, size = 148) {
+        function generateQrSvg(text, size = 136) {
             const cells = 21;
             const moduleSize = size / cells;
             let hash = 2166136261;
@@ -1930,50 +2049,50 @@
             USDT_BEP20: {
                 symbol: 'USDT',
                 name: 'USDT BEP20',
+                shortTitle: 'USDT',
                 network: 'BEP20',
                 networkDesc: 'BNB Smart Chain',
-                addressLabel: 'BEP20 Wallet Address',
+                addressLabel: 'BEP20 Deposit Address',
                 minDeposit: '$5.00',
-                confirmations: '15 Blocks (~45s)',
-                withdrawFeeText: '$0.00 (Free)',
+                confirmations: '15 Blocks',
                 depositAddress: '0xe4484af8794b0fe2eccf433f7da7ac81935fc4a0',
-                logo: `<svg viewBox="0 0 32 32"><defs><linearGradient id="bep20Grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2ec492"/><stop offset="100%" stop-color="#1b8a66"/></linearGradient></defs><circle cx="16" cy="16" r="16" fill="url(#bep20Grad)"/><circle cx="16" cy="16" r="13.2" fill="none" stroke="#f0b90b" stroke-width="1.3" stroke-opacity="0.75"/><path fill="#ffffff" d="M17.85 13.7v-2.45h4.35V7.7H9.8v3.55h4.35v2.45c-3.55.16-6.2.86-6.2 1.7 0 .84 2.65 1.54 6.2 1.7v6.05h3.7v-6.05c3.55-.16 6.2-.86 6.2-1.7 0-.84-2.65-1.54-6.2-1.7zm0 2.88c-.15.01-.72.04-1.85.04-1.13 0-1.7-.03-1.85-.04v-2.12c3.05.14 5.3.67 5.3 1.28 0 .61-2.25 1.14-5.3 1.28v.84z" transform="translate(0,0.4)"/></svg>`
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="bscRing" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f3ba2f"/><stop offset="100%" stop-color="#d99b00"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131a24"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#bscRing)" stroke-width="2.2"/><circle cx="18" cy="18" r="12.2" fill="#26a17b"/><path fill="#ffffff" d="M19.8 15.1v-2.5h4.5V9.2H11.7v3.4h4.5v2.5c-3.7.17-6.5.9-6.5 1.8s2.8 1.63 6.5 1.8v6.3h3.6v-6.3c3.7-.17 6.5-.9 6.5-1.8s-2.8-1.63-6.5-1.8zm0 3.05c-.2.01-.8.04-1.8.04-1 0-1.6-.03-1.8-.04v-2.25c3.2.15 5.6.7 5.6 1.35s-2.4 1.2-5.6 1.35v-.45z"/></svg>`
             },
             USDT_TRC20: {
                 symbol: 'USDT',
                 name: 'USDT TRC20',
+                shortTitle: 'USDT',
                 network: 'TRC20',
-                networkDesc: 'Tron Network',
-                addressLabel: 'TRC20 Wallet Address',
+                networkDesc: 'TRON Network',
+                addressLabel: 'TRC20 Deposit Address',
                 minDeposit: '$5.00',
-                confirmations: '20 Blocks (~1m)',
-                withdrawFeeText: '$0.00 (Free)',
+                confirmations: '20 Blocks',
                 depositAddress: 'TLPVBmQnS6VTV7MwzLzYy7EjUKqsKob7hs',
-                logo: `<svg viewBox="0 0 32 32"><defs><linearGradient id="trc20Grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#26A17B"/><stop offset="100%" stop-color="#ef0027"/></linearGradient></defs><circle cx="16" cy="16" r="16" fill="url(#trc20Grad)"/><circle cx="16" cy="16" r="13" fill="#26A17B"/><path fill="#ffffff" d="M17.85 13.7v-2.45h4.35V7.7H9.8v3.55h4.35v2.45c-3.55.16-6.2.86-6.2 1.7 0 .84 2.65 1.54 6.2 1.7v6.05h3.7v-6.05c3.55-.16 6.2-.86 6.2-1.7 0-.84-2.65-1.54-6.2-1.7z"/></svg>`
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="tronGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff2e4d"/><stop offset="100%" stop-color="#b8001c"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#141821"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#tronGrad)" stroke-width="2"/><polygon points="9.5,9.5 27.5,13 18.5,27.5" fill="none" stroke="#ff3b5c" stroke-width="2" stroke-linejoin="round"/><line x1="9.5" y1="9.5" x2="18.2" y2="15.4" stroke="#ff3b5c" stroke-width="1.8"/><line x1="27.5" y1="13" x2="18.2" y2="15.4" stroke="#ff3b5c" stroke-width="1.8"/><line x1="18.2" y1="15.4" x2="18.5" y2="27.5" stroke="#ff3b5c" stroke-width="1.8"/><circle cx="24.5" cy="24.5" r="8.2" fill="#26a17b" stroke="#141821" stroke-width="1.6"/><path fill="#fff" d="M25.4 23.6v-1.2h2.1v-1.6h-6v1.6h2.1v1.2c-1.7.08-3 .42-3 .85s1.3.77 3 .85v2.9h1.8v-2.9c1.7-.08 3-.42 3-.85s-1.3-.77-3-.85z"/></svg>`
             },
             BTC: {
                 symbol: 'BTC',
                 name: 'Bitcoin',
+                shortTitle: 'BTC',
                 network: 'BTC',
-                networkDesc: 'Bitcoin Network',
-                addressLabel: 'BTC Wallet Address',
+                networkDesc: 'Bitcoin Mainnet',
+                addressLabel: 'BTC Deposit Address',
                 minDeposit: '$5.00',
-                confirmations: '2 Blocks (~20m)',
-                withdrawFeeText: '$0.00 (Free)',
+                confirmations: '2 Blocks',
                 depositAddress: '1AVqKF2KKCruGcCinouuu7dnREkKMqeznu',
-                logo: `<svg viewBox="0 0 32 32"><defs><linearGradient id="btcGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff9f1c"/><stop offset="100%" stop-color="#e87a00"/></linearGradient></defs><circle cx="16" cy="16" r="16" fill="url(#btcGrad)"/><path fill="#ffffff" d="M22.5 14.3c.4-2.4-1.5-3.7-4-4.5l.8-3.2-2-.5-.8 3.2c-.5-.1-1-.2-1.5-.3l.8-3.2-2-.5-.8 3.2c-.4-.1-.8-.2-1.2-.3l-2.7-.7-.5 2.1s1.5.3 1.4.4c.8.2.9.7.9 1.1l-2.2 8.9c-.1.3-.4.7-1 .5 0 0-1.4-.4-1.4-.4l-1 2.3 2.6.7c.5.1.9.2 1.4.3l-.8 3.2 2 .5.8-3.2c.5.1 1 .3 1.5.4l-.8 3.2 2 .5.8-3.2c3.4.6 6 .4 7.1-2.7.9-2.5 0-3.9-1.9-4.8 1.3-.3 2.3-1.2 2.5-3zM17.7 20c-.6 2.5-4.8 1.1-6.2.8l1.1-4.4c1.4.3 5.7 1 5.1 3.6zm.6-5.8c-.6 2.3-4.1 1.1-5.2.8l1-4c1.1.3 4.8.8 4.2 3.2z"/></svg>`
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="btcOfficial" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffa61a"/><stop offset="100%" stop-color="#e87a00"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="url(#btcOfficial)"/><path fill="#ffffff" d="M24.8 15.8c.45-2.65-1.65-4.08-4.45-4.98l.9-3.55-2.2-.55-.88 3.45c-.58-.14-1.18-.28-1.77-.41l.89-3.48-2.2-.55-.9 3.54c-.48-.11-.95-.22-1.41-.33l-3.04-.76-.58 2.34s1.64.38 1.6.4c.9.22 1.06.82 1.03 1.29l-2.48 9.95c-.11.28-.39.7-.102.57.02.02-1.6-.4-1.6-.4l-1.1 2.52 2.87.72c.53.13 1.06.27 1.57.4l-.91 3.6 2.2.55.9-3.56c.6.16 1.19.32 1.76.46l-.9 3.54 2.2.55.91-3.59c3.76.71 6.59.42 7.78-2.98.96-2.74-.05-4.32-2.02-5.35 1.44-.33 2.52-1.28 2.81-3.24zm-5.02 7.05c-.68 2.74-5.28 1.26-6.78.89l1.21-4.85c1.5.37 6.28 1.11 5.57 3.96zm.68-7.1c-.62 2.49-4.47 1.22-5.72.91l1.1-4.41c1.25.31 5.26.9 4.62 3.5z"/></svg>`
             },
             BYBIT: {
                 symbol: 'BYBIT',
                 name: 'Bybit UID',
+                shortTitle: 'BYBIT',
                 network: 'BYBIT',
-                networkDesc: 'Bybit Instant Transfer',
-                addressLabel: 'Official Bybit ID',
+                networkDesc: 'Bybit Instant UID',
+                addressLabel: 'Bybit Transfer UID',
                 minDeposit: '$5.00',
-                confirmations: 'Instant (0s)',
-                withdrawFeeText: '$0.00 (Free)',
+                confirmations: 'Instant',
                 depositAddress: '578277314',
-                logo: `<svg viewBox="0 0 32 32"><rect width="32" height="32" rx="16" fill="#0d0f14"/><rect x="1.5" y="1.5" width="29" height="29" rx="14.5" fill="none" stroke="#f7a600" stroke-width="1.5"/><path d="M7.5 10.5h9.2c2.2 0 3.7 1.2 3.7 3 0 1.2-.6 2.1-1.6 2.5 1.3.4 2.1 1.4 2.1 2.8 0 2-1.6 3.2-4 3.2H7.5V10.5zm3 2.3v2.4h5.6c.9 0 1.5-.5 1.5-1.2s-.6-1.2-1.5-1.2h-5.6zm0 4.6v2.5h6.1c1 0 1.6-.5 1.6-1.25 0-.75-.6-1.25-1.6-1.25h-6.1z" fill="#ffffff"/><polygon points="22.8,10.5 25.8,10.5 23.2,17.2 23.2,22 20.4,22 20.4,17.2 17.8,10.5 20.8,10.5 21.8,14.3" fill="#f7a600"/></svg>`
+                logo: `<svg viewBox="0 0 36 36"><rect width="36" height="36" rx="18" fill="#0d0f14"/><rect x="1.5" y="1.5" width="33" height="33" rx="16.5" fill="none" stroke="#f7a600" stroke-width="1.6"/><path d="M8 11.5h10.2c2.5 0 4.2 1.35 4.2 3.35 0 1.35-.7 2.35-1.8 2.8 1.45.45 2.35 1.55 2.35 3.15 0 2.25-1.8 3.6-4.5 3.6H8V11.5zm3.3 2.6v2.7h6.3c1 0 1.7-.55 1.7-1.35s-.7-1.35-1.7-1.35h-6.3zm0 5.1v2.8h6.8c1.1 0 1.8-.55 1.8-1.4s-.7-1.4-1.8-1.4h-6.8z" fill="#ffffff"/><polygon points="25.2,11.5 28.6,11.5 25.6,19 25.6,24.2 22.5,24.2 22.5,19 19.6,11.5 23,11.5 24.1,15.8" fill="#f7a600"/></svg>`
             }
         };
 
@@ -2017,7 +2136,7 @@
                         </div>
                         <div class="tx-amount ${isPos ? 'positive' : 'negative'}">
                             ${formatAmount(tx)}
-                            <small>Fee: $0.00</small>
+                            <small>${tx.network || tx.method}</small>
                         </div>
                     </div>
                 `;
@@ -2069,6 +2188,7 @@
             const overlay = document.getElementById('modalOverlay');
             const content = document.getElementById('modalContent');
             content.classList.remove('auth-pro-modal');
+            content.classList.remove('wallet-pro-modal');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
         }
@@ -2169,15 +2289,18 @@
         }
         window.addEventListener('resize', updateSlider);
 
-        function renderNetworkGrid(selectedKey, onSelectFnName) {
+        function renderWalletNetworkGrid(selectedKey, onSelectFnName) {
             return PAYMENT_METHODS.map(key => {
                 const coin = COINS[key];
                 const active = key === selectedKey ? ' active' : '';
                 return `
-                    <div class="network-item${active}" onclick="${onSelectFnName}('${key}')">
-                        <div class="network-logo">${coin.logo}</div>
-                        <div class="network-info"><h5>${coin.name}</h5><span>${coin.networkDesc}</span></div>
-                        <div class="network-check">${key === selectedKey ? '✓' : ''}</div>
+                    <div class="wallet-net-card${active}" onclick="${onSelectFnName}('${key}')">
+                        <div class="wallet-net-logo">${coin.logo}</div>
+                        <div class="wallet-net-meta">
+                            <span class="wallet-net-title">${coin.name}</span>
+                            <span class="wallet-net-sub">${coin.networkDesc}</span>
+                        </div>
+                        <div class="wallet-net-tick">${key === selectedKey ? '✓' : ''}</div>
                     </div>
                 `;
             }).join('');
@@ -2190,45 +2313,33 @@
             if (panel) panel.classList.toggle('open', qrVisible);
             if (btn) {
                 btn.classList.toggle('active', qrVisible);
-                btn.innerHTML = `<i data-lucide="qr-code"></i> ${qrVisible ? 'Hide QR' : 'Show QR'}`;
+                btn.innerHTML = `<i data-lucide="qr-code"></i> ${qrVisible ? 'Hide' : 'QR'}`;
                 lucide.createIcons();
             }
         }
 
-        function renderDepositAddressBox(key) {
+        function renderWalletDepositAddressPanel(key) {
             const coin = COINS[key];
             const addr = activeDepositAddress || coin.depositAddress;
-            const qrSvg = generateQrSvg(`${coin.network}:${addr}`, 148);
+            const qrSvg = generateQrSvg(`${coin.network}:${addr}`, 132);
             return `
-                <div class="address-box">
-                    <div class="address-top">
-                        <span>${coin.addressLabel} · ${coin.networkDesc}</span>
-                        <small>${coin.confirmations}</small>
+                <div class="wallet-addr-panel">
+                    <div class="wallet-addr-head">
+                        <span>${coin.addressLabel}</span>
+                        <small>${coin.confirmations} · Min ${coin.minDeposit}</small>
                     </div>
-                    <div class="address-code-row">
-                        <div class="address-str" id="depAddrText">${addr}</div>
-                        <div class="address-actions-group">
-                            <button class="qr-toggle-btn ${qrVisible ? 'active' : ''}" id="showQrBtn" type="button" onclick="toggleDepositQr()">
-                                <i data-lucide="qr-code"></i> ${qrVisible ? 'Hide QR' : 'Show QR'}
-                            </button>
-                            <button class="copy-chip-btn" type="button" onclick="copyText('${addr}', '${coin.name} copied!')">
-                                <i data-lucide="copy"></i> Copy
-                            </button>
-                        </div>
+                    <div class="wallet-addr-line">
+                        <div class="wallet-addr-code" id="depAddrText">${addr}</div>
+                        <button class="wallet-mini-btn qr ${qrVisible ? 'active' : ''}" id="showQrBtn" type="button" onclick="toggleDepositQr()">
+                            <i data-lucide="qr-code"></i> ${qrVisible ? 'Hide' : 'QR'}
+                        </button>
+                        <button class="wallet-mini-btn cp" type="button" onclick="copyText('${addr}', '${coin.name} address copied!')">
+                            <i data-lucide="copy"></i> Copy
+                        </button>
                     </div>
                     <div class="qr-panel ${qrVisible ? 'open' : ''}" id="depositQrPanel">
                         <div class="qr-frame">${qrSvg}</div>
-                        <div class="qr-caption">Scan for <strong>${coin.name}</strong> (${coin.networkDesc}): ${addr}</div>
-                    </div>
-                    <div class="meta-grid-2">
-                        <div class="meta-cell">
-                            <span class="mc-lbl">Minimum Deposit</span>
-                            <span class="mc-val">$5.00</span>
-                        </div>
-                        <div class="meta-cell">
-                            <span class="mc-lbl">Deposit Fee</span>
-                            <span class="mc-val">$0.00 (Free)</span>
-                        </div>
+                        <div class="qr-caption"><strong>${coin.name}</strong> (${coin.networkDesc}) · ${addr}</div>
                     </div>
                 </div>
             `;
@@ -2238,13 +2349,8 @@
             selectedPayMethod = key;
             activeDepositAddress = COINS[key].depositAddress;
             qrVisible = false;
-            document.getElementById('payMethodGrid').innerHTML = renderNetworkGrid(key, 'selectDepositMethod');
-            document.getElementById('depositAddressContainer').innerHTML = renderDepositAddressBox(key);
-            const coin = COINS[key];
-            document.getElementById('depositWarning').innerHTML = `
-                <i data-lucide="shield-check"></i>
-                <div>Min <strong>$5.00</strong> · Fee <strong>$0.00</strong>. Send only <strong>${coin.symbol}</strong> via <strong>${coin.networkDesc}</strong> to <strong>${activeDepositAddress}</strong>. Verified automatically via backend webhook.</div>
-            `;
+            document.getElementById('payMethodGrid').innerHTML = renderWalletNetworkGrid(key, 'selectDepositMethod');
+            document.getElementById('depositAddressContainer').innerHTML = renderWalletDepositAddressPanel(key);
             lucide.createIcons();
         }
 
@@ -2252,32 +2358,62 @@
             selectedPayMethod = 'USDT_BEP20';
             activeDepositAddress = COINS[selectedPayMethod].depositAddress;
             qrVisible = false;
-            const coin = COINS[selectedPayMethod];
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.add('wallet-pro-modal');
+
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
-                <div class="modal-header">
-                    <div class="modal-icon deposit"><i data-lucide="arrow-down-to-line"></i></div>
-                    <div class="modal-header-text"><h3>Deposit Funds</h3><p>Min $5.00 · $0.00 Fee</p></div>
-                </div>
-                <div class="form-group">
-                    <label>Select Network</label>
-                    <div class="network-grid" id="payMethodGrid">
-                        ${renderNetworkGrid(selectedPayMethod, 'selectDepositMethod')}
+
+                <div class="wallet-top-bar">
+                    <div class="wallet-brand-pill">
+                        <div class="logo-icon" style="width:28px;height:28px;border-radius:8px;">
+                            <i data-lucide="shield-check" style="width:15px;height:15px;"></i>
+                        </div>
+                        <span>TRONVEX WALLET</span>
                     </div>
+                    <span class="wallet-badge-secure"><i data-lucide="shield-check" style="width:11px;height:11px;"></i> Instant Route</span>
                 </div>
+
+                <div class="wallet-mode-switch">
+                    <button class="wallet-mode-btn active dep" type="button" onclick="openDepositModal()">
+                        <i data-lucide="arrow-down-to-line"></i> Deposit
+                    </button>
+                    <button class="wallet-mode-btn" type="button" onclick="openWithdrawModal()">
+                        <i data-lucide="arrow-up-from-line"></i> Withdraw
+                    </button>
+                </div>
+
+                <div class="wallet-stepper">
+                    <div class="w-step active"><span class="w-num">1</span> Network</div>
+                    <div class="w-step active"><span class="w-num">2</span> Address</div>
+                    <div class="w-step active"><span class="w-num">3</span> Amount</div>
+                </div>
+
+                <div class="wallet-section-label">
+                    <span>Choose Network</span>
+                    <span>Min $5.00</span>
+                </div>
+                <div class="wallet-net-grid" id="payMethodGrid">
+                    ${renderWalletNetworkGrid(selectedPayMethod, 'selectDepositMethod')}
+                </div>
+
                 <div id="depositAddressContainer">
-                    ${renderDepositAddressBox(selectedPayMethod)}
+                    ${renderWalletDepositAddressPanel(selectedPayMethod)}
                 </div>
-                <div class="form-group">
-                    <label>Amount in USD / USDT (Min $5.00)</label>
-                    <input type="number" id="depositAmount" class="form-control" placeholder="Min $5.00 (e.g. 25)" min="5" step="0.01">
+
+                <div class="wallet-compact-group">
+                    <label>
+                        <span>Deposit Amount (USD / USDT)</span>
+                        <span>Min $5.00</span>
+                    </label>
+                    <input type="number" id="depositAmount" class="wallet-compact-control" placeholder="Enter amount (min $5.00)" min="5" step="0.01">
                     <div class="error-msg" id="depositError">Minimum deposit is $5.00.</div>
                 </div>
-                <div class="warning-box" id="depositWarning">
-                    <i data-lucide="shield-check"></i>
-                    <div>Min <strong>$5.00</strong> · Fee <strong>$0.00</strong>. Send only <strong>${coin.symbol}</strong> via <strong>${coin.networkDesc}</strong> to <strong>${activeDepositAddress}</strong>. Verified automatically via backend webhook.</div>
-                </div>
-                <button class="btn btn-primary btn-block" id="depositSubmitBtn" onclick="submitDeposit()">Create Deposit Order ($0 Fee)</button>
+
+                <button class="btn btn-primary btn-block" style="border-radius:12px;padding:12px;" id="depositSubmitBtn" onclick="submitDeposit()">
+                    Create Deposit Order
+                </button>
             `);
         }
 
@@ -2310,12 +2446,12 @@
                 });
                 if (res.address) {
                     activeDepositAddress = res.address;
-                    document.getElementById('depositAddressContainer').innerHTML = renderDepositAddressBox(selectedPayMethod);
+                    document.getElementById('depositAddressContainer').innerHTML = renderWalletDepositAddressPanel(selectedPayMethod);
                     lucide.createIcons();
                 }
                 await refreshAccountData();
                 closeModal();
-                showToast(`Order ${res.order_id || ''} created for $${amount.toFixed(2)}. Send payment to verify automatically.`, 'success');
+                showToast(`Order ${res.order_id || ''} created for $${amount.toFixed(2)}.`, 'success');
             } catch (err) {
                 showToast(err.message, 'error');
             } finally {
@@ -2326,47 +2462,81 @@
 
         function selectWithdrawMethod(key) {
             selectedPayMethod = key;
-            document.getElementById('withdrawMethodGrid').innerHTML = renderNetworkGrid(key, 'selectWithdrawMethod');
+            document.getElementById('withdrawMethodGrid').innerHTML = renderWalletNetworkGrid(key, 'selectWithdrawMethod');
             const coin = COINS[key];
-            document.getElementById('withdrawAddress').placeholder = key === 'BYBIT' ? 'Enter destination Bybit UID' : `Enter destination ${coin.name} address`;
+            const addrInput = document.getElementById('withdrawAddress');
+            if (addrInput) {
+                addrInput.placeholder = key === 'BYBIT' ? 'Destination Bybit UID' : `Destination ${coin.network} address`;
+            }
             lucide.createIcons();
         }
 
         function openWithdrawModal() {
             selectedPayMethod = 'USDT_BEP20';
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.add('wallet-pro-modal');
+
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
-                <div class="modal-header">
-                    <div class="modal-icon withdraw"><i data-lucide="arrow-up-from-line"></i></div>
-                    <div class="modal-header-text"><h3>Withdraw Funds</h3><p>Min $5.00 · $0.00 Fee</p></div>
+
+                <div class="wallet-top-bar">
+                    <div class="wallet-brand-pill">
+                        <div class="logo-icon" style="width:28px;height:28px;border-radius:8px;">
+                            <i data-lucide="shield-check" style="width:15px;height:15px;"></i>
+                        </div>
+                        <span>TRONVEX WALLET</span>
+                    </div>
+                    <span class="wallet-badge-secure"><i data-lucide="shield-check" style="width:11px;height:11px;"></i> Payout Route</span>
                 </div>
-                <div style="background:rgba(0,136,255,0.08); margin-bottom:14px; padding:10px 12px; border-radius:8px; border:1px solid rgba(0,136,255,0.2); font-size:0.76rem; display:flex; justify-content:space-between; align-items:center;">
+
+                <div class="wallet-mode-switch">
+                    <button class="wallet-mode-btn" type="button" onclick="openDepositModal()">
+                        <i data-lucide="arrow-down-to-line"></i> Deposit
+                    </button>
+                    <button class="wallet-mode-btn active wdr" type="button" onclick="openWithdrawModal()">
+                        <i data-lucide="arrow-up-from-line"></i> Withdraw
+                    </button>
+                </div>
+
+                <div class="wallet-stepper">
+                    <div class="w-step active"><span class="w-num">1</span> Network</div>
+                    <div class="w-step active"><span class="w-num">2</span> Destination</div>
+                    <div class="w-step active"><span class="w-num">3</span> Amount</div>
+                </div>
+
+                <div class="wallet-avail-strip">
                     <span>Available Balance</span>
-                    <strong style="color:var(--primary); font-size:0.86rem;">$${Number(availableBalance || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong>
+                    <strong>$${Number(availableBalance || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong>
                 </div>
-                <div class="form-group">
-                    <label>Select Network</label>
-                    <div class="network-grid" id="withdrawMethodGrid">
-                        ${renderNetworkGrid(selectedPayMethod, 'selectWithdrawMethod')}
+
+                <div class="wallet-section-label">
+                    <span>Choose Network</span>
+                    <span>Min $5.00</span>
+                </div>
+                <div class="wallet-net-grid" id="withdrawMethodGrid">
+                    ${renderWalletNetworkGrid(selectedPayMethod, 'selectWithdrawMethod')}
+                </div>
+
+                <div class="wallet-inline-row">
+                    <div class="wallet-compact-group" style="margin-bottom:0;">
+                        <label><span>Destination / UID</span></label>
+                        <input type="text" id="withdrawAddress" class="wallet-compact-control" placeholder="Destination BEP20 address">
+                        <div class="error-msg" id="addressError">Valid destination required.</div>
+                    </div>
+                    <div class="wallet-compact-group" style="margin-bottom:0;">
+                        <label>
+                            <span>Amount (Min $5)</span>
+                            <span class="max-btn" onclick="document.getElementById('withdrawAmount').value=${Number(availableBalance || 0).toFixed(2)}">MAX</span>
+                        </label>
+                        <input type="number" id="withdrawAmount" class="wallet-compact-control" placeholder="Min $5.00" min="5" step="0.01">
+                        <div class="error-msg" id="withdrawError">Min $5.00 / check balance.</div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>Destination Wallet / Bybit ID</label>
-                    <input type="text" id="withdrawAddress" class="form-control" placeholder="Enter destination USDT BEP20 address">
-                    <div class="error-msg" id="addressError">Please enter a valid destination address or Bybit ID.</div>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <span>Amount (Min $5.00)</span>
-                        <span class="max-btn" onclick="document.getElementById('withdrawAmount').value=${Number(availableBalance || 0).toFixed(2)}">MAX</span>
-                    </label>
-                    <input type="number" id="withdrawAmount" class="form-control" placeholder="Min $5.00" min="5" step="0.01">
-                    <div class="error-msg" id="withdrawError">Minimum withdrawal is $5.00 (up to $${Number(availableBalance || 0).toFixed(2)} available).</div>
-                </div>
-                <div class="calc-box">
-                    <div class="calc-row"><span class="lbl">Network Fee</span><span class="val" style="color:var(--primary);">$0.00 (Free)</span></div>
-                </div>
-                <button class="btn btn-primary btn-block" id="withdrawSubmitBtn" onclick="submitWithdraw()">Submit Withdrawal ($0 Fee)</button>
+
+                <button class="btn btn-primary btn-block" style="border-radius:12px;padding:12px;margin-top:12px;" id="withdrawSubmitBtn" onclick="submitWithdraw()">
+                    Submit Withdrawal
+                </button>
             `);
         }
 
@@ -2407,7 +2577,7 @@
                 });
                 await refreshAccountData();
                 closeModal();
-                showToast(`Withdrawal of $${amount.toFixed(2)} (${coin.name}) submitted · Fee $0.00`, 'success');
+                showToast(`Withdrawal of $${amount.toFixed(2)} (${coin.name}) submitted.`, 'success');
             } catch (err) {
                 showToast(err.message, 'error');
             } finally {
@@ -2417,13 +2587,17 @@
         }
 
         function openInvestModal(name, min, max) {
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('wallet-pro-modal');
+
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
                 <div class="modal-header">
                     <div class="modal-icon invest"><i data-lucide="trending-up"></i></div>
                     <div class="modal-header-text">
                         <h3>Invest in ${name}</h3>
-                        <p>$${min.toLocaleString()} – $${max.toLocaleString()} · $0 Fee</p>
+                        <p>$${min.toLocaleString()} – $${max.toLocaleString()} · 5 Days</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -2485,6 +2659,10 @@
         function openReceipt(index) {
             const tx = TRANSACTIONS[index];
             if (!tx) return;
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('wallet-pro-modal');
+
             const isPos = (tx.type === 'deposit' || tx.type === 'profit');
             const typeLabel = { deposit: 'Deposit', withdraw: 'Withdrawal', invest: 'Investment', profit: 'Profit Payout' }[tx.type] || tx.type;
             const statusIcon = tx.status === 'completed' ? 'check-circle' : 'clock';
@@ -2513,7 +2691,7 @@
                         <div class="receipt-row"><span class="lbl">Transaction ID</span><span class="val">${tx.id}</span></div>
                         <div class="receipt-row"><span class="lbl">Date & Time</span><span class="val">${tx.date}</span></div>
                         <div class="receipt-row"><span class="lbl">Method</span><span class="val">${tx.method}</span></div>
-                        <div class="receipt-row"><span class="lbl">Network Fee</span><span class="val" style="color:var(--primary);">$0.00</span></div>
+                        <div class="receipt-row"><span class="lbl">Network</span><span class="val" style="color:var(--primary);">${tx.network || '-'}</span></div>
                         <div class="receipt-row"><span class="lbl">Address</span><span class="val mono">${tx.address || '-'}</span></div>
                         <div class="receipt-row"><span class="lbl">TX Hash</span><span class="val mono">${tx.txHash || '-'}</span></div>
                     </div>
@@ -2528,7 +2706,7 @@
         function copyReceipt(index) {
             const tx = TRANSACTIONS[index];
             if (!tx) return;
-            const text = `TRONVEX Receipt\nTransaction: ${tx.id}\nType: ${tx.type}\nAmount: ${formatAmount(tx)}\nMethod: ${tx.method}\nFee: $0.00\nDate: ${tx.date}\nStatus: ${tx.status}`;
+            const text = `TRONVEX Receipt\nTransaction: ${tx.id}\nType: ${tx.type}\nAmount: ${formatAmount(tx)}\nMethod: ${tx.method}\nDate: ${tx.date}\nStatus: ${tx.status}`;
             copyText(text, 'Receipt copied!');
         }
 
