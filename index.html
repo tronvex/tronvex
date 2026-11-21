@@ -106,12 +106,10 @@
         }
         .auth-pill-outline:hover { border-color: var(--primary); color: var(--primary); }
 
-        /* ================= TAB SECTIONS ================= */
         .tab-section { display: none; animation: fadeIn 0.3s ease; }
         .tab-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ================= BALANCE CARD ================= */
         .account-section { padding: 20px 0 8px; }
         .balance-card {
             position: relative; overflow: hidden; border-radius: 20px;
@@ -171,7 +169,6 @@
         .balance-btn.withdraw { background: rgba(0,136,255,0.14); color: #5eb5ff; border: 1px solid rgba(0,136,255,0.3); }
         .balance-btn.withdraw:hover { background: rgba(0,136,255,0.24); border-color: var(--blue); transform: translateY(-1px); }
 
-        /* ================= SECTION HEADER ================= */
         .section-header { display: flex; justify-content: space-between; align-items: center; margin: 24px 0 18px; }
         .section-title-wrap { display: flex; align-items: center; gap: 12px; }
         .section-icon { 
@@ -194,7 +191,6 @@
         .slider-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
         .slider-arrow svg { width: 16px; height: 16px; }
 
-        /* ================= PLANS SLIDER ================= */
         .plans-slider-wrapper { position: relative; overflow: hidden; padding: 4px 0 8px; cursor: grab; }
         .plans-slider-wrapper:active { cursor: grabbing; }
         .plans-slider {
@@ -272,7 +268,6 @@
         }
         .slider-dot.active { background: var(--primary); width: 20px; border-radius: 3px; }
 
-        /* ================= HERO PROFESSIONAL ================= */
         .hero-professional {
             position: relative; overflow: hidden;
             margin: 24px 0 20px;
@@ -324,7 +319,6 @@
         .hero-stat-value { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
         .hero-stat-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
 
-        /* ================= FEATURES ================= */
         .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
         .feature-card { 
             background: var(--bg-card); border: 1px solid var(--border-dim); 
@@ -340,7 +334,6 @@
         .feature-text h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 3px; }
         .feature-text p { font-size: 0.73rem; color: var(--text-muted); line-height: 1.5; }
 
-        /* ================= STATISTICS TAB ================= */
         .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 20px; }
         .stats-card {
             background: var(--bg-card); border: 1px solid var(--border-dim);
@@ -374,7 +367,6 @@
         .alloc-bar { height: 7px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
         .alloc-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
 
-        /* ================= CLEAN MINIMAL PROFILE TAB (NAME, EMAIL, REFERRAL LINK ONLY) ================= */
         .minimal-profile-card {
             background:
                 linear-gradient(135deg, rgba(0,255,170,0.08), rgba(0,136,255,0.05) 55%, rgba(168,85,247,0.06)),
@@ -396,9 +388,7 @@
             background: var(--bg-base); overflow: hidden; flex-shrink: 0;
         }
         .mp-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-        .mp-info-list {
-            display: flex; flex-direction: column; gap: 12px;
-        }
+        .mp-info-list { display: flex; flex-direction: column; gap: 12px; }
         .mp-field-box {
             background: rgba(0,0,0,0.28);
             border: 1px solid var(--border-dim);
@@ -457,7 +447,6 @@
         .profile-menu-item .pm-arrow { color: var(--text-muted); }
         .profile-menu-item .pm-arrow svg { width: 16px; height: 16px; }
 
-        /* ================= BOTTOM NAV ================= */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0; z-index: 500;
             background: linear-gradient(180deg, rgba(7, 20, 34, 0.98) 0%, rgba(5, 15, 26, 0.99) 100%);
@@ -491,14 +480,12 @@
         }
         .nav-item:hover:not(.active) { color: var(--text-main); background: rgba(255,255,255,0.04); transform: translateY(-2px); }
 
-        /* ================= FOOTER ================= */
         footer { border-top: 1px solid var(--border-dim); padding: 28px 0 20px; background: #02070c; margin-top: 20px; }
         .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
         .footer-links { display: flex; gap: 18px; font-size: 0.78rem; color: var(--text-muted); font-weight: 500; flex-wrap: wrap; }
         .footer-links a:hover { color: var(--primary); }
         .footer-bottom { text-align: center; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border-dim); font-size: 0.72rem; color: var(--text-muted); }
 
-        /* ================= MODALS & PROFESSIONAL AUTH PAGE STYLES ================= */
         .modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.88); backdrop-filter: blur(14px);
             z-index: 1000; display: flex; align-items: center; justify-content: center;
@@ -542,6 +529,16 @@
         .auth-title-block { margin-bottom: 18px; }
         .auth-title-block h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 4px; }
         .auth-title-block p { font-size: 0.8rem; color: var(--text-muted); }
+
+        .forgot-link-row {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: 8px;
+        }
+        .forgot-inline-btn {
+            color: var(--primary); font-size: 0.72rem; font-weight: 700;
+            cursor: pointer; transition: var(--transition);
+        }
+        .forgot-inline-btn:hover { text-decoration: underline; color: var(--primary-hover); }
 
         .modal-overlay.active .modal { transform: translateY(0) scale(1); }
         .modal-close { 
@@ -589,70 +586,26 @@
         .form-control.error { border-color: var(--danger); }
         .error-msg { color: var(--danger); font-size: 0.72rem; margin-top: 5px; display: none; font-weight: 500; }
 
-        /* ================= PROFESSIONAL 2-COLUMN NETWORK GRID (MIN $5, FEE $0) ================= */
-        .selector-label {
-            font-size: 0.72rem; color: var(--text-muted); margin-bottom: 10px;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+        .network-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 16px; }
+        .network-item {
+            display: flex; align-items: center; gap: 10px;
+            background: var(--bg-glass); border: 1px solid var(--border-dim);
+            border-radius: 10px; padding: 10px 12px; cursor: pointer;
+            transition: var(--transition); position: relative;
         }
-        .network-grid-pro {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
-            margin-bottom: 16px;
-        }
-        .net-card-pro {
-            position: relative;
-            display: flex; flex-direction: column; justify-content: space-between; gap: 10px;
-            padding: 13px; border-radius: 14px;
-            background: rgba(255,255,255,0.025);
-            border: 1px solid var(--border-dim);
-            cursor: pointer; transition: var(--transition);
-        }
-        .net-card-pro:hover {
-            border-color: rgba(0,255,170,0.3);
-            background: rgba(255,255,255,0.045);
-            transform: translateY(-1px);
-        }
-        .net-card-pro.active {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, rgba(0,255,170,0.12), rgba(0,136,255,0.06));
-            box-shadow: 0 6px 18px rgba(0,255,170,0.12);
-        }
-        .net-card-top {
-            display: flex; align-items: center; justify-content: space-between; gap: 8px;
-        }
-        .net-card-left { display: flex; align-items: center; gap: 9px; min-width: 0; }
-        .network-logo {
-            width: 30px; height: 30px; border-radius: 50%; overflow: hidden;
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-        }
+        .network-item:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
+        .network-item.active { border-color: var(--primary); background: var(--primary-dim); }
+        .network-logo { width: 26px; height: 26px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .network-logo svg { width: 100%; height: 100%; }
-        .net-title-wrap { min-width: 0; }
-        .net-name { font-size: 0.8rem; font-weight: 800; color: var(--text-main); display: block; line-height: 1.2; }
-        .net-chain { font-size: 0.64rem; color: var(--text-muted); display: block; margin-top: 1px; }
-        .net-check-dot {
-            width: 18px; height: 18px; border-radius: 50%;
-            border: 1.5px solid var(--border-dim);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 10px; font-weight: 900; flex-shrink: 0;
-            color: transparent; transition: var(--transition);
-        }
-        .net-card-pro.active .net-check-dot {
-            background: var(--primary); border-color: var(--primary); color: var(--text-dark);
-        }
-        .net-card-bottom {
-            display: flex; align-items: center; justify-content: space-between; gap: 6px;
-            padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.64rem;
-        }
-        .net-min-pill { color: var(--text-muted); font-weight: 600; }
-        .net-fee-pill {
-            background: rgba(0,255,170,0.12); color: var(--primary);
-            border: 1px solid rgba(0,255,170,0.25);
-            padding: 2px 7px; border-radius: 50px; font-weight: 800;
-        }
+        .network-info { flex: 1; min-width: 0; }
+        .network-info h5 { font-size: 0.76rem; font-weight: 700; line-height: 1.2; }
+        .network-info span { font-size: 0.62rem; color: var(--text-muted); display: block; }
+        .network-check { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--border-dim); display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; }
+        .network-item.active .network-check { border-color: var(--primary); background: var(--primary); color: var(--text-dark); }
 
         .address-box {
             background: rgba(0,0,0,0.35); border: 1px solid rgba(0,255,170,0.22);
-            border-radius: 14px; padding: 14px; margin-bottom: 14px;
+            border-radius: 14px; padding: 14px; margin-bottom: 16px;
         }
         .address-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 8px; }
         .address-top span { font-size: 0.66rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.8px; }
@@ -710,39 +663,6 @@
         .meta-cell .mc-lbl { font-size: 0.62rem; color: var(--text-muted); display: block; }
         .meta-cell .mc-val { font-size: 0.76rem; font-weight: 700; color: var(--primary); }
 
-        .compare-box {
-            background: rgba(0,0,0,0.28); border: 1px solid var(--border-dim);
-            border-radius: 14px; padding: 12px 14px; margin-bottom: 14px;
-        }
-        .compare-title {
-            display: flex; align-items: center; justify-content: space-between;
-            font-size: 0.68rem; font-weight: 700; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px;
-        }
-        .compare-title span:last-child { color: var(--primary); }
-        .compare-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
-        }
-        .compare-col {
-            background: rgba(255,255,255,0.02); border: 1px solid var(--border-dim);
-            border-radius: 10px; padding: 10px;
-        }
-        .compare-col.highlight {
-            border-color: rgba(0,255,170,0.28);
-            background: rgba(0,255,170,0.04);
-        }
-        .compare-col-head {
-            font-size: 0.74rem; font-weight: 800; margin-bottom: 6px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .compare-row {
-            display: flex; justify-content: space-between; font-size: 0.67rem;
-            padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
-        }
-        .compare-row:last-child { border-bottom: none; }
-        .compare-row .k { color: var(--text-muted); }
-        .compare-row .v { font-weight: 700; color: var(--text-main); }
-
         .warning-box {
             display: flex; gap: 10px; align-items: flex-start;
             background: rgba(0, 255, 170, 0.06); border: 1px solid rgba(0, 255, 170, 0.22);
@@ -763,7 +683,6 @@
         .calc-row .val { font-weight: 600; }
         .calc-row.total .val { color: var(--primary); font-weight: 800; }
 
-        /* ================= TRANSACTION HISTORY ================= */
         .history-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
         .tx-card {
             display: flex; align-items: center; gap: 14px;
@@ -799,7 +718,6 @@
         .empty-state svg { width: 48px; height: 48px; margin: 0 auto 12px; opacity: 0.3; }
         .empty-state p { font-size: 0.85rem; }
 
-        /* ================= RECEIPT MODAL ================= */
         .receipt {
             background: var(--bg-base); border: 1px solid var(--border-dim);
             border-radius: 16px; padding: 24px; position: relative;
@@ -865,8 +783,7 @@
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-links { justify-content: center; }
             .modal { padding: 22px; }
-            .network-grid-pro { grid-template-columns: 1fr; }
-            .compare-grid { grid-template-columns: 1fr; }
+            .network-grid { grid-template-columns: 1fr; }
             .balance-amount .main { font-size: 1.9rem; }
             .balance-stats { padding: 10px; }
             .balance-stats .bs-value { font-size: 0.78rem; }
@@ -888,7 +805,6 @@
 </head>
 <body>
 
-    <!-- ================= HEADER ================= -->
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">
@@ -912,10 +828,7 @@
         </div>
     </header>
 
-    <!-- ================= HOME TAB ================= -->
     <section class="tab-section active" id="tab-home">
-        
-        <!-- 1. CARD BALANCE -->
         <div class="container">
             <div class="account-section">
                 <div class="balance-card">
@@ -953,7 +866,6 @@
             </div>
         </div>
 
-        <!-- 2. INVESTMENT PLANS -->
         <div class="container" id="plans">
             <div class="section-header">
                 <div class="section-title-wrap">
@@ -1051,7 +963,6 @@
             </div>
         </div>
 
-        <!-- 3. TRUSTED PLATFORM -->
         <div class="container">
             <div class="hero-professional">
                 <div class="hero-content">
@@ -1101,7 +1012,6 @@
         </div>
     </section>
 
-    <!-- ================= STATISTICS TAB ================= -->
     <section class="tab-section" id="tab-stats">
         <div class="container">
             <div class="section-header">
@@ -1139,7 +1049,6 @@
         </div>
     </section>
 
-    <!-- ================= HISTORY TAB ================= -->
     <section class="tab-section" id="tab-history">
         <div class="container">
             <div class="section-header">
@@ -1152,7 +1061,6 @@
         </div>
     </section>
 
-    <!-- ================= SUPPORT TAB ================= -->
     <section class="tab-section" id="tab-support">
         <div class="container">
             <div class="section-header">
@@ -1181,7 +1089,6 @@
         </div>
     </section>
 
-    <!-- ================= PROFILE TAB (NAME, EMAIL & REFERRAL LINK ONLY) ================= -->
     <section class="tab-section" id="tab-profile">
         <div class="container">
             <div class="section-header">
@@ -1206,7 +1113,6 @@
                 </div>
 
                 <div class="mp-info-list">
-                    <!-- 1. Name -->
                     <div class="mp-field-box">
                         <div class="mp-field-left">
                             <div class="mp-field-icon"><i data-lucide="user"></i></div>
@@ -1217,7 +1123,6 @@
                         </div>
                     </div>
 
-                    <!-- 2. Email -->
                     <div class="mp-field-box">
                         <div class="mp-field-left">
                             <div class="mp-field-icon"><i data-lucide="mail"></i></div>
@@ -1228,7 +1133,6 @@
                         </div>
                     </div>
 
-                    <!-- 3. Referral Link -->
                     <div class="mp-field-box">
                         <div class="mp-field-left">
                             <div class="mp-field-icon"><i data-lucide="link"></i></div>
@@ -1254,7 +1158,6 @@
         </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
     <footer>
         <div class="container">
             <div class="footer-inner">
@@ -1275,7 +1178,6 @@
         </div>
     </footer>
 
-    <!-- ================= BOTTOM NAV ================= -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-tab="home" onclick="switchTab('home', this)"><i data-lucide="home"></i><span>Home</span></div>
         <div class="nav-item" data-tab="plans" onclick="switchTab('home', this); setTimeout(()=>{document.getElementById('plans').scrollIntoView({behavior:'smooth'});}, 100);"><i data-lucide="layers"></i><span>Plans</span></div>
@@ -1293,7 +1195,6 @@
     <script>
         lucide.createIcons();
 
-        // ================= REAL BACKEND CONFIG =================
         const API_BASE_URL = 'https://tronvex-backend.onrender.com';
 
         let availableBalance = 0.00;
@@ -1303,10 +1204,13 @@
         let completedCyclesCount = 0;
         let activeInvestmentsCount = 0;
 
-        // ================= OTP COOLDOWN TIMER STATE =================
         let otpCooldownUntil = 0;
         let otpTimerInterval = null;
         let otpSendingInProgress = false;
+
+        let forgotOtpCooldownUntil = 0;
+        let forgotOtpTimerInterval = null;
+        let forgotOtpSendingInProgress = false;
 
         function getOtpRemainingSeconds() {
             return Math.max(0, Math.ceil((otpCooldownUntil - Date.now()) / 1000));
@@ -1334,9 +1238,7 @@
         function startOtpCooldown(seconds = 60) {
             otpCooldownUntil = Date.now() + seconds * 1000;
             updateOtpBtnUI();
-            if (otpTimerInterval) {
-                clearInterval(otpTimerInterval);
-            }
+            if (otpTimerInterval) clearInterval(otpTimerInterval);
             otpTimerInterval = setInterval(() => {
                 updateOtpBtnUI();
                 if (getOtpRemainingSeconds() <= 0 && !otpSendingInProgress) {
@@ -1346,7 +1248,42 @@
             }, 250);
         }
 
-        // ================= AUTH STATE + TOKEN =================
+        function getForgotOtpRemainingSeconds() {
+            return Math.max(0, Math.ceil((forgotOtpCooldownUntil - Date.now()) / 1000));
+        }
+
+        function updateForgotOtpBtnUI() {
+            const otpBtn = document.getElementById('sendForgotOtpBtn');
+            if (!otpBtn) return;
+            const rem = getForgotOtpRemainingSeconds();
+            if (rem > 0) {
+                otpBtn.textContent = `Resend (${rem}s)`;
+                otpBtn.classList.add('disabled-timer');
+                otpBtn.setAttribute('aria-disabled', 'true');
+            } else if (forgotOtpSendingInProgress) {
+                otpBtn.textContent = 'Sending...';
+                otpBtn.classList.add('disabled-timer');
+                otpBtn.setAttribute('aria-disabled', 'true');
+            } else {
+                otpBtn.textContent = 'Send Code';
+                otpBtn.classList.remove('disabled-timer');
+                otpBtn.setAttribute('aria-disabled', 'false');
+            }
+        }
+
+        function startForgotOtpCooldown(seconds = 60) {
+            forgotOtpCooldownUntil = Date.now() + seconds * 1000;
+            updateForgotOtpBtnUI();
+            if (forgotOtpTimerInterval) clearInterval(forgotOtpTimerInterval);
+            forgotOtpTimerInterval = setInterval(() => {
+                updateForgotOtpBtnUI();
+                if (getForgotOtpRemainingSeconds() <= 0 && !forgotOtpSendingInProgress) {
+                    clearInterval(forgotOtpTimerInterval);
+                    forgotOtpTimerInterval = null;
+                }
+            }, 250);
+        }
+
         const AUTH_STORAGE_KEY = 'tronvex_real_session_v1';
         let authState = {
             isLoggedIn: false,
@@ -1456,7 +1393,7 @@
         function syncBalanceUI() {
             const total = Number(availableBalance || 0) + Number(lockedBalance || 0);
             const whole = Math.floor(total).toLocaleString();
-            const cents = (total % 1).toFixed(2).substring(1); // ".00"
+            const cents = (total % 1).toFixed(2).substring(1);
 
             const mainEl = document.getElementById('totalBalanceMain');
             const subEl = document.getElementById('totalBalanceSub');
@@ -1524,9 +1461,9 @@
             copyText(getReferralLink(), 'Referral link copied!');
         }
 
-        // ================= SIGN UP (WITH EMAIL OTP CODE) & LOGIN MODAL =================
         function openAuthModal(mode = 'signup') {
             const isLogin = mode === 'login';
+            const isForgot = mode === 'forgot';
             const modalBox = document.getElementById('modalContent');
             modalBox.classList.add('auth-pro-modal');
 
@@ -1540,58 +1477,105 @@
                         </div>
                         <span style="font-weight:800;font-size:1rem;letter-spacing:-0.4px;">TRONVEX</span>
                     </div>
-                    <span class="auth-brand-badge">${isLogin ? 'Login' : 'Sign Up'}</span>
+                    <span class="auth-brand-badge">${isForgot ? 'Reset Password' : (isLogin ? 'Login' : 'Sign Up')}</span>
                 </div>
 
                 <div class="auth-tabs">
-                    <button class="auth-tab-btn ${!isLogin ? 'active' : ''}" type="button" onclick="openAuthModal('signup')">Sign Up</button>
-                    <button class="auth-tab-btn ${isLogin ? 'active' : ''}" type="button" onclick="openAuthModal('login')">Login</button>
+                    <button class="auth-tab-btn ${!isLogin && !isForgot ? 'active' : ''}" type="button" onclick="openAuthModal('signup')">Sign Up</button>
+                    <button class="auth-tab-btn ${isLogin || isForgot ? 'active' : ''}" type="button" onclick="openAuthModal('login')">Login</button>
                 </div>
 
-                <div class="auth-title-block">
-                    <h3>${isLogin ? 'Login to your account' : 'Create your account'}</h3>
-                    <p>${isLogin ? 'Enter your email and password to continue' : 'Verify your email with a 6-digit code to create your account'}</p>
-                </div>
-
-                ${!isLogin ? `
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" id="authNameInput" class="form-control" placeholder="Your full name" value="${authState.name}">
-                        <div class="error-msg" id="authNameError">Please enter your name.</div>
+                ${isForgot ? `
+                    <div class="auth-title-block">
+                        <h3>Reset your password</h3>
+                        <p>Enter your email to receive a 6-digit reset code and set a new password</p>
                     </div>
-                ` : ''}
 
-                <div class="form-group">
-                    <label>
-                        <span>Email Address</span>
-                        ${!isLogin ? `<span class="max-btn" id="sendOtpBtn" onclick="sendSignupOtp()">Send Code</span>` : ''}
-                    </label>
-                    <input type="email" id="authEmailInput" class="form-control" placeholder="you@example.com" value="${authState.email}">
-                    <div class="error-msg" id="authEmailError">Please enter a valid email address.</div>
-                </div>
-
-                ${!isLogin ? `
                     <div class="form-group">
-                        <label>Email Verification Code (6 Digits)</label>
-                        <input type="text" id="authOtpInput" class="form-control" placeholder="Enter 6-digit code from email" maxlength="6" inputmode="numeric">
-                        <div class="error-msg" id="authOtpError">Please enter the 6-digit verification code sent to your email.</div>
+                        <label>
+                            <span>Email Address</span>
+                            <span class="max-btn" id="sendForgotOtpBtn" onclick="sendForgotPasswordOtp()">Send Code</span>
+                        </label>
+                        <input type="email" id="forgotEmailInput" class="form-control" placeholder="you@example.com" value="${authState.email}">
+                        <div class="error-msg" id="forgotEmailError">Please enter a valid email address.</div>
                     </div>
-                ` : ''}
 
-                <div class="form-group">
-                    <label>${isLogin ? 'Password' : 'Create Password'}</label>
-                    <input type="password" id="authPasswordInput" class="form-control" placeholder="${isLogin ? 'Enter password' : 'Min 6 characters'}">
-                    <div class="error-msg" id="authPassError">Password must be at least 6 characters.</div>
-                </div>
+                    <div class="form-group">
+                        <label>Reset Verification Code (6 Digits)</label>
+                        <input type="text" id="forgotOtpInput" class="form-control" placeholder="Enter 6-digit code from email" maxlength="6" inputmode="numeric">
+                        <div class="error-msg" id="forgotOtpError">Please enter the 6-digit verification code sent to your email.</div>
+                    </div>
 
-                <button class="btn btn-primary btn-block" id="authSubmitBtn" onclick="${isLogin ? 'submitLogin()' : 'submitSignUp()'}">
-                    ${isLogin ? 'Login' : 'Verify Code & Sign Up'}
-                </button>
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input type="password" id="forgotNewPassInput" class="form-control" placeholder="Min 6 characters">
+                        <div class="error-msg" id="forgotNewPassError">Password must be at least 6 characters.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirm New Password</label>
+                        <input type="password" id="forgotConfirmPassInput" class="form-control" placeholder="Re-enter new password">
+                        <div class="error-msg" id="forgotConfirmPassError">Passwords do not match.</div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" id="forgotSubmitBtn" onclick="submitForgotPassword()">
+                        Reset Password
+                    </button>
+
+                    <div class="forgot-link-row">
+                        <span class="forgot-inline-btn" onclick="openAuthModal('login')">← Back to Login</span>
+                    </div>
+                ` : `
+                    <div class="auth-title-block">
+                        <h3>${isLogin ? 'Login to your account' : 'Create your account'}</h3>
+                        <p>${isLogin ? 'Enter your email and password to continue' : 'Verify your email with a 6-digit code to create your account'}</p>
+                    </div>
+
+                    ${!isLogin ? `
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="authNameInput" class="form-control" placeholder="Your full name" value="${authState.name}">
+                            <div class="error-msg" id="authNameError">Please enter your name.</div>
+                        </div>
+                    ` : ''}
+
+                    <div class="form-group">
+                        <label>
+                            <span>Email Address</span>
+                            ${!isLogin ? `<span class="max-btn" id="sendOtpBtn" onclick="sendSignupOtp()">Send Code</span>` : ''}
+                        </label>
+                        <input type="email" id="authEmailInput" class="form-control" placeholder="you@example.com" value="${authState.email}">
+                        <div class="error-msg" id="authEmailError">Please enter a valid email address.</div>
+                    </div>
+
+                    ${!isLogin ? `
+                        <div class="form-group">
+                            <label>Email Verification Code (6 Digits)</label>
+                            <input type="text" id="authOtpInput" class="form-control" placeholder="Enter 6-digit code from email" maxlength="6" inputmode="numeric">
+                            <div class="error-msg" id="authOtpError">Please enter the 6-digit verification code sent to your email.</div>
+                        </div>
+                    ` : ''}
+
+                    <div class="form-group">
+                        <label>${isLogin ? 'Password' : 'Create Password'}</label>
+                        <input type="password" id="authPasswordInput" class="form-control" placeholder="${isLogin ? 'Enter password' : 'Min 6 characters'}">
+                        <div class="error-msg" id="authPassError">Password must be at least 6 characters.</div>
+                        ${isLogin ? `
+                            <div class="forgot-link-row">
+                                <span></span>
+                                <span class="forgot-inline-btn" onclick="openAuthModal('forgot')">Forgot Password?</span>
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <button class="btn btn-primary btn-block" id="authSubmitBtn" onclick="${isLogin ? 'submitLogin()' : 'submitSignUp()'}">
+                        ${isLogin ? 'Login' : 'Verify Code & Sign Up'}
+                    </button>
+                `}
             `);
 
-            if (!isLogin) {
-                updateOtpBtnUI();
-            }
+            if (!isLogin && !isForgot) updateOtpBtnUI();
+            if (isForgot) updateForgotOtpBtnUI();
         }
 
         async function sendSignupOtp() {
@@ -1623,6 +1607,116 @@
                 otpSendingInProgress = false;
                 updateOtpBtnUI();
                 showToast(err.message, 'error');
+            }
+        }
+
+        async function sendForgotPasswordOtp() {
+            if (forgotOtpSendingInProgress || getForgotOtpRemainingSeconds() > 0) return;
+
+            const emailEl = document.getElementById('forgotEmailInput');
+            const email = emailEl ? emailEl.value.trim() : '';
+            if (!email || !email.includes('@') || !email.includes('.')) {
+                emailEl.classList.add('error');
+                document.getElementById('forgotEmailError').style.display = 'block';
+                return;
+            }
+            emailEl.classList.remove('error');
+            document.getElementById('forgotEmailError').style.display = 'none';
+
+            forgotOtpSendingInProgress = true;
+            updateForgotOtpBtnUI();
+
+            try {
+                await apiRequest('/api/auth/forgot-password/send-code', {
+                    method: 'POST',
+                    body: JSON.stringify({ email })
+                });
+                forgotOtpSendingInProgress = false;
+                startForgotOtpCooldown(60);
+                showToast('6-digit reset code sent to ' + email, 'success');
+            } catch (err) {
+                forgotOtpSendingInProgress = false;
+                updateForgotOtpBtnUI();
+                showToast(err.message, 'error');
+            }
+        }
+
+        async function submitForgotPassword() {
+            const emailEl = document.getElementById('forgotEmailInput');
+            const otpEl = document.getElementById('forgotOtpInput');
+            const newPassEl = document.getElementById('forgotNewPassInput');
+            const confirmPassEl = document.getElementById('forgotConfirmPassInput');
+
+            const email = emailEl ? emailEl.value.trim() : '';
+            const code = otpEl ? otpEl.value.trim() : '';
+            const newPassword = newPassEl ? newPassEl.value.trim() : '';
+            const confirmPassword = confirmPassEl ? confirmPassEl.value.trim() : '';
+
+            let ok = true;
+
+            if (!email.includes('@') || !email.includes('.')) {
+                emailEl.classList.add('error');
+                document.getElementById('forgotEmailError').style.display = 'block';
+                ok = false;
+            } else {
+                emailEl.classList.remove('error');
+                document.getElementById('forgotEmailError').style.display = 'none';
+            }
+
+            if (!/^\d{6}$/.test(code)) {
+                otpEl.classList.add('error');
+                document.getElementById('forgotOtpError').style.display = 'block';
+                ok = false;
+            } else {
+                otpEl.classList.remove('error');
+                document.getElementById('forgotOtpError').style.display = 'none';
+            }
+
+            if (newPassword.length < 6) {
+                newPassEl.classList.add('error');
+                document.getElementById('forgotNewPassError').style.display = 'block';
+                ok = false;
+            } else {
+                newPassEl.classList.remove('error');
+                document.getElementById('forgotNewPassError').style.display = 'none';
+            }
+
+            if (newPassword !== confirmPassword || confirmPassword.length < 6) {
+                confirmPassEl.classList.add('error');
+                document.getElementById('forgotConfirmPassError').style.display = 'block';
+                ok = false;
+            } else {
+                confirmPassEl.classList.remove('error');
+                document.getElementById('forgotConfirmPassError').style.display = 'none';
+            }
+
+            if (!ok) return;
+
+            const btn = document.getElementById('forgotSubmitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Resetting...';
+
+            try {
+                const data = await apiRequest('/api/auth/forgot-password/reset', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        email,
+                        code,
+                        new_password: newPassword
+                    })
+                });
+                authState.email = email;
+                saveAuthState();
+                showToast(data.message || 'Password reset successful! Please login.', 'success');
+                openAuthModal('login');
+            } catch (err) {
+                showToast(err.message, 'error');
+            } finally {
+                const submitBtn = document.getElementById('forgotSubmitBtn');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Reset Password';
+                }
             }
         }
 
@@ -1786,7 +1880,6 @@
             }
         }
 
-        // ================= QR CODE GENERATOR (PURE DETERMINISTIC MATRIX) =================
         function generateQrSvg(text, size = 148) {
             const cells = 21;
             const moduleSize = size / cells;
@@ -1833,7 +1926,6 @@
             return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">${rects}</svg>`;
         }
 
-        // ================= NETWORK CONFIG: OFFICIAL LOGOS & UPDATED ADDRESSES =================
         const COINS = {
             USDT_BEP20: {
                 symbol: 'USDT',
@@ -1841,10 +1933,8 @@
                 network: 'BEP20',
                 networkDesc: 'BNB Smart Chain',
                 addressLabel: 'BEP20 Wallet Address',
-                minNum: 5,
                 minDeposit: '$5.00',
                 confirmations: '15 Blocks (~45s)',
-                withdrawFeeNum: 0.00,
                 withdrawFeeText: '$0.00 (Free)',
                 depositAddress: '0xe4484af8794b0fe2eccf433f7da7ac81935fc4a0',
                 logo: `<svg viewBox="0 0 32 32"><defs><linearGradient id="bep20Grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2ec492"/><stop offset="100%" stop-color="#1b8a66"/></linearGradient></defs><circle cx="16" cy="16" r="16" fill="url(#bep20Grad)"/><circle cx="16" cy="16" r="13.2" fill="none" stroke="#f0b90b" stroke-width="1.3" stroke-opacity="0.75"/><path fill="#ffffff" d="M17.85 13.7v-2.45h4.35V7.7H9.8v3.55h4.35v2.45c-3.55.16-6.2.86-6.2 1.7 0 .84 2.65 1.54 6.2 1.7v6.05h3.7v-6.05c3.55-.16 6.2-.86 6.2-1.7 0-.84-2.65-1.54-6.2-1.7zm0 2.88c-.15.01-.72.04-1.85.04-1.13 0-1.7-.03-1.85-.04v-2.12c3.05.14 5.3.67 5.3 1.28 0 .61-2.25 1.14-5.3 1.28v.84z" transform="translate(0,0.4)"/></svg>`
@@ -1855,10 +1945,8 @@
                 network: 'TRC20',
                 networkDesc: 'Tron Network',
                 addressLabel: 'TRC20 Wallet Address',
-                minNum: 5,
                 minDeposit: '$5.00',
                 confirmations: '20 Blocks (~1m)',
-                withdrawFeeNum: 0.00,
                 withdrawFeeText: '$0.00 (Free)',
                 depositAddress: 'TLPVBmQnS6VTV7MwzLzYy7EjUKqsKob7hs',
                 logo: `<svg viewBox="0 0 32 32"><defs><linearGradient id="trc20Grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#26A17B"/><stop offset="100%" stop-color="#ef0027"/></linearGradient></defs><circle cx="16" cy="16" r="16" fill="url(#trc20Grad)"/><circle cx="16" cy="16" r="13" fill="#26A17B"/><path fill="#ffffff" d="M17.85 13.7v-2.45h4.35V7.7H9.8v3.55h4.35v2.45c-3.55.16-6.2.86-6.2 1.7 0 .84 2.65 1.54 6.2 1.7v6.05h3.7v-6.05c3.55-.16 6.2-.86 6.2-1.7 0-.84-2.65-1.54-6.2-1.7z"/></svg>`
@@ -1869,10 +1957,8 @@
                 network: 'BTC',
                 networkDesc: 'Bitcoin Network',
                 addressLabel: 'BTC Wallet Address',
-                minNum: 5,
                 minDeposit: '$5.00',
                 confirmations: '2 Blocks (~20m)',
-                withdrawFeeNum: 0.00,
                 withdrawFeeText: '$0.00 (Free)',
                 depositAddress: '1AVqKF2KKCruGcCinouuu7dnREkKMqeznu',
                 logo: `<svg viewBox="0 0 32 32"><defs><linearGradient id="btcGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff9f1c"/><stop offset="100%" stop-color="#e87a00"/></linearGradient></defs><circle cx="16" cy="16" r="16" fill="url(#btcGrad)"/><path fill="#ffffff" d="M22.5 14.3c.4-2.4-1.5-3.7-4-4.5l.8-3.2-2-.5-.8 3.2c-.5-.1-1-.2-1.5-.3l.8-3.2-2-.5-.8 3.2c-.4-.1-.8-.2-1.2-.3l-2.7-.7-.5 2.1s1.5.3 1.4.4c.8.2.9.7.9 1.1l-2.2 8.9c-.1.3-.4.7-1 .5 0 0-1.4-.4-1.4-.4l-1 2.3 2.6.7c.5.1.9.2 1.4.3l-.8 3.2 2 .5.8-3.2c.5.1 1 .3 1.5.4l-.8 3.2 2 .5.8-3.2c3.4.6 6 .4 7.1-2.7.9-2.5 0-3.9-1.9-4.8 1.3-.3 2.3-1.2 2.5-3zM17.7 20c-.6 2.5-4.8 1.1-6.2.8l1.1-4.4c1.4.3 5.7 1 5.1 3.6zm.6-5.8c-.6 2.3-4.1 1.1-5.2.8l1-4c1.1.3 4.8.8 4.2 3.2z"/></svg>`
@@ -1883,10 +1969,8 @@
                 network: 'BYBIT',
                 networkDesc: 'Bybit Instant Transfer',
                 addressLabel: 'Official Bybit ID',
-                minNum: 5,
                 minDeposit: '$5.00',
                 confirmations: 'Instant (0s)',
-                withdrawFeeNum: 0.00,
                 withdrawFeeText: '$0.00 (Free)',
                 depositAddress: '578277314',
                 logo: `<svg viewBox="0 0 32 32"><rect width="32" height="32" rx="16" fill="#0d0f14"/><rect x="1.5" y="1.5" width="29" height="29" rx="14.5" fill="none" stroke="#f7a600" stroke-width="1.5"/><path d="M7.5 10.5h9.2c2.2 0 3.7 1.2 3.7 3 0 1.2-.6 2.1-1.6 2.5 1.3.4 2.1 1.4 2.1 2.8 0 2-1.6 3.2-4 3.2H7.5V10.5zm3 2.3v2.4h5.6c.9 0 1.5-.5 1.5-1.2s-.6-1.2-1.5-1.2h-5.6zm0 4.6v2.5h6.1c1 0 1.6-.5 1.6-1.25 0-.75-.6-1.25-1.6-1.25h-6.1z" fill="#ffffff"/><polygon points="22.8,10.5 25.8,10.5 23.2,17.2 23.2,22 20.4,22 20.4,17.2 17.8,10.5 20.8,10.5 21.8,14.3" fill="#f7a600"/></svg>`
@@ -1894,6 +1978,9 @@
         };
 
         const PAYMENT_METHODS = ['USDT_BEP20', 'USDT_TRC20', 'BTC', 'BYBIT'];
+        let selectedPayMethod = 'USDT_BEP20';
+        let activeDepositAddress = COINS.USDT_BEP20.depositAddress;
+        let qrVisible = false;
         let TRANSACTIONS = [];
 
         function formatAmount(tx) {
@@ -1939,7 +2026,6 @@
             lucide.createIcons();
         }
 
-        // ================= TAB SWITCHING =================
         function switchTab(tabName, el) {
             document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
             document.getElementById('tab-' + tabName).classList.add('active');
@@ -1956,7 +2042,6 @@
             setTimeout(updateSlider, 50);
         }
 
-        // ================= TOAST =================
         function showToast(message, type = 'info') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
@@ -1973,7 +2058,6 @@
             }, 3200);
         }
 
-        // ================= MODAL =================
         function openModal(html) {
             const overlay = document.getElementById('modalOverlay');
             document.getElementById('modalContent').innerHTML = html;
@@ -1992,7 +2076,6 @@
             if (e.target === this) closeModal();
         });
 
-        // ================= SLIDER =================
         const slider = document.getElementById('plansSlider');
         const wrapper = document.getElementById('plansWrapper');
         let currentIndex = 0;
@@ -2086,75 +2169,30 @@
         }
         window.addEventListener('resize', updateSlider);
 
-        // ================= PROFESSIONAL 2-COLUMN NETWORK GRID RENDERER =================
-        function renderNetworkGridPro(selectedKey, onSelectFnName) {
+        function renderNetworkGrid(selectedKey, onSelectFnName) {
             return PAYMENT_METHODS.map(key => {
                 const coin = COINS[key];
                 const active = key === selectedKey ? ' active' : '';
                 return `
-                    <div class="net-card-pro${active}" onclick="${onSelectFnName}('${key}')">
-                        <div class="net-card-top">
-                            <div class="net-card-left">
-                                <div class="network-logo">${coin.logo}</div>
-                                <div class="net-title-wrap">
-                                    <span class="net-name">${coin.name}</span>
-                                    <span class="net-chain">${coin.networkDesc}</span>
-                                </div>
-                            </div>
-                            <span class="net-check-dot">✓</span>
-                        </div>
-                        <div class="net-card-bottom">
-                            <span class="net-min-pill">Min $5</span>
-                            <span class="net-fee-pill">Fee $0</span>
-                        </div>
+                    <div class="network-item${active}" onclick="${onSelectFnName}('${key}')">
+                        <div class="network-logo">${coin.logo}</div>
+                        <div class="network-info"><h5>${coin.name}</h5><span>${coin.networkDesc}</span></div>
+                        <div class="network-check">${key === selectedKey ? '✓' : ''}</div>
                     </div>
                 `;
             }).join('');
         }
 
-        function renderDepositWithdrawComparison(activeMode = 'deposit') {
-            return `
-                <div class="compare-box">
-                    <div class="compare-title">
-                        <span>Deposit vs Withdraw Comparison</span>
-                        <span>Scroll & Compare</span>
-                    </div>
-                    <div class="compare-grid">
-                        <div class="compare-col ${activeMode === 'deposit' ? 'highlight' : ''}">
-                            <div class="compare-col-head">
-                                <span style="color:var(--primary);">Deposit</span>
-                                <span class="net-fee-pill">Fee $0</span>
-                            </div>
-                            <div class="compare-row"><span class="k">Minimum</span><span class="v">$5.00</span></div>
-                            <div class="compare-row"><span class="k">Network Fee</span><span class="v" style="color:var(--primary);">$0.00</span></div>
-                            <div class="compare-row"><span class="k">Destination</span><span class="v">Official Wallet / UID</span></div>
-                            <div class="compare-row"><span class="k">Status Flow</span><span class="v">Pending → Approved</span></div>
-                        </div>
-                        <div class="compare-col ${activeMode === 'withdraw' ? 'highlight' : ''}">
-                            <div class="compare-col-head">
-                                <span style="color:#6abaff;">Withdraw</span>
-                                <span class="net-fee-pill">Fee $0</span>
-                            </div>
-                            <div class="compare-row"><span class="k">Minimum</span><span class="v">$5.00</span></div>
-                            <div class="compare-row"><span class="k">Network Fee</span><span class="v" style="color:var(--primary);">$0.00</span></div>
-                            <div class="compare-row"><span class="k">Destination</span><span class="v">User Wallet / UID</span></div>
-                            <div class="compare-row"><span class="k">Balance Rule</span><span class="v">Available Only</span></div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // ================= DEPOSIT MODAL (MIN $5 · FEE $0 · QR CODE · COMPARISON) =================
-        let selectedPayMethod = 'USDT_BEP20';
-        let activeDepositAddress = COINS.USDT_BEP20.depositAddress;
-        let qrVisible = false;
-
         function toggleDepositQr() {
             qrVisible = !qrVisible;
-            const addrBox = document.getElementById('depositAddressContainer');
-            if (addrBox) addrBox.innerHTML = renderDepositAddressBox(selectedPayMethod);
-            lucide.createIcons();
+            const panel = document.getElementById('depositQrPanel');
+            const btn = document.getElementById('showQrBtn');
+            if (panel) panel.classList.toggle('open', qrVisible);
+            if (btn) {
+                btn.classList.toggle('active', qrVisible);
+                btn.innerHTML = `<i data-lucide="qr-code"></i> ${qrVisible ? 'Hide QR' : 'Show QR'}`;
+                lucide.createIcons();
+            }
         }
 
         function renderDepositAddressBox(key) {
@@ -2179,9 +2217,7 @@
                         </div>
                     </div>
                     <div class="qr-panel ${qrVisible ? 'open' : ''}" id="depositQrPanel">
-                        <div class="qr-frame">
-                            ${qrSvg}
-                        </div>
+                        <div class="qr-frame">${qrSvg}</div>
                         <div class="qr-caption">Scan for <strong>${coin.name}</strong> (${coin.networkDesc}): ${addr}</div>
                     </div>
                     <div class="meta-grid-2">
@@ -2198,18 +2234,17 @@
             `;
         }
 
-        function selectPayMethod(key) {
+        function selectDepositMethod(key) {
             selectedPayMethod = key;
             activeDepositAddress = COINS[key].depositAddress;
-            const grid = document.getElementById('payMethodGrid');
-            if (grid) grid.innerHTML = renderNetworkGridPro(key, 'selectPayMethod');
-            const addrBox = document.getElementById('depositAddressContainer');
-            if (addrBox) addrBox.innerHTML = renderDepositAddressBox(key);
+            qrVisible = false;
+            document.getElementById('payMethodGrid').innerHTML = renderNetworkGrid(key, 'selectDepositMethod');
+            document.getElementById('depositAddressContainer').innerHTML = renderDepositAddressBox(key);
             const coin = COINS[key];
-            const warn = document.getElementById('depositWarning');
-            if (warn) {
-                warn.innerHTML = `<i data-lucide="shield-check"></i><div>Min deposit <strong>$5.00</strong> · Fee <strong>$0.00</strong>. Send only <strong>${coin.symbol}</strong> via <strong>${coin.networkDesc}</strong> to <strong>${coin.depositAddress}</strong>. Verified automatically via backend webhook.</div>`;
-            }
+            document.getElementById('depositWarning').innerHTML = `
+                <i data-lucide="shield-check"></i>
+                <div>Min <strong>$5.00</strong> · Fee <strong>$0.00</strong>. Send only <strong>${coin.symbol}</strong> via <strong>${coin.networkDesc}</strong> to <strong>${activeDepositAddress}</strong>. Verified automatically via backend webhook.</div>
+            `;
             lucide.createIcons();
         }
 
@@ -2217,27 +2252,30 @@
             selectedPayMethod = 'USDT_BEP20';
             activeDepositAddress = COINS[selectedPayMethod].depositAddress;
             qrVisible = false;
+            const coin = COINS[selectedPayMethod];
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
                 <div class="modal-header">
                     <div class="modal-icon deposit"><i data-lucide="arrow-down-to-line"></i></div>
-                    <div class="modal-header-text">
-                        <h3>Deposit Funds</h3>
-                        <p>Min $5.00 · $0.00 Fee · Auto Verification</p>
+                    <div class="modal-header-text"><h3>Deposit Funds</h3><p>Min $5.00 · $0.00 Fee</p></div>
+                </div>
+                <div class="form-group">
+                    <label>Select Network</label>
+                    <div class="network-grid" id="payMethodGrid">
+                        ${renderNetworkGrid(selectedPayMethod, 'selectDepositMethod')}
                     </div>
                 </div>
-                <div class="selector-label">1. Select Network</div>
-                <div class="network-grid-pro" id="payMethodGrid">${renderNetworkGridPro(selectedPayMethod, 'selectPayMethod')}</div>
-                <div id="depositAddressContainer">${renderDepositAddressBox(selectedPayMethod)}</div>
-                ${renderDepositWithdrawComparison('deposit')}
+                <div id="depositAddressContainer">
+                    ${renderDepositAddressBox(selectedPayMethod)}
+                </div>
                 <div class="form-group">
-                    <label>2. Deposit Amount (Min $5.00)</label>
+                    <label>Amount in USD / USDT (Min $5.00)</label>
                     <input type="number" id="depositAmount" class="form-control" placeholder="Min $5.00 (e.g. 25)" min="5" step="0.01">
                     <div class="error-msg" id="depositError">Minimum deposit is $5.00.</div>
                 </div>
                 <div class="warning-box" id="depositWarning">
                     <i data-lucide="shield-check"></i>
-                    <div>Min deposit <strong>$5.00</strong> · Fee <strong>$0.00</strong>. Send only <strong>${COINS[selectedPayMethod].symbol}</strong> via <strong>${COINS[selectedPayMethod].networkDesc}</strong> to <strong>${COINS[selectedPayMethod].depositAddress}</strong>. Verified automatically via backend webhook.</div>
+                    <div>Min <strong>$5.00</strong> · Fee <strong>$0.00</strong>. Send only <strong>${coin.symbol}</strong> via <strong>${coin.networkDesc}</strong> to <strong>${activeDepositAddress}</strong>. Verified automatically via backend webhook.</div>
                 </div>
                 <button class="btn btn-primary btn-block" id="depositSubmitBtn" onclick="submitDeposit()">Create Deposit Order ($0 Fee)</button>
             `);
@@ -2272,8 +2310,7 @@
                 });
                 if (res.address) {
                     activeDepositAddress = res.address;
-                    const addrBox = document.getElementById('depositAddressContainer');
-                    if (addrBox) addrBox.innerHTML = renderDepositAddressBox(selectedPayMethod);
+                    document.getElementById('depositAddressContainer').innerHTML = renderDepositAddressBox(selectedPayMethod);
                     lucide.createIcons();
                 }
                 await refreshAccountData();
@@ -2287,110 +2324,77 @@
             }
         }
 
-        // ================= WITHDRAW MODAL (MIN $5 · FEE $0 · COMPARISON · BACKEND) =================
-        let wPayMethod = 'USDT_BEP20';
-
-        function updateWithdrawSummary() {
-            const amtEl = document.getElementById('withdrawAmount');
-            if (!amtEl) return;
-            const amount = parseFloat(amtEl.value) || 0;
-            const netEl = document.getElementById('wCalcNet');
-            if (netEl) netEl.textContent = '$' + amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        }
-
-        function setMaxWithdraw() {
-            const amtInput = document.getElementById('withdrawAmount');
-            if (!amtInput) return;
-            amtInput.value = Number(availableBalance || 0).toFixed(2);
-            updateWithdrawSummary();
-        }
-
-        function selectWMethod(key) {
-            wPayMethod = key;
-            const grid = document.getElementById('wMethodGrid');
-            if (grid) grid.innerHTML = renderNetworkGridPro(key, 'selectWMethod');
-            const addrInput = document.getElementById('withdrawAddress');
-            if (addrInput) {
-                addrInput.placeholder = key === 'BYBIT' ? 'Enter destination Bybit UID' : `Enter destination ${COINS[key].name} address`;
-            }
-            updateWithdrawSummary();
+        function selectWithdrawMethod(key) {
+            selectedPayMethod = key;
+            document.getElementById('withdrawMethodGrid').innerHTML = renderNetworkGrid(key, 'selectWithdrawMethod');
+            const coin = COINS[key];
+            document.getElementById('withdrawAddress').placeholder = key === 'BYBIT' ? 'Enter destination Bybit UID' : `Enter destination ${coin.name} address`;
             lucide.createIcons();
         }
 
         function openWithdrawModal() {
-            wPayMethod = 'USDT_BEP20';
+            selectedPayMethod = 'USDT_BEP20';
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
                 <div class="modal-header">
                     <div class="modal-icon withdraw"><i data-lucide="arrow-up-from-line"></i></div>
-                    <div class="modal-header-text">
-                        <h3>Withdraw Funds</h3>
-                        <p>Min $5.00 · $0.00 Fee across all networks</p>
+                    <div class="modal-header-text"><h3>Withdraw Funds</h3><p>Min $5.00 · $0.00 Fee</p></div>
+                </div>
+                <div style="background:rgba(0,136,255,0.08); margin-bottom:14px; padding:10px 12px; border-radius:8px; border:1px solid rgba(0,136,255,0.2); font-size:0.76rem; display:flex; justify-content:space-between; align-items:center;">
+                    <span>Available Balance</span>
+                    <strong style="color:var(--primary); font-size:0.86rem;">$${Number(availableBalance || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong>
+                </div>
+                <div class="form-group">
+                    <label>Select Network</label>
+                    <div class="network-grid" id="withdrawMethodGrid">
+                        ${renderNetworkGrid(selectedPayMethod, 'selectWithdrawMethod')}
                     </div>
                 </div>
-                <div style="background:rgba(0,136,255,0.08); margin-bottom:14px; padding:11px 14px; border-radius:10px; border:1px solid rgba(0,136,255,0.22); font-size:0.78rem; display:flex; justify-content:space-between; align-items:center;">
-                    <span>Available Balance</span>
-                    <strong style="color:var(--primary); font-size:0.88rem;">$${Number(availableBalance || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong>
-                </div>
-                <div class="selector-label">1. Select Network</div>
-                <div class="network-grid-pro" id="wMethodGrid">${renderNetworkGridPro(wPayMethod, 'selectWMethod')}</div>
-                ${renderDepositWithdrawComparison('withdraw')}
                 <div class="form-group">
-                    <label>
-                        <span>2. Withdrawal Amount (Min $5.00)</span>
-                        <span class="max-btn" onclick="setMaxWithdraw()">MAX</span>
-                    </label>
-                    <input type="number" id="withdrawAmount" class="form-control" placeholder="Min $5.00" min="5" step="0.01" oninput="updateWithdrawSummary()">
-                    <div class="error-msg" id="withdrawError">Minimum withdrawal is $5.00 (up to available balance).</div>
-                </div>
-                <div class="form-group">
-                    <label>3. Destination Wallet / Bybit ID</label>
+                    <label>Destination Wallet / Bybit ID</label>
                     <input type="text" id="withdrawAddress" class="form-control" placeholder="Enter destination USDT BEP20 address">
                     <div class="error-msg" id="addressError">Please enter a valid destination address or Bybit ID.</div>
                 </div>
+                <div class="form-group">
+                    <label>
+                        <span>Amount (Min $5.00)</span>
+                        <span class="max-btn" onclick="document.getElementById('withdrawAmount').value=${Number(availableBalance || 0).toFixed(2)}">MAX</span>
+                    </label>
+                    <input type="number" id="withdrawAmount" class="form-control" placeholder="Min $5.00" min="5" step="0.01">
+                    <div class="error-msg" id="withdrawError">Minimum withdrawal is $5.00 (up to $${Number(availableBalance || 0).toFixed(2)} available).</div>
+                </div>
                 <div class="calc-box">
-                    <div class="calc-row"><span class="lbl">Withdrawal Fee</span><span class="val" style="color:var(--primary);">$0.00 (Free)</span></div>
-                    <div class="calc-row total"><span class="lbl">You Will Receive</span><span class="val" id="wCalcNet">$0.00</span></div>
+                    <div class="calc-row"><span class="lbl">Network Fee</span><span class="val" style="color:var(--primary);">$0.00 (Free)</span></div>
                 </div>
                 <button class="btn btn-primary btn-block" id="withdrawSubmitBtn" onclick="submitWithdraw()">Submit Withdrawal ($0 Fee)</button>
             `);
         }
 
         async function submitWithdraw() {
-            const amountInput = document.getElementById('withdrawAmount');
-            const addressInput = document.getElementById('withdrawAddress');
-            const amountError = document.getElementById('withdrawError');
-            const addressError = document.getElementById('addressError');
-            const amount = parseFloat(amountInput.value);
-            const address = addressInput.value.trim();
-            let valid = true;
+            const addrInput = document.getElementById('withdrawAddress');
+            const amtInput = document.getElementById('withdrawAmount');
+            const addrError = document.getElementById('addressError');
+            const amtError = document.getElementById('withdrawError');
+
+            const address = addrInput.value.trim();
+            const amount = parseFloat(amtInput.value);
+            let isValid = true;
+
+            if (address.length < 5) { addrInput.classList.add('error'); addrError.style.display = 'block'; isValid = false; }
+            else { addrInput.classList.remove('error'); addrError.style.display = 'none'; }
 
             if (isNaN(amount) || amount < 5 || amount > availableBalance) {
-                amountInput.classList.add('error');
-                amountError.style.display = 'block';
-                valid = false;
-            } else {
-                amountInput.classList.remove('error');
-                amountError.style.display = 'none';
-            }
+                amtInput.classList.add('error'); amtError.style.display = 'block'; isValid = false;
+            } else { amtInput.classList.remove('error'); amtError.style.display = 'none'; }
 
-            if (address.length < 5) {
-                addressInput.classList.add('error');
-                addressError.style.display = 'block';
-                valid = false;
-            } else {
-                addressInput.classList.remove('error');
-                addressError.style.display = 'none';
-            }
-
-            if (!valid) return;
+            if (!isValid) return;
 
             const btn = document.getElementById('withdrawSubmitBtn');
             const originalHtml = btn.innerHTML;
             btn.innerHTML = '<span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(0,0,0,0.3);border-top-color:#030a12;border-radius:50%;animation:spin 1s linear infinite;"></span> Processing...';
             btn.disabled = true;
 
-            const coin = COINS[wPayMethod];
+            const coin = COINS[selectedPayMethod];
             try {
                 await apiRequest('/api/withdrawals/create', {
                     method: 'POST',
@@ -2412,7 +2416,6 @@
             }
         }
 
-        // ================= INVEST MODAL (BACKEND) =================
         function openInvestModal(name, min, max) {
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
@@ -2479,7 +2482,6 @@
             }
         }
 
-        // ================= RECEIPT MODAL =================
         function openReceipt(index) {
             const tx = TRANSACTIONS[index];
             if (!tx) return;
@@ -2530,7 +2532,6 @@
             copyText(text, 'Receipt copied!');
         }
 
-        // ================= INIT =================
         window.addEventListener('load', async () => {
             loadAuthState();
             syncAuthUI();
