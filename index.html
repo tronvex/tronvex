@@ -1,0 +1,2320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRONVEX — Premium USDT Investment Platform</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #030a12;
+            --bg-surface: #071422;
+            --bg-card: rgba(10, 26, 43, 0.72);
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --border-dim: rgba(255, 255, 255, 0.07);
+            --border-glow: rgba(0, 255, 170, 0.35);
+            --primary: #00ffaa;
+            --primary-hover: #00e699;
+            --primary-dim: rgba(0, 255, 170, 0.1);
+            --blue: #0088ff;
+            --purple: #a855f7;
+            --gold: #ffbb00;
+            --text-main: #ffffff;
+            --text-muted: #8ba3b9;
+            --text-dark: #030a12;
+            --success: #00ffaa;
+            --danger: #ff4466;
+            --radius-xl: 24px;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { 
+            background-color: var(--bg-base); color: var(--text-main); overflow-x: hidden;
+            line-height: 1.6; padding-bottom: 100px;
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(0, 255, 170, 0.045) 0%, transparent 35%),
+                radial-gradient(circle at 85% 60%, rgba(0, 136, 255, 0.045) 0%, transparent 35%);
+            background-attachment: fixed; -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+        button { cursor: pointer; border: none; background: none; font-family: inherit; outline: none; }
+        ul { list-style: none; }
+        svg { display: block; }
+        .container { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
+        .text-gradient { background: linear-gradient(135deg, #00ffaa 0%, #00ccff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-gold { color: var(--gold); }
+
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 12px 24px; border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+            transition: var(--transition); white-space: nowrap;
+        }
+        .btn-sm { padding: 8px 16px; font-size: 0.76rem; }
+        .btn-primary { background: var(--primary); color: var(--text-dark); box-shadow: 0 4px 20px rgba(0, 255, 170, 0.22); }
+        .btn-primary:hover:not(:disabled) { background: var(--primary-hover); transform: translateY(-2px); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-outline { background: transparent; border: 1px solid var(--border-dim); color: var(--text-main); }
+        .btn-outline:hover { border-color: var(--primary); background: var(--primary-dim); }
+        .btn-block { width: 100%; }
+
+        header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(3, 10, 18, 0.88); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-dim);
+        }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; }
+        .logo-icon { 
+            width: 38px; height: 38px; background: linear-gradient(135deg, var(--primary), var(--blue)); 
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+        }
+        .logo-icon svg { color: var(--text-dark); width: 22px; height: 22px; }
+        .header-actions { display: flex; align-items: center; gap: 10px; }
+        .icon-btn {
+            position: relative; width: 40px; height: 40px; border-radius: 50%;
+            background: var(--bg-glass); border: 1px solid var(--border-dim);
+            display: flex; align-items: center; justify-content: center; color: var(--text-muted);
+            transition: var(--transition);
+        }
+        .icon-btn:hover { background: rgba(255,255,255,0.08); color: var(--text-main); }
+        .icon-btn svg { width: 18px; height: 18px; }
+        .avatar { width: 38px; height: 38px; border-radius: 50%; overflow: hidden; border: 2px solid var(--primary-dim); cursor: pointer; flex-shrink: 0; }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        .auth-pill-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 14px; border-radius: 50px;
+            background: var(--primary-dim); border: 1px solid rgba(0,255,170,0.3);
+            color: var(--primary); font-size: 0.74rem; font-weight: 700;
+            transition: var(--transition);
+        }
+        .auth-pill-btn:hover { background: var(--primary); color: var(--text-dark); }
+        .auth-pill-btn svg { width: 14px; height: 14px; }
+
+        .auth-pill-outline {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 14px; border-radius: 50px;
+            background: var(--bg-glass); border: 1px solid var(--border-dim);
+            color: var(--text-main); font-size: 0.74rem; font-weight: 700;
+            transition: var(--transition);
+        }
+        .auth-pill-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+        /* ================= TAB SECTIONS ================= */
+        .tab-section { display: none; animation: fadeIn 0.3s ease; }
+        .tab-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ================= BALANCE CARD ================= */
+        .account-section { padding: 20px 0 8px; }
+        .balance-card {
+            position: relative; overflow: hidden; border-radius: 20px;
+            padding: 24px;
+            background:
+                linear-gradient(135deg, rgba(0,255,170,0.08), rgba(0,136,255,0.05) 50%, rgba(168,85,247,0.05)),
+                var(--bg-card);
+            border: 1px solid rgba(0, 255, 170, 0.16);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+        }
+        .balance-card::before {
+            content: ''; position: absolute; top: -50%; right: -15%;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0,255,170,0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .balance-top { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; margin-bottom: 14px; }
+        .balance-label { display: flex; align-items: center; gap: 8px; font-size: 0.72rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; }
+        .balance-label svg { width: 14px; height: 14px; color: var(--primary); }
+        .balance-chip {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: rgba(0, 255, 170, 0.1); border: 1px solid rgba(0, 255, 170, 0.25);
+            color: var(--primary); font-size: 0.65rem; font-weight: 700;
+            padding: 4px 10px; border-radius: 50px; letter-spacing: 0.5px;
+        }
+        .balance-chip svg { width: 10px; height: 10px; }
+        .balance-amount { position: relative; z-index: 1; margin-bottom: 4px; }
+        .balance-amount .main { font-size: 2.2rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1; }
+        .balance-amount .main span { font-size: 0.95rem; font-weight: 700; color: var(--text-muted); margin-left: 4px; letter-spacing: 0; }
+        .balance-sub { font-size: 0.78rem; color: var(--text-muted); position: relative; z-index: 1; }
+        .balance-sub strong { color: var(--primary); font-weight: 700; }
+
+        .balance-stats {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+            margin-top: 18px; position: relative; z-index: 1;
+            background: rgba(0,0,0,0.22); border-radius: 12px; padding: 12px;
+            border: 1px solid var(--border-dim);
+        }
+        .balance-stats .bs-item { display: flex; flex-direction: column; align-items: flex-start; padding: 0 8px; }
+        .balance-stats .bs-item:not(:last-child) { border-right: 1px solid var(--border-dim); }
+        .balance-stats .bs-label { font-size: 0.62rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; margin-bottom: 3px; }
+        .balance-stats .bs-value { font-size: 0.85rem; font-weight: 700; color: var(--text-main); }
+        .balance-stats .bs-value.gold { color: var(--gold); }
+
+        .balance-actions {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+            margin-top: 16px; position: relative; z-index: 1;
+        }
+        .balance-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+            padding: 12px 16px; border-radius: 12px; font-weight: 700; font-size: 0.82rem;
+            transition: var(--transition); letter-spacing: 0.3px;
+        }
+        .balance-btn svg { width: 16px; height: 16px; }
+        .balance-btn.deposit { background: var(--primary); color: var(--text-dark); }
+        .balance-btn.deposit:hover { background: var(--primary-hover); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,255,170,0.25); }
+        .balance-btn.withdraw { background: rgba(0,136,255,0.14); color: #5eb5ff; border: 1px solid rgba(0,136,255,0.3); }
+        .balance-btn.withdraw:hover { background: rgba(0,136,255,0.24); border-color: var(--blue); transform: translateY(-1px); }
+
+        /* ================= SECTION HEADER ================= */
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin: 24px 0 18px; }
+        .section-title-wrap { display: flex; align-items: center; gap: 12px; }
+        .section-icon { 
+            width: 40px; height: 40px; background: var(--primary-dim); border-radius: 10px; 
+            display: flex; align-items: center; justify-content: center; color: var(--primary); 
+            border: 1px solid rgba(0, 255, 170, 0.2); flex-shrink: 0;
+        }
+        .section-icon svg { width: 20px; height: 20px; }
+        .section-title h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.3px; }
+        .section-title p { color: var(--text-muted); font-size: 0.78rem; margin-top: 2px; }
+
+        .slider-arrows { display: flex; gap: 6px; }
+        .slider-arrow {
+            width: 34px; height: 34px; border-radius: 50%;
+            background: var(--bg-glass); border: 1px solid var(--border-dim);
+            color: var(--text-main); display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .slider-arrow:hover:not(:disabled) { background: var(--primary); color: var(--text-dark); border-color: var(--primary); }
+        .slider-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+        .slider-arrow svg { width: 16px; height: 16px; }
+
+        /* ================= PLANS SLIDER ================= */
+        .plans-slider-wrapper { position: relative; overflow: hidden; padding: 4px 0 8px; cursor: grab; }
+        .plans-slider-wrapper:active { cursor: grabbing; }
+        .plans-slider {
+            display: flex; gap: 14px;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            will-change: transform;
+        }
+        .plan-card {
+            flex: 0 0 calc(33.333% - 9.333px);
+            background: var(--bg-card); border: 1px solid var(--border-dim);
+            border-radius: 18px; padding: 20px; position: relative;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            display: flex; flex-direction: column;
+            user-select: none;
+        }
+        .plan-card:hover { border-color: var(--border-glow); box-shadow: 0 8px 24px rgba(0,255,170,0.08); }
+        .plan-card.tier-1 { border-top: 3px solid var(--primary); }
+        .plan-card.tier-2 { border-top: 3px solid var(--blue); }
+        .plan-card.tier-3 { border-top: 3px solid var(--purple); }
+        .plan-card.tier-4 { border-top: 3px solid var(--gold); }
+
+        .plan-badge {
+            position: absolute; top: 14px; right: 14px;
+            background: var(--bg-glass); border: 1px solid var(--border-dim);
+            padding: 3px 9px; border-radius: 50px; font-size: 0.62rem; font-weight: 700;
+            display: flex; align-items: center; gap: 3px;
+        }
+        .tier-1 .plan-badge { color: var(--primary); border-color: rgba(0, 255, 170, 0.2); }
+        .tier-2 .plan-badge { color: var(--blue); border-color: rgba(0, 136, 255, 0.2); }
+        .tier-3 .plan-badge { color: var(--purple); border-color: rgba(168, 85, 247, 0.2); }
+        .tier-4 .plan-badge { color: var(--gold); border-color: rgba(255, 187, 0, 0.2); }
+
+        .plan-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+        .plan-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .tier-1 .plan-icon { background: var(--primary-dim); color: var(--primary); border: 1px solid rgba(0, 255, 170, 0.2); }
+        .tier-2 .plan-icon { background: rgba(0, 136, 255, 0.1); color: var(--blue); border: 1px solid rgba(0, 136, 255, 0.2); }
+        .tier-3 .plan-icon { background: rgba(168, 85, 247, 0.1); color: var(--purple); border: 1px solid rgba(168, 85, 247, 0.2); }
+        .tier-4 .plan-icon { background: rgba(255, 187, 0, 0.1); color: var(--gold); border: 1px solid rgba(255, 187, 0, 0.2); }
+        .plan-icon svg { width: 20px; height: 20px; }
+        .plan-name h3 { font-size: 1rem; font-weight: 800; margin-bottom: 1px; }
+        .plan-name p { font-size: 0.68rem; color: var(--text-muted); font-weight: 500; }
+
+        .plan-profit-box { background: rgba(0,0,0,0.22); border: 1px solid var(--border-dim); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+        .profit-row { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.75rem; }
+        .profit-row:last-child { margin-bottom: 0; border-top: 1px dashed var(--border-dim); padding-top: 6px; margin-top: 6px; font-weight: 700; font-size: 0.82rem; }
+        .profit-label { color: var(--text-muted); font-weight: 500; }
+        .profit-value { color: var(--text-main); font-weight: 600; }
+
+        .plan-features { margin-bottom: 12px; flex-grow: 1; }
+        .plan-features li { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
+        .plan-features li svg { width: 12px; height: 12px; flex-shrink: 0; }
+        .tier-1 .plan-features li svg { color: var(--primary); }
+        .tier-2 .plan-features li svg { color: var(--blue); }
+        .tier-3 .plan-features li svg { color: var(--purple); }
+        .tier-4 .plan-features li svg { color: var(--gold); }
+
+        .btn-invest {
+            width: 100%; padding: 11px; border-radius: 10px; font-weight: 700; font-size: 0.78rem;
+            transition: var(--transition); display: flex; justify-content: center; align-items: center; gap: 5px;
+            letter-spacing: 0.3px;
+        }
+        .tier-1 .btn-invest { background: var(--primary); color: var(--text-dark); }
+        .tier-1 .btn-invest:hover { background: var(--primary-hover); }
+        .tier-2 .btn-invest { background: var(--blue); color: white; }
+        .tier-2 .btn-invest:hover { background: #0077ee; }
+        .tier-3 .btn-invest { background: var(--purple); color: white; }
+        .tier-3 .btn-invest:hover { background: #9333ea; }
+        .tier-4 .btn-invest { background: var(--gold); color: var(--text-dark); }
+        .tier-4 .btn-invest:hover { background: #e6a800; }
+
+        .slider-dots { display: flex; justify-content: center; gap: 6px; margin-top: 14px; }
+        .slider-dot {
+            width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.15);
+            transition: var(--transition); cursor: pointer;
+        }
+        .slider-dot.active { background: var(--primary); width: 20px; border-radius: 3px; }
+
+        /* ================= HERO PROFESSIONAL ================= */
+        .hero-professional {
+            position: relative; overflow: hidden;
+            margin: 24px 0 20px;
+            padding: 32px 28px;
+            border-radius: 20px;
+            background:
+                linear-gradient(135deg, rgba(0,255,170,0.06), rgba(0,136,255,0.04) 50%, rgba(168,85,247,0.04)),
+                var(--bg-card);
+            border: 1px solid var(--border-dim);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(0,255,170,0.08); border: 1px solid rgba(0,255,170,0.2);
+            color: var(--primary); font-size: 0.65rem; font-weight: 700;
+            padding: 5px 12px; border-radius: 50px; letter-spacing: 0.6px;
+            text-transform: uppercase; margin-bottom: 16px;
+        }
+        .hero-tag svg { width: 12px; height: 12px; }
+        .hero-professional h1 {
+            font-size: 2rem; font-weight: 800; line-height: 1.15;
+            letter-spacing: -1px; margin-bottom: 10px;
+        }
+        .hero-professional p {
+            font-size: 0.88rem; color: var(--text-muted);
+            max-width: 560px; line-height: 1.6; margin-bottom: 24px;
+        }
+        .hero-stats {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+            position: relative; z-index: 1;
+        }
+        .hero-stat-item {
+            display: flex; flex-direction: column; gap: 4px;
+            padding: 16px 18px;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid var(--border-dim);
+            border-radius: 14px;
+            transition: var(--transition);
+        }
+        .hero-stat-item:hover { border-color: var(--border-glow); transform: translateY(-2px); }
+        .hero-stat-icon {
+            width: 32px; height: 32px; border-radius: 8px;
+            background: var(--primary-dim); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 8px; border: 1px solid rgba(0,255,170,0.15);
+        }
+        .hero-stat-icon svg { width: 16px; height: 16px; }
+        .hero-stat-value { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+        .hero-stat-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
+
+        /* ================= FEATURES ================= */
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
+        .feature-card { 
+            background: var(--bg-card); border: 1px solid var(--border-dim); 
+            border-radius: 14px; padding: 18px; display: flex; gap: 12px; align-items: flex-start; 
+            transition: var(--transition); 
+        }
+        .feature-card:hover { border-color: var(--border-glow); transform: translateY(-2px); }
+        .feature-icon { 
+            width: 40px; height: 40px; border-radius: 10px; background: var(--primary-dim); 
+            color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; 
+        }
+        .feature-icon svg { width: 18px; height: 18px; }
+        .feature-text h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 3px; }
+        .feature-text p { font-size: 0.73rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* ================= STATISTICS TAB ================= */
+        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 20px; }
+        .stats-card {
+            background: var(--bg-card); border: 1px solid var(--border-dim);
+            border-radius: 18px; padding: 20px;
+        }
+        .stats-card h4 { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 10px; }
+        .stats-card .big-value { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 3px; }
+        .stats-card .sub-value { font-size: 0.75rem; color: var(--text-muted); }
+        .stats-card .sub-value.positive { color: var(--primary); }
+
+        .chart-card {
+            background: var(--bg-card); border: 1px solid var(--border-dim);
+            border-radius: 18px; padding: 20px; margin-bottom: 14px;
+        }
+        .chart-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+        .chart-card .chart-sub { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 18px; }
+        .bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 130px; margin-bottom: 10px; }
+        .bar-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }
+        .bar {
+            width: 100%; border-radius: 5px 5px 0 0;
+            background: linear-gradient(180deg, var(--primary), rgba(0,255,170,0.25));
+            transition: height 0.6s ease; min-height: 4px;
+        }
+        .bar-item .bar-label { font-size: 0.62rem; color: var(--text-muted); font-weight: 600; }
+
+        .allocation-list { display: flex; flex-direction: column; gap: 12px; }
+        .alloc-item { display: flex; flex-direction: column; gap: 5px; }
+        .alloc-top { display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600; }
+        .alloc-top .name { color: var(--text-main); }
+        .alloc-top .pct { color: var(--text-muted); }
+        .alloc-bar { height: 7px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+        .alloc-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+
+        /* ================= CLEAN MINIMAL PROFILE TAB (NAME, EMAIL, REFERRAL LINK ONLY) ================= */
+        .minimal-profile-card {
+            background:
+                linear-gradient(135deg, rgba(0,255,170,0.08), rgba(0,136,255,0.05) 55%, rgba(168,85,247,0.06)),
+                var(--bg-card);
+            border: 1px solid rgba(0,255,170,0.2);
+            border-radius: 22px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+        }
+        .mp-user-top {
+            display: flex; align-items: center; gap: 16px;
+            padding-bottom: 20px; border-bottom: 1px solid var(--border-dim);
+            margin-bottom: 20px;
+        }
+        .mp-avatar {
+            width: 68px; height: 68px; border-radius: 50%;
+            border: 2.5px solid var(--primary); padding: 2px;
+            background: var(--bg-base); overflow: hidden; flex-shrink: 0;
+        }
+        .mp-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .mp-info-list {
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .mp-field-box {
+            background: rgba(0,0,0,0.28);
+            border: 1px solid var(--border-dim);
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+        }
+        .mp-field-left { display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1; }
+        .mp-field-icon {
+            width: 38px; height: 38px; border-radius: 10px;
+            background: var(--primary-dim); color: var(--primary);
+            border: 1px solid rgba(0,255,170,0.2);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .mp-field-icon svg { width: 18px; height: 18px; }
+        .mp-field-text { min-width: 0; flex: 1; }
+        .mp-field-label {
+            font-size: 0.65rem; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.8px; font-weight: 700;
+            display: block; margin-bottom: 2px;
+        }
+        .mp-field-value {
+            font-size: 0.9rem; font-weight: 700; color: var(--text-main);
+            word-break: break-all;
+        }
+        .mp-field-value.mono {
+            font-family: 'Courier New', monospace; font-size: 0.8rem; color: var(--primary);
+        }
+        .mp-copy-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--primary); color: var(--text-dark);
+            font-weight: 700; font-size: 0.74rem;
+            padding: 9px 14px; border-radius: 10px; flex-shrink: 0;
+            transition: var(--transition);
+        }
+        .mp-copy-btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
+        .mp-copy-btn svg { width: 14px; height: 14px; }
+
+        .profile-menu { display: flex; flex-direction: column; gap: 8px; }
+        .profile-menu-item {
+            display: flex; align-items: center; gap: 12px;
+            background: var(--bg-card); border: 1px solid var(--border-dim);
+            border-radius: 14px; padding: 14px 16px;
+            cursor: pointer; transition: var(--transition);
+        }
+        .profile-menu-item:hover { border-color: var(--border-glow); background: rgba(0,255,170,0.03); }
+        .profile-menu-item .pm-icon {
+            width: 40px; height: 40px; border-radius: 11px;
+            background: var(--primary-dim); color: var(--primary);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .profile-menu-item .pm-icon svg { width: 18px; height: 18px; }
+        .profile-menu-item .pm-text { flex: 1; }
+        .profile-menu-item .pm-text h5 { font-size: 0.86rem; font-weight: 700; margin-bottom: 2px; }
+        .profile-menu-item .pm-text p { font-size: 0.72rem; color: var(--text-muted); }
+        .profile-menu-item .pm-arrow { color: var(--text-muted); }
+        .profile-menu-item .pm-arrow svg { width: 16px; height: 16px; }
+
+        /* ================= BOTTOM NAV ================= */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 500;
+            background: linear-gradient(180deg, rgba(7, 20, 34, 0.98) 0%, rgba(5, 15, 26, 0.99) 100%);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(0, 255, 170, 0.08);
+            display: flex; justify-content: space-around; align-items: center;
+            padding: 10px 8px 14px; max-width: 100%;
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
+        }
+        .nav-item {
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+            padding: 10px 14px; border-radius: 14px; color: var(--text-muted);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer; flex: 1; max-width: 100px;
+            position: relative; min-height: 58px; justify-content: center;
+        }
+        .nav-item svg { width: 22px; height: 22px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); stroke-width: 2; }
+        .nav-item span { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; }
+        .nav-item.active {
+            color: var(--primary);
+            background: linear-gradient(135deg, rgba(0,255,170,0.12), rgba(0,136,255,0.06));
+            border: 1px solid rgba(0,255,170,0.2);
+            box-shadow: 0 4px 16px rgba(0,255,170,0.1);
+        }
+        .nav-item.active svg { filter: drop-shadow(0 0 6px rgba(0,255,170,0.5)); transform: scale(1.1); }
+        .nav-item.active span { color: var(--primary); }
+        .nav-item.active::after {
+            content: ''; position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+            width: 20px; height: 3px; border-radius: 0 0 3px 3px;
+            background: linear-gradient(90deg, var(--primary), var(--blue));
+        }
+        .nav-item:hover:not(.active) { color: var(--text-main); background: rgba(255,255,255,0.04); transform: translateY(-2px); }
+
+        /* ================= FOOTER ================= */
+        footer { border-top: 1px solid var(--border-dim); padding: 28px 0 20px; background: #02070c; margin-top: 20px; }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
+        .footer-links { display: flex; gap: 18px; font-size: 0.78rem; color: var(--text-muted); font-weight: 500; flex-wrap: wrap; }
+        .footer-links a:hover { color: var(--primary); }
+        .footer-bottom { text-align: center; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border-dim); font-size: 0.72rem; color: var(--text-muted); }
+
+        /* ================= MODALS & PROFESSIONAL AUTH PAGE STYLES ================= */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.88); backdrop-filter: blur(14px);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: var(--transition); padding: 16px;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal {
+            background: var(--bg-surface); border: 1px solid var(--border-dim);
+            border-radius: 20px; width: 100%; max-width: 480px;
+            padding: 28px; position: relative; transform: translateY(20px) scale(0.96); 
+            transition: var(--transition); box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+            max-height: 92vh; overflow-y: auto;
+        }
+        .modal.auth-pro-modal {
+            max-width: 440px;
+            padding: 32px 28px;
+            background:
+                radial-gradient(circle at 85% 10%, rgba(0,255,170,0.09), transparent 45%),
+                radial-gradient(circle at 15% 90%, rgba(0,136,255,0.08), transparent 45%),
+                #061220;
+            border: 1px solid rgba(0,255,170,0.25);
+            border-radius: 24px;
+        }
+        .auth-brand-banner {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 20px; padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-dim);
+        }
+        .auth-brand-left { display: flex; align-items: center; gap: 10px; }
+        .auth-brand-badge {
+            font-size: 0.62rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
+            padding: 4px 10px; border-radius: 50px;
+            background: rgba(0,255,170,0.1); color: var(--primary); border: 1px solid rgba(0,255,170,0.25);
+            margin-right: 26px;
+        }
+        .auth-title-block { margin-bottom: 18px; }
+        .auth-title-block h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 4px; }
+        .auth-title-block p { font-size: 0.8rem; color: var(--text-muted); }
+
+        .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+        .modal-close { 
+            position: absolute; top: 16px; right: 16px; width: 30px; height: 30px; 
+            border-radius: 50%; background: var(--bg-glass); color: var(--text-muted); 
+            display: flex; align-items: center; justify-content: center; 
+            transition: var(--transition); cursor: pointer; z-index: 10;
+        }
+        .modal-close:hover { background: rgba(255, 68, 102, 0.1); color: var(--danger); }
+        .modal-close svg { width: 16px; height: 16px; }
+
+        .modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .modal-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .modal-icon.deposit { background: var(--primary-dim); color: var(--primary); border: 1px solid rgba(0,255,170,0.2); }
+        .modal-icon.withdraw { background: rgba(0,136,255,0.1); color: var(--blue); border: 1px solid rgba(0,136,255,0.2); }
+        .modal-icon.invest { background: var(--primary-dim); color: var(--primary); border: 1px solid rgba(0,255,170,0.2); }
+        .modal-icon svg { width: 22px; height: 22px; }
+        .modal-header-text h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 1px; }
+        .modal-header-text p { font-size: 0.78rem; color: var(--text-muted); }
+
+        .auth-tabs {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+            background: rgba(0,0,0,0.35); border: 1px solid var(--border-dim);
+            border-radius: 12px; padding: 4px; margin-bottom: 20px;
+        }
+        .auth-tab-btn {
+            padding: 9px; border-radius: 9px; font-size: 0.78rem; font-weight: 700;
+            color: var(--text-muted); transition: var(--transition);
+        }
+        .auth-tab-btn.active { background: var(--primary); color: var(--text-dark); }
+
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .max-btn { color: var(--primary); font-size: 0.7rem; font-weight: 700; cursor: pointer; }
+        .max-btn:hover { text-decoration: underline; }
+        .form-control {
+            width: 100%; padding: 12px 14px; background: var(--bg-glass); border: 1px solid var(--border-dim);
+            border-radius: 10px; color: white; font-size: 0.9rem; transition: var(--transition);
+        }
+        .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0, 255, 170, 0.08); }
+        .form-control.error { border-color: var(--danger); }
+        .error-msg { color: var(--danger); font-size: 0.72rem; margin-top: 5px; display: none; font-weight: 500; }
+
+        /* ================= PROFESSIONAL 2-COLUMN NETWORK GRID (MIN $5, FEE $0) ================= */
+        .selector-label {
+            font-size: 0.72rem; color: var(--text-muted); margin-bottom: 10px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+        }
+        .network-grid-pro {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+            margin-bottom: 16px;
+        }
+        .net-card-pro {
+            position: relative;
+            display: flex; flex-direction: column; justify-content: space-between; gap: 10px;
+            padding: 13px; border-radius: 14px;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid var(--border-dim);
+            cursor: pointer; transition: var(--transition);
+        }
+        .net-card-pro:hover {
+            border-color: rgba(0,255,170,0.3);
+            background: rgba(255,255,255,0.045);
+            transform: translateY(-1px);
+        }
+        .net-card-pro.active {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(0,255,170,0.12), rgba(0,136,255,0.06));
+            box-shadow: 0 6px 18px rgba(0,255,170,0.12);
+        }
+        .net-card-top {
+            display: flex; align-items: center; justify-content: space-between; gap: 8px;
+        }
+        .net-card-left { display: flex; align-items: center; gap: 9px; min-width: 0; }
+        .network-logo {
+            width: 30px; height: 30px; border-radius: 50%; overflow: hidden;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .network-logo svg { width: 100%; height: 100%; }
+        .net-title-wrap { min-width: 0; }
+        .net-name { font-size: 0.8rem; font-weight: 800; color: var(--text-main); display: block; line-height: 1.2; }
+        .net-chain { font-size: 0.64rem; color: var(--text-muted); display: block; margin-top: 1px; }
+        .net-check-dot {
+            width: 18px; height: 18px; border-radius: 50%;
+            border: 1.5px solid var(--border-dim);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px; font-weight: 900; flex-shrink: 0;
+            color: transparent; transition: var(--transition);
+        }
+        .net-card-pro.active .net-check-dot {
+            background: var(--primary); border-color: var(--primary); color: var(--text-dark);
+        }
+        .net-card-bottom {
+            display: flex; align-items: center; justify-content: space-between; gap: 6px;
+            padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.64rem;
+        }
+        .net-min-pill { color: var(--text-muted); font-weight: 600; }
+        .net-fee-pill {
+            background: rgba(0,255,170,0.12); color: var(--primary);
+            border: 1px solid rgba(0,255,170,0.25);
+            padding: 2px 7px; border-radius: 50px; font-weight: 800;
+        }
+
+        .address-box {
+            background: rgba(0,0,0,0.35); border: 1px solid rgba(0,255,170,0.22);
+            border-radius: 14px; padding: 14px; margin-bottom: 14px;
+        }
+        .address-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .address-top span { font-size: 0.66rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.8px; }
+        .address-top small { font-size: 0.66rem; color: var(--text-muted); }
+        .address-code-row {
+            display: flex; align-items: center; justify-content: space-between; gap: 10px;
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
+            border-radius: 10px; padding: 10px 12px;
+        }
+        .address-str {
+            font-family: 'Courier New', monospace; font-size: 0.76rem; color: var(--text-main);
+            word-break: break-all; flex: 1;
+        }
+        .copy-chip-btn {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: var(--primary-dim); border: 1px solid rgba(0,255,170,0.3);
+            color: var(--primary); font-size: 0.7rem; font-weight: 700;
+            padding: 6px 10px; border-radius: 8px; flex-shrink: 0; transition: var(--transition);
+        }
+        .copy-chip-btn:hover { background: var(--primary); color: var(--text-dark); }
+        .copy-chip-btn svg { width: 13px; height: 13px; }
+
+        .meta-grid-2 {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px;
+        }
+        .meta-cell {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border-dim);
+            border-radius: 8px; padding: 8px 10px;
+        }
+        .meta-cell .mc-lbl { font-size: 0.62rem; color: var(--text-muted); display: block; }
+        .meta-cell .mc-val { font-size: 0.76rem; font-weight: 700; color: var(--primary); }
+
+        .warning-box {
+            display: flex; gap: 10px; align-items: flex-start;
+            background: rgba(0, 255, 170, 0.06); border: 1px solid rgba(0, 255, 170, 0.22);
+            padding: 12px 14px; border-radius: 10px; margin-bottom: 16px;
+            font-size: 0.72rem; color: var(--text-muted); line-height: 1.5;
+        }
+        .warning-box svg { width: 16px; height: 16px; color: var(--primary); flex-shrink: 0; margin-top: 1px; }
+        .warning-box strong { color: var(--primary); }
+
+        .calc-box {
+            background: rgba(0,0,0,0.25); border: 1px solid var(--border-dim);
+            border-radius: 10px; padding: 14px; margin-bottom: 16px;
+        }
+        .calc-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.8rem; }
+        .calc-row:last-child { margin-bottom: 0; }
+        .calc-row.total { border-top: 1px dashed var(--border-dim); padding-top: 8px; margin-top: 8px; font-size: 0.9rem; font-weight: 700; }
+        .calc-row .lbl { color: var(--text-muted); }
+        .calc-row .val { font-weight: 600; }
+        .calc-row.total .val { color: var(--primary); font-weight: 800; }
+
+        /* ================= TRANSACTION HISTORY ================= */
+        .history-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+        .tx-card {
+            display: flex; align-items: center; gap: 14px;
+            background: var(--bg-card); border: 1px solid var(--border-dim);
+            border-radius: 14px; padding: 14px 16px;
+            transition: var(--transition); cursor: pointer; position: relative;
+        }
+        .tx-card:hover { border-color: var(--border-glow); background: rgba(0,255,170,0.02); }
+        .tx-icon {
+            width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .tx-icon.deposit { background: var(--primary-dim); color: var(--primary); }
+        .tx-icon.withdraw { background: rgba(255,68,102,0.1); color: var(--danger); }
+        .tx-icon.invest { background: rgba(0,136,255,0.1); color: var(--blue); }
+        .tx-icon.profit { background: rgba(255,187,0,0.1); color: var(--gold); }
+        .tx-icon svg { width: 18px; height: 18px; }
+        .tx-info { flex: 1; min-width: 0; }
+        .tx-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .tx-meta { font-size: 0.68rem; color: var(--text-muted); display: flex; gap: 8px; align-items: center; }
+        .tx-badge {
+            font-size: 0.58rem; padding: 2px 7px; border-radius: 50px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.4px;
+        }
+        .tx-badge.completed { background: rgba(0,255,170,0.1); color: var(--primary); border: 1px solid rgba(0,255,170,0.2); }
+        .tx-badge.pending { background: rgba(255,187,0,0.1); color: var(--gold); border: 1px solid rgba(255,187,0,0.2); }
+        .tx-badge.rejected { background: rgba(255,68,102,0.12); color: var(--danger); border: 1px solid rgba(255,68,102,0.25); }
+        .tx-amount { font-size: 0.9rem; font-weight: 800; text-align: right; flex-shrink: 0; }
+        .tx-amount.positive { color: var(--primary); }
+        .tx-amount.negative { color: var(--text-main); }
+        .tx-amount small { font-size: 0.65rem; color: var(--text-muted); font-weight: 500; display: block; margin-top: 1px; }
+
+        .empty-state { text-align: center; padding: 40px 20px; color: var(--text-muted); }
+        .empty-state svg { width: 48px; height: 48px; margin: 0 auto 12px; opacity: 0.3; }
+        .empty-state p { font-size: 0.85rem; }
+
+        /* ================= RECEIPT MODAL ================= */
+        .receipt {
+            background: var(--bg-base); border: 1px solid var(--border-dim);
+            border-radius: 16px; padding: 24px; position: relative;
+        }
+        .receipt::before {
+            content: ''; position: absolute; top: 0; left: 20px; right: 20px; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--blue));
+            border-radius: 0 0 4px 4px;
+        }
+        .receipt-header { text-align: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px dashed var(--border-dim); }
+        .receipt-logo { display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; font-size: 1.1rem; margin-bottom: 8px; }
+        .receipt-status {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: rgba(0,255,170,0.1); border: 1px solid rgba(0,255,170,0.3);
+            color: var(--primary); padding: 5px 12px; border-radius: 50px;
+            font-size: 0.7rem; font-weight: 700;
+        }
+        .receipt-status svg { width: 12px; height: 12px; }
+        .receipt-amount { text-align: center; margin: 18px 0; }
+        .receipt-amount .val { font-size: 2rem; font-weight: 800; letter-spacing: -1px; color: var(--text-main); }
+        .receipt-amount .val.positive { color: var(--primary); }
+        .receipt-amount .sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+        .receipt-details { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+        .receipt-row { display: flex; justify-content: space-between; font-size: 0.78rem; padding: 8px 0; border-bottom: 1px solid var(--border-dim); }
+        .receipt-row:last-child { border-bottom: none; }
+        .receipt-row .lbl { color: var(--text-muted); }
+        .receipt-row .val { font-weight: 600; text-align: right; max-width: 60%; word-break: break-all; }
+        .receipt-row .val.mono { font-family: 'Courier New', monospace; font-size: 0.72rem; color: var(--primary); }
+        .receipt-footer { text-align: center; font-size: 0.68rem; color: var(--text-muted); padding-top: 16px; border-top: 1px dashed var(--border-dim); line-height: 1.6; }
+        .receipt-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+
+        .toast-container { position: fixed; bottom: 100px; right: 16px; z-index: 2000; display: flex; flex-direction: column; gap: 8px; }
+        .toast {
+            background: var(--bg-surface); border: 1px solid var(--border-dim); border-left: 4px solid var(--primary);
+            padding: 12px 16px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex; align-items: center; gap: 10px; font-size: 0.8rem; font-weight: 600;
+            animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; max-width: 320px;
+        }
+        @keyframes slideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 1100px) {
+            .plan-card { flex: 0 0 calc(50% - 7px); }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .header-inner { height: 60px; }
+            .logo { font-size: 1.05rem; }
+            .logo-icon { width: 32px; height: 32px; }
+            .logo-icon svg { width: 18px; height: 18px; }
+            .auth-pill-btn span, .auth-pill-outline span { display: none; }
+            .auth-pill-btn, .auth-pill-outline { padding: 8px; border-radius: 50%; width: 34px; height: 34px; justify-content: center; }
+            .hero-professional { padding: 24px 20px; margin: 20px 0 16px; }
+            .hero-professional h1 { font-size: 1.6rem; }
+            .hero-stats { grid-template-columns: 1fr; gap: 10px; }
+            .hero-stat-item { flex-direction: row; align-items: center; gap: 12px; padding: 14px 16px; }
+            .hero-stat-icon { margin-bottom: 0; flex-shrink: 0; }
+            .hero-stat-value { font-size: 1.2rem; }
+            .plan-card { flex: 0 0 calc(100% - 4px); }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+            .modal { padding: 22px; }
+            .network-grid-pro { grid-template-columns: 1fr; }
+            .balance-amount .main { font-size: 1.9rem; }
+            .balance-stats { padding: 10px; }
+            .balance-stats .bs-value { font-size: 0.78rem; }
+            .balance-btn { padding: 10px 12px; font-size: 0.75rem; }
+            .nav-item { padding: 8px 8px; min-height: 54px; max-width: 70px; }
+            .nav-item svg { width: 20px; height: 20px; }
+            .nav-item span { font-size: 0.58rem; }
+            .slider-arrow { width: 30px; height: 30px; }
+            .receipt-actions { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .bottom-nav { padding: 8px 4px 12px; }
+            .nav-item { padding: 8px 6px; min-height: 52px; max-width: 60px; }
+            .nav-item svg { width: 19px; height: 19px; }
+            .nav-item span { font-size: 0.55rem; }
+            .nav-item.active::after { width: 16px; height: 2px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i data-lucide="shield-check"></i></div>
+                TRONVEX
+            </a>
+            <div class="header-actions">
+                <button class="auth-pill-outline" id="headerSignUpBtn" onclick="openAuthModal('signup')">
+                    <i data-lucide="user-plus" style="width:14px;height:14px;"></i>
+                    <span>Sign Up</span>
+                </button>
+                <button class="auth-pill-btn" id="headerAuthBtn" onclick="openAuthModal('login')">
+                    <i data-lucide="log-in"></i>
+                    <span id="headerAuthLabel">Login</span>
+                </button>
+                <button class="icon-btn" onclick="requireAuth(() => showToast('No new notifications', 'info'))"><i data-lucide="bell"></i></button>
+                <div class="avatar" onclick="requireAuth(() => switchTab('profile'))">
+                    <img id="headerAvatarImg" src="https://ui-avatars.com/api/?name=Guest+User&background=00ffaa&color=030a12&bold=true" alt="User">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= HOME TAB ================= -->
+    <section class="tab-section active" id="tab-home">
+        
+        <!-- 1. CARD BALANCE -->
+        <div class="container">
+            <div class="account-section">
+                <div class="balance-card">
+                    <div class="balance-top">
+                        <div class="balance-label"><i data-lucide="wallet"></i> Total Balance</div>
+                        <div class="balance-chip"><i data-lucide="shield-check"></i> Min $5 · 0% Fee</div>
+                    </div>
+                    <div class="balance-amount">
+                        <div class="main" id="totalBalanceMain">$0<span>.00</span></div>
+                        <div class="balance-sub" id="totalBalanceSub">≈ 0.00 USDT · <strong>+$0.00</strong> total profit</div>
+                    </div>
+                    <div class="balance-stats">
+                        <div class="bs-item">
+                            <span class="bs-label">Available</span>
+                            <span class="bs-value" id="availBalanceText">$0.00</span>
+                        </div>
+                        <div class="bs-item">
+                            <span class="bs-label">Locked</span>
+                            <span class="bs-value gold" id="lockedBalanceText">$0.00</span>
+                        </div>
+                        <div class="bs-item">
+                            <span class="bs-label">Fee</span>
+                            <span class="bs-value" style="color:var(--primary);">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="balance-actions">
+                        <button class="balance-btn deposit" onclick="requireAuth(() => openDepositModal())">
+                            <i data-lucide="arrow-down-to-line"></i> Deposit
+                        </button>
+                        <button class="balance-btn withdraw" onclick="requireAuth(() => openWithdrawModal())">
+                            <i data-lucide="arrow-up-from-line"></i> Withdraw
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. INVESTMENT PLANS -->
+        <div class="container" id="plans">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <div class="section-icon"><i data-lucide="layers"></i></div>
+                    <div class="section-title"><h2>Investment Plans</h2><p>Swipe or use arrows to explore</p></div>
+                </div>
+                <div class="slider-arrows">
+                    <button class="slider-arrow" id="prevArrow" onclick="slidePlans(-1)"><i data-lucide="chevron-left"></i></button>
+                    <button class="slider-arrow" id="nextArrow" onclick="slidePlans(1)"><i data-lucide="chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="plans-slider-wrapper" id="plansWrapper">
+                <div class="plans-slider" id="plansSlider">
+                    <div class="plan-card tier-1">
+                        <div class="plan-badge"><i data-lucide="star" style="width:9px;"></i> Entry</div>
+                        <div class="plan-header">
+                            <div class="plan-icon"><i data-lucide="rocket"></i></div>
+                            <div class="plan-name"><h3>STARTER</h3><p>$5 – $100</p></div>
+                        </div>
+                        <div class="plan-profit-box">
+                            <div class="profit-row"><span class="profit-label">Min</span><span class="profit-value">$5.00</span></div>
+                            <div class="profit-row"><span class="profit-label">Max</span><span class="profit-value">$100.00</span></div>
+                            <div class="profit-row"><span class="profit-label">Profit (5d)</span><span class="profit-value text-gold">150%</span></div>
+                            <div class="profit-row"><span class="profit-label">Total</span><span class="profit-value text-gradient">Dep+Profit</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
+                            <li><i data-lucide="check-circle-2"></i> $5 Min · $0 Fee</li>
+                            <li><i data-lucide="check-circle-2"></i> Automated Payouts</li>
+                        </ul>
+                        <button class="btn-invest" onclick="requireAuth(() => openInvestModal('STARTER', 5, 100))">Invest <i data-lucide="arrow-right" style="width:12px;"></i></button>
+                    </div>
+
+                    <div class="plan-card tier-2">
+                        <div class="plan-badge"><i data-lucide="trending-up" style="width:9px;"></i> Popular</div>
+                        <div class="plan-header">
+                            <div class="plan-icon"><i data-lucide="bar-chart-3"></i></div>
+                            <div class="plan-name"><h3>GROWTH</h3><p>$100 – $1,000</p></div>
+                        </div>
+                        <div class="plan-profit-box">
+                            <div class="profit-row"><span class="profit-label">Min</span><span class="profit-value">$100.00</span></div>
+                            <div class="profit-row"><span class="profit-label">Max</span><span class="profit-value">$1,000.00</span></div>
+                            <div class="profit-row"><span class="profit-label">Profit (5d)</span><span class="profit-value text-gold">150%</span></div>
+                            <div class="profit-row"><span class="profit-label">Total</span><span class="profit-value text-gradient">Dep+Profit</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
+                            <li><i data-lucide="check-circle-2"></i> Priority Support</li>
+                            <li><i data-lucide="check-circle-2"></i> Automated Payouts</li>
+                        </ul>
+                        <button class="btn-invest" onclick="requireAuth(() => openInvestModal('GROWTH', 100, 1000))">Invest <i data-lucide="arrow-right" style="width:12px;"></i></button>
+                    </div>
+
+                    <div class="plan-card tier-3">
+                        <div class="plan-badge"><i data-lucide="crown" style="width:9px;"></i> VIP</div>
+                        <div class="plan-header">
+                            <div class="plan-icon"><i data-lucide="shield"></i></div>
+                            <div class="plan-name"><h3>PREMIUM</h3><p>$1,000 – $10,000</p></div>
+                        </div>
+                        <div class="plan-profit-box">
+                            <div class="profit-row"><span class="profit-label">Min</span><span class="profit-value">$1,000.00</span></div>
+                            <div class="profit-row"><span class="profit-label">Max</span><span class="profit-value">$10,000.00</span></div>
+                            <div class="profit-row"><span class="profit-label">Profit (5d)</span><span class="profit-value text-gold">150%</span></div>
+                            <div class="profit-row"><span class="profit-label">Total</span><span class="profit-value text-gradient">Dep+Profit</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
+                            <li><i data-lucide="check-circle-2"></i> Account Manager</li>
+                            <li><i data-lucide="check-circle-2"></i> Automated Payouts</li>
+                        </ul>
+                        <button class="btn-invest" onclick="requireAuth(() => openInvestModal('PREMIUM', 1000, 10000))">Invest <i data-lucide="arrow-right" style="width:12px;"></i></button>
+                    </div>
+
+                    <div class="plan-card tier-4">
+                        <div class="plan-badge"><i data-lucide="gem" style="width:9px;"></i> Elite</div>
+                        <div class="plan-header">
+                            <div class="plan-icon"><i data-lucide="diamond"></i></div>
+                            <div class="plan-name"><h3>DIAMOND</h3><p>$10,000 – $50,000</p></div>
+                        </div>
+                        <div class="plan-profit-box">
+                            <div class="profit-row"><span class="profit-label">Min</span><span class="profit-value">$10,000.00</span></div>
+                            <div class="profit-row"><span class="profit-label">Max</span><span class="profit-value">$50,000.00</span></div>
+                            <div class="profit-row"><span class="profit-label">Profit (5d)</span><span class="profit-value text-gold">150%</span></div>
+                            <div class="profit-row"><span class="profit-label">Total</span><span class="profit-value text-gradient">Dep+Profit</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
+                            <li><i data-lucide="check-circle-2"></i> VIP Concierge</li>
+                            <li><i data-lucide="check-circle-2"></i> Automated Payouts</li>
+                        </ul>
+                        <button class="btn-invest" onclick="requireAuth(() => openInvestModal('DIAMOND', 10000, 50000))">Invest <i data-lucide="arrow-right" style="width:12px;"></i></button>
+                    </div>
+                </div>
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+        </div>
+
+        <!-- 3. TRUSTED PLATFORM -->
+        <div class="container">
+            <div class="hero-professional">
+                <div class="hero-content">
+                    <div class="hero-tag"><i data-lucide="shield-check"></i> Trusted Platform</div>
+                    <h1>Grow your <span class="text-gradient">USDT</span><br>with confidence</h1>
+                    <p>Zero deposit & withdrawal fees · $5 minimum across all networks · Fixed 5-day cycles.</p>
+                    <div class="hero-stats">
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-icon"><i data-lucide="trending-up"></i></div>
+                            <div>
+                                <div class="hero-stat-value">$4.2M+</div>
+                                <div class="hero-stat-label">Value Locked</div>
+                            </div>
+                        </div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-icon"><i data-lucide="users"></i></div>
+                            <div>
+                                <div class="hero-stat-value">18,400+</div>
+                                <div class="hero-stat-label">Investors</div>
+                            </div>
+                        </div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-icon"><i data-lucide="badge-check"></i></div>
+                            <div>
+                                <div class="hero-stat-value">$0.00</div>
+                                <div class="hero-stat-label">Transfer Fee</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="lock"></i></div>
+                    <div class="feature-text"><h4>Institutional Security</h4><p>Multi-sig cold storage & 256-bit encryption.</p></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="zap"></i></div>
+                    <div class="feature-text"><h4>$0 Fee Transfers</h4><p>Deposit and withdraw starting from $5 with zero fee.</p></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="headphones"></i></div>
+                    <div class="feature-text"><h4>24/7 Support</h4><p>Experts available around the clock.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= STATISTICS TAB ================= -->
+    <section class="tab-section" id="tab-stats">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <div class="section-icon"><i data-lucide="bar-chart-3"></i></div>
+                    <div class="section-title"><h2>Portfolio Statistics</h2><p>Your performance at a glance</p></div>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stats-card"><h4>Total Invested</h4><div class="big-value" id="statTotalInvested">$0.00</div><div class="sub-value positive" id="statProfitEarned">+$0.00 profit earned</div></div>
+                <div class="stats-card"><h4>Average ROI</h4><div class="big-value text-gradient">150%</div><div class="sub-value">Across all active plans</div></div>
+                <div class="stats-card"><h4>Completed Cycles</h4><div class="big-value" id="statCompletedCycles">0</div><div class="sub-value">All paid on time</div></div>
+                <div class="stats-card"><h4>Active Investments</h4><div class="big-value" id="statActiveCount">0</div><div class="sub-value" id="statLockedAmount">$0.00 locked</div></div>
+            </div>
+            <div class="chart-card">
+                <h4>Monthly Returns</h4><p class="chart-sub">Last 6 months performance</p>
+                <div class="bar-chart">
+                    <div class="bar-item"><div class="bar" style="height:45%"></div><span class="bar-label">Aug</span></div>
+                    <div class="bar-item"><div class="bar" style="height:60%"></div><span class="bar-label">Sep</span></div>
+                    <div class="bar-item"><div class="bar" style="height:52%"></div><span class="bar-label">Oct</span></div>
+                    <div class="bar-item"><div class="bar" style="height:78%"></div><span class="bar-label">Nov</span></div>
+                    <div class="bar-item"><div class="bar" style="height:88%"></div><span class="bar-label">Dec</span></div>
+                    <div class="bar-item"><div class="bar" style="height:100%"></div><span class="bar-label">Jan</span></div>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h4>Asset Allocation</h4><p class="chart-sub">Where your funds are placed</p>
+                <div class="allocation-list">
+                    <div class="alloc-item"><div class="alloc-top"><span class="name">Premium Plan</span><span class="pct">45%</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:45%; background:var(--purple);"></div></div></div>
+                    <div class="alloc-item"><div class="alloc-top"><span class="name">Growth Plan</span><span class="pct">30%</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:30%; background:var(--blue);"></div></div></div>
+                    <div class="alloc-item"><div class="alloc-top"><span class="name">Starter Plan</span><span class="pct">15%</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:15%; background:var(--primary);"></div></div></div>
+                    <div class="alloc-item"><div class="alloc-top"><span class="name">Available Balance</span><span class="pct">10%</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:10%; background:var(--gold);"></div></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= HISTORY TAB ================= -->
+    <section class="tab-section" id="tab-history">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <div class="section-icon"><i data-lucide="history"></i></div>
+                    <div class="section-title"><h2>Transaction History</h2><p>All your deposits, withdrawals & investments</p></div>
+                </div>
+            </div>
+            <div class="history-list" id="historyList"></div>
+        </div>
+    </section>
+
+    <!-- ================= SUPPORT TAB ================= -->
+    <section class="tab-section" id="tab-support">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <div class="section-icon"><i data-lucide="headphones"></i></div>
+                    <div class="section-title"><h2>Support Center</h2><p>We're here 24/7 to help you</p></div>
+                </div>
+            </div>
+            <div class="profile-menu">
+                <div class="profile-menu-item" onclick="requireAuth(() => showToast('Connecting to live agent...', 'info'))">
+                    <div class="pm-icon"><i data-lucide="message-square"></i></div>
+                    <div class="pm-text"><h5>Live Chat</h5><p>Chat with a support agent in real time</p></div>
+                    <div class="pm-arrow"><i data-lucide="chevron-right"></i></div>
+                </div>
+                <div class="profile-menu-item" onclick="requireAuth(() => showToast('Opening Telegram...', 'info'))">
+                    <div class="pm-icon"><i data-lucide="send"></i></div>
+                    <div class="pm-text"><h5>Telegram Support</h5><p>Join our official Telegram channel</p></div>
+                    <div class="pm-arrow"><i data-lucide="chevron-right"></i></div>
+                </div>
+                <div class="profile-menu-item" onclick="requireAuth(() => showToast('Email: support@tronvex.online', 'info'))">
+                    <div class="pm-icon"><i data-lucide="mail"></i></div>
+                    <div class="pm-text"><h5>Email Support</h5><p>support@tronvex.online</p></div>
+                    <div class="pm-arrow"><i data-lucide="chevron-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROFILE TAB (NAME, EMAIL & REFERRAL LINK ONLY) ================= -->
+    <section class="tab-section" id="tab-profile">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <div class="section-icon"><i data-lucide="user"></i></div>
+                    <div class="section-title"><h2>Profile</h2><p>Name, email & referral link</p></div>
+                </div>
+                <button class="btn btn-outline btn-sm" onclick="openAuthModal('login')">
+                    <i data-lucide="refresh-cw" style="width:13px;height:13px;"></i> Switch Account
+                </button>
+            </div>
+
+            <div class="minimal-profile-card">
+                <div class="mp-user-top">
+                    <div class="mp-avatar">
+                        <img id="profileAvatarImg" src="https://ui-avatars.com/api/?name=Guest+User&background=00ffaa&color=030a12&bold=true" alt="Profile">
+                    </div>
+                    <div>
+                        <h3 id="profileHeaderName" style="font-size:1.2rem;font-weight:800;">Guest User</h3>
+                        <p id="profileHeaderEmail" style="font-size:0.8rem;color:var(--text-muted);">guest@tronvex.online</p>
+                    </div>
+                </div>
+
+                <div class="mp-info-list">
+                    <!-- 1. Name -->
+                    <div class="mp-field-box">
+                        <div class="mp-field-left">
+                            <div class="mp-field-icon"><i data-lucide="user"></i></div>
+                            <div class="mp-field-text">
+                                <span class="mp-field-label">Full Name</span>
+                                <span class="mp-field-value" id="profileNameValue">Guest User</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Email -->
+                    <div class="mp-field-box">
+                        <div class="mp-field-left">
+                            <div class="mp-field-icon"><i data-lucide="mail"></i></div>
+                            <div class="mp-field-text">
+                                <span class="mp-field-label">Email Address</span>
+                                <span class="mp-field-value" id="profileEmailValue">guest@tronvex.online</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Referral Link -->
+                    <div class="mp-field-box">
+                        <div class="mp-field-left">
+                            <div class="mp-field-icon"><i data-lucide="link"></i></div>
+                            <div class="mp-field-text">
+                                <span class="mp-field-label">Referral Link</span>
+                                <span class="mp-field-value mono" id="profileReferralValue">https://tronvex.online/?ref=GUEST01</span>
+                            </div>
+                        </div>
+                        <button class="mp-copy-btn" type="button" onclick="copyCurrentReferral()">
+                            <i data-lucide="copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-menu">
+                <div class="profile-menu-item" onclick="signOutAccount()">
+                    <div class="pm-icon" style="background:rgba(255,68,102,0.12);color:var(--danger);"><i data-lucide="log-out"></i></div>
+                    <div class="pm-text"><h5 style="color:var(--danger);">Sign Out</h5><p>Sign out of your account</p></div>
+                    <div class="pm-arrow"><i data-lucide="chevron-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <a href="#" class="logo">
+                    <div class="logo-icon" style="width:30px;height:30px;"><i data-lucide="shield-check" style="width:16px;height:16px;"></i></div>
+                    TRONVEX
+                </a>
+                <div class="footer-links">
+                    <a href="#" onclick="event.preventDefault(); requireAuth(() => switchTab('home'));">Home</a>
+                    <a href="#" onclick="event.preventDefault(); requireAuth(() => switchTab('stats'));">Stats</a>
+                    <a href="#" onclick="event.preventDefault(); requireAuth(() => switchTab('history'));">History</a>
+                    <a href="#" onclick="event.preventDefault(); requireAuth(() => switchTab('support'));">Support</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 TRONVEX. All rights reserved. Capital at risk; verify terms and network fees before transacting.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= BOTTOM NAV ================= -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" data-tab="home" onclick="switchTab('home', this)"><i data-lucide="home"></i><span>Home</span></div>
+        <div class="nav-item" data-tab="plans" onclick="switchTab('home', this); setTimeout(()=>{document.getElementById('plans').scrollIntoView({behavior:'smooth'});}, 100);"><i data-lucide="layers"></i><span>Plans</span></div>
+        <div class="nav-item" data-tab="stats" onclick="requireAuth(() => switchTab('stats', this))"><i data-lucide="bar-chart-3"></i><span>Stats</span></div>
+        <div class="nav-item" data-tab="history" onclick="requireAuth(() => switchTab('history', this))"><i data-lucide="history"></i><span>History</span></div>
+        <div class="nav-item" data-tab="profile" onclick="requireAuth(() => switchTab('profile', this))"><i data-lucide="user"></i><span>Profile</span></div>
+    </nav>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modalContent"></div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        lucide.createIcons();
+
+        // ================= REAL BACKEND CONFIG =================
+        // Ku beddel URL-ka hoose backend-kaaga (tusaale: 'https://tronvex-backend.onrender.com')
+        const API_BASE_URL = '';
+
+        let availableBalance = 0.00;
+        let lockedBalance = 0.00;
+        let totalProfitEarned = 0.00;
+        let totalInvestedAmount = 0.00;
+        let completedCyclesCount = 0;
+        let activeInvestmentsCount = 0;
+
+        // ================= AUTH STATE + TOKEN =================
+        const AUTH_STORAGE_KEY = 'tronvex_real_session_v1';
+        let authState = {
+            isLoggedIn: false,
+            token: '',
+            userCode: '',
+            name: '',
+            email: '',
+            refCode: 'GUEST01',
+            otpSent: false
+        };
+
+        function buildRefCode(email) {
+            const prefix = (email.split('@')[0] || 'USER')
+                .replace(/[^a-zA-Z0-9]/g, '')
+                .toUpperCase()
+                .slice(0, 6) || 'USER';
+            return `${prefix}2026`;
+        }
+
+        function getReferralLink() {
+            const origin = (window.location.origin && window.location.origin !== 'null')
+                ? window.location.origin + window.location.pathname
+                : 'https://tronvex.online/';
+            const cleanUrl = origin.split('?')[0];
+            return `${cleanUrl}?ref=${authState.refCode || 'GUEST01'}`;
+        }
+
+        function saveAuthState() {
+            try {
+                localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify({
+                    isLoggedIn: authState.isLoggedIn,
+                    token: authState.token,
+                    userCode: authState.userCode,
+                    name: authState.name,
+                    email: authState.email,
+                    refCode: authState.refCode
+                }));
+            } catch (e) {}
+        }
+
+        function loadAuthState() {
+            try {
+                const raw = localStorage.getItem(AUTH_STORAGE_KEY);
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    authState = { ...authState, ...parsed };
+                }
+            } catch (e) {}
+        }
+
+        async function apiRequest(path, options = {}) {
+            if (!API_BASE_URL) {
+                throw new Error('Backend URL not configured yet. Set API_BASE_URL to your live backend server.');
+            }
+            const headers = {
+                'Content-Type': 'application/json',
+                ...(options.headers || {})
+            };
+            if (authState.token) {
+                headers['Authorization'] = `Bearer ${authState.token}`;
+            }
+            const res = await fetch(`${API_BASE_URL}${path}`, {
+                ...options,
+                headers
+            });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) {
+                throw new Error(data.detail || data.message || `Request failed (${res.status})`);
+            }
+            return data;
+        }
+
+        function syncAuthUI() {
+            const displayName = authState.name || 'Guest User';
+            const displayEmail = authState.email || 'guest@tronvex.online';
+            const refLink = getReferralLink();
+            const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=00ffaa&color=030a12&bold=true`;
+
+            const headerName = document.getElementById('profileHeaderName');
+            const headerEmail = document.getElementById('profileHeaderEmail');
+            const pName = document.getElementById('profileNameValue');
+            const pEmail = document.getElementById('profileEmailValue');
+            const pRef = document.getElementById('profileReferralValue');
+            const authLabel = document.getElementById('headerAuthLabel');
+            const authBtn = document.getElementById('headerAuthBtn');
+
+            if (headerName) headerName.textContent = displayName;
+            if (headerEmail) headerEmail.textContent = displayEmail;
+            if (pName) pName.textContent = displayName;
+            if (pEmail) pEmail.textContent = displayEmail;
+            if (pRef) pRef.textContent = refLink;
+
+            document.querySelectorAll('.avatar img, #profileAvatarImg, #headerAvatarImg').forEach(img => {
+                img.src = avatarUrl;
+            });
+
+            if (authLabel) {
+                authLabel.textContent = authState.isLoggedIn ? (displayName.split(' ')[0] || 'Account') : 'Login';
+            }
+            if (authBtn) {
+                authBtn.onclick = () => authState.isLoggedIn ? switchTab('profile') : openAuthModal('login');
+            }
+
+            lucide.createIcons();
+        }
+
+        function syncBalanceUI() {
+            const total = Number(availableBalance || 0) + Number(lockedBalance || 0);
+            const whole = Math.floor(total).toLocaleString();
+            const cents = (total % 1).toFixed(2).substring(1); // ".00"
+
+            const mainEl = document.getElementById('totalBalanceMain');
+            const subEl = document.getElementById('totalBalanceSub');
+            const availEl = document.getElementById('availBalanceText');
+            const lockedEl = document.getElementById('lockedBalanceText');
+
+            if (mainEl) mainEl.innerHTML = `$${whole}<span>${cents}</span>`;
+            if (subEl) subEl.innerHTML = `≈ ${total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USDT · <strong>+$${Number(totalProfitEarned || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong> total profit`;
+            if (availEl) availEl.textContent = '$' + Number(availableBalance || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            if (lockedEl) lockedEl.textContent = '$' + Number(lockedBalance || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            const invEl = document.getElementById('statTotalInvested');
+            const profEl = document.getElementById('statProfitEarned');
+            const cycEl = document.getElementById('statCompletedCycles');
+            const actEl = document.getElementById('statActiveCount');
+            const lockStatEl = document.getElementById('statLockedAmount');
+
+            if (invEl) invEl.textContent = '$' + Number(totalInvestedAmount || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            if (profEl) profEl.textContent = '+$' + Number(totalProfitEarned || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' profit earned';
+            if (cycEl) cycEl.textContent = String(completedCyclesCount || 0);
+            if (actEl) actEl.textContent = String(activeInvestmentsCount || 0);
+            if (lockStatEl) lockStatEl.textContent = '$' + Number(lockedBalance || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' locked';
+        }
+
+        async function refreshAccountData() {
+            if (!authState.isLoggedIn || !API_BASE_URL) {
+                syncBalanceUI();
+                renderHistory();
+                return;
+            }
+            try {
+                const summary = await apiRequest('/api/account/summary');
+                availableBalance = Number(summary.available_balance ?? 0);
+                lockedBalance = Number(summary.locked_balance ?? 0);
+                totalProfitEarned = Number(summary.total_profit ?? 0);
+                totalInvestedAmount = Number(summary.total_invested ?? 0);
+                completedCyclesCount = Number(summary.completed_cycles ?? 0);
+                activeInvestmentsCount = Number(summary.active_investments ?? 0);
+                if (summary.ref_code) authState.refCode = summary.ref_code;
+                if (summary.full_name) authState.name = summary.full_name;
+                saveAuthState();
+                syncAuthUI();
+                syncBalanceUI();
+
+                const txRes = await apiRequest('/api/transactions');
+                if (Array.isArray(txRes.transactions)) {
+                    TRANSACTIONS = txRes.transactions;
+                    renderHistory();
+                }
+            } catch (err) {
+                syncBalanceUI();
+                renderHistory();
+            }
+        }
+
+        function requireAuth(callback) {
+            if (authState.isLoggedIn) {
+                callback();
+            } else {
+                openAuthModal('signup');
+            }
+        }
+
+        function copyCurrentReferral() {
+            copyText(getReferralLink(), 'Referral link copied!');
+        }
+
+        // ================= SIGN UP (WITH EMAIL OTP CODE) & LOGIN MODAL =================
+        function openAuthModal(mode = 'signup') {
+            const isLogin = mode === 'login';
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.add('auth-pro-modal');
+
+            openModal(`
+                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+
+                <div class="auth-brand-banner">
+                    <div class="auth-brand-left">
+                        <div class="logo-icon" style="width:32px;height:32px;border-radius:9px;">
+                            <i data-lucide="shield-check" style="width:17px;height:17px;"></i>
+                        </div>
+                        <span style="font-weight:800;font-size:1rem;letter-spacing:-0.4px;">TRONVEX</span>
+                    </div>
+                    <span class="auth-brand-badge">${isLogin ? 'Login' : 'Sign Up'}</span>
+                </div>
+
+                <div class="auth-tabs">
+                    <button class="auth-tab-btn ${!isLogin ? 'active' : ''}" type="button" onclick="openAuthModal('signup')">Sign Up</button>
+                    <button class="auth-tab-btn ${isLogin ? 'active' : ''}" type="button" onclick="openAuthModal('login')">Login</button>
+                </div>
+
+                <div class="auth-title-block">
+                    <h3>${isLogin ? 'Login to your account' : 'Create your account'}</h3>
+                    <p>${isLogin ? 'Enter your email and password to continue' : 'Verify your email with a 6-digit code to create your account'}</p>
+                </div>
+
+                ${!isLogin ? `
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="authNameInput" class="form-control" placeholder="Your full name" value="${authState.name}">
+                        <div class="error-msg" id="authNameError">Please enter your name.</div>
+                    </div>
+                ` : ''}
+
+                <div class="form-group">
+                    <label>
+                        <span>Email Address</span>
+                        ${!isLogin ? `<span class="max-btn" id="sendOtpBtn" onclick="sendSignupOtp()">Send Code</span>` : ''}
+                    </label>
+                    <input type="email" id="authEmailInput" class="form-control" placeholder="you@example.com" value="${authState.email}">
+                    <div class="error-msg" id="authEmailError">Please enter a valid email address.</div>
+                </div>
+
+                ${!isLogin ? `
+                    <div class="form-group">
+                        <label>Email Verification Code (6 Digits)</label>
+                        <input type="text" id="authOtpInput" class="form-control" placeholder="Enter 6-digit code from email" maxlength="6" inputmode="numeric">
+                        <div class="error-msg" id="authOtpError">Please enter the 6-digit verification code sent to your email.</div>
+                    </div>
+                ` : ''}
+
+                <div class="form-group">
+                    <label>${isLogin ? 'Password' : 'Create Password'}</label>
+                    <input type="password" id="authPasswordInput" class="form-control" placeholder="${isLogin ? 'Enter password' : 'Min 6 characters'}">
+                    <div class="error-msg" id="authPassError">Password must be at least 6 characters.</div>
+                </div>
+
+                <button class="btn btn-primary btn-block" id="authSubmitBtn" onclick="${isLogin ? 'submitLogin()' : 'submitSignUp()'}">
+                    ${isLogin ? 'Login' : 'Verify Code & Sign Up'}
+                </button>
+            `);
+        }
+
+        async function sendSignupOtp() {
+            const emailEl = document.getElementById('authEmailInput');
+            const email = emailEl ? emailEl.value.trim() : '';
+            if (!email || !email.includes('@') || !email.includes('.')) {
+                emailEl.classList.add('error');
+                document.getElementById('authEmailError').style.display = 'block';
+                return;
+            }
+            emailEl.classList.remove('error');
+            document.getElementById('authEmailError').style.display = 'none';
+
+            const otpBtn = document.getElementById('sendOtpBtn');
+            if (otpBtn) otpBtn.textContent = 'Sending...';
+
+            try {
+                await apiRequest('/api/auth/send-code', {
+                    method: 'POST',
+                    body: JSON.stringify({ email })
+                });
+                authState.otpSent = true;
+                showToast('6-digit verification code sent to ' + email, 'success');
+            } catch (err) {
+                showToast(err.message, 'error');
+            } finally {
+                if (otpBtn) otpBtn.textContent = 'Send Code';
+            }
+        }
+
+        async function submitSignUp() {
+            const nameEl = document.getElementById('authNameInput');
+            const emailEl = document.getElementById('authEmailInput');
+            const otpEl = document.getElementById('authOtpInput');
+            const passEl = document.getElementById('authPasswordInput');
+
+            const name = nameEl ? nameEl.value.trim() : '';
+            const email = emailEl ? emailEl.value.trim() : '';
+            const code = otpEl ? otpEl.value.trim() : '';
+            const password = passEl ? passEl.value.trim() : '';
+
+            let ok = true;
+            if (nameEl && name.length < 2) {
+                nameEl.classList.add('error');
+                document.getElementById('authNameError').style.display = 'block';
+                ok = false;
+            } else if (nameEl) {
+                nameEl.classList.remove('error');
+                document.getElementById('authNameError').style.display = 'none';
+            }
+
+            if (!email.includes('@') || !email.includes('.')) {
+                emailEl.classList.add('error');
+                document.getElementById('authEmailError').style.display = 'block';
+                ok = false;
+            } else {
+                emailEl.classList.remove('error');
+                document.getElementById('authEmailError').style.display = 'none';
+            }
+
+            if (otpEl && !/^\d{6}$/.test(code)) {
+                otpEl.classList.add('error');
+                document.getElementById('authOtpError').style.display = 'block';
+                ok = false;
+            } else if (otpEl) {
+                otpEl.classList.remove('error');
+                document.getElementById('authOtpError').style.display = 'none';
+            }
+
+            if (password.length < 6) {
+                passEl.classList.add('error');
+                document.getElementById('authPassError').style.display = 'block';
+                ok = false;
+            } else {
+                passEl.classList.remove('error');
+                document.getElementById('authPassError').style.display = 'none';
+            }
+
+            if (!ok) return;
+
+            const btn = document.getElementById('authSubmitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Verifying...';
+
+            try {
+                const data = await apiRequest('/api/auth/verify-signup', {
+                    method: 'POST',
+                    body: JSON.stringify({ full_name: name, email, code, password })
+                });
+                authState.isLoggedIn = true;
+                authState.token = data.token || '';
+                authState.userCode = data.user_code || '';
+                authState.name = data.full_name || name;
+                authState.email = data.email || email;
+                authState.refCode = data.ref_code || buildRefCode(email);
+                saveAuthState();
+                syncAuthUI();
+                await refreshAccountData();
+                closeModal();
+                showToast(`Welcome, ${authState.name}!`, 'success');
+            } catch (err) {
+                showToast(err.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Verify Code & Sign Up';
+            }
+        }
+
+        async function submitLogin() {
+            const emailEl = document.getElementById('authEmailInput');
+            const passEl = document.getElementById('authPasswordInput');
+
+            const email = emailEl ? emailEl.value.trim() : '';
+            const password = passEl ? passEl.value.trim() : '';
+
+            let ok = true;
+            if (!email.includes('@') || !email.includes('.')) {
+                emailEl.classList.add('error');
+                document.getElementById('authEmailError').style.display = 'block';
+                ok = false;
+            } else {
+                emailEl.classList.remove('error');
+                document.getElementById('authEmailError').style.display = 'none';
+            }
+
+            if (password.length < 6) {
+                passEl.classList.add('error');
+                document.getElementById('authPassError').style.display = 'block';
+                ok = false;
+            } else {
+                passEl.classList.remove('error');
+                document.getElementById('authPassError').style.display = 'none';
+            }
+
+            if (!ok) return;
+
+            const btn = document.getElementById('authSubmitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Logging in...';
+
+            try {
+                const data = await apiRequest('/api/auth/login', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password })
+                });
+                authState.isLoggedIn = true;
+                authState.token = data.token || '';
+                authState.userCode = data.user_code || '';
+                authState.name = data.full_name || email.split('@')[0];
+                authState.email = data.email || email;
+                authState.refCode = data.ref_code || buildRefCode(email);
+                saveAuthState();
+                syncAuthUI();
+                await refreshAccountData();
+                closeModal();
+                showToast(`Logged in as ${authState.email}`, 'success');
+            } catch (err) {
+                showToast(err.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Login';
+            }
+        }
+
+        function signOutAccount() {
+            authState.isLoggedIn = false;
+            authState.token = '';
+            availableBalance = 0.00;
+            lockedBalance = 0.00;
+            totalProfitEarned = 0.00;
+            totalInvestedAmount = 0.00;
+            completedCyclesCount = 0;
+            activeInvestmentsCount = 0;
+            TRANSACTIONS = [];
+            saveAuthState();
+            syncAuthUI();
+            syncBalanceUI();
+            renderHistory();
+            switchTab('home');
+            showToast('Signed out', 'info');
+        }
+
+        function copyText(text, msg) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => showToast(msg, 'success'));
+            } else {
+                showToast(msg, 'success');
+            }
+        }
+
+        // ================= NETWORK CONFIG: ALL MIN $5, ALL FEE $0 =================
+        const COINS = {
+            USDT_BEP20: {
+                symbol: 'USDT',
+                name: 'USDT BEP20',
+                network: 'BEP20',
+                networkDesc: 'BNB Smart Chain',
+                minNum: 5,
+                minDeposit: '$5.00',
+                confirmations: '15 Blocks (~45s)',
+                withdrawFeeNum: 0.00,
+                withdrawFeeText: '$0.00 (Free)',
+                depositAddress: '0x71C9A84E2B5F0918D4C6A3E7B92F1048C5A29E14',
+                logo: `<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#26A17B"/><path fill="#fff" d="M17.92 13.85v-2.6h4.6V7.5H9.47v3.75h4.6v2.6c-3.74.17-6.56.91-6.56 1.8 0 .89 2.82 1.63 6.56 1.8v6.43h3.85v-6.43c3.74-.17 6.55-.91 6.55-1.8 0-.89-2.81-1.63-6.55-1.8zm0 3.05v-.01c-.11.01-.66.04-1.89.04-.99 0-1.68-.03-1.93-.04v.01c-3.3-.15-5.77-.72-5.77-1.41 0-.69 2.47-1.26 5.77-1.41v2.25c.25.02.96.06 1.95.06 1.16 0 1.74-.04 1.87-.06v-2.25c3.29.15 5.75.72 5.75 1.41 0 .69-2.46 1.26-5.75 1.41z"/></svg>`
+            },
+            USDT_TRC20: {
+                symbol: 'USDT',
+                name: 'USDT TRC20',
+                network: 'TRC20',
+                networkDesc: 'Tron Network',
+                minNum: 5,
+                minDeposit: '$5.00',
+                confirmations: '20 Blocks (~1m)',
+                withdrawFeeNum: 0.00,
+                withdrawFeeText: '$0.00 (Free)',
+                depositAddress: 'TNPz84K9mW2xR7vL5nQ3yH6cB4dE8fG2tM9pX',
+                logo: `<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#26A17B"/><path fill="#fff" d="M17.92 13.85v-2.6h4.6V7.5H9.47v3.75h4.6v2.6c-3.74.17-6.56.91-6.56 1.8 0 .89 2.82 1.63 6.56 1.8v6.43h3.85v-6.43c3.74-.17 6.55-.91 6.55-1.8 0-.89-2.81-1.63-6.55-1.8zm0 3.05v-.01c-.11.01-.66.04-1.89.04-.99 0-1.68-.03-1.93-.04v.01c-3.3-.15-5.77-.72-5.77-1.41 0-.69 2.47-1.26 5.77-1.41v2.25c.25.02.96.06 1.95.06 1.16 0 1.74-.04 1.87-.06v-2.25c3.29.15 5.75.72 5.75 1.41 0 .69-2.46 1.26-5.75 1.41z"/></svg>`
+            },
+            BTC: {
+                symbol: 'BTC',
+                name: 'Bitcoin',
+                network: 'BTC',
+                networkDesc: 'Bitcoin Network',
+                minNum: 5,
+                minDeposit: '$5.00',
+                confirmations: '2 Blocks (~20m)',
+                withdrawFeeNum: 0.00,
+                withdrawFeeText: '$0.00 (Free)',
+                depositAddress: 'bc1q9x4m8p2v7w5n3k6y0h4c8b2d6f9g1t5r8e2w',
+                logo: `<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#F7931A"/><path fill="#fff" d="M22.5 14.3c.4-2.4-1.5-3.7-4-4.5l.8-3.2-2-.5-.8 3.2c-.5-.1-1-.2-1.5-.3l.8-3.2-2-.5-.8 3.2c-.4-.1-.8-.2-1.2-.3l-2.7-.7-.5 2.1s1.5.3 1.4.4c.8.2.9.7.9 1.1l-2.2 8.9c-.1.3-.4.7-1 .5 0 0-1.4-.4-1.4-.4l-1 2.3 2.6.7c.5.1.9.2 1.4.3l-.8 3.2 2 .5.8-3.2c.5.1 1 .3 1.5.4l-.8 3.2 2 .5.8-3.2c3.4.6 6 .4 7.1-2.7.9-2.5 0-3.9-1.9-4.8 1.3-.3 2.3-1.2 2.5-3zM17.7 20c-.6 2.5-4.8 1.1-6.2.8l1.1-4.4c1.4.3 5.7 1 5.1 3.6zm.6-5.8c-.6 2.3-4.1 1.1-5.2.8l1-4c1.1.3 4.8.8 4.2 3.2z"/></svg>`
+            },
+            BINANCE_PAY: {
+                symbol: 'BINANCE PAY',
+                name: 'Binance Pay',
+                network: 'Binance',
+                networkDesc: 'Instant Transfer',
+                minNum: 5,
+                minDeposit: '$5.00',
+                confirmations: 'Instant (0s)',
+                withdrawFeeNum: 0.00,
+                withdrawFeeText: '$0.00 (Free)',
+                depositAddress: 'PayID: 749208164 (TRONVEX)',
+                logo: `<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#F0B90B"/><path fill="#fff" d="M12.3 14.8l3.7-3.7 3.7 3.7 2.1-2.1L16 6.9l-5.8 5.8 2.1 2.1zm-3.7 3.7L6.5 16.4l2.1-2.1 2.1 2.1-2.1 2.1zM12.3 16l2.1-2.1 1.6 1.6-1.6 1.6-2.1-1.1zm3.7-3.7l3.7 3.7 3.7-3.7 2.1 2.1L16 25.1l-5.8-5.8 2.1-2.1 3.7-3.7zM19.7 16l2.1-2.1 2.1 2.1-2.1 2.1-2.1-2.1z"/></svg>`
+            }
+        };
+
+        const PAYMENT_METHODS = ['USDT_BEP20', 'USDT_TRC20', 'BTC', 'BINANCE_PAY'];
+        let TRANSACTIONS = [];
+
+        function formatAmount(tx) {
+            const amt = Number(tx.amount || 0);
+            if (tx.type === 'deposit' || tx.type === 'profit') return '+$' + amt.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            if (tx.type === 'withdraw' || tx.type === 'invest') return '-$' + amt.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            return '$' + amt.toFixed(2);
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('historyList');
+            if (!list) return;
+            if (!TRANSACTIONS || TRANSACTIONS.length === 0) {
+                list.innerHTML = `<div class="empty-state"><i data-lucide="inbox"></i><p>No transactions yet</p></div>`;
+                lucide.createIcons();
+                return;
+            }
+            let html = '';
+            TRANSACTIONS.forEach((tx, idx) => {
+                const iconMap = { deposit: 'arrow-down-to-line', withdraw: 'arrow-up-from-line', invest: 'trending-up', profit: 'dollar-sign' };
+                const isPos = (tx.type === 'deposit' || tx.type === 'profit');
+                const statusClass = ['completed', 'pending', 'rejected'].includes(tx.status) ? tx.status : 'pending';
+                html += `
+                    <div class="tx-card" onclick="requireAuth(() => openReceipt(${idx}))">
+                        <div class="tx-icon ${tx.type}"><i data-lucide="${iconMap[tx.type] || 'arrow-down-to-line'}"></i></div>
+                        <div class="tx-info">
+                            <div class="tx-title">${tx.title}</div>
+                            <div class="tx-meta">
+                                <span>${tx.method}</span>
+                                <span>·</span>
+                                <span>${tx.date}</span>
+                                <span class="tx-badge ${statusClass}">${tx.status}</span>
+                            </div>
+                        </div>
+                        <div class="tx-amount ${isPos ? 'positive' : 'negative'}">
+                            ${formatAmount(tx)}
+                            <small>Fee: $0.00</small>
+                        </div>
+                    </div>
+                `;
+            });
+            list.innerHTML = html;
+            lucide.createIcons();
+        }
+
+        // ================= TAB SWITCHING =================
+        function switchTab(tabName, el) {
+            document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+            document.getElementById('tab-' + tabName).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            if (el) el.classList.add('active');
+            else {
+                const target = document.querySelector(`.nav-item[data-tab="${tabName}"]`);
+                if (target) target.classList.add('active');
+            }
+            if (tabName === 'history') renderHistory();
+            if (tabName === 'profile') syncAuthUI();
+            if (tabName === 'stats') syncBalanceUI();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(updateSlider, 50);
+        }
+
+        // ================= TOAST =================
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast`;
+            let icon = 'info', color = 'var(--primary)';
+            if (type === 'success') { icon = 'check-circle'; toast.style.borderLeftColor = 'var(--success)'; }
+            else if (type === 'error') { icon = 'alert-circle'; color = 'var(--danger)'; toast.style.borderLeftColor = 'var(--danger)'; }
+            toast.innerHTML = `<i data-lucide="${icon}" style="color:${color}; width:18px; height:18px;"></i> <span>${message}</span>`;
+            container.appendChild(toast);
+            lucide.createIcons();
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+                setTimeout(() => toast.remove(), 400);
+            }, 3200);
+        }
+
+        // ================= MODAL =================
+        function openModal(html) {
+            const overlay = document.getElementById('modalOverlay');
+            document.getElementById('modalContent').innerHTML = html;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+        function closeModal() {
+            const overlay = document.getElementById('modalOverlay');
+            const content = document.getElementById('modalContent');
+            content.classList.remove('auth-pro-modal');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // ================= SLIDER =================
+        const slider = document.getElementById('plansSlider');
+        const wrapper = document.getElementById('plansWrapper');
+        let currentIndex = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startTranslate = 0;
+        let currentTranslate = 0;
+
+        function getVisible() {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1100) return 2;
+            return 3;
+        }
+        function getStep() {
+            const cards = document.querySelectorAll('.plan-card');
+            if (!cards.length) return 0;
+            return cards[0].offsetWidth + 14;
+        }
+        function getMaxIndex() {
+            const cards = document.querySelectorAll('.plan-card');
+            return Math.max(0, cards.length - getVisible());
+        }
+        function updateSlider() {
+            const cards = document.querySelectorAll('.plan-card');
+            if (!cards.length || !slider) return;
+            const maxIndex = getMaxIndex();
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            if (currentIndex < 0) currentIndex = 0;
+            currentTranslate = -currentIndex * getStep();
+            slider.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            slider.style.transform = `translateX(${currentTranslate}px)`;
+            renderDots(maxIndex);
+            updateArrows(maxIndex);
+        }
+        function renderDots(maxIndex) {
+            const dotsWrap = document.getElementById('sliderDots');
+            if (!dotsWrap) return;
+            dotsWrap.innerHTML = '';
+            for (let i = 0; i <= maxIndex; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot' + (i === currentIndex ? ' active' : '');
+                dot.onclick = () => { currentIndex = i; updateSlider(); };
+                dotsWrap.appendChild(dot);
+            }
+        }
+        function updateArrows(maxIndex) {
+            const prev = document.getElementById('prevArrow');
+            const next = document.getElementById('nextArrow');
+            if (prev) prev.disabled = currentIndex === 0;
+            if (next) next.disabled = currentIndex >= maxIndex;
+        }
+        function slidePlans(dir) {
+            const maxIndex = getMaxIndex();
+            currentIndex += dir;
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            updateSlider();
+        }
+        function onDragStart(e) {
+            isDragging = true;
+            startX = (e.type.includes('mouse')) ? e.pageX : e.touches[0].clientX;
+            startTranslate = currentTranslate;
+            slider.style.transition = 'none';
+        }
+        function onDragMove(e) {
+            if (!isDragging) return;
+            const x = (e.type.includes('mouse')) ? e.pageX : e.touches[0].clientX;
+            const diff = x - startX;
+            currentTranslate = startTranslate + diff;
+            slider.style.transform = `translateX(${currentTranslate}px)`;
+        }
+        function onDragEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            const movedBy = currentTranslate - (-currentIndex * getStep());
+            const threshold = getStep() * 0.2;
+            if (movedBy < -threshold) currentIndex++;
+            else if (movedBy > threshold) currentIndex--;
+            const maxIndex = getMaxIndex();
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            updateSlider();
+        }
+        if (wrapper) {
+            wrapper.addEventListener('mousedown', onDragStart);
+            window.addEventListener('mousemove', onDragMove);
+            window.addEventListener('mouseup', onDragEnd);
+            wrapper.addEventListener('touchstart', onDragStart, { passive: true });
+            wrapper.addEventListener('touchmove', onDragMove, { passive: true });
+            wrapper.addEventListener('touchend', onDragEnd);
+        }
+        window.addEventListener('resize', updateSlider);
+
+        // ================= PROFESSIONAL 2-COLUMN NETWORK GRID RENDERER =================
+        function renderNetworkGridPro(selectedKey, onSelectFnName) {
+            return PAYMENT_METHODS.map(key => {
+                const coin = COINS[key];
+                const active = key === selectedKey ? ' active' : '';
+                return `
+                    <div class="net-card-pro${active}" onclick="${onSelectFnName}('${key}')">
+                        <div class="net-card-top">
+                            <div class="net-card-left">
+                                <div class="network-logo">${coin.logo}</div>
+                                <div class="net-title-wrap">
+                                    <span class="net-name">${coin.name}</span>
+                                    <span class="net-chain">${coin.networkDesc}</span>
+                                </div>
+                            </div>
+                            <span class="net-check-dot">✓</span>
+                        </div>
+                        <div class="net-card-bottom">
+                            <span class="net-min-pill">Min $5</span>
+                            <span class="net-fee-pill">Fee $0</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ================= DEPOSIT MODAL (MIN $5 · FEE $0 · BACKEND VERIFIED) =================
+        let selectedPayMethod = 'USDT_BEP20';
+        let activeDepositAddress = COINS.USDT_BEP20.depositAddress;
+
+        function renderDepositAddressBox(key) {
+            const coin = COINS[key];
+            const addr = activeDepositAddress || coin.depositAddress;
+            return `
+                <div class="address-box">
+                    <div class="address-top">
+                        <span>${coin.networkDesc} Deposit Address</span>
+                        <small>${coin.confirmations}</small>
+                    </div>
+                    <div class="address-code-row">
+                        <div class="address-str" id="depAddrText">${addr}</div>
+                        <button class="copy-chip-btn" type="button" onclick="copyText('${addr}', '${coin.name} address copied!')">
+                            <i data-lucide="copy"></i> Copy
+                        </button>
+                    </div>
+                    <div class="meta-grid-2">
+                        <div class="meta-cell">
+                            <span class="mc-lbl">Minimum Deposit</span>
+                            <span class="mc-val">$5.00</span>
+                        </div>
+                        <div class="meta-cell">
+                            <span class="mc-lbl">Deposit Fee</span>
+                            <span class="mc-val">$0.00 (Free)</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectPayMethod(key) {
+            selectedPayMethod = key;
+            activeDepositAddress = COINS[key].depositAddress;
+            const grid = document.getElementById('payMethodGrid');
+            if (grid) grid.innerHTML = renderNetworkGridPro(key, 'selectPayMethod');
+            const addrBox = document.getElementById('depositAddressContainer');
+            if (addrBox) addrBox.innerHTML = renderDepositAddressBox(key);
+            const coin = COINS[key];
+            const warn = document.getElementById('depositWarning');
+            if (warn) {
+                warn.innerHTML = `<i data-lucide="shield-check"></i><div>Min deposit <strong>$5.00</strong> · Fee <strong>$0.00</strong>. Send only <strong>${coin.symbol}</strong> via <strong>${coin.networkDesc}</strong>. Verified automatically via backend webhook.</div>`;
+            }
+            lucide.createIcons();
+        }
+
+        function openDepositModal() {
+            selectedPayMethod = 'USDT_BEP20';
+            activeDepositAddress = COINS[selectedPayMethod].depositAddress;
+            openModal(`
+                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+                <div class="modal-header">
+                    <div class="modal-icon deposit"><i data-lucide="arrow-down-to-line"></i></div>
+                    <div class="modal-header-text">
+                        <h3>Deposit Funds</h3>
+                        <p>Min $5.00 · $0.00 Fee · Auto Verification</p>
+                    </div>
+                </div>
+                <div class="selector-label">1. Select Network</div>
+                <div class="network-grid-pro" id="payMethodGrid">${renderNetworkGridPro(selectedPayMethod, 'selectPayMethod')}</div>
+                <div id="depositAddressContainer">${renderDepositAddressBox(selectedPayMethod)}</div>
+                <div class="form-group">
+                    <label>2. Deposit Amount (Min $5.00)</label>
+                    <input type="number" id="depositAmount" class="form-control" placeholder="Min $5.00 (e.g. 25)" min="5" step="0.01">
+                    <div class="error-msg" id="depositError">Minimum deposit is $5.00.</div>
+                </div>
+                <div class="warning-box" id="depositWarning">
+                    <i data-lucide="shield-check"></i>
+                    <div>Min deposit <strong>$5.00</strong> · Fee <strong>$0.00</strong>. Send only <strong>${COINS[selectedPayMethod].symbol}</strong> via <strong>${COINS[selectedPayMethod].networkDesc}</strong>. Verified automatically via backend webhook.</div>
+                </div>
+                <button class="btn btn-primary btn-block" id="depositSubmitBtn" onclick="submitDeposit()">Create Deposit Order ($0 Fee)</button>
+            `);
+        }
+
+        async function submitDeposit() {
+            const input = document.getElementById('depositAmount');
+            const error = document.getElementById('depositError');
+            const amount = parseFloat(input.value);
+            if (isNaN(amount) || amount < 5) {
+                input.classList.add('error');
+                error.style.display = 'block';
+                return;
+            }
+            input.classList.remove('error');
+            error.style.display = 'none';
+
+            const btn = document.getElementById('depositSubmitBtn');
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(0,0,0,0.3);border-top-color:#030a12;border-radius:50%;animation:spin 1s linear infinite;"></span> Creating order...';
+            btn.disabled = true;
+
+            const coin = COINS[selectedPayMethod];
+            try {
+                const res = await apiRequest('/api/deposits/create', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        network: coin.network,
+                        method: coin.name,
+                        amount: amount
+                    })
+                });
+                if (res.address) {
+                    activeDepositAddress = res.address;
+                    const addrBox = document.getElementById('depositAddressContainer');
+                    if (addrBox) addrBox.innerHTML = renderDepositAddressBox(selectedPayMethod);
+                    lucide.createIcons();
+                }
+                await refreshAccountData();
+                closeModal();
+                showToast(`Order ${res.order_id || ''} created for $${amount.toFixed(2)}. Send payment to verify automatically.`, 'success');
+            } catch (err) {
+                showToast(err.message, 'error');
+            } finally {
+                btn.innerHTML = originalHtml;
+                btn.disabled = false;
+            }
+        }
+
+        // ================= WITHDRAW MODAL (MIN $5 · FEE $0 · BACKEND) =================
+        let wPayMethod = 'USDT_BEP20';
+
+        function updateWithdrawSummary() {
+            const amtEl = document.getElementById('withdrawAmount');
+            if (!amtEl) return;
+            const amount = parseFloat(amtEl.value) || 0;
+            const netEl = document.getElementById('wCalcNet');
+            if (netEl) netEl.textContent = '$' + amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function setMaxWithdraw() {
+            const amtInput = document.getElementById('withdrawAmount');
+            if (!amtInput) return;
+            amtInput.value = Number(availableBalance || 0).toFixed(2);
+            updateWithdrawSummary();
+        }
+
+        function selectWMethod(key) {
+            wPayMethod = key;
+            const grid = document.getElementById('wMethodGrid');
+            if (grid) grid.innerHTML = renderNetworkGridPro(key, 'selectWMethod');
+            updateWithdrawSummary();
+            lucide.createIcons();
+        }
+
+        function openWithdrawModal() {
+            wPayMethod = 'USDT_BEP20';
+            openModal(`
+                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+                <div class="modal-header">
+                    <div class="modal-icon withdraw"><i data-lucide="arrow-up-from-line"></i></div>
+                    <div class="modal-header-text">
+                        <h3>Withdraw Funds</h3>
+                        <p>Min $5.00 · $0.00 Fee across all networks</p>
+                    </div>
+                </div>
+                <div style="background:rgba(0,136,255,0.08); margin-bottom:14px; padding:11px 14px; border-radius:10px; border:1px solid rgba(0,136,255,0.22); font-size:0.78rem; display:flex; justify-content:space-between; align-items:center;">
+                    <span>Available Balance</span>
+                    <strong style="color:var(--primary); font-size:0.88rem;">$${Number(availableBalance || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong>
+                </div>
+                <div class="selector-label">1. Select Network</div>
+                <div class="network-grid-pro" id="wMethodGrid">${renderNetworkGridPro(wPayMethod, 'selectWMethod')}</div>
+                <div class="form-group">
+                    <label>
+                        <span>2. Withdrawal Amount (Min $5.00)</span>
+                        <span class="max-btn" onclick="setMaxWithdraw()">MAX</span>
+                    </label>
+                    <input type="number" id="withdrawAmount" class="form-control" placeholder="Min $5.00" min="5" step="0.01" oninput="updateWithdrawSummary()">
+                    <div class="error-msg" id="withdrawError">Minimum withdrawal is $5.00 (up to available balance).</div>
+                </div>
+                <div class="form-group">
+                    <label>3. Destination Wallet / Pay ID</label>
+                    <input type="text" id="withdrawAddress" class="form-control" placeholder="Enter destination wallet address or Pay ID">
+                    <div class="error-msg" id="addressError">Please enter a valid destination address.</div>
+                </div>
+                <div class="calc-box">
+                    <div class="calc-row"><span class="lbl">Withdrawal Fee</span><span class="val" style="color:var(--primary);">$0.00 (Free)</span></div>
+                    <div class="calc-row total"><span class="lbl">You Will Receive</span><span class="val" id="wCalcNet">$0.00</span></div>
+                </div>
+                <button class="btn btn-primary btn-block" id="withdrawSubmitBtn" onclick="submitWithdraw()">Submit Withdrawal ($0 Fee)</button>
+            `);
+        }
+
+        async function submitWithdraw() {
+            const amountInput = document.getElementById('withdrawAmount');
+            const addressInput = document.getElementById('withdrawAddress');
+            const amountError = document.getElementById('withdrawError');
+            const addressError = document.getElementById('addressError');
+            const amount = parseFloat(amountInput.value);
+            const address = addressInput.value.trim();
+            let valid = true;
+
+            if (isNaN(amount) || amount < 5 || amount > availableBalance) {
+                amountInput.classList.add('error');
+                amountError.style.display = 'block';
+                valid = false;
+            } else {
+                amountInput.classList.remove('error');
+                amountError.style.display = 'none';
+            }
+
+            if (address.length < 6) {
+                addressInput.classList.add('error');
+                addressError.style.display = 'block';
+                valid = false;
+            } else {
+                addressInput.classList.remove('error');
+                addressError.style.display = 'none';
+            }
+
+            if (!valid) return;
+
+            const btn = document.getElementById('withdrawSubmitBtn');
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(0,0,0,0.3);border-top-color:#030a12;border-radius:50%;animation:spin 1s linear infinite;"></span> Processing...';
+            btn.disabled = true;
+
+            const coin = COINS[wPayMethod];
+            try {
+                await apiRequest('/api/withdrawals/create', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        network: coin.network,
+                        method: coin.name,
+                        amount: amount,
+                        address: address
+                    })
+                });
+                await refreshAccountData();
+                closeModal();
+                showToast(`Withdrawal of $${amount.toFixed(2)} (${coin.name}) submitted · Fee $0.00`, 'success');
+            } catch (err) {
+                showToast(err.message, 'error');
+            } finally {
+                btn.innerHTML = originalHtml;
+                btn.disabled = false;
+            }
+        }
+
+        // ================= INVEST MODAL (BACKEND) =================
+        function openInvestModal(name, min, max) {
+            openModal(`
+                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+                <div class="modal-header">
+                    <div class="modal-icon invest"><i data-lucide="trending-up"></i></div>
+                    <div class="modal-header-text">
+                        <h3>Invest in ${name}</h3>
+                        <p>$${min.toLocaleString()} – $${max.toLocaleString()} · $0 Fee</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Investment Amount (USDT)</label>
+                    <input type="number" id="investAmount" class="form-control" placeholder="Min $${min} – Max $${max}" min="${min}" max="${max}" oninput="updateInvestCalc()">
+                    <div class="error-msg" id="investError">Amount must be between $${min} and $${max}.</div>
+                </div>
+                <div class="calc-box">
+                    <div class="calc-row"><span class="lbl">Projected Profit (5 Days)</span><span class="val text-gold" id="calcProfit">$0.00</span></div>
+                    <div class="calc-row"><span class="lbl">Projected Total</span><span class="val" id="calcTotal">$0.00</span></div>
+                </div>
+                <button class="btn btn-primary btn-block" id="investSubmitBtn" onclick="submitInvestment('${name}', ${min}, ${max})">Confirm Investment</button>
+            `);
+        }
+
+        function updateInvestCalc() {
+            const amount = parseFloat(document.getElementById('investAmount').value) || 0;
+            const profit = amount * 1.5;
+            document.getElementById('calcProfit').textContent = '$' + profit.toFixed(2);
+            document.getElementById('calcTotal').textContent = '$' + (amount + profit).toFixed(2);
+        }
+
+        async function submitInvestment(planName, min, max) {
+            const input = document.getElementById('investAmount');
+            const error = document.getElementById('investError');
+            const amount = parseFloat(input.value);
+            if (isNaN(amount) || amount < min || amount > max) {
+                input.classList.add('error');
+                error.style.display = 'block';
+                return;
+            }
+            input.classList.remove('error');
+            error.style.display = 'none';
+
+            const btn = document.getElementById('investSubmitBtn');
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(0,0,0,0.3);border-top-color:#030a12;border-radius:50%;animation:spin 1s linear infinite;"></span> Processing...';
+            btn.disabled = true;
+
+            try {
+                await apiRequest('/api/investments/create', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        plan: planName,
+                        amount: amount
+                    })
+                });
+                await refreshAccountData();
+                closeModal();
+                showToast(`Invested $${amount.toFixed(2)} in ${planName}!`, 'success');
+            } catch (err) {
+                showToast(err.message, 'error');
+            } finally {
+                btn.innerHTML = originalHtml;
+                btn.disabled = false;
+            }
+        }
+
+        // ================= RECEIPT MODAL =================
+        function openReceipt(index) {
+            const tx = TRANSACTIONS[index];
+            if (!tx) return;
+            const isPos = (tx.type === 'deposit' || tx.type === 'profit');
+            const typeLabel = { deposit: 'Deposit', withdraw: 'Withdrawal', invest: 'Investment', profit: 'Profit Payout' }[tx.type] || tx.type;
+            const statusIcon = tx.status === 'completed' ? 'check-circle' : 'clock';
+            const statusClass = tx.status === 'completed' ? 'completed' : 'pending';
+
+            openModal(`
+                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+                <div class="receipt">
+                    <div class="receipt-header">
+                        <div class="receipt-logo">
+                            <div class="logo-icon" style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#00ffaa,#0088ff);display:flex;align-items:center;justify-content:center;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#030a12" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            TRONVEX
+                        </div>
+                        <div class="receipt-status ${statusClass}">
+                            <i data-lucide="${statusIcon}"></i>
+                            ${String(tx.status || 'pending').toUpperCase()}
+                        </div>
+                    </div>
+                    <div class="receipt-amount">
+                        <div class="val ${isPos ? 'positive' : ''}">${formatAmount(tx)}</div>
+                        <div class="sub">${typeLabel} · ${tx.method}</div>
+                    </div>
+                    <div class="receipt-details">
+                        <div class="receipt-row"><span class="lbl">Transaction ID</span><span class="val">${tx.id}</span></div>
+                        <div class="receipt-row"><span class="lbl">Date & Time</span><span class="val">${tx.date}</span></div>
+                        <div class="receipt-row"><span class="lbl">Method</span><span class="val">${tx.method}</span></div>
+                        <div class="receipt-row"><span class="lbl">Network Fee</span><span class="val" style="color:var(--primary);">$0.00</span></div>
+                        <div class="receipt-row"><span class="lbl">Address</span><span class="val mono">${tx.address || '-'}</span></div>
+                        <div class="receipt-row"><span class="lbl">TX Hash</span><span class="val mono">${tx.txHash || '-'}</span></div>
+                    </div>
+                    <div class="receipt-actions">
+                        <button class="btn btn-outline btn-block" onclick="closeModal()">Close</button>
+                        <button class="btn btn-primary btn-block" onclick="copyReceipt(${index})"><i data-lucide="copy" style="width:14px;height:14px;"></i> Copy</button>
+                    </div>
+                </div>
+            `);
+        }
+
+        function copyReceipt(index) {
+            const tx = TRANSACTIONS[index];
+            if (!tx) return;
+            const text = `TRONVEX Receipt\nTransaction: ${tx.id}\nType: ${tx.type}\nAmount: ${formatAmount(tx)}\nMethod: ${tx.method}\nFee: $0.00\nDate: ${tx.date}\nStatus: ${tx.status}`;
+            copyText(text, 'Receipt copied!');
+        }
+
+        // ================= INIT =================
+        window.addEventListener('load', async () => {
+            loadAuthState();
+            syncAuthUI();
+            syncBalanceUI();
+            renderHistory();
+            updateSlider();
+            if (authState.isLoggedIn && API_BASE_URL) {
+                await refreshAccountData();
+            }
+        });
+    </script>
+</body>
+</html>
