@@ -75,7 +75,7 @@
             border-radius: 10px; display: flex; align-items: center; justify-content: center;
         }
         .logo-icon svg { color: var(--text-dark); width: 22px; height: 22px; }
-        .header-actions { display: flex; align-items: center; gap: 10px; }
+        .header-actions { display: flex; align-items: center; gap: 8px; }
         .icon-btn {
             position: relative; width: 40px; height: 40px; border-radius: 50%;
             background: var(--bg-glass); border: 1px solid var(--border-dim);
@@ -84,6 +84,12 @@
         }
         .icon-btn:hover { background: rgba(255,255,255,0.08); color: var(--text-main); }
         .icon-btn svg { width: 18px; height: 18px; }
+        .notif-dot {
+            position: absolute; top: 7px; right: 7px; width: 8px; height: 8px;
+            border-radius: 50%; background: var(--primary); box-shadow: 0 0 8px var(--primary);
+            display: none;
+        }
+        .notif-dot.show { display: block; }
         .avatar { width: 38px; height: 38px; border-radius: 50%; overflow: hidden; border: 2px solid var(--primary-dim); cursor: pointer; flex-shrink: 0; }
         .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -105,6 +111,16 @@
             transition: var(--transition);
         }
         .auth-pill-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+        .admin-pill-btn {
+            display: none; align-items: center; gap: 6px;
+            padding: 8px 13px; border-radius: 50px;
+            background: rgba(255, 187, 0, 0.14); border: 1px solid rgba(255, 187, 0, 0.4);
+            color: var(--gold); font-size: 0.72rem; font-weight: 800;
+            transition: var(--transition);
+        }
+        .admin-pill-btn.visible { display: inline-flex; }
+        .admin-pill-btn:hover { background: var(--gold); color: var(--text-dark); }
 
         .tab-section { display: none; animation: fadeIn 0.3s ease; }
         .tab-section.active { display: block; }
@@ -739,7 +755,7 @@
             border-radius: 9px; padding: 8px 10px;
         }
         .inst-addr-code {
-            font-family: 'Courier New', monospace; font-size: 0.74rem; font-weight: 700;
+            font-family: 'Courier New', monospace; font-size: 0.72rem; font-weight: 700;
             color: #ffffff; word-break: break-all; flex: 1;
         }
         .inst-chip-btn {
@@ -813,6 +829,90 @@
         .auth-title-block { margin-bottom: 18px; }
         .auth-title-block h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 4px; }
         .auth-title-block p { font-size: 0.8rem; color: var(--text-muted); }
+
+        .pass-wrap { position: relative; display: flex; align-items: center; }
+        .pass-wrap .form-control { padding-right: 42px; }
+        .eye-toggle-btn {
+            position: absolute; right: 10px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted); transition: var(--transition);
+        }
+        .eye-toggle-btn:hover { color: var(--primary); background: rgba(255,255,255,0.05); }
+        .eye-toggle-btn svg { width: 16px; height: 16px; }
+
+        .btn-spinner {
+            display: inline-block; width: 15px; height: 15px;
+            border: 2px solid rgba(3, 10, 18, 0.25); border-top-color: #030a12;
+            border-radius: 50%; animation: spin 0.75s linear infinite;
+        }
+
+        .transfer-anim-box {
+            text-align: center; padding: 18px 12px;
+            background: rgba(0,0,0,0.35); border: 1px solid rgba(0,255,170,0.22);
+            border-radius: 16px; margin-bottom: 12px;
+        }
+        .transfer-pulse-ring {
+            width: 58px; height: 58px; margin: 0 auto 12px; border-radius: 50%;
+            background: rgba(0,255,170,0.12); border: 2px solid var(--primary);
+            display: flex; align-items: center; justify-content: center; color: var(--primary);
+            animation: pulseLive 1.2s infinite;
+        }
+        .transfer-steps-mini {
+            display: flex; flex-direction: column; gap: 6px; text-align: left;
+            margin-top: 12px; font-size: 0.72rem; color: var(--text-muted);
+        }
+        .transfer-step-line { display: flex; align-items: center; gap: 7px; }
+        .transfer-step-line.active { color: var(--primary); font-weight: 700; }
+
+        .admin-item-card {
+            background: rgba(0,0,0,0.32); border: 1px solid var(--border-dim);
+            border-radius: 14px; padding: 12px; margin-bottom: 10px;
+        }
+        .admin-item-top {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            gap: 8px; margin-bottom: 8px; font-size: 0.76rem;
+        }
+        .admin-actions-row {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px;
+        }
+        .btn-approve {
+            padding: 8px 10px; border-radius: 9px; font-size: 0.72rem; font-weight: 800;
+            background: rgba(0,255,170,0.16); color: var(--primary); border: 1px solid rgba(0,255,170,0.35);
+        }
+        .btn-approve:hover { background: var(--primary); color: var(--text-dark); }
+        .btn-reject {
+            padding: 8px 10px; border-radius: 9px; font-size: 0.72rem; font-weight: 800;
+            background: rgba(255,68,102,0.16); color: var(--danger); border: 1px solid rgba(255,68,102,0.35);
+        }
+        .btn-reject:hover { background: var(--danger); color: #fff; }
+
+        .sms-alert-overlay {
+            position: fixed; top: 18px; left: 50%; transform: translateX(-50%) translateY(-130%);
+            z-index: 3000; width: calc(100% - 28px); max-width: 430px;
+            background: linear-gradient(135deg, #0b2239 0%, #071524 100%);
+            border: 1px solid rgba(0, 255, 170, 0.35);
+            border-radius: 18px; padding: 14px 16px;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.75);
+            transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+        .sms-alert-overlay.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        .sms-alert-overlay.rejected-sms { border-color: rgba(255, 68, 102, 0.45); }
+        .sms-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .sms-sender { display: flex; align-items: center; gap: 7px; font-size: 0.72rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.6px; }
+        .sms-alert-overlay.rejected-sms .sms-sender { color: var(--danger); }
+        .sms-time { font-size: 0.65rem; color: var(--text-muted); }
+        .sms-title { font-size: 0.88rem; font-weight: 800; color: #fff; margin-bottom: 3px; }
+        .sms-body { font-size: 0.76rem; color: #c7d9ea; line-height: 1.45; }
+
+        .notif-list { display: flex; flex-direction: column; gap: 9px; max-height: 360px; overflow-y: auto; }
+        .notif-card {
+            background: rgba(0,0,0,0.3); border: 1px solid var(--border-dim);
+            border-radius: 12px; padding: 11px 13px;
+        }
+        .notif-card-title { font-size: 0.8rem; font-weight: 800; color: #fff; margin-bottom: 2px; }
+        .notif-card-msg { font-size: 0.72rem; color: var(--text-muted); }
+        .notif-card-time { font-size: 0.62rem; color: var(--primary); margin-top: 4px; display: block; }
 
         .modal-overlay.active .modal { transform: translateY(0) scale(1); }
         .modal-close { 
@@ -972,8 +1072,8 @@
             .logo { font-size: 1.05rem; }
             .logo-icon { width: 32px; height: 32px; }
             .logo-icon svg { width: 18px; height: 18px; }
-            .auth-pill-btn span, .auth-pill-outline span { display: none; }
-            .auth-pill-btn, .auth-pill-outline { padding: 8px; border-radius: 50%; width: 34px; height: 34px; justify-content: center; }
+            .auth-pill-btn span, .auth-pill-outline span, .admin-pill-btn span { display: none; }
+            .auth-pill-btn, .auth-pill-outline, .admin-pill-btn { padding: 8px; border-radius: 50%; width: 34px; height: 34px; justify-content: center; }
             .hero-professional { padding: 24px 20px; margin: 20px 0 16px; }
             .hero-professional h1 { font-size: 1.6rem; }
             .hero-stats { grid-template-columns: 1fr; gap: 10px; }
@@ -1010,6 +1110,15 @@
 </head>
 <body>
 
+    <div class="sms-alert-overlay" id="smsPopupBanner">
+        <div class="sms-top">
+            <div class="sms-sender"><i data-lucide="message-square-text" style="width:14px;height:14px;"></i> <span id="smsSenderLabel">TRONVEX SMS</span></div>
+            <span class="sms-time" id="smsTimeLabel">Just now</span>
+        </div>
+        <div class="sms-title" id="smsTitleText">Notification</div>
+        <div class="sms-body" id="smsBodyText"></div>
+    </div>
+
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">
@@ -1017,6 +1126,10 @@
                 TRONVEX
             </a>
             <div class="header-actions">
+                <button class="admin-pill-btn" id="headerAdminBtn" onclick="openAdminPanelModal()">
+                    <i data-lucide="shield-alert" style="width:14px;height:14px;"></i>
+                    <span>Admin Panel</span>
+                </button>
                 <button class="auth-pill-outline" id="headerSignUpBtn" onclick="openAuthModal('signup')">
                     <i data-lucide="user-plus" style="width:14px;height:14px;"></i>
                     <span>Sign Up</span>
@@ -1025,7 +1138,10 @@
                     <i data-lucide="log-in"></i>
                     <span id="headerAuthLabel">Login</span>
                 </button>
-                <button class="icon-btn" onclick="requireAuth(() => showToast('No new notifications', 'info'))"><i data-lucide="bell"></i></button>
+                <button class="icon-btn" onclick="openNotificationsModal()">
+                    <i data-lucide="bell"></i>
+                    <span class="notif-dot" id="notifDot"></span>
+                </button>
                 <div class="avatar" onclick="requireAuth(() => switchTab('profile'))">
                     <img id="headerAvatarImg" src="https://ui-avatars.com/api/?name=Guest+User&background=00ffaa&color=030a12&bold=true" alt="User">
                 </div>
@@ -1039,7 +1155,7 @@
                 <div class="balance-card">
                     <div class="balance-top">
                         <div class="balance-label"><i data-lucide="wallet"></i> Total Balance</div>
-                        <div class="balance-chip"><i data-lucide="shield-check"></i> Min $5</div>
+                        <div class="balance-chip"><i data-lucide="shield-check"></i> Min $5 · 4 Networks</div>
                     </div>
                     <div class="balance-amount">
                         <div class="main" id="totalBalanceMain">$0<span>.00</span></div>
@@ -1189,8 +1305,8 @@
             <div class="hero-professional">
                 <div class="hero-content">
                     <div class="hero-tag"><i data-lucide="shield-check"></i> Trusted Platform</div>
-                    <h1>Grow your <span class="text-gradient">USDT</span><br>with confidence</h1>
-                    <p>Multi-network USDT & TRX settlements · $5 minimum across all networks · Fixed 5-day cycles.</p>
+                    <h1>Grow your <span class="text-gradient">USDT & TON</span><br>with confidence</h1>
+                    <p>4 supported networks (USDT BEP20, USDT TRC20, USDT ERC20, TON) · $5 minimum · Fixed 5-day cycles.</p>
                     <div class="hero-stats">
                         <div class="hero-stat-item">
                             <div class="hero-stat-icon"><i data-lucide="trending-up"></i></div>
@@ -1220,11 +1336,11 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="lock"></i></div>
-                    <div class="feature-text"><h4>Institutional Security</h4><p>Multi-sig cold storage & 256-bit encryption.</p></div>
+                    <div class="feature-text"><h4>Institutional Security</h4><p>Direct wallet settlements & encrypted account tracking.</p></div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="zap"></i></div>
-                    <div class="feature-text"><h4>Fast Settlements</h4><p>Deposit and withdraw starting from $5 across supported networks.</p></div>
+                    <div class="feature-text"><h4>4 Dedicated Networks</h4><p>USDT BEP20, USDT TRC20, USDT ERC20 & TON from $5.</p></div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="headphones"></i></div>
@@ -1276,7 +1392,7 @@
             <div class="section-header">
                 <div class="section-title-wrap">
                     <div class="section-icon"><i data-lucide="history"></i></div>
-                    <div class="section-title"><h2>Transaction History</h2><p>All your deposits, withdrawals & investments</p></div>
+                    <div class="section-title"><h2>Transaction History</h2><p>Pending, completed & rejected records</p></div>
                 </div>
             </div>
             <div class="history-list" id="historyList"></div>
@@ -1316,7 +1432,7 @@
             <div class="section-header">
                 <div class="section-title-wrap">
                     <div class="section-icon"><i data-lucide="user"></i></div>
-                    <div class="section-title"><h2>Profile</h2><p>Name, email & referral link</p></div>
+                    <div class="section-title"><h2>Profile</h2><p>User ID, name, email & referral link</p></div>
                 </div>
                 <button class="btn btn-outline btn-sm" onclick="openAuthModal('login')">
                     <i data-lucide="refresh-cw" style="width:13px;height:13px;"></i> Switch Account
@@ -1335,6 +1451,19 @@
                 </div>
 
                 <div class="mp-info-list">
+                    <div class="mp-field-box">
+                        <div class="mp-field-left">
+                            <div class="mp-field-icon"><i data-lucide="fingerprint"></i></div>
+                            <div class="mp-field-text">
+                                <span class="mp-field-label">Unique User ID</span>
+                                <span class="mp-field-value mono" id="profileUserIdValue">TVX-GUEST00</span>
+                            </div>
+                        </div>
+                        <button class="mp-copy-btn" type="button" onclick="copyText(document.getElementById('profileUserIdValue').textContent, 'User ID copied!')">
+                            <i data-lucide="copy"></i> Copy
+                        </button>
+                    </div>
+
                     <div class="mp-field-box">
                         <div class="mp-field-left">
                             <div class="mp-field-icon"><i data-lucide="user"></i></div>
@@ -1418,10 +1547,20 @@
         lucide.createIcons();
 
         const API_BASE_URL = 'https://tronvex-backend.onrender.com';
-        const DIRECT_GATEWAY_URL = 'https://nowpayments.io/payment/?iid=4719687929';
-        const ALLOWED_4_NETWORKS = ['usdt_trc20', 'usdt_bep20', 'usdt_erc20', 'trx'];
+        const ALLOWED_4_NETWORKS = ['usdt_bep20', 'usdt_trc20', 'usdt_erc20', 'ton'];
         const DEPOSIT_TIMEOUT_MS = 5 * 60 * 1000;
         const PLAN_DAYS = 5;
+        const ADMIN_EMAIL = 'admin@tronvex.online';
+
+        const USER_WALLET_ADDRESSES = {
+            usdt_bep20: '0xe4484af8794b0fe2eccf433f7da7ac81935fc4a0',
+            usdt_trc20: 'TLPVBmQnS6VTV7MwzLzYy7EjUKqsKob7hs',
+            usdt_erc20: '0xe4484af8794b0fe2eccf433f7da7ac81935fc4a0',
+            ton: 'UQBGo3k-EhMubMv4h3RqHszdcJdqoxttvZnuwDvPHbk8jl6P'
+        };
+
+        const DB_STORAGE_KEY = 'tronvex_database_v1';
+        const AUTH_STORAGE_KEY = 'tronvex_real_session_v1';
 
         let availableBalance = 0.00;
         let lockedBalance = 0.00;
@@ -1431,104 +1570,25 @@
         let activeInvestmentsCount = 0;
 
         let ACTIVE_INVESTMENTS = [];
+        let TRANSACTIONS = [];
+        let ADMIN_DEPOSIT_REQUESTS = [];
+        let USER_NOTIFICATIONS = [];
         let liveEarnTimerInterval = null;
+        let smsPopupTimeout = null;
 
-        let otpCooldownUntil = 0;
-        let otpTimerInterval = null;
-        let otpSendingInProgress = false;
-
-        let forgotOtpCooldownUntil = 0;
-        let forgotOtpTimerInterval = null;
-        let forgotOtpSendingInProgress = false;
-
-        function maskAddressShort(addr) {
-            if (!addr) return 'Awaiting Gateway Address';
-            if (addr.length <= 10) return addr;
-            return addr.slice(0, 6) + '***' + addr.slice(-4);
-        }
-
-        function getOtpRemainingSeconds() {
-            return Math.max(0, Math.ceil((otpCooldownUntil - Date.now()) / 1000));
-        }
-
-        function updateOtpBtnUI() {
-            const otpBtn = document.getElementById('sendOtpBtn');
-            if (!otpBtn) return;
-            const rem = getOtpRemainingSeconds();
-            if (rem > 0) {
-                otpBtn.textContent = `Resend (${rem}s)`;
-                otpBtn.classList.add('disabled-timer');
-                otpBtn.setAttribute('aria-disabled', 'true');
-            } else if (otpSendingInProgress) {
-                otpBtn.textContent = 'Sending...';
-                otpBtn.classList.add('disabled-timer');
-                otpBtn.setAttribute('aria-disabled', 'true');
-            } else {
-                otpBtn.textContent = 'Send Code';
-                otpBtn.classList.remove('disabled-timer');
-                otpBtn.setAttribute('aria-disabled', 'false');
-            }
-        }
-
-        function startOtpCooldown(seconds = 60) {
-            otpCooldownUntil = Date.now() + seconds * 1000;
-            updateOtpBtnUI();
-            if (otpTimerInterval) clearInterval(otpTimerInterval);
-            otpTimerInterval = setInterval(() => {
-                updateOtpBtnUI();
-                if (getOtpRemainingSeconds() <= 0 && !otpSendingInProgress) {
-                    clearInterval(otpTimerInterval);
-                    otpTimerInterval = null;
-                }
-            }, 250);
-        }
-
-        function getForgotOtpRemainingSeconds() {
-            return Math.max(0, Math.ceil((forgotOtpCooldownUntil - Date.now()) / 1000));
-        }
-
-        function updateForgotOtpBtnUI() {
-            const otpBtn = document.getElementById('sendForgotOtpBtn');
-            if (!otpBtn) return;
-            const rem = getForgotOtpRemainingSeconds();
-            if (rem > 0) {
-                otpBtn.textContent = `Resend (${rem}s)`;
-                otpBtn.classList.add('disabled-timer');
-                otpBtn.setAttribute('aria-disabled', 'true');
-            } else if (forgotOtpSendingInProgress) {
-                otpBtn.textContent = 'Sending...';
-                otpBtn.classList.add('disabled-timer');
-                otpBtn.setAttribute('aria-disabled', 'true');
-            } else {
-                otpBtn.textContent = 'Send Code';
-                otpBtn.classList.remove('disabled-timer');
-                otpBtn.setAttribute('aria-disabled', 'false');
-            }
-        }
-
-        function startForgotOtpCooldown(seconds = 60) {
-            forgotOtpCooldownUntil = Date.now() + seconds * 1000;
-            updateForgotOtpBtnUI();
-            if (forgotOtpTimerInterval) clearInterval(forgotOtpTimerInterval);
-            forgotOtpTimerInterval = setInterval(() => {
-                updateForgotOtpBtnUI();
-                if (getForgotOtpRemainingSeconds() <= 0 && !forgotOtpSendingInProgress) {
-                    clearInterval(forgotOtpTimerInterval);
-                    forgotOtpTimerInterval = null;
-                }
-            }, 250);
-        }
-
-        const AUTH_STORAGE_KEY = 'tronvex_real_session_v1';
         let authState = {
             isLoggedIn: false,
             token: '',
-            userCode: '',
+            userId: '',
             name: '',
             email: '',
             refCode: 'GUEST01',
-            otpSent: false
+            isAdmin: false
         };
+
+        function generateUniqueUserId() {
+            return 'TVX-' + Math.floor(100000 + Math.random() * 900000);
+        }
 
         function buildRefCode(email) {
             const prefix = (email.split('@')[0] || 'USER')
@@ -1546,16 +1606,45 @@
             return `${cleanUrl}?ref=${authState.refCode || 'GUEST01'}`;
         }
 
+        function loadDatabase() {
+            try {
+                const raw = localStorage.getItem(DB_STORAGE_KEY);
+                if (!raw) return;
+                const db = JSON.parse(raw);
+                if (Array.isArray(db.transactions)) TRANSACTIONS = db.transactions;
+                if (Array.isArray(db.adminRequests)) ADMIN_DEPOSIT_REQUESTS = db.adminRequests;
+                if (Array.isArray(db.notifications)) USER_NOTIFICATIONS = db.notifications;
+                if (Array.isArray(db.activeInvestments)) ACTIVE_INVESTMENTS = db.activeInvestments;
+                if (typeof db.availableBalance === 'number') availableBalance = db.availableBalance;
+                if (typeof db.lockedBalance === 'number') lockedBalance = db.lockedBalance;
+                if (typeof db.totalProfitEarned === 'number') totalProfitEarned = db.totalProfitEarned;
+                if (typeof db.totalInvestedAmount === 'number') totalInvestedAmount = db.totalInvestedAmount;
+                if (typeof db.completedCyclesCount === 'number') completedCyclesCount = db.completedCyclesCount;
+                activeInvestmentsCount = ACTIVE_INVESTMENTS.length;
+            } catch (e) {}
+        }
+
+        function saveDatabase() {
+            try {
+                localStorage.setItem(DB_STORAGE_KEY, JSON.stringify({
+                    userId: authState.userId,
+                    email: authState.email,
+                    availableBalance,
+                    lockedBalance,
+                    totalProfitEarned,
+                    totalInvestedAmount,
+                    completedCyclesCount,
+                    activeInvestments: ACTIVE_INVESTMENTS,
+                    transactions: TRANSACTIONS,
+                    adminRequests: ADMIN_DEPOSIT_REQUESTS,
+                    notifications: USER_NOTIFICATIONS
+                }));
+            } catch (e) {}
+        }
+
         function saveAuthState() {
             try {
-                localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify({
-                    isLoggedIn: authState.isLoggedIn,
-                    token: authState.token,
-                    userCode: authState.userCode,
-                    name: authState.name,
-                    email: authState.email,
-                    refCode: authState.refCode
-                }));
+                localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(authState));
             } catch (e) {}
         }
 
@@ -1569,21 +1658,83 @@
             } catch (e) {}
         }
 
-        async function apiRequest(path, options = {}) {
-            if (!API_BASE_URL) {
-                throw new Error('Backend URL not configured yet.');
+        function triggerSmsAlert(title, body, isRejected = false) {
+            const banner = document.getElementById('smsPopupBanner');
+            const sender = document.getElementById('smsSenderLabel');
+            const timeEl = document.getElementById('smsTimeLabel');
+            const titleEl = document.getElementById('smsTitleText');
+            const bodyEl = document.getElementById('smsBodyText');
+            if (!banner || !titleEl || !bodyEl) return;
+
+            sender.textContent = isRejected ? 'TRONVEX SMS · REJECTED' : 'TRONVEX SMS · VERIFIED';
+            timeEl.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            titleEl.textContent = title;
+            bodyEl.textContent = body;
+
+            banner.classList.toggle('rejected-sms', Boolean(isRejected));
+            banner.classList.add('show');
+            lucide.createIcons();
+
+            if (smsPopupTimeout) clearTimeout(smsPopupTimeout);
+            smsPopupTimeout = setTimeout(() => {
+                banner.classList.remove('show');
+            }, 5500);
+        }
+
+        function pushNotification(title, message, isSms = false, isRejected = false) {
+            USER_NOTIFICATIONS.unshift({
+                id: 'NTF-' + Date.now(),
+                title,
+                message,
+                time: new Date().toLocaleString()
+            });
+            const dot = document.getElementById('notifDot');
+            if (dot) dot.classList.add('show');
+            saveDatabase();
+            if (isSms) {
+                triggerSmsAlert(title, message, isRejected);
             }
+        }
+
+        function openNotificationsModal() {
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('wallet-inst-modal');
+
+            const dot = document.getElementById('notifDot');
+            if (dot) dot.classList.remove('show');
+
+            const itemsHtml = USER_NOTIFICATIONS.length
+                ? USER_NOTIFICATIONS.map(n => `
+                    <div class="notif-card">
+                        <div class="notif-card-title">${n.title}</div>
+                        <div class="notif-card-msg">${n.message}</div>
+                        <span class="notif-card-time">${n.time}</span>
+                    </div>
+                `).join('')
+                : `<div class="empty-state"><i data-lucide="bell-off"></i><p>No notifications yet</p></div>`;
+
+            openModal(`
+                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+                <div class="modal-header">
+                    <div class="modal-icon invest"><i data-lucide="bell"></i></div>
+                    <div class="modal-header-text">
+                        <h3>Notifications</h3>
+                        <p>Deposit, withdrawal & investment alerts</p>
+                    </div>
+                </div>
+                <div class="notif-list">${itemsHtml}</div>
+            `);
+        }
+
+        async function apiRequest(path, options = {}) {
+            if (!API_BASE_URL) throw new Error('Backend URL not configured.');
             const headers = {
                 'Content-Type': 'application/json',
                 ...(options.headers || {})
             };
-            if (authState.token) {
-                headers['Authorization'] = `Bearer ${authState.token}`;
-            }
-            const res = await fetch(`${API_BASE_URL}${path}`, {
-                ...options,
-                headers
-            });
+            if (authState.token) headers['Authorization'] = `Bearer ${authState.token}`;
+            const res = await fetch(`${API_BASE_URL}${path}`, { ...options, headers });
             const data = await res.json().catch(() => ({}));
             if (!res.ok) {
                 throw new Error(data.detail || data.message || `Request failed (${res.status})`);
@@ -1594,19 +1745,23 @@
         function syncAuthUI() {
             const displayName = authState.name || 'Guest User';
             const displayEmail = authState.email || 'guest@tronvex.online';
+            const displayUserId = authState.userId || 'TVX-GUEST00';
             const refLink = getReferralLink();
             const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=00ffaa&color=030a12&bold=true`;
 
             const headerName = document.getElementById('profileHeaderName');
             const headerEmail = document.getElementById('profileHeaderEmail');
+            const pUserId = document.getElementById('profileUserIdValue');
             const pName = document.getElementById('profileNameValue');
             const pEmail = document.getElementById('profileEmailValue');
             const pRef = document.getElementById('profileReferralValue');
             const authLabel = document.getElementById('headerAuthLabel');
             const authBtn = document.getElementById('headerAuthBtn');
+            const adminBtn = document.getElementById('headerAdminBtn');
 
             if (headerName) headerName.textContent = displayName;
             if (headerEmail) headerEmail.textContent = displayEmail;
+            if (pUserId) pUserId.textContent = displayUserId;
             if (pName) pName.textContent = displayName;
             if (pEmail) pEmail.textContent = displayEmail;
             if (pRef) pRef.textContent = refLink;
@@ -1621,8 +1776,22 @@
             if (authBtn) {
                 authBtn.onclick = () => authState.isLoggedIn ? switchTab('profile') : openAuthModal('login');
             }
+            if (adminBtn) {
+                adminBtn.classList.toggle('visible', Boolean(authState.isLoggedIn && authState.isAdmin));
+            }
 
             lucide.createIcons();
+        }
+
+        function togglePasswordVisibility(inputId, btnEl) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            const isHidden = input.type === 'password';
+            input.type = isHidden ? 'text' : 'password';
+            if (btnEl) {
+                btnEl.innerHTML = `<i data-lucide="${isHidden ? 'eye-off' : 'eye'}"></i>`;
+                lucide.createIcons();
+            }
         }
 
         function computeLiveAccruedProfit() {
@@ -1631,9 +1800,7 @@
             ACTIVE_INVESTMENTS.forEach(inv => {
                 const dur = inv.durationMs || (PLAN_DAYS * 24 * 60 * 60 * 1000);
                 const elapsed = Math.max(0, Math.min(now - inv.startTime, dur));
-                const progress = elapsed / dur;
-                const maxProfit = inv.amount * inv.roiRate;
-                accrued += maxProfit * progress;
+                accrued += (inv.amount * inv.roiRate) * (elapsed / dur);
             });
             return accrued;
         }
@@ -1713,6 +1880,7 @@
             liveEarnTimerInterval = setInterval(() => {
                 const changed = checkExpiredPendingDeposits();
                 if (changed) {
+                    saveDatabase();
                     renderHistory();
                 }
                 if (ACTIVE_INVESTMENTS.length > 0) {
@@ -1727,44 +1895,18 @@
             TRANSACTIONS.forEach(tx => {
                 if (tx.type === 'deposit' && tx.status === 'pending' && tx.expiresAt && now >= tx.expiresAt) {
                     tx.status = 'rejected';
+                    tx.rejectReason = 'Payment window expired (5 minutes).';
+                    anyChanged = true;
+                }
+            });
+            ADMIN_DEPOSIT_REQUESTS.forEach(req => {
+                if (req.status === 'pending' && req.expiresAt && now >= req.expiresAt) {
+                    req.status = 'rejected';
+                    req.rejectReason = 'Payment window expired (5 minutes).';
                     anyChanged = true;
                 }
             });
             return anyChanged;
-        }
-
-        async function refreshAccountData() {
-            if (!authState.isLoggedIn || !API_BASE_URL) {
-                checkExpiredPendingDeposits();
-                syncBalanceUI();
-                renderHistory();
-                return;
-            }
-            try {
-                const summary = await apiRequest('/api/account/summary');
-                availableBalance = Number(summary.available_balance ?? availableBalance);
-                lockedBalance = Number(summary.locked_balance ?? lockedBalance);
-                totalProfitEarned = Number(summary.total_profit ?? totalProfitEarned);
-                totalInvestedAmount = Number(summary.total_invested ?? totalInvestedAmount);
-                completedCyclesCount = Number(summary.completed_cycles ?? completedCyclesCount);
-                activeInvestmentsCount = Number(summary.active_investments ?? activeInvestmentsCount);
-                if (summary.ref_code) authState.refCode = summary.ref_code;
-                if (summary.full_name) authState.name = summary.full_name;
-                saveAuthState();
-                syncAuthUI();
-
-                const txRes = await apiRequest('/api/transactions');
-                if (Array.isArray(txRes.transactions) && txRes.transactions.length > 0) {
-                    TRANSACTIONS = txRes.transactions;
-                }
-                checkExpiredPendingDeposits();
-                syncBalanceUI();
-                renderHistory();
-            } catch (err) {
-                checkExpiredPendingDeposits();
-                syncBalanceUI();
-                renderHistory();
-            }
         }
 
         function requireAuth(callback) {
@@ -1781,7 +1923,6 @@
 
         function openAuthModal(mode = 'signup') {
             const isLogin = mode === 'login';
-            const isForgot = mode === 'forgot';
             const modalBox = document.getElementById('modalContent');
             modalBox.classList.remove('wallet-inst-modal');
             modalBox.classList.add('auth-pro-modal');
@@ -1796,249 +1937,57 @@
                         </div>
                         <span style="font-weight:800;font-size:1rem;letter-spacing:-0.4px;">TRONVEX</span>
                     </div>
-                    <span class="auth-brand-badge">${isForgot ? 'Reset Password' : (isLogin ? 'Login' : 'Sign Up')}</span>
+                    <span class="auth-brand-badge">${isLogin ? 'Login' : 'Sign Up'}</span>
                 </div>
 
                 <div class="auth-tabs">
-                    <button class="auth-tab-btn ${!isLogin && !isForgot ? 'active' : ''}" type="button" onclick="openAuthModal('signup')">Sign Up</button>
-                    <button class="auth-tab-btn ${isLogin || isForgot ? 'active' : ''}" type="button" onclick="openAuthModal('login')">Login</button>
+                    <button class="auth-tab-btn ${!isLogin ? 'active' : ''}" type="button" onclick="openAuthModal('signup')">Sign Up</button>
+                    <button class="auth-tab-btn ${isLogin ? 'active' : ''}" type="button" onclick="openAuthModal('login')">Login</button>
                 </div>
 
-                ${isForgot ? `
-                    <div class="auth-title-block">
-                        <h3>Reset your password</h3>
-                        <p>Enter your email to receive a 6-digit reset code and set a new password</p>
-                    </div>
+                <div class="auth-title-block">
+                    <h3>${isLogin ? 'Login to your account' : 'Create your account'}</h3>
+                    <p>${isLogin ? 'Enter your email and password to continue' : 'Create your account and get a unique User ID'}</p>
+                </div>
 
+                ${!isLogin ? `
                     <div class="form-group">
-                        <label>
-                            <span>Email Address</span>
-                            <span class="max-btn" id="sendForgotOtpBtn" onclick="sendForgotPasswordOtp()">Send Code</span>
-                        </label>
-                        <input type="email" id="forgotEmailInput" class="form-control" placeholder="you@example.com" value="${authState.email}">
-                        <div class="error-msg" id="forgotEmailError">Please enter a valid email address.</div>
+                        <label>Full Name</label>
+                        <input type="text" id="authNameInput" class="form-control" placeholder="Your full name" value="${authState.name}">
+                        <div class="error-msg" id="authNameError">Please enter your name.</div>
                     </div>
+                ` : ''}
 
-                    <div class="form-group">
-                        <label>Reset Verification Code (6 Digits)</label>
-                        <input type="text" id="forgotOtpInput" class="form-control" placeholder="Enter 6-digit code from email" maxlength="6" inputmode="numeric">
-                        <div class="error-msg" id="forgotOtpError">Please enter the 6-digit verification code sent to your email.</div>
-                    </div>
+                <div class="form-group">
+                    <label><span>Email Address</span></label>
+                    <input type="email" id="authEmailInput" class="form-control" placeholder="you@example.com" value="${authState.email}">
+                    <div class="error-msg" id="authEmailError">Please enter a valid email address.</div>
+                </div>
 
-                    <div class="form-group">
-                        <label>New Password</label>
-                        <input type="password" id="forgotNewPassInput" class="form-control" placeholder="Min 6 characters">
-                        <div class="error-msg" id="forgotNewPassError">Password must be at least 6 characters.</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Confirm New Password</label>
-                        <input type="password" id="forgotConfirmPassInput" class="form-control" placeholder="Re-enter new password">
-                        <div class="error-msg" id="forgotConfirmPassError">Passwords do not match.</div>
-                    </div>
-
-                    <button class="btn btn-primary btn-block" id="forgotSubmitBtn" onclick="submitForgotPassword()">
-                        Reset Password
-                    </button>
-
-                    <div style="margin-top:10px;">
-                        <span class="max-btn" onclick="openAuthModal('login')">← Back to Login</span>
-                    </div>
-                ` : `
-                    <div class="auth-title-block">
-                        <h3>${isLogin ? 'Login to your account' : 'Create your account'}</h3>
-                        <p>${isLogin ? 'Enter your email and password to continue' : 'Verify your email with a 6-digit code to create your account'}</p>
-                    </div>
-
-                    ${!isLogin ? `
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" id="authNameInput" class="form-control" placeholder="Your full name" value="${authState.name}">
-                            <div class="error-msg" id="authNameError">Please enter your name.</div>
-                        </div>
-                    ` : ''}
-
-                    <div class="form-group">
-                        <label>
-                            <span>Email Address</span>
-                            ${!isLogin ? `<span class="max-btn" id="sendOtpBtn" onclick="sendSignupOtp()">Send Code</span>` : ''}
-                        </label>
-                        <input type="email" id="authEmailInput" class="form-control" placeholder="you@example.com" value="${authState.email}">
-                        <div class="error-msg" id="authEmailError">Please enter a valid email address.</div>
-                    </div>
-
-                    ${!isLogin ? `
-                        <div class="form-group">
-                            <label>Email Verification Code (6 Digits)</label>
-                            <input type="text" id="authOtpInput" class="form-control" placeholder="Enter 6-digit code from email" maxlength="6" inputmode="numeric">
-                            <div class="error-msg" id="authOtpError">Please enter the 6-digit verification code sent to your email.</div>
-                        </div>
-                    ` : ''}
-
-                    <div class="form-group">
-                        <label>${isLogin ? 'Password' : 'Create Password'}</label>
+                <div class="form-group">
+                    <label><span>${isLogin ? 'Password' : 'Create Password'}</span></label>
+                    <div class="pass-wrap">
                         <input type="password" id="authPasswordInput" class="form-control" placeholder="${isLogin ? 'Enter password' : 'Min 6 characters'}">
-                        <div class="error-msg" id="authPassError">Password must be at least 6 characters.</div>
-                        ${isLogin ? `<div style="text-align:right;margin-top:6px;"><span class="max-btn" onclick="openAuthModal('forgot')">Forgot Password?</span></div>` : ''}
+                        <button type="button" class="eye-toggle-btn" onclick="togglePasswordVisibility('authPasswordInput', this)" aria-label="Toggle password visibility">
+                            <i data-lucide="eye"></i>
+                        </button>
                     </div>
+                    <div class="error-msg" id="authPassError">Password must be at least 6 characters.</div>
+                </div>
 
-                    <button class="btn btn-primary btn-block" id="authSubmitBtn" onclick="${isLogin ? 'submitLogin()' : 'submitSignUp()'}">
-                        ${isLogin ? 'Login' : 'Verify Code & Sign Up'}
-                    </button>
-                `}
+                <button class="btn btn-primary btn-block" id="authSubmitBtn" onclick="${isLogin ? 'submitLogin()' : 'submitSignUp()'}">
+                    ${isLogin ? 'Login' : 'Create Account'}
+                </button>
             `);
-
-            if (!isLogin && !isForgot) updateOtpBtnUI();
-            if (isForgot) updateForgotOtpBtnUI();
-        }
-
-        async function sendSignupOtp() {
-            if (otpSendingInProgress || getOtpRemainingSeconds() > 0) return;
-
-            const emailEl = document.getElementById('authEmailInput');
-            const email = emailEl ? emailEl.value.trim() : '';
-            if (!email || !email.includes('@') || !email.includes('.')) {
-                emailEl.classList.add('error');
-                document.getElementById('authEmailError').style.display = 'block';
-                return;
-            }
-            emailEl.classList.remove('error');
-            document.getElementById('authEmailError').style.display = 'none';
-
-            otpSendingInProgress = true;
-            updateOtpBtnUI();
-
-            try {
-                await apiRequest('/api/auth/send-code', {
-                    method: 'POST',
-                    body: JSON.stringify({ email })
-                });
-                authState.otpSent = true;
-                otpSendingInProgress = false;
-                startOtpCooldown(60);
-                showToast('6-digit verification code sent to ' + email, 'success');
-            } catch (err) {
-                otpSendingInProgress = false;
-                updateOtpBtnUI();
-                showToast(err.message, 'error');
-            }
-        }
-
-        async function sendForgotPasswordOtp() {
-            if (forgotOtpSendingInProgress || getForgotOtpRemainingSeconds() > 0) return;
-
-            const emailEl = document.getElementById('forgotEmailInput');
-            const email = emailEl ? emailEl.value.trim() : '';
-            if (!email || !email.includes('@') || !email.includes('.')) {
-                emailEl.classList.add('error');
-                document.getElementById('forgotEmailError').style.display = 'block';
-                return;
-            }
-            emailEl.classList.remove('error');
-            document.getElementById('forgotEmailError').style.display = 'none';
-
-            forgotOtpSendingInProgress = true;
-            updateForgotOtpBtnUI();
-
-            try {
-                await apiRequest('/api/auth/forgot-password/send-code', {
-                    method: 'POST',
-                    body: JSON.stringify({ email })
-                });
-                forgotOtpSendingInProgress = false;
-                startForgotOtpCooldown(60);
-                showToast('6-digit reset code sent to ' + email, 'success');
-            } catch (err) {
-                forgotOtpSendingInProgress = false;
-                updateForgotOtpBtnUI();
-                showToast(err.message, 'error');
-            }
-        }
-
-        async function submitForgotPassword() {
-            const emailEl = document.getElementById('forgotEmailInput');
-            const otpEl = document.getElementById('forgotOtpInput');
-            const newPassEl = document.getElementById('forgotNewPassInput');
-            const confirmPassEl = document.getElementById('forgotConfirmPassInput');
-
-            const email = emailEl ? emailEl.value.trim() : '';
-            const code = otpEl ? otpEl.value.trim() : '';
-            const newPassword = newPassEl ? newPassEl.value.trim() : '';
-            const confirmPassword = confirmPassEl ? confirmPassEl.value.trim() : '';
-
-            let ok = true;
-
-            if (!email.includes('@') || !email.includes('.')) {
-                emailEl.classList.add('error');
-                document.getElementById('forgotEmailError').style.display = 'block';
-                ok = false;
-            } else {
-                emailEl.classList.remove('error');
-                document.getElementById('forgotEmailError').style.display = 'none';
-            }
-
-            if (!/^\d{6}$/.test(code)) {
-                otpEl.classList.add('error');
-                document.getElementById('forgotOtpError').style.display = 'block';
-                ok = false;
-            } else {
-                otpEl.classList.remove('error');
-                document.getElementById('forgotOtpError').style.display = 'none';
-            }
-
-            if (newPassword.length < 6) {
-                newPassEl.classList.add('error');
-                document.getElementById('forgotNewPassError').style.display = 'block';
-                ok = false;
-            } else {
-                newPassEl.classList.remove('error');
-                document.getElementById('forgotNewPassError').style.display = 'none';
-            }
-
-            if (newPassword !== confirmPassword || confirmPassword.length < 6) {
-                confirmPassEl.classList.add('error');
-                document.getElementById('forgotConfirmPassError').style.display = 'block';
-                ok = false;
-            } else {
-                confirmPassEl.classList.remove('error');
-                document.getElementById('forgotConfirmPassError').style.display = 'none';
-            }
-
-            if (!ok) return;
-
-            const btn = document.getElementById('forgotSubmitBtn');
-            btn.disabled = true;
-            btn.textContent = 'Resetting...';
-
-            try {
-                const data = await apiRequest('/api/auth/forgot-password/reset', {
-                    method: 'POST',
-                    body: JSON.stringify({ email, code, new_password: newPassword })
-                });
-                authState.email = email;
-                saveAuthState();
-                showToast(data.message || 'Password reset successful! Please login.', 'success');
-                openAuthModal('login');
-            } catch (err) {
-                showToast(err.message, 'error');
-            } finally {
-                const submitBtn = document.getElementById('forgotSubmitBtn');
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Reset Password';
-                }
-            }
         }
 
         async function submitSignUp() {
             const nameEl = document.getElementById('authNameInput');
             const emailEl = document.getElementById('authEmailInput');
-            const otpEl = document.getElementById('authOtpInput');
             const passEl = document.getElementById('authPasswordInput');
 
             const name = nameEl ? nameEl.value.trim() : '';
             const email = emailEl ? emailEl.value.trim() : '';
-            const code = otpEl ? otpEl.value.trim() : '';
             const password = passEl ? passEl.value.trim() : '';
 
             let ok = true;
@@ -2060,15 +2009,6 @@
                 document.getElementById('authEmailError').style.display = 'none';
             }
 
-            if (otpEl && !/^\d{6}$/.test(code)) {
-                otpEl.classList.add('error');
-                document.getElementById('authOtpError').style.display = 'block';
-                ok = false;
-            } else if (otpEl) {
-                otpEl.classList.remove('error');
-                document.getElementById('authOtpError').style.display = 'none';
-            }
-
             if (password.length < 6) {
                 passEl.classList.add('error');
                 document.getElementById('authPassError').style.display = 'block';
@@ -2082,29 +2022,48 @@
 
             const btn = document.getElementById('authSubmitBtn');
             btn.disabled = true;
-            btn.textContent = 'Verifying...';
+            btn.innerHTML = `<span class="btn-spinner"></span> <span>Creating Account...</span>`;
+
+            await new Promise(r => setTimeout(r, 650));
 
             try {
-                const data = await apiRequest('/api/auth/verify-signup', {
-                    method: 'POST',
-                    body: JSON.stringify({ full_name: name, email, code, password })
-                });
-                authState.isLoggedIn = true;
-                authState.token = data.token || '';
-                authState.userCode = data.user_code || '';
-                authState.name = data.full_name || name;
-                authState.email = data.email || email;
-                authState.refCode = data.ref_code || buildRefCode(email);
+                let backendData = null;
+                try {
+                    backendData = await apiRequest('/api/auth/register', {
+                        method: 'POST',
+                        body: JSON.stringify({ full_name: name, email, password })
+                    });
+                } catch (e) {}
+
+                const uniqueUserId = (backendData && backendData.user_id) || generateUniqueUserId();
+                const isAdminUser = email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
+
+                authState = {
+                    isLoggedIn: true,
+                    token: (backendData && backendData.token) || ('sess_' + Date.now()),
+                    userId: uniqueUserId,
+                    name: (backendData && backendData.full_name) || name,
+                    email: (backendData && backendData.email) || email,
+                    refCode: (backendData && backendData.ref_code) || buildRefCode(email),
+                    isAdmin: isAdminUser
+                };
+
                 saveAuthState();
+                saveDatabase();
                 syncAuthUI();
-                await refreshAccountData();
+                syncBalanceUI();
+                renderHistory();
                 closeModal();
-                showToast(`Welcome, ${authState.name}!`, 'success');
+                pushNotification('Account Created', `Welcome ${authState.name}! Your User ID is ${authState.userId}.`);
+                showToast(`Welcome, ${authState.name}! ID: ${authState.userId}`, 'success');
             } catch (err) {
                 showToast(err.message, 'error');
             } finally {
-                btn.disabled = false;
-                btn.textContent = 'Verify Code & Sign Up';
+                const submitBtn = document.getElementById('authSubmitBtn');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Create Account';
+                }
             }
         }
 
@@ -2138,54 +2097,172 @@
 
             const btn = document.getElementById('authSubmitBtn');
             btn.disabled = true;
-            btn.textContent = 'Logging in...';
+            btn.innerHTML = `<span class="btn-spinner"></span> <span>Signing In...</span>`;
+
+            await new Promise(r => setTimeout(r, 650));
 
             try {
-                const data = await apiRequest('/api/auth/login', {
-                    method: 'POST',
-                    body: JSON.stringify({ email, password })
-                });
-                authState.isLoggedIn = true;
-                authState.token = data.token || '';
-                authState.userCode = data.user_code || '';
-                authState.name = data.full_name || email.split('@')[0];
-                authState.email = data.email || email;
-                authState.refCode = data.ref_code || buildRefCode(email);
+                let backendData = null;
+                try {
+                    backendData = await apiRequest('/api/auth/login', {
+                        method: 'POST',
+                        body: JSON.stringify({ email, password })
+                    });
+                } catch (e) {}
+
+                const isAdminUser = email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
+                const preservedId = (authState.email === email && authState.userId)
+                    ? authState.userId
+                    : generateUniqueUserId();
+
+                authState = {
+                    isLoggedIn: true,
+                    token: (backendData && backendData.token) || ('sess_' + Date.now()),
+                    userId: (backendData && backendData.user_id) || preservedId,
+                    name: (backendData && backendData.full_name) || (authState.email === email && authState.name ? authState.name : email.split('@')[0]),
+                    email: (backendData && backendData.email) || email,
+                    refCode: (backendData && backendData.ref_code) || buildRefCode(email),
+                    isAdmin: isAdminUser
+                };
+
                 saveAuthState();
+                saveDatabase();
                 syncAuthUI();
-                await refreshAccountData();
+                syncBalanceUI();
+                renderHistory();
                 closeModal();
+                pushNotification('Login Successful', `Signed in as ${authState.email} (${authState.userId}).`);
                 showToast(`Logged in as ${authState.email}`, 'success');
             } catch (err) {
                 showToast(err.message, 'error');
             } finally {
-                btn.disabled = false;
-                btn.textContent = 'Login';
+                const submitBtn = document.getElementById('authSubmitBtn');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Login';
+                }
             }
         }
 
         function signOutAccount() {
             authState.isLoggedIn = false;
             authState.token = '';
-            availableBalance = 0.00;
-            lockedBalance = 0.00;
-            totalProfitEarned = 0.00;
-            totalInvestedAmount = 0.00;
-            completedCyclesCount = 0;
-            activeInvestmentsCount = 0;
-            ACTIVE_INVESTMENTS = [];
-            TRANSACTIONS = [];
+            authState.isAdmin = false;
             saveAuthState();
             syncAuthUI();
-            syncBalanceUI();
-            renderHistory();
             switchTab('home');
             showToast('Signed out', 'info');
         }
 
+        function openAdminPanelModal() {
+            if (!authState.isLoggedIn || !authState.isAdmin) {
+                showToast('Admin access only.', 'error');
+                return;
+            }
+            checkExpiredPendingDeposits();
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('wallet-inst-modal');
+
+            const pendingList = ADMIN_DEPOSIT_REQUESTS.filter(r => r.status === 'pending');
+
+            const cardsHtml = pendingList.length
+                ? pendingList.map(req => `
+                    <div class="admin-item-card" id="adminReq_${req.id}">
+                        <div class="admin-item-top">
+                            <div>
+                                <div style="font-weight:800;color:#fff;">${req.userName} · <span style="color:var(--primary);font-family:monospace;">${req.userId}</span></div>
+                                <div style="font-size:0.68rem;color:var(--text-muted);">${req.userEmail}</div>
+                                <div style="font-size:0.72rem;color:var(--gold);margin-top:3px;">
+                                    Network: <strong>${req.networkLabel}</strong> · Amount: <strong>$${Number(req.amount).toFixed(2)}</strong>
+                                </div>
+                                <div style="font-size:0.64rem;color:var(--text-muted);font-family:monospace;word-break:break-all;margin-top:2px;">
+                                    To: ${req.walletAddress}
+                                </div>
+                            </div>
+                            <span class="tx-badge pending">PENDING</span>
+                        </div>
+                        <div class="form-group" style="margin-bottom:6px;">
+                            <input type="text" id="rejectReason_${req.id}" class="form-control" style="padding:7px 10px;font-size:0.75rem;" placeholder="Reject reason (e.g., Payment not received on chain)">
+                        </div>
+                        <div class="admin-actions-row">
+                            <button type="button" class="btn-approve" onclick="adminApproveDeposit('${req.id}')">✓ Approve</button>
+                            <button type="button" class="btn-reject" onclick="adminRejectDeposit('${req.id}')">✕ Reject</button>
+                        </div>
+                    </div>
+                `).join('')
+                : `<div class="empty-state"><i data-lucide="check-circle"></i><p>No pending deposit requests right now</p></div>`;
+
+            openModal(`
+                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+                <div class="modal-header">
+                    <div class="modal-icon invest" style="background:rgba(255,187,0,0.14);color:var(--gold);border-color:rgba(255,187,0,0.35);">
+                        <i data-lucide="shield-alert"></i>
+                    </div>
+                    <div class="modal-header-text">
+                        <h3>Admin Deposit Panel</h3>
+                        <p>Verify user details & approve or reject deposits</p>
+                    </div>
+                </div>
+                <div>${cardsHtml}</div>
+            `);
+        }
+
+        function adminApproveDeposit(requestId) {
+            if (!authState.isLoggedIn || !authState.isAdmin) return;
+            const req = ADMIN_DEPOSIT_REQUESTS.find(r => r.id === requestId);
+            if (!req || req.status !== 'pending') return;
+
+            req.status = 'completed';
+
+            const tx = TRANSACTIONS.find(t => t.id === req.txId);
+            if (tx) {
+                tx.status = 'completed';
+            }
+
+            if (authState.userId === req.userId || authState.email === req.userEmail) {
+                availableBalance = Number((Number(availableBalance || 0) + Number(req.amount)).toFixed(2));
+            }
+
+            const smsMsg = `Deposit of $${Number(req.amount).toFixed(2)} (${req.networkLabel}) for ID ${req.userId} is COMPLETED and added to balance.`;
+            pushNotification('Deposit Completed (SMS)', smsMsg, true, false);
+            saveDatabase();
+            syncBalanceUI();
+            renderHistory();
+            openAdminPanelModal();
+            showToast(`Approved $${Number(req.amount).toFixed(2)} for ${req.userId}`, 'success');
+        }
+
+        function adminRejectDeposit(requestId) {
+            if (!authState.isLoggedIn || !authState.isAdmin) return;
+            const req = ADMIN_DEPOSIT_REQUESTS.find(r => r.id === requestId);
+            if (!req || req.status !== 'pending') return;
+
+            const reasonInput = document.getElementById(`rejectReason_${requestId}`);
+            const reason = (reasonInput && reasonInput.value.trim())
+                ? reasonInput.value.trim()
+                : 'Deposit verification failed or payment not received.';
+
+            req.status = 'rejected';
+            req.rejectReason = reason;
+
+            const tx = TRANSACTIONS.find(t => t.id === req.txId);
+            if (tx) {
+                tx.status = 'rejected';
+                tx.rejectReason = reason;
+            }
+
+            const smsMsg = `Deposit of $${Number(req.amount).toFixed(2)} (${req.networkLabel}) for ID ${req.userId} was REJECTED. Reason: ${reason}`;
+            pushNotification('Deposit Rejected (SMS)', smsMsg, true, true);
+            saveDatabase();
+            renderHistory();
+            openAdminPanelModal();
+            showToast(`Rejected deposit ${requestId}`, 'error');
+        }
+
         function copyText(text, msg) {
             if (!text) {
-                showToast('No payment address available', 'error');
+                showToast('No address available', 'error');
                 return;
             }
             if (navigator.clipboard) {
@@ -2242,19 +2319,6 @@
         }
 
         const COINS = {
-            usdt_trc20: {
-                key: 'usdt_trc20',
-                symbol: 'USDT',
-                name: 'USDT TRC20',
-                tileCode: 'USDT',
-                tileSub: 'TRC20',
-                network: 'TRC20',
-                networkDesc: 'TRON Network',
-                addressLabel: 'TRC20 Gateway Address',
-                minDeposit: '$5.00',
-                confirmations: 'NOWPayments',
-                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="tronRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff2e4d"/><stop offset="100%" stop-color="#c4001e"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#121822"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#tronRing1)" stroke-width="2"/><polygon points="9,10 27,13.5 18.5,27.5" fill="none" stroke="#ff3b5c" stroke-width="2" stroke-linejoin="round"/><line x1="9" y1="10" x2="18.2" y2="15.5" stroke="#ff3b5c" stroke-width="1.8"/><line x1="27" y1="13.5" x2="18.2" y2="15.5" stroke="#ff3b5c" stroke-width="1.8"/><line x1="18.2" y1="15.5" x2="18.5" y2="27.5" stroke="#ff3b5c" stroke-width="1.8"/><circle cx="24.5" cy="24.5" r="8.2" fill="#26a17b" stroke="#121822" stroke-width="1.6"/><path fill="#fff" d="M25.4 23.6v-1.2h2.1v-1.6h-6v1.6h2.1v1.2c-1.7.08-3 .42-3 .85s1.3.77 3 .85v2.9h1.8v-2.9c1.7-.08 3-.42 3-.85s-1.3-.77-3-.85z"/></svg>`
-            },
             usdt_bep20: {
                 key: 'usdt_bep20',
                 symbol: 'USDT',
@@ -2263,10 +2327,19 @@
                 tileSub: 'BEP20',
                 network: 'BEP20',
                 networkDesc: 'BNB Smart Chain',
-                addressLabel: 'BEP20 Gateway Address',
-                minDeposit: '$5.00',
-                confirmations: 'NOWPayments',
-                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="bscRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f3ba2f"/><stop offset="100%" stop-color="#d99b00"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131a24"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#bscRing1)" stroke-width="2.2"/><circle cx="18" cy="18" r="12.2" fill="#26a17b"/><path fill="#ffffff" d="M19.8 15.1v-2.5h4.5V9.2H11.7v3.4h4.5v2.5c-3.7.17-6.5.9-6.5 1.8s2.8 1.63 6.5 1.8v6.3h3.6v-6.3c3.7-.17 6.5-.9 6.5-1.8s-2.8-1.63-6.5-1.8zm0 3.05c-.2.01-.8.04-1.8.04-1 0-1.6-.03-1.8-.04v-2.25c3.2.15 5.6.7 5.6 1.35s-2.4 1.2-5.6 1.35v-.45z"/></svg>`
+                address: USER_WALLET_ADDRESSES.usdt_bep20,
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="bscRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f3ba2f"/><stop offset="100%" stop-color="#d99b00"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131a24"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#bscRing1)" stroke-width="2.2"/><circle cx="18" cy="18" r="12.2" fill="#26a17b"/><path fill="#ffffff" d="M19.8 15.1v-2.5h4.5V9.2H11.7v3.4h4.5v2.5c-3.7.17-6.5.9-6.5 1.8s2.8 1.63 6.5 1.8v6.3h3.6v-6.3c3.7-.17 6.5-.9 6.5-1.8s-2.8-1.63-6.5-1.8z"/></svg>`
+            },
+            usdt_trc20: {
+                key: 'usdt_trc20',
+                symbol: 'USDT',
+                name: 'USDT TRC20',
+                tileCode: 'USDT',
+                tileSub: 'TRC20',
+                network: 'TRC20',
+                networkDesc: 'TRON Network',
+                address: USER_WALLET_ADDRESSES.usdt_trc20,
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="tronRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff2e4d"/><stop offset="100%" stop-color="#c4001e"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#121822"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#tronRing1)" stroke-width="2"/><polygon points="9,10 27,13.5 18.5,27.5" fill="none" stroke="#ff3b5c" stroke-width="2" stroke-linejoin="round"/><circle cx="24.5" cy="24.5" r="8.2" fill="#26a17b" stroke="#121822" stroke-width="1.6"/><path fill="#fff" d="M25.4 23.6v-1.2h2.1v-1.6h-6v1.6h2.1v1.2c-1.7.08-3 .42-3 .85s1.3.77 3 .85v2.9h1.8v-2.9c1.7-.08 3-.42 3-.85s-1.3-.77-3-.85z"/></svg>`
             },
             usdt_erc20: {
                 key: 'usdt_erc20',
@@ -2276,23 +2349,19 @@
                 tileSub: 'ERC20',
                 network: 'ERC20',
                 networkDesc: 'Ethereum Network',
-                addressLabel: 'ERC20 Gateway Address',
-                minDeposit: '$5.00',
-                confirmations: 'NOWPayments',
-                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="ethRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#627eea"/><stop offset="100%" stop-color="#3c55c9"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131826"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#ethRing1)" stroke-width="2"/><polygon points="18,6.5 11.5,17.5 18,21.4 24.5,17.5" fill="#8ea4f8"/><polygon points="18,6.5 18,21.4 24.5,17.5" fill="#627eea"/><polygon points="18,22.9 11.5,19 18,29.5 24.5,19" fill="#8ea4f8"/><circle cx="25" cy="25" r="7.5" fill="#26a17b" stroke="#131826" stroke-width="1.5"/><path fill="#fff" d="M25.8 24.2v-1.1h1.9v-1.4h-5.4v1.4h1.9v1.1c-1.5.07-2.7.38-2.7.77s1.2.7 2.7.77v2.6h1.6v-2.6c1.5-.07 2.7-.38 2.7-.77s-1.2-.7-2.7-.77z"/></svg>`
+                address: USER_WALLET_ADDRESSES.usdt_erc20,
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="ethRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#627eea"/><stop offset="100%" stop-color="#3c55c9"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131826"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#ethRing1)" stroke-width="2"/><polygon points="18,6.5 11.5,17.5 18,21.4 24.5,17.5" fill="#8ea4f8"/><polygon points="18,22.9 11.5,19 18,29.5 24.5,19" fill="#8ea4f8"/></svg>`
             },
-            trx: {
-                key: 'trx',
-                symbol: 'TRX',
-                name: 'TRX',
-                tileCode: 'TRX',
-                tileSub: 'TRON',
-                network: 'TRX',
-                networkDesc: 'TRON Mainnet',
-                addressLabel: 'TRX Gateway Address',
-                minDeposit: '$5.00',
-                confirmations: 'NOWPayments',
-                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="trxGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff3355"/><stop offset="100%" stop-color="#cc0022"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="url(#trxGrad)"/><polygon points="8.5,9.5 28.5,13.2 19.2,28" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linejoin="round"/><line x1="8.5" y1="9.5" x2="18.8" y2="15.6" stroke="#ffffff" stroke-width="1.8"/><line x1="28.5" y1="13.2" x2="18.8" y2="15.6" stroke="#ffffff" stroke-width="1.8"/><line x1="18.8" y1="15.6" x2="19.2" y2="28" stroke="#ffffff" stroke-width="1.8"/></svg>`
+            ton: {
+                key: 'ton',
+                symbol: 'TON',
+                name: 'TON',
+                tileCode: 'TON',
+                tileSub: 'TONCOIN',
+                network: 'TON',
+                networkDesc: 'The Open Network',
+                address: USER_WALLET_ADDRESSES.ton,
+                logo: `<svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#0088cc"/><path fill="#ffffff" d="M10.2 12.2h15.6c1.2 0 2 1.3 1.4 2.3l-7.2 12.1c-.5.9-1.8.9-2.4 0L8.8 14.5c-.6-1 .2-2.3 1.4-2.3zm6.6 2.2v9.4l5.4-9.4h-5.4zm-2.4 0H9.8l4.6 7.8v-7.8z"/></svg>`
             }
         };
 
@@ -2308,35 +2377,17 @@
         let walletState = {
             mode: 'deposit',
             step: 1,
-            network: 'usdt_trc20',
+            network: 'usdt_bep20',
             amount: '',
             days: PLAN_DAYS,
             destination: '',
-            payAddress: '',
-            invoiceUrl: '',
+            payAddress: USER_WALLET_ADDRESSES.usdt_bep20,
             paymentId: '',
             qrOpen: false,
-            activeOrderExpiresAt: null
+            activeOrderExpiresAt: null,
+            sendingAnim: false
         };
         let walletCountdownInterval = null;
-        let TRANSACTIONS = [];
-
-        function notifyBalanceUpdated(amount, networkLabel, txId) {
-            const msg = `Balance Updated! +$${Number(amount).toFixed(2)} credited (${networkLabel})`;
-            showToast(msg, 'success');
-            if ('Notification' in window && Notification.permission === 'granted') {
-                try {
-                    new Notification('TRONVEX — Balance Updated', {
-                        body: `+$${Number(amount).toFixed(2)} (${networkLabel}) has been added to your balance. Ref: ${txId}`
-                    });
-                } catch (e) {}
-            }
-        }
-
-        function buildNowPaymentsUrl(amountVal, currencyKey) {
-            const sep = DIRECT_GATEWAY_URL.includes('?') ? '&' : '?';
-            return `${DIRECT_GATEWAY_URL}${sep}amount=${encodeURIComponent(Number(amountVal).toFixed(2))}&currency=${encodeURIComponent(currencyKey)}`;
-        }
 
         function formatAmount(tx) {
             const amt = Number(tx.amount || 0);
@@ -2366,6 +2417,9 @@
                     const ss = String(leftSec % 60).padStart(2, '0');
                     remTag = `<span>· ${mm}:${ss}</span>`;
                 }
+                const reasonNote = (tx.status === 'rejected' && tx.rejectReason)
+                    ? `<div style="font-size:0.65rem;color:var(--danger);margin-top:3px;">Reason: ${tx.rejectReason}</div>`
+                    : '';
                 html += `
                     <div class="tx-card" onclick="requireAuth(() => openReceipt(${idx}))">
                         <div class="tx-icon ${tx.type}"><i data-lucide="${iconMap[tx.type] || 'arrow-down-to-line'}"></i></div>
@@ -2378,6 +2432,7 @@
                                 <span class="tx-badge ${statusClass}">${tx.status}</span>
                                 ${remTag}
                             </div>
+                            ${reasonNote}
                         </div>
                         <div class="tx-amount ${isPos ? 'positive' : 'negative'}">
                             ${formatAmount(tx)}
@@ -2542,11 +2597,13 @@
             walletState.mode = mode;
             walletState.step = step;
             walletState.qrOpen = false;
+            walletState.sendingAnim = false;
             walletState.days = PLAN_DAYS;
             const allowed = getAllowedFourNetworks();
             if (!allowed.includes(walletState.network)) {
-                walletState.network = allowed[0] || 'usdt_trc20';
+                walletState.network = allowed[0] || 'usdt_bep20';
             }
+            walletState.payAddress = USER_WALLET_ADDRESSES[walletState.network];
 
             const modalBox = document.getElementById('modalContent');
             modalBox.classList.remove('auth-pro-modal');
@@ -2559,6 +2616,7 @@
             walletState.mode = mode;
             walletState.step = 1;
             walletState.qrOpen = false;
+            walletState.sendingAnim = false;
             renderWalletFlowModal();
         }
 
@@ -2566,6 +2624,7 @@
             const allowed = getAllowedFourNetworks();
             if (!allowed.includes(key)) return;
             walletState.network = key;
+            walletState.payAddress = USER_WALLET_ADDRESSES[key] || '';
             walletState.qrOpen = false;
             renderWalletFlowModal();
         }
@@ -2581,7 +2640,7 @@
             renderWalletFlowModal();
         }
 
-        function handlePayNowFromStep2() {
+        async function handlePayNowFromStep2() {
             const amtEl = document.getElementById('wFlowAmount');
             const destEl = document.getElementById('wFlowDest');
             const amtErr = document.getElementById('wFlowAmtErr');
@@ -2624,17 +2683,17 @@
             const allowed = getAllowedFourNetworks();
             const chosenNet = allowed.includes(walletState.network) ? walletState.network : allowed[0];
             walletState.network = chosenNet;
-            const coin = COINS[chosenNet] || COINS.usdt_trc20;
+            const coin = COINS[chosenNet] || COINS.usdt_bep20;
 
-            const finalGatewayUrl = buildNowPaymentsUrl(amtVal, coin.key);
-            walletState.invoiceUrl = finalGatewayUrl;
-            walletState.paymentId = 'NP-4719687929-' + Date.now();
-            walletState.payAddress = DIRECT_GATEWAY_URL;
+            walletState.payAddress = USER_WALLET_ADDRESSES[chosenNet] || '';
+            walletState.paymentId = 'TVX-DEP-' + Date.now();
             walletState.activeOrderExpiresAt = Date.now() + DEPOSIT_TIMEOUT_MS;
-
-            window.open(finalGatewayUrl, '_blank', 'noopener,noreferrer');
-            showToast(`Opening NOWPayments ($${amtVal.toFixed(2)} · ${coin.key})...`, 'success');
+            walletState.sendingAnim = true;
             walletState.step = 3;
+            renderWalletFlowModal();
+
+            await new Promise(r => setTimeout(r, 950));
+            walletState.sendingAnim = false;
             renderWalletFlowModal();
         }
 
@@ -2667,14 +2726,14 @@
 
             const allowedFour = getAllowedFourNetworks();
             if (!allowedFour.includes(walletState.network)) {
-                walletState.network = allowedFour[0] || 'usdt_trc20';
+                walletState.network = allowedFour[0] || 'usdt_bep20';
             }
 
-            const coin = COINS[walletState.network] || COINS.usdt_trc20;
+            const coin = COINS[walletState.network] || COINS.usdt_bep20;
+            const walletAddr = USER_WALLET_ADDRESSES[coin.key] || '';
             const isDep = walletState.mode === 'deposit';
             const stepTitles = ['NETWORK', 'AMOUNT', 'PAY', 'CONFIRM'];
             const currentAmt = Number(walletState.amount || 5);
-            const payLink = walletState.invoiceUrl || buildNowPaymentsUrl(currentAmt, coin.key);
 
             const stepperHtml = `
                 <div class="inst-stepper">
@@ -2716,7 +2775,7 @@
                             <div class="inst-panel-icon"><i data-lucide="network"></i></div>
                             <div>
                                 <h4>Choose Network</h4>
-                                <p>4 selected networks only · ${coin.key} (${coin.networkDesc})</p>
+                                <p>4 networks only · ${coin.name} (${coin.networkDesc})</p>
                             </div>
                         </div>
                         ${networkTilesHtml}
@@ -2733,7 +2792,7 @@
                             <div class="inst-panel-icon"><i data-lucide="coins"></i></div>
                             <div>
                                 <h4>${isDep ? 'Enter Amount' : 'Withdrawal Amount'}</h4>
-                                <p>Network: ${coin.key} (${coin.networkDesc}) · Min $5.00</p>
+                                <p>Network: ${coin.name} · Min $5.00</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -2746,8 +2805,8 @@
                         </div>
                         ${!isDep ? `
                             <div class="form-group">
-                                <label><span>Destination Wallet Address (${coin.key})</span></label>
-                                <input type="text" id="wFlowDest" class="form-control" placeholder="Enter ${coin.key} wallet address" value="${walletState.destination}">
+                                <label><span>Destination Wallet Address (${coin.name})</span></label>
+                                <input type="text" id="wFlowDest" class="form-control" placeholder="Enter ${coin.name} wallet address" value="${walletState.destination}">
                                 <div class="error-msg" id="wFlowDestErr">Valid destination address required.</div>
                             </div>
                         ` : ''}
@@ -2761,75 +2820,93 @@
                     </div>
                 `;
             } else if (walletState.step === 3) {
-                const qrSvg = generateQrSvg(payLink, 128);
-                bodyHtml = `
-                    <div class="inst-panel-card">
-                        <div class="inst-panel-head">
-                            <div class="inst-panel-icon"><i data-lucide="wallet"></i></div>
-                            <div>
-                                <h4>${isDep ? 'NOWPayments Checkout' : 'Review Withdrawal'}</h4>
-                                <p>${coin.key} · $${currentAmt.toFixed(2)}</p>
+                if (isDep && walletState.sendingAnim) {
+                    bodyHtml = `
+                        <div class="inst-panel-card">
+                            <div class="transfer-anim-box">
+                                <div class="transfer-pulse-ring">
+                                    <i data-lucide="send" style="width:26px;height:26px;"></i>
+                                </div>
+                                <div style="font-size:0.95rem;font-weight:800;color:#fff;">Preparing ${coin.name} Transfer</div>
+                                <div style="font-size:0.74rem;color:var(--text-muted);margin-top:3px;">
+                                    Routing $${currentAmt.toFixed(2)} to ${coin.network} address...
+                                </div>
+                                <div class="transfer-steps-mini">
+                                    <div class="transfer-step-line active">✓ Verifying network route (${coin.network})</div>
+                                    <div class="transfer-step-line active">✓ Generating QR & direct wallet address</div>
+                                    <div class="transfer-step-line">• Awaiting transfer confirmation</div>
+                                </div>
                             </div>
                         </div>
-                        ${isDep ? `
-                            <div class="bybit-countdown-banner" id="bybitOrderTimerBanner">
-                                <span>Payment Window (5m)</span>
-                                <span id="bybitOrderTimerText">05:00</span>
-                            </div>
-                            <a class="btn btn-primary btn-block" href="${payLink}" target="_blank" rel="noopener noreferrer" style="margin-bottom:12px;">
-                                <i data-lucide="external-link" style="width:15px;height:15px;"></i>
-                                Pay Now on NOWPayments ($${currentAmt.toFixed(2)})
-                            </a>
-                            <div class="inst-addr-box">
-                                <div class="inst-addr-top">
-                                    <span>NOWPayments Invoice Link</span>
-                                    <span>${coin.key}</span>
-                                </div>
-                                <div class="inst-addr-row">
-                                    <div class="inst-addr-code">${payLink}</div>
-                                    <button class="inst-chip-btn qr ${walletState.qrOpen ? 'active' : ''}" type="button" onclick="toggleWalletQr()">
-                                        <i data-lucide="qr-code"></i> ${walletState.qrOpen ? 'Hide' : 'QR'}
-                                    </button>
-                                    <button class="inst-chip-btn cp" type="button" onclick="copyText('${payLink}', 'NOWPayments link copied!')">
-                                        <i data-lucide="copy"></i> Copy
-                                    </button>
-                                </div>
-                                <div class="qr-panel ${walletState.qrOpen ? 'open' : ''}">
-                                    <div class="qr-frame">${qrSvg}</div>
-                                    <div class="qr-caption"><strong>${coin.key}</strong> · $${currentAmt.toFixed(2)}</div>
+                    `;
+                } else {
+                    const qrSvg = generateQrSvg(walletAddr, 128);
+                    bodyHtml = `
+                        <div class="inst-panel-card">
+                            <div class="inst-panel-head">
+                                <div class="inst-panel-icon"><i data-lucide="wallet"></i></div>
+                                <div>
+                                    <h4>${isDep ? 'Direct Wallet Transfer' : 'Review Withdrawal'}</h4>
+                                    <p>${coin.name} · $${currentAmt.toFixed(2)}</p>
                                 </div>
                             </div>
-                        ` : `
-                            <div class="inst-summary-rows">
-                                <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.key}</span></div>
-                                <div class="inst-s-row"><span class="k">Destination</span><span class="v" style="font-family:monospace;font-size:0.7rem;">${walletState.destination}</span></div>
-                                <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${currentAmt.toFixed(2)}</span></div>
+                            ${isDep ? `
+                                <div class="bybit-countdown-banner" id="bybitOrderTimerBanner">
+                                    <span>Payment Window (5m)</span>
+                                    <span id="bybitOrderTimerText">05:00</span>
+                                </div>
+                                <div class="inst-addr-box">
+                                    <div class="inst-addr-top">
+                                        <span>${coin.name} Deposit Address</span>
+                                        <span>${coin.network}</span>
+                                    </div>
+                                    <div class="inst-addr-row">
+                                        <div class="inst-addr-code">${walletAddr}</div>
+                                        <button class="inst-chip-btn qr ${walletState.qrOpen ? 'active' : ''}" type="button" onclick="toggleWalletQr()">
+                                            <i data-lucide="qr-code"></i> ${walletState.qrOpen ? 'Hide' : 'QR'}
+                                        </button>
+                                        <button class="inst-chip-btn cp" type="button" onclick="copyText('${walletAddr}', '${coin.name} address copied!')">
+                                            <i data-lucide="copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <div class="qr-panel ${walletState.qrOpen ? 'open' : ''}">
+                                        <div class="qr-frame">${qrSvg}</div>
+                                        <div class="qr-caption"><strong>${coin.name}</strong> · $${currentAmt.toFixed(2)}</div>
+                                    </div>
+                                </div>
+                            ` : `
+                                <div class="inst-summary-rows">
+                                    <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.name}</span></div>
+                                    <div class="inst-s-row"><span class="k">Destination</span><span class="v" style="font-family:monospace;font-size:0.7rem;">${walletState.destination}</span></div>
+                                    <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${currentAmt.toFixed(2)}</span></div>
+                                </div>
+                            `}
+                            <div class="inst-btn-row">
+                                <button class="inst-sec-btn" type="button" onclick="goWalletStep(2)">← Back</button>
+                                <button class="inst-continue-btn" type="button" onclick="goWalletStep(4)">
+                                    <span>CONTINUE</span>
+                                    <i data-lucide="arrow-right"></i>
+                                </button>
                             </div>
-                        `}
-                        <div class="inst-btn-row">
-                            <button class="inst-sec-btn" type="button" onclick="goWalletStep(2)">← Back</button>
-                            <button class="inst-continue-btn" type="button" onclick="goWalletStep(4)">
-                                <span>CONTINUE</span>
-                                <i data-lucide="arrow-right"></i>
-                            </button>
                         </div>
-                    </div>
-                `;
+                    `;
+                }
             } else {
                 bodyHtml = `
                     <div class="inst-panel-card">
                         <div class="inst-panel-head">
                             <div class="inst-panel-icon"><i data-lucide="check-circle"></i></div>
                             <div>
-                                <h4>Confirm ${isDep ? 'Deposit Submission' : 'Withdrawal'}</h4>
-                                <p>${isDep ? 'Recorded as pending until payment is verified' : 'Final verification before processing'}</p>
+                                <h4>Confirm ${isDep ? 'Deposit Request' : 'Withdrawal'}</h4>
+                                <p>${isDep ? 'Sent to pending history & admin verification queue' : 'Final verification before processing'}</p>
                             </div>
                         </div>
                         <div class="inst-summary-rows">
+                            <div class="inst-s-row"><span class="k">User ID</span><span class="v" style="color:var(--primary);">${authState.userId || '-'}</span></div>
                             <div class="inst-s-row"><span class="k">Action</span><span class="v">${isDep ? 'Deposit' : 'Withdraw'}</span></div>
-                            <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.key} (${coin.networkDesc})</span></div>
+                            <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.name} (${coin.networkDesc})</span></div>
                             <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${currentAmt.toFixed(2)}</span></div>
-                            <div class="inst-s-row"><span class="k">${isDep ? 'Gateway' : 'Destination'}</span><span class="v" style="font-family:monospace;font-size:0.72rem;">${isDep ? 'NOWPayments (#4719687929)' : walletState.destination}</span></div>
+                            <div class="inst-s-row"><span class="k">${isDep ? 'Wallet' : 'Destination'}</span><span class="v" style="font-family:monospace;font-size:0.68rem;">${isDep ? walletAddr : walletState.destination}</span></div>
                         </div>
                         <div class="inst-btn-row">
                             <button class="inst-sec-btn" type="button" onclick="goWalletStep(3)">← Back</button>
@@ -2850,7 +2927,7 @@
                         <div class="inst-brand-icon"><i data-lucide="gem"></i></div>
                         <div>
                             <div class="inst-brand-title">TRONVEX</div>
-                            <div class="inst-brand-sub">GLOBAL CRYPTO GATEWAY</div>
+                            <div class="inst-brand-sub">4-NETWORK DIRECT WALLET</div>
                         </div>
                     </div>
                     <div class="inst-badge-m">LIVE</div>
@@ -2878,14 +2955,15 @@
                 ${bodyHtml}
             `);
 
-            if (isDep && walletState.step === 3 && walletState.activeOrderExpiresAt) {
+            if (isDep && walletState.step === 3 && !walletState.sendingAnim && walletState.activeOrderExpiresAt) {
                 updateWalletCountdownUI();
                 walletCountdownInterval = setInterval(updateWalletCountdownUI, 500);
             }
         }
 
         async function submitWalletFlowFinal() {
-            const coin = COINS[walletState.network] || COINS.usdt_trc20;
+            const coin = COINS[walletState.network] || COINS.usdt_bep20;
+            const walletAddr = USER_WALLET_ADDRESSES[coin.key] || '';
             const amount = parseFloat(walletState.amount || '5');
             if (isNaN(amount) || amount < 5) {
                 showToast('Minimum amount is $5.00', 'error');
@@ -2895,81 +2973,57 @@
             const btn = document.getElementById('wFlowFinalBtn');
             if (btn) {
                 btn.disabled = true;
-                btn.innerHTML = '<span>PROCESSING...</span>';
+                btn.innerHTML = `<span class="btn-spinner"></span> <span>PROCESSING...</span>`;
             }
 
             try {
                 if (walletState.mode === 'deposit') {
-                    if (walletState.activeOrderExpiresAt && Date.now() >= walletState.activeOrderExpiresAt) {
-                        const expTx = {
-                            id: walletState.paymentId || ('DEP-' + Math.floor(100000 + Math.random() * 900000)),
-                            type: 'deposit',
-                            title: `Deposit ${coin.key}`,
-                            method: coin.name,
-                            network: coin.key,
-                            days: PLAN_DAYS,
-                            amount: amount,
-                            date: new Date().toLocaleString(),
-                            status: 'rejected',
-                            address: walletState.invoiceUrl || DIRECT_GATEWAY_URL,
-                            txHash: walletState.paymentId || 'EXPIRED-5MIN',
-                            expiresAt: walletState.activeOrderExpiresAt
-                        };
-                        TRANSACTIONS.unshift(expTx);
-                        renderHistory();
-                        closeModal();
-                        showToast('Payment window expired — Deposit rejected.', 'error');
-                        return;
-                    }
-
-                    let backendConfirmed = false;
-                    try {
-                        const depRes = await apiRequest('/api/deposits/create', {
-                            method: 'POST',
-                            body: JSON.stringify({
-                                network: coin.key,
-                                pay_currency: coin.key,
-                                method: coin.name,
-                                amount: amount,
-                                days: PLAN_DAYS,
-                                payment_id: walletState.paymentId
-                            })
-                        });
-                        if (depRes && (depRes.status === 'completed' || depRes.status === 'finished' || depRes.verified === true)) {
-                            backendConfirmed = true;
-                        }
-                    } catch (e) {}
-
-                    const txId = walletState.paymentId || ('DEP-' + Math.floor(100000 + Math.random() * 900000));
-                    const txStatus = backendConfirmed ? 'completed' : 'pending';
+                    const txId = walletState.paymentId || ('TVX-DEP-' + Date.now());
+                    const expiresAt = Date.now() + DEPOSIT_TIMEOUT_MS;
+                    const isExpired = walletState.activeOrderExpiresAt && Date.now() >= walletState.activeOrderExpiresAt;
+                    const status = isExpired ? 'rejected' : 'pending';
 
                     TRANSACTIONS.unshift({
                         id: txId,
                         type: 'deposit',
-                        title: `Deposit ${coin.key}`,
+                        title: `Deposit ${coin.name}`,
                         method: coin.name,
-                        network: coin.key,
+                        network: coin.network,
                         days: PLAN_DAYS,
                         amount: amount,
                         date: new Date().toLocaleString(),
-                        status: txStatus,
-                        address: walletState.invoiceUrl || DIRECT_GATEWAY_URL,
+                        status: status,
+                        address: walletAddr,
                         txHash: txId,
-                        expiresAt: Date.now() + DEPOSIT_TIMEOUT_MS
+                        expiresAt: expiresAt,
+                        rejectReason: isExpired ? 'Payment window expired (5 minutes).' : ''
                     });
 
-                    if (backendConfirmed) {
-                        availableBalance = Number(availableBalance || 0) + amount;
-                        syncBalanceUI();
-                        renderHistory();
-                        closeModal();
-                        notifyBalanceUpdated(amount, coin.key, txId);
-                    } else {
-                        syncBalanceUI();
-                        renderHistory();
-                        closeModal();
-                        showToast(`Deposit $${amount.toFixed(2)} (${coin.key}) recorded as PENDING payment verification.`, 'info');
+                    if (!isExpired) {
+                        ADMIN_DEPOSIT_REQUESTS.unshift({
+                            id: 'REQ-' + Date.now(),
+                            txId: txId,
+                            userId: authState.userId || 'TVX-000000',
+                            userName: authState.name || 'User',
+                            userEmail: authState.email || 'user@tronvex.online',
+                            networkKey: coin.key,
+                            networkLabel: coin.name,
+                            walletAddress: walletAddr,
+                            amount: amount,
+                            status: 'pending',
+                            expiresAt: expiresAt,
+                            createdAt: new Date().toLocaleString()
+                        });
                     }
+
+                    pushNotification(
+                        'Deposit Submitted',
+                        `Deposit of $${amount.toFixed(2)} (${coin.name}) submitted under ID ${authState.userId}. Status: ${status.toUpperCase()}.`
+                    );
+                    saveDatabase();
+                    renderHistory();
+                    closeModal();
+                    showToast(`Deposit $${amount.toFixed(2)} (${coin.name}) recorded as ${status.toUpperCase()}.`, status === 'rejected' ? 'error' : 'info');
                 } else {
                     if (amount > availableBalance) {
                         showToast('Insufficient available balance.', 'error');
@@ -2981,27 +3035,14 @@
                         return;
                     }
 
-                    try {
-                        await apiRequest('/api/withdrawals/create', {
-                            method: 'POST',
-                            body: JSON.stringify({
-                                network: coin.key,
-                                pay_currency: coin.key,
-                                method: coin.name,
-                                amount: amount,
-                                address: walletState.destination
-                            })
-                        });
-                    } catch (e) {}
-
-                    availableBalance = Math.max(0, Number(availableBalance || 0) - amount);
+                    availableBalance = Math.max(0, Number((Number(availableBalance || 0) - amount).toFixed(2)));
                     const txId = 'WDR-' + Math.floor(100000 + Math.random() * 900000);
                     TRANSACTIONS.unshift({
                         id: txId,
                         type: 'withdraw',
-                        title: `Withdraw ${coin.key}`,
+                        title: `Withdraw ${coin.name}`,
                         method: coin.name,
-                        network: coin.key,
+                        network: coin.network,
                         amount: amount,
                         date: new Date().toLocaleString(),
                         status: 'completed',
@@ -3009,16 +3050,23 @@
                         txHash: 'TX-' + Math.random().toString(16).slice(2, 14).toUpperCase()
                     });
 
+                    pushNotification(
+                        'Withdrawal Completed',
+                        `Withdrawal of $${amount.toFixed(2)} (${coin.name}) to ${walletState.destination} completed.`
+                    );
+                    saveDatabase();
                     syncBalanceUI();
                     renderHistory();
                     closeModal();
-                    showToast(`Withdrawal of $${amount.toFixed(2)} (${coin.key}) completed!`, 'success');
+                    showToast(`Withdrawal of $${amount.toFixed(2)} (${coin.name}) completed!`, 'success');
                 }
             } catch (err) {
                 showToast(err.message, 'error');
-                if (btn) {
-                    btn.disabled = false;
-                    btn.innerHTML = `<span>${walletState.mode === 'deposit' ? 'SUBMIT DEPOSIT' : 'CONFIRM PAYOUT'}</span><i data-lucide="shield-check"></i>`;
+            } finally {
+                const finalBtn = document.getElementById('wFlowFinalBtn');
+                if (finalBtn) {
+                    finalBtn.disabled = false;
+                    finalBtn.innerHTML = `<span>${walletState.mode === 'deposit' ? 'SUBMIT DEPOSIT' : 'CONFIRM PAYOUT'}</span><i data-lucide="shield-check"></i>`;
                     lucide.createIcons();
                 }
             }
@@ -3085,24 +3133,13 @@
 
             const btn = document.getElementById('investSubmitBtn');
             const originalHtml = btn.innerHTML;
-            btn.innerHTML = '<span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(0,0,0,0.3);border-top-color:#030a12;border-radius:50%;animation:spin 1s linear infinite;"></span> Processing...';
+            btn.innerHTML = '<span class="btn-spinner"></span> <span>Processing...</span>';
             btn.disabled = true;
 
             try {
-                try {
-                    await apiRequest('/api/investments/create', {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            plan: planName,
-                            amount: amount,
-                            days: days
-                        })
-                    });
-                } catch (e) {}
-
-                availableBalance = Math.max(0, Number(availableBalance || 0) - amount);
-                lockedBalance = Number(lockedBalance || 0) + amount;
-                totalInvestedAmount = Number(totalInvestedAmount || 0) + amount;
+                availableBalance = Math.max(0, Number((Number(availableBalance || 0) - amount).toFixed(2)));
+                lockedBalance = Number((Number(lockedBalance || 0) + amount).toFixed(2));
+                totalInvestedAmount = Number((Number(totalInvestedAmount || 0) + amount).toFixed(2));
 
                 const durationMs = days * 24 * 60 * 60 * 1000;
                 const nowMs = Date.now();
@@ -3134,10 +3171,15 @@
                     txHash: 'INV-' + Math.random().toString(16).slice(2, 14).toUpperCase()
                 });
 
+                pushNotification(
+                    'Investment Active',
+                    `Invested $${amount.toFixed(2)} in ${planName} for 5 days. Live earning started.`
+                );
+                saveDatabase();
                 syncBalanceUI();
                 renderHistory();
                 closeModal();
-                showToast(`Invested $${amount.toFixed(2)} in ${planName} for 5 days! Live earning started.`, 'success');
+                showToast(`Invested $${amount.toFixed(2)} in ${planName} for 5 days!`, 'success');
             } catch (err) {
                 showToast(err.message, 'error');
             } finally {
@@ -3178,12 +3220,13 @@
                         <div class="sub">${typeLabel} · ${tx.method}</div>
                     </div>
                     <div class="receipt-details">
+                        <div class="receipt-row"><span class="lbl">User ID</span><span class="val mono">${authState.userId || '-'}</span></div>
                         <div class="receipt-row"><span class="lbl">Transaction ID</span><span class="val">${tx.id}</span></div>
                         <div class="receipt-row"><span class="lbl">Date & Time</span><span class="val">${tx.date}</span></div>
                         <div class="receipt-row"><span class="lbl">Method</span><span class="val">${tx.method}</span></div>
                         <div class="receipt-row"><span class="lbl">Network</span><span class="val" style="color:var(--primary);">${tx.network || '-'}</span></div>
-                        <div class="receipt-row"><span class="lbl">Reference</span><span class="val mono">${tx.address || '-'}</span></div>
-                        <div class="receipt-row"><span class="lbl">TX Hash</span><span class="val mono">${tx.txHash || '-'}</span></div>
+                        <div class="receipt-row"><span class="lbl">Address / Ref</span><span class="val mono">${tx.address || '-'}</span></div>
+                        ${tx.rejectReason ? `<div class="receipt-row"><span class="lbl">Reject Reason</span><span class="val" style="color:var(--danger);">${tx.rejectReason}</span></div>` : ''}
                     </div>
                     <div class="receipt-actions">
                         <button class="btn btn-outline btn-block" onclick="closeModal()">Close</button>
@@ -3196,23 +3239,25 @@
         function copyReceipt(index) {
             const tx = TRANSACTIONS[index];
             if (!tx) return;
-            const text = `TRONVEX Receipt\nTransaction: ${tx.id}\nType: ${tx.type}\nAmount: ${formatAmount(tx)}\nMethod: ${tx.method}\nDate: ${tx.date}\nStatus: ${tx.status}`;
+            const text = `TRONVEX Receipt\nUser ID: ${authState.userId || '-'}\nTransaction: ${tx.id}\nType: ${tx.type}\nAmount: ${formatAmount(tx)}\nMethod: ${tx.method}\nDate: ${tx.date}\nStatus: ${tx.status}`;
             copyText(text, 'Receipt copied!');
         }
 
-        window.addEventListener('load', async () => {
-            if ('Notification' in window && Notification.permission === 'default') {
-                try { Notification.requestPermission().catch(() => {}); } catch (e) {}
-            }
+        window.addEventListener('load', () => {
             loadAuthState();
+            loadDatabase();
+            if (authState.email && authState.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+                authState.isAdmin = true;
+            }
+            if (USER_NOTIFICATIONS.length > 0) {
+                const dot = document.getElementById('notifDot');
+                if (dot) dot.classList.add('show');
+            }
             syncAuthUI();
             syncBalanceUI();
             renderHistory();
             updateSlider();
             startLiveEarningTicker();
-            if (authState.isLoggedIn && API_BASE_URL) {
-                await refreshAccountData();
-            }
         });
     </script>
 </body>
