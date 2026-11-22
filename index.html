@@ -669,26 +669,6 @@
         .inst-panel-head h4 { font-size: 0.95rem; font-weight: 800; line-height: 1.2; }
         .inst-panel-head p { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
 
-        .bybit-selected-preview {
-            display: flex; align-items: center; justify-content: space-between; gap: 8px;
-            background: rgba(0, 0, 0, 0.38);
-            border: 1px solid rgba(247, 166, 0, 0.25);
-            border-radius: 12px; padding: 9px 12px; margin-bottom: 14px;
-        }
-        .bybit-prev-left { display: flex; flex-direction: column; min-width: 0; }
-        .bybit-prev-tag { font-size: 0.58rem; font-weight: 800; color: var(--gold); text-transform: uppercase; letter-spacing: 0.7px; }
-        .bybit-prev-masked { font-family: 'Courier New', monospace; font-size: 0.78rem; font-weight: 800; color: #ffffff; letter-spacing: 0.4px; }
-        .bybit-prev-copy {
-            display: inline-flex; align-items: center; gap: 5px;
-            padding: 6px 11px; border-radius: 8px;
-            background: var(--gold); color: #030a12;
-            font-size: 0.68rem; font-weight: 800; flex-shrink: 0;
-            transition: all 0.22s ease;
-        }
-        .bybit-prev-copy:hover { filter: brightness(1.08); transform: scale(1.03); }
-        .bybit-prev-copy:active { transform: scale(0.95); }
-        .bybit-prev-copy svg { width: 12px; height: 12px; }
-
         .inst-net-grid {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
             margin-bottom: 14px;
@@ -722,11 +702,11 @@
         }
         .inst-net-tile.active .inst-net-check { display: flex; }
         .inst-net-logo {
-            width: 32px; height: 32px; border-radius: 50%; overflow: hidden;
+            width: 34px; height: 34px; border-radius: 50%; overflow: hidden;
             display: flex; align-items: center; justify-content: center;
         }
         .inst-net-logo svg { width: 100%; height: 100%; }
-        .inst-net-code { font-size: 0.74rem; font-weight: 800; color: #ffffff; letter-spacing: 0.3px; line-height: 1.1; }
+        .inst-net-code { font-size: 0.72rem; font-weight: 800; color: #ffffff; letter-spacing: 0.2px; line-height: 1.1; word-break: break-all; }
         .inst-net-sub { font-size: 0.58rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; }
         .inst-net-tile.active .inst-net-sub { color: var(--gold); }
 
@@ -739,8 +719,9 @@
             transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
             box-shadow: 0 6px 22px rgba(247, 166, 0, 0.26);
         }
-        .inst-continue-btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
-        .inst-continue-btn:active { transform: scale(0.98); }
+        .inst-continue-btn:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.06); }
+        .inst-continue-btn:active:not(:disabled) { transform: scale(0.98); }
+        .inst-continue-btn:disabled { opacity: 0.55; cursor: not-allowed; }
         .inst-continue-btn svg { width: 16px; height: 16px; stroke-width: 2.5; }
 
         .inst-addr-box {
@@ -975,7 +956,7 @@
             background: var(--bg-surface); border: 1px solid var(--border-dim); border-left: 4px solid var(--primary);
             padding: 12px 16px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             display: flex; align-items: center; gap: 10px; font-size: 0.8rem; font-weight: 600;
-            animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; max-width: 320px;
+            animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; max-width: 340px;
         }
         @keyframes slideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
         @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }
@@ -1007,7 +988,7 @@
             .modal.wallet-inst-modal { padding: 16px; }
             .inst-net-grid { gap: 6px; }
             .inst-net-tile { padding: 10px 4px 8px; }
-            .inst-net-code { font-size: 0.68rem; }
+            .inst-net-code { font-size: 0.64rem; }
             .balance-amount .main { font-size: 1.9rem; }
             .balance-stats { padding: 10px; }
             .balance-stats .bs-value { font-size: 0.78rem; }
@@ -1100,7 +1081,7 @@
                 <div class="active-inv-card" id="activeInvestmentsPanel" style="display:none;">
                     <div class="active-inv-head">
                         <h4><i data-lucide="activity" style="width:15px;height:15px;color:var(--primary);"></i> Active Live Investments</h4>
-                        <span style="font-size:0.68rem;color:var(--primary);font-weight:700;">150% / 5–30d</span>
+                        <span style="font-size:0.68rem;color:var(--primary);font-weight:700;">150% / 5d</span>
                     </div>
                     <div class="active-inv-list" id="activeInvestmentsList"></div>
                 </div>
@@ -1124,16 +1105,16 @@
                         <div class="plan-badge"><i data-lucide="star" style="width:9px;"></i> Entry</div>
                         <div class="plan-header">
                             <div class="plan-icon"><i data-lucide="rocket"></i></div>
-                            <div class="plan-name"><h3>STARTER</h3><p>$5 – $100</p></div>
+                            <div class="plan-name"><h3>STARTER</h3><p>$5 – $100 · 5 Days</p></div>
                         </div>
                         <div class="plan-profit-box">
                             <div class="profit-row"><span class="profit-label">Min</span><span class="profit-value">$5.00</span></div>
                             <div class="profit-row"><span class="profit-label">Max</span><span class="profit-value">$100.00</span></div>
-                            <div class="profit-row"><span class="profit-label">Profit (5–30d)</span><span class="profit-value text-gold">150%</span></div>
+                            <div class="profit-row"><span class="profit-label">Profit (5d)</span><span class="profit-value text-gold">150%</span></div>
                             <div class="profit-row"><span class="profit-label">Total</span><span class="profit-value text-gradient">Dep+Profit</span></div>
                         </div>
                         <ul class="plan-features">
-                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5–30 Days</li>
+                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
                             <li><i data-lucide="check-circle-2"></i> $5 Minimum</li>
                             <li><i data-lucide="check-circle-2"></i> Automated Payouts</li>
                         </ul>
@@ -1144,16 +1125,16 @@
                         <div class="plan-badge"><i data-lucide="trending-up" style="width:9px;"></i> Popular</div>
                         <div class="plan-header">
                             <div class="plan-icon"><i data-lucide="bar-chart-3"></i></div>
-                            <div class="plan-name"><h3>GROWTH</h3><p>$100 – $1,000</p></div>
+                            <div class="plan-name"><h3>GROWTH</h3><p>$100 – $1,000 · 5 Days</p></div>
                         </div>
                         <div class="plan-profit-box">
                             <div class="profit-row"><span class="profit-label">Min</span><span class="profit-value">$100.00</span></div>
                             <div class="profit-row"><span class="profit-label">Max</span><span class="profit-value">$1,000.00</span></div>
-                            <div class="profit-row"><span class="profit-label">Profit (5–30d)</span><span class="profit-value text-gold">150%</span></div>
+                            <div class="profit-row"><span class="profit-label">Profit (5d)</span><span class="profit-value text-gold">150%</span></div>
                             <div class="profit-row"><span class="profit-label">Total</span><span class="profit-value text-gradient">Dep+Profit</span></div>
                         </div>
                         <ul class="plan-features">
-                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5–30 Days</li>
+                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
                             <li><i data-lucide="check-circle-2"></i> Priority Support</li>
                             <li><i data-lucide="check-circle-2"></i> Automated Payouts</li>
                         </ul>
@@ -1164,16 +1145,16 @@
                         <div class="plan-badge"><i data-lucide="crown" style="width:9px;"></i> VIP</div>
                         <div class="plan-header">
                             <div class="plan-icon"><i data-lucide="shield"></i></div>
-                            <div class="plan-name"><h3>PREMIUM</h3><p>$1,000 – $10,000</p></div>
+                            <div class="plan-name"><h3>PREMIUM</h3><p>$1,000 – $10,000 · 5 Days</p></div>
                         </div>
                         <div class="plan-profit-box">
                             <div class="profit-row"><span class="profit-label">Min</span><span class="profit-value">$1,000.00</span></div>
                             <div class="profit-row"><span class="profit-label">Max</span><span class="profit-value">$10,000.00</span></div>
-                            <div class="profit-row"><span class="profit-label">Profit (5–30d)</span><span class="profit-value text-gold">150%</span></div>
+                            <div class="profit-row"><span class="profit-label">Profit (5d)</span><span class="profit-value text-gold">150%</span></div>
                             <div class="profit-row"><span class="profit-label">Total</span><span class="profit-value text-gradient">Dep+Profit</span></div>
                         </div>
                         <ul class="plan-features">
-                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5–30 Days</li>
+                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
                             <li><i data-lucide="check-circle-2"></i> Account Manager</li>
                             <li><i data-lucide="check-circle-2"></i> Automated Payouts</li>
                         </ul>
@@ -1184,16 +1165,16 @@
                         <div class="plan-badge"><i data-lucide="gem" style="width:9px;"></i> Elite</div>
                         <div class="plan-header">
                             <div class="plan-icon"><i data-lucide="diamond"></i></div>
-                            <div class="plan-name"><h3>DIAMOND</h3><p>$10,000 – $50,000</p></div>
+                            <div class="plan-name"><h3>DIAMOND</h3><p>$10,000 – $50,000 · 5 Days</p></div>
                         </div>
                         <div class="plan-profit-box">
                             <div class="profit-row"><span class="profit-label">Min</span><span class="profit-value">$10,000.00</span></div>
                             <div class="profit-row"><span class="profit-label">Max</span><span class="profit-value">$50,000.00</span></div>
-                            <div class="profit-row"><span class="profit-label">Profit (5–30d)</span><span class="profit-value text-gold">150%</span></div>
+                            <div class="profit-row"><span class="profit-label">Profit (5d)</span><span class="profit-value text-gold">150%</span></div>
                             <div class="profit-row"><span class="profit-label">Total</span><span class="profit-value text-gradient">Dep+Profit</span></div>
                         </div>
                         <ul class="plan-features">
-                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5–30 Days</li>
+                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
                             <li><i data-lucide="check-circle-2"></i> VIP Concierge</li>
                             <li><i data-lucide="check-circle-2"></i> Automated Payouts</li>
                         </ul>
@@ -1209,7 +1190,7 @@
                 <div class="hero-content">
                     <div class="hero-tag"><i data-lucide="shield-check"></i> Trusted Platform</div>
                     <h1>Grow your <span class="text-gradient">USDT</span><br>with confidence</h1>
-                    <p>Multi-network USDT & crypto settlements · $5 minimum across all networks · Flexible 5–30 day cycles.</p>
+                    <p>Multi-network USDT & TRX settlements · $5 minimum across all networks · Fixed 5-day cycles.</p>
                     <div class="hero-stats">
                         <div class="hero-stat-item">
                             <div class="hero-stat-icon"><i data-lucide="trending-up"></i></div>
@@ -1228,7 +1209,7 @@
                         <div class="hero-stat-item">
                             <div class="hero-stat-icon"><i data-lucide="badge-check"></i></div>
                             <div>
-                                <div class="hero-stat-value">5–30 Days</div>
+                                <div class="hero-stat-value">5 Days</div>
                                 <div class="hero-stat-label">Cycle Length</div>
                             </div>
                         </div>
@@ -1439,6 +1420,7 @@
         const API_BASE_URL = 'https://tronvex-backend.onrender.com';
         const CREATE_PAYMENT_URL = 'https://njqysfaazskjrgmfsex.supabase.co/functions/v1/create-payment';
         const DEPOSIT_TIMEOUT_MS = 5 * 60 * 1000; // 5 minutes
+        const PLAN_DAYS = 5; // Fixed 5 days for all plans
 
         let availableBalance = 0.00;
         let lockedBalance = 0.00;
@@ -1459,8 +1441,9 @@
         let forgotOtpSendingInProgress = false;
 
         function maskAddressShort(addr) {
-            if (!addr || addr.length <= 8) return addr || '';
-            return addr.slice(0, 4) + '***' + addr.slice(-4);
+            if (!addr) return 'Awaiting Gateway Address';
+            if (addr.length <= 10) return addr;
+            return addr.slice(0, 6) + '***' + addr.slice(-4);
         }
 
         function getOtpRemainingSeconds() {
@@ -1587,7 +1570,7 @@
 
         async function apiRequest(path, options = {}) {
             if (!API_BASE_URL) {
-                throw new Error('Backend URL not configured yet. Set API_BASE_URL to your live backend server.');
+                throw new Error('Backend URL not configured yet.');
             }
             const headers = {
                 'Content-Type': 'application/json',
@@ -1645,8 +1628,9 @@
             const now = Date.now();
             let accrued = 0;
             ACTIVE_INVESTMENTS.forEach(inv => {
-                const elapsed = Math.max(0, Math.min(now - inv.startTime, inv.durationMs));
-                const progress = elapsed / inv.durationMs;
+                const dur = inv.durationMs || (PLAN_DAYS * 24 * 60 * 60 * 1000);
+                const elapsed = Math.max(0, Math.min(now - inv.startTime, dur));
+                const progress = elapsed / dur;
                 const maxProfit = inv.amount * inv.roiRate;
                 accrued += maxProfit * progress;
             });
@@ -1704,15 +1688,15 @@
             panel.style.display = 'block';
             const now = Date.now();
             list.innerHTML = ACTIVE_INVESTMENTS.map(inv => {
-                const elapsed = Math.max(0, Math.min(now - inv.startTime, inv.durationMs));
-                const pct = ((elapsed / inv.durationMs) * 100).toFixed(2);
-                const earned = (inv.amount * inv.roiRate * (elapsed / inv.durationMs)).toFixed(6);
-                const daysLabel = inv.days || Math.round(inv.durationMs / (24 * 60 * 60 * 1000)) || 5;
+                const dur = inv.durationMs || (PLAN_DAYS * 24 * 60 * 60 * 1000);
+                const elapsed = Math.max(0, Math.min(now - inv.startTime, dur));
+                const pct = ((elapsed / dur) * 100).toFixed(2);
+                const earned = (inv.amount * inv.roiRate * (elapsed / dur)).toFixed(6);
                 return `
                     <div class="active-inv-row">
                         <div>
                             <div class="active-inv-plan">${inv.plan} · $${inv.amount.toFixed(2)}</div>
-                            <div class="active-inv-meta">Progress: ${pct}% · ${daysLabel}-Day Cycle</div>
+                            <div class="active-inv-meta">Progress: ${pct}% · ${PLAN_DAYS}-Day Cycle</div>
                         </div>
                         <div class="active-inv-live">
                             +$${earned}
@@ -2199,6 +2183,10 @@
         }
 
         function copyText(text, msg) {
+            if (!text) {
+                showToast('No payment address available yet', 'error');
+                return;
+            }
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(text).then(() => showToast(msg, 'success'));
             } else {
@@ -2252,113 +2240,111 @@
             return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">${rects}</svg>`;
         }
 
+        /* ================= 4 OFFICIAL NETWORKS ONLY (NO HARDCODED FAKE ADDRESSES) ================= */
         const COINS = {
-            USDT_BEP20: {
-                symbol: 'USDT',
-                name: 'USDT BEP20',
-                tileCode: 'USDT',
-                tileSub: 'BEP20',
-                network: 'BEP20',
-                networkDesc: 'BNB Smart Chain',
-                addressLabel: 'BEP20 Deposit Address',
-                minDeposit: '$5.00',
-                confirmations: '15 Blocks',
-                depositAddress: '0xe4484af8794b0fe2eccf433f7da7ac81935fc4a0',
-                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="bscRing" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f3ba2f"/><stop offset="100%" stop-color="#d99b00"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131a24"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#bscRing)" stroke-width="2.2"/><circle cx="18" cy="18" r="12.2" fill="#26a17b"/><path fill="#ffffff" d="M19.8 15.1v-2.5h4.5V9.2H11.7v3.4h4.5v2.5c-3.7.17-6.5.9-6.5 1.8s2.8 1.63 6.5 1.8v6.3h3.6v-6.3c3.7-.17 6.5-.9 6.5-1.8s-2.8-1.63-6.5-1.8zm0 3.05c-.2.01-.8.04-1.8.04-1 0-1.6-.03-1.8-.04v-2.25c3.2.15 5.6.7 5.6 1.35s-2.4 1.2-5.6 1.35v-.45z"/></svg>`
-            },
-            USDT_TRC20: {
+            usdt_trc20: {
+                key: 'usdt_trc20',
                 symbol: 'USDT',
                 name: 'USDT TRC20',
                 tileCode: 'USDT',
                 tileSub: 'TRC20',
                 network: 'TRC20',
                 networkDesc: 'TRON Network',
-                addressLabel: 'TRC20 Deposit Address',
+                addressLabel: 'TRC20 Gateway Address',
                 minDeposit: '$5.00',
-                confirmations: '20 Blocks',
-                depositAddress: 'TLPVBmQnS6VTV7MwzLzYy7EjUKqsKob7hs',
-                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="tronGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff2e4d"/><stop offset="100%" stop-color="#b8001c"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#141821"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#tronGrad)" stroke-width="2"/><polygon points="9.5,9.5 27.5,13 18.5,27.5" fill="none" stroke="#ff3b5c" stroke-width="2" stroke-linejoin="round"/><line x1="9.5" y1="9.5" x2="18.2" y2="15.4" stroke="#ff3b5c" stroke-width="1.8"/><line x1="27.5" y1="13" x2="18.2" y2="15.4" stroke="#ff3b5c" stroke-width="1.8"/><line x1="18.2" y1="15.4" x2="18.5" y2="27.5" stroke="#ff3b5c" stroke-width="1.8"/><circle cx="24.5" cy="24.5" r="8.2" fill="#26a17b" stroke="#141821" stroke-width="1.6"/><path fill="#fff" d="M25.4 23.6v-1.2h2.1v-1.6h-6v1.6h2.1v1.2c-1.7.08-3 .42-3 .85s1.3.77 3 .85v2.9h1.8v-2.9c1.7-.08 3-.42 3-.85s-1.3-.77-3-.85z"/></svg>`
+                confirmations: 'Auto IPN',
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="tronRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff2e4d"/><stop offset="100%" stop-color="#c4001e"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#121822"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#tronRing1)" stroke-width="2"/><polygon points="9,10 27,13.5 18.5,27.5" fill="none" stroke="#ff3b5c" stroke-width="2" stroke-linejoin="round"/><line x1="9" y1="10" x2="18.2" y2="15.5" stroke="#ff3b5c" stroke-width="1.8"/><line x1="27" y1="13.5" x2="18.2" y2="15.5" stroke="#ff3b5c" stroke-width="1.8"/><line x1="18.2" y1="15.5" x2="18.5" y2="27.5" stroke="#ff3b5c" stroke-width="1.8"/><circle cx="24.5" cy="24.5" r="8.2" fill="#26a17b" stroke="#121822" stroke-width="1.6"/><path fill="#fff" d="M25.4 23.6v-1.2h2.1v-1.6h-6v1.6h2.1v1.2c-1.7.08-3 .42-3 .85s1.3.77 3 .85v2.9h1.8v-2.9c1.7-.08 3-.42 3-.85s-1.3-.77-3-.85z"/></svg>`
             },
-            BTC: {
-                symbol: 'BTC',
-                name: 'Bitcoin',
-                tileCode: 'BTC',
-                tileSub: 'BTC',
-                network: 'BTC',
-                networkDesc: 'Bitcoin Mainnet',
-                addressLabel: 'BTC Deposit Address',
+            usdt_bep20: {
+                key: 'usdt_bep20',
+                symbol: 'USDT',
+                name: 'USDT BEP20',
+                tileCode: 'USDT',
+                tileSub: 'BEP20',
+                network: 'BEP20',
+                networkDesc: 'BNB Smart Chain',
+                addressLabel: 'BEP20 Gateway Address',
                 minDeposit: '$5.00',
-                confirmations: '2 Blocks',
-                depositAddress: '1AVqKF2KKCruGcCinouuu7dnREkKMqeznu',
-                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="btcOfficial" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffa61a"/><stop offset="100%" stop-color="#e87a00"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="url(#btcOfficial)"/><path fill="#ffffff" d="M24.8 15.8c.45-2.65-1.65-4.08-4.45-4.98l.9-3.55-2.2-.55-.88 3.45c-.58-.14-1.18-.28-1.77-.41l.89-3.48-2.2-.55-.9 3.54c-.48-.11-.95-.22-1.41-.33l-3.04-.76-.58 2.34s1.64.38 1.6.4c.9.22 1.06.82 1.03 1.29l-2.48 9.95c-.11.28-.39.7-1.02.57.02.02-1.6-.4-1.6-.4l-1.1 2.52 2.87.72c.53.13 1.06.27 1.57.4l-.91 3.6 2.2.55.9-3.56c.6.16 1.19.32 1.76.46l-.9 3.54 2.2.55.91-3.59c3.76.71 6.59.42 7.78-2.98.96-2.74-.05-4.32-2.02-5.35 1.44-.33 2.52-1.28 2.81-3.24zm-5.02 7.05c-.68 2.74-5.28 1.26-6.78.89l1.21-4.85c1.5.37 6.28 1.11 5.57 3.96zm.68-7.1c-.62 2.49-4.47 1.22-5.72.91l1.1-4.41c1.25.31 5.26.9 4.62 3.5z"/></svg>`
+                confirmations: 'Auto IPN',
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="bscRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f3ba2f"/><stop offset="100%" stop-color="#d99b00"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131a24"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#bscRing1)" stroke-width="2.2"/><circle cx="18" cy="18" r="12.2" fill="#26a17b"/><path fill="#ffffff" d="M19.8 15.1v-2.5h4.5V9.2H11.7v3.4h4.5v2.5c-3.7.17-6.5.9-6.5 1.8s2.8 1.63 6.5 1.8v6.3h3.6v-6.3c3.7-.17 6.5-.9 6.5-1.8s-2.8-1.63-6.5-1.8zm0 3.05c-.2.01-.8.04-1.8.04-1 0-1.6-.03-1.8-.04v-2.25c3.2.15 5.6.7 5.6 1.35s-2.4 1.2-5.6 1.35v-.45z"/></svg>`
             },
-            BYBIT: {
-                symbol: 'BYBIT',
-                name: 'Bybit UID',
-                tileCode: 'BYBIT',
-                tileSub: 'UID',
-                network: 'BYBIT',
-                networkDesc: 'Bybit Instant UID',
-                addressLabel: 'Bybit Transfer UID',
+            usdt_erc20: {
+                key: 'usdt_erc20',
+                symbol: 'USDT',
+                name: 'USDT ERC20',
+                tileCode: 'USDT',
+                tileSub: 'ERC20',
+                network: 'ERC20',
+                networkDesc: 'Ethereum Network',
+                addressLabel: 'ERC20 Gateway Address',
                 minDeposit: '$5.00',
-                confirmations: 'Instant',
-                depositAddress: '578277314',
-                logo: `<svg viewBox="0 0 36 36"><rect width="36" height="36" rx="18" fill="#0d0f14"/><rect x="1.5" y="1.5" width="33" height="33" rx="16.5" fill="none" stroke="#f7a600" stroke-width="1.6"/><path d="M8 11.5h10.2c2.5 0 4.2 1.35 4.2 3.35 0 1.35-.7 2.35-1.8 2.8 1.45.45 2.35 1.55 2.35 3.15 0 2.25-1.8 3.6-4.5 3.6H8V11.5zm3.3 2.6v2.7h6.3c1 0 1.7-.55 1.7-1.35s-.7-1.35-1.7-1.35h-6.3zm0 5.1v2.8h6.8c1.1 0 1.8-.55 1.8-1.4s-.7-1.4-1.8-1.4h-6.8z" fill="#ffffff"/><polygon points="25.2,11.5 28.6,11.5 25.6,19 25.6,24.2 22.5,24.2 22.5,19 19.6,11.5 23,11.5 24.1,15.8" fill="#f7a600"/></svg>`
+                confirmations: 'Auto IPN',
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="ethRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#627eea"/><stop offset="100%" stop-color="#3c55c9"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131826"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#ethRing1)" stroke-width="2"/><polygon points="18,6.5 11.5,17.5 18,21.4 24.5,17.5" fill="#8ea4f8"/><polygon points="18,6.5 18,21.4 24.5,17.5" fill="#627eea"/><polygon points="18,22.9 11.5,19 18,29.5 24.5,19" fill="#8ea4f8"/><circle cx="25" cy="25" r="7.5" fill="#26a17b" stroke="#131826" stroke-width="1.5"/><path fill="#fff" d="M25.8 24.2v-1.1h1.9v-1.4h-5.4v1.4h1.9v1.1c-1.5.07-2.7.38-2.7.77s1.2.7 2.7.77v2.6h1.6v-2.6c1.5-.07 2.7-.38 2.7-.77s-1.2-.7-2.7-.77z"/></svg>`
+            },
+            trx: {
+                key: 'trx',
+                symbol: 'TRX',
+                name: 'TRX',
+                tileCode: 'TRX',
+                tileSub: 'TRON',
+                network: 'TRX',
+                networkDesc: 'TRON Mainnet',
+                addressLabel: 'TRX Gateway Address',
+                minDeposit: '$5.00',
+                confirmations: 'Auto IPN',
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="trxGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff3355"/><stop offset="100%" stop-color="#cc0022"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="url(#trxGrad)"/><polygon points="8.5,9.5 28.5,13.2 19.2,28" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linejoin="round"/><line x1="8.5" y1="9.5" x2="18.8" y2="15.6" stroke="#ffffff" stroke-width="1.8"/><line x1="28.5" y1="13.2" x2="18.8" y2="15.6" stroke="#ffffff" stroke-width="1.8"/><line x1="18.8" y1="15.6" x2="19.2" y2="28" stroke="#ffffff" stroke-width="1.8"/></svg>`
             }
         };
 
-        const PAYMENT_METHODS = ['USDT_BEP20', 'USDT_TRC20', 'BTC', 'BYBIT'];
+        const PAYMENT_METHODS = ['usdt_trc20', 'usdt_bep20', 'usdt_erc20', 'trx'];
         let walletState = {
             mode: 'deposit',
             step: 1,
-            network: 'USDT_TRC20',
+            network: 'usdt_trc20',
             amount: '',
-            days: 30,
-            autoNowPayments: true,
+            days: PLAN_DAYS,
             destination: '',
-            address: COINS.USDT_TRC20.depositAddress,
+            payAddress: '',
+            invoiceUrl: '',
+            paymentId: '',
             qrOpen: false,
-            activeOrderId: null,
             activeOrderExpiresAt: null
         };
         let walletCountdownInterval = null;
         let TRANSACTIONS = [];
 
-        async function launchNowPaymentsInvoice(amount, days = 30) {
+        function notifyBalanceUpdated(amount, networkLabel, txId) {
+            const msg = `Balance Updated! +$${Number(amount).toFixed(2)} credited (${networkLabel})`;
+            showToast(msg, 'success');
+            if ('Notification' in window && Notification.permission === 'granted') {
+                try {
+                    new Notification('TRONVEX — Balance Updated', {
+                        body: `+$${Number(amount).toFixed(2)} (${networkLabel}) has been added to your balance. Ref: ${txId}`
+                    });
+                } catch (e) {}
+            }
+        }
+
+        async function createGatewayPayment(amount, payCurrency) {
             const numericAmount = Number(amount);
-            const numericDays = Math.min(30, Math.max(5, parseInt(days, 10) || 30));
-            if (isNaN(numericAmount) || numericAmount < 5) {
-                showToast('Minimum NOWPayments deposit is $5.00', 'error');
-                return null;
-            }
             const userId = authState.userCode || authState.email || 'guest_user';
-            showToast(`Creating $${numericAmount.toFixed(2)} NOWPayments invoice (${numericDays}d)...`, 'info');
-            try {
-                const res = await fetch(CREATE_PAYMENT_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        user_id: userId,
-                        amount: numericAmount,
-                        days: numericDays
-                    })
-                });
-                const data = await res.json().catch(() => ({}));
-                if (!res.ok) {
-                    throw new Error(data.error || data.message || `Failed to create payment (${res.status})`);
-                }
-                const invoiceUrl = data.invoice_url || data.payment_url || data.url;
-                if (invoiceUrl) {
-                    window.open(invoiceUrl, '_blank', 'noopener,noreferrer');
-                    showToast('NOWPayments invoice opened! Auto-credit via IPN enabled.', 'success');
-                } else {
-                    showToast('Invoice created! Waiting for NOWPayments IPN callback.', 'success');
-                }
-                return data;
-            } catch (err) {
-                showToast(err.message || 'NOWPayments invoice request failed', 'error');
-                return null;
+            const res = await fetch(CREATE_PAYMENT_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    user_id: userId,
+                    amount: numericAmount,
+                    price_amount: numericAmount,
+                    price_currency: 'usd',
+                    pay_currency: payCurrency,
+                    days: PLAN_DAYS
+                })
+            });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) {
+                throw new Error(data.error || data.message || `Payment gateway error (${res.status})`);
             }
+            return data;
         }
 
         function formatAmount(tx) {
@@ -2436,13 +2422,13 @@
             let icon = 'info', color = 'var(--primary)';
             if (type === 'success') { icon = 'check-circle'; toast.style.borderLeftColor = 'var(--success)'; }
             else if (type === 'error') { icon = 'alert-circle'; color = 'var(--danger)'; toast.style.borderLeftColor = 'var(--danger)'; }
-            toast.innerHTML = `<i data-lucide="${icon}" style="color:${color}; width:18px; height:18px;"></i> <span>${message}</span>`;
+            toast.innerHTML = `<i data-lucide="${icon}" style="color:${color}; width:18px; height:18px; flex-shrink:0;"></i> <span>${message}</span>`;
             container.appendChild(toast);
             lucide.createIcons();
             setTimeout(() => {
                 toast.style.animation = 'slideOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards';
                 setTimeout(() => toast.remove(), 400);
-            }, 3200);
+            }, 3800);
         }
 
         function openModal(html) {
@@ -2561,18 +2547,15 @@
         }
         window.addEventListener('resize', updateSlider);
 
-        /* ================= WALLET FLOW (WITH 5-30 DAYS & NOWPAYMENTS) ================= */
+        /* ================= WALLET FLOW (4 NETWORKS + MIN $5 + PAY NOW + BALANCE NOTIFICATION) ================= */
         function openWalletFlow(mode = 'deposit', step = 1) {
             walletState.mode = mode;
             walletState.step = step;
             walletState.qrOpen = false;
+            walletState.days = PLAN_DAYS;
             if (!walletState.network || !COINS[walletState.network]) {
-                walletState.network = 'USDT_TRC20';
+                walletState.network = 'usdt_trc20';
             }
-            if (!walletState.days || walletState.days < 5 || walletState.days > 30) {
-                walletState.days = 30;
-            }
-            walletState.address = COINS[walletState.network].depositAddress;
 
             const modalBox = document.getElementById('modalContent');
             modalBox.classList.remove('auth-pro-modal');
@@ -2589,8 +2572,11 @@
         }
 
         function selectWalletNetwork(key) {
+            if (!COINS[key]) return;
             walletState.network = key;
-            walletState.address = COINS[key].depositAddress;
+            walletState.payAddress = '';
+            walletState.invoiceUrl = '';
+            walletState.paymentId = '';
             walletState.qrOpen = false;
             renderWalletFlowModal();
         }
@@ -2606,10 +2592,8 @@
             renderWalletFlowModal();
         }
 
-        function handleWalletStep2Continue() {
+        async function handlePayNowFromStep2() {
             const amtEl = document.getElementById('wFlowAmount');
-            const daysEl = document.getElementById('wFlowDays');
-            const autoNpEl = document.getElementById('wFlowAutoNp');
             const destEl = document.getElementById('wFlowDest');
             const amtErr = document.getElementById('wFlowAmtErr');
             const destErr = document.getElementById('wFlowDestErr');
@@ -2631,15 +2615,11 @@
             if (amtEl) amtEl.classList.remove('error');
             if (amtErr) amtErr.style.display = 'none';
             walletState.amount = amtVal.toFixed(2);
+            walletState.days = PLAN_DAYS;
 
-            if (walletState.mode === 'deposit') {
-                const parsedDays = parseInt(daysEl ? daysEl.value : walletState.days, 10);
-                walletState.days = isNaN(parsedDays) ? 30 : Math.min(30, Math.max(5, parsedDays));
-                walletState.autoNowPayments = autoNpEl ? Boolean(autoNpEl.checked) : true;
-                walletState.activeOrderExpiresAt = Date.now() + DEPOSIT_TIMEOUT_MS;
-            } else {
+            if (walletState.mode === 'withdraw') {
                 const destVal = destEl ? destEl.value.trim() : '';
-                if (destVal.length < 4) {
+                if (destVal.length < 6) {
                     if (destEl) destEl.classList.add('error');
                     if (destErr) destErr.style.display = 'block';
                     return;
@@ -2647,10 +2627,40 @@
                 if (destEl) destEl.classList.remove('error');
                 if (destErr) destErr.style.display = 'none';
                 walletState.destination = destVal;
+                walletState.step = 3;
+                renderWalletFlowModal();
+                return;
             }
 
-            walletState.step = 3;
-            renderWalletFlowModal();
+            const payBtn = document.getElementById('payNowBtn');
+            if (payBtn) {
+                payBtn.disabled = true;
+                payBtn.innerHTML = '<span>CREATING PAYMENT...</span>';
+            }
+
+            const coin = COINS[walletState.network];
+            walletState.activeOrderExpiresAt = Date.now() + DEPOSIT_TIMEOUT_MS;
+
+            try {
+                const gatewayData = await createGatewayPayment(amtVal, coin.key);
+                walletState.payAddress = gatewayData.pay_address || gatewayData.address || '';
+                walletState.invoiceUrl = gatewayData.invoice_url || gatewayData.payment_url || gatewayData.url || '';
+                walletState.paymentId = gatewayData.payment_id || gatewayData.id || '';
+
+                if (walletState.invoiceUrl) {
+                    window.open(walletState.invoiceUrl, '_blank', 'noopener,noreferrer');
+                }
+                showToast(`Payment created for $${amtVal.toFixed(2)} (${coin.key})`, 'success');
+                walletState.step = 3;
+                renderWalletFlowModal();
+            } catch (err) {
+                walletState.payAddress = '';
+                walletState.invoiceUrl = '';
+                walletState.paymentId = '';
+                showToast(err.message || 'Unable to generate payment gateway address', 'error');
+                walletState.step = 3;
+                renderWalletFlowModal();
+            }
         }
 
         function toggleWalletQr() {
@@ -2666,7 +2676,7 @@
             const mm = String(Math.floor(remSec / 60)).padStart(2, '0');
             const ss = String(remSec % 60).padStart(2, '0');
             if (remSec <= 0) {
-                el.textContent = '00:00 — Rejected (5m timeout)';
+                el.textContent = '00:00 — Expired';
                 if (banner) banner.classList.add('expired');
             } else {
                 el.textContent = `${mm}:${ss}`;
@@ -2680,12 +2690,12 @@
                 walletCountdownInterval = null;
             }
 
-            const coin = COINS[walletState.network];
+            const coin = COINS[walletState.network] || COINS.usdt_trc20;
             const isDep = walletState.mode === 'deposit';
             const stepTitles = ['NETWORK', 'AMOUNT', 'PAY', 'CONFIRM'];
-            const maskedAddr = maskAddressShort(walletState.address);
             const currentAmt = Number(walletState.amount || 5);
-            const currentDays = Math.min(30, Math.max(5, parseInt(walletState.days, 10) || 30));
+            const activeAddr = walletState.payAddress || '';
+            const maskedAddr = activeAddr ? maskAddressShort(activeAddr) : 'Generated upon Pay Now';
 
             const stepperHtml = `
                 <div class="inst-stepper">
@@ -2718,18 +2728,6 @@
                 </div>
             `;
 
-            const selectedAddressPreviewHtml = isDep ? `
-                <div class="bybit-selected-preview">
-                    <div class="bybit-prev-left">
-                        <span class="bybit-prev-tag">${coin.name} Deposit Address</span>
-                        <span class="bybit-prev-masked">${maskedAddr}</span>
-                    </div>
-                    <button class="bybit-prev-copy" type="button" onclick="copyText('${walletState.address}', '${coin.name} address (${maskedAddr}) copied!')">
-                        <i data-lucide="copy"></i> Copy
-                    </button>
-                </div>
-            ` : '';
-
             let bodyHtml = '';
 
             if (walletState.step === 1) {
@@ -2739,11 +2737,10 @@
                             <div class="inst-panel-icon"><i data-lucide="network"></i></div>
                             <div>
                                 <h4>Choose Network</h4>
-                                <p>Select your preferred network (${coin.name} · ${coin.networkDesc})</p>
+                                <p>Select from 4 supported networks (${coin.key} · ${coin.networkDesc})</p>
                             </div>
                         </div>
                         ${networkTilesHtml}
-                        ${selectedAddressPreviewHtml}
                         <button class="inst-continue-btn" type="button" onclick="handleWalletStep1Continue()">
                             <span>CONTINUE</span>
                             <i data-lucide="arrow-right"></i>
@@ -2756,89 +2753,82 @@
                         <div class="inst-panel-head">
                             <div class="inst-panel-icon"><i data-lucide="coins"></i></div>
                             <div>
-                                <h4>${isDep ? 'Deposit Amount' : 'Withdrawal Details'}</h4>
-                                <p>${coin.name} (${coin.networkDesc}) · Min $5.00</p>
+                                <h4>${isDep ? 'Enter Amount' : 'Withdrawal Amount'}</h4>
+                                <p>Network: ${coin.key} (${coin.networkDesc}) · Min $5.00</p>
                             </div>
                         </div>
-                        ${selectedAddressPreviewHtml}
                         <div class="form-group">
                             <label>
-                                <span>Amount (USD / USDT)</span>
+                                <span>Amount (USD / ${coin.symbol})</span>
                                 ${!isDep ? `<span class="max-btn" onclick="document.getElementById('wFlowAmount').value=${Number(availableBalance||0).toFixed(2)}">MAX ($${Number(availableBalance||0).toFixed(2)})</span>` : `<span>Min $5.00</span>`}
                             </label>
                             <input type="number" id="wFlowAmount" class="form-control" placeholder="Enter amount (min $5.00)" min="5" step="0.01" value="${walletState.amount}">
                             <div class="error-msg" id="wFlowAmtErr">Minimum amount is $5.00.</div>
                         </div>
-                        ${isDep ? `
+                        ${!isDep ? `
                             <div class="form-group">
-                                <label>
-                                    <span>Duration (5 – 30 Days)</span>
-                                    <span style="color:var(--primary);font-weight:700;" id="wFlowDaysLabel">${currentDays} Days</span>
-                                </label>
-                                <input type="number" id="wFlowDays" class="form-control" min="5" max="30" step="1" value="${currentDays}" oninput="walletState.days = Math.min(30, Math.max(5, parseInt(this.value, 10) || 30)); document.getElementById('wFlowDaysLabel').textContent = walletState.days + ' Days';">
+                                <label><span>Destination Wallet Address (${coin.key})</span></label>
+                                <input type="text" id="wFlowDest" class="form-control" placeholder="Enter ${coin.key} wallet address" value="${walletState.destination}">
+                                <div class="error-msg" id="wFlowDestErr">Valid destination address required.</div>
                             </div>
-                            <div class="form-group" style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-                                <input type="checkbox" id="wFlowAutoNp" ${walletState.autoNowPayments ? 'checked' : ''} onchange="walletState.autoNowPayments = this.checked;" style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;">
-                                <label for="wFlowAutoNp" style="margin:0;cursor:pointer;color:var(--text-main);font-size:0.76rem;">Auto-accept via NOWPayments IPN</label>
-                            </div>
-                        ` : `
-                            <div class="form-group">
-                                <label><span>Destination ${coin.network === 'BYBIT' ? 'Bybit UID' : 'Address'}</span></label>
-                                <input type="text" id="wFlowDest" class="form-control" placeholder="${coin.network === 'BYBIT' ? 'Enter Bybit UID' : 'Enter ' + coin.network + ' address'}" value="${walletState.destination}">
-                                <div class="error-msg" id="wFlowDestErr">Valid destination required.</div>
-                            </div>
-                        `}
+                        ` : ''}
                         <div class="inst-btn-row">
                             <button class="inst-sec-btn" type="button" onclick="goWalletStep(1)">← Back</button>
-                            <button class="inst-continue-btn" type="button" onclick="handleWalletStep2Continue()">
-                                <span>CONTINUE</span>
+                            <button class="inst-continue-btn" id="payNowBtn" type="button" onclick="handlePayNowFromStep2()">
+                                <span>PAY NOW</span>
                                 <i data-lucide="arrow-right"></i>
                             </button>
                         </div>
                     </div>
                 `;
             } else if (walletState.step === 3) {
-                const qrSvg = generateQrSvg(`${coin.network}:${walletState.address}`, 128);
+                const qrSvg = activeAddr ? generateQrSvg(activeAddr, 128) : '';
                 bodyHtml = `
                     <div class="inst-panel-card">
                         <div class="inst-panel-head">
                             <div class="inst-panel-icon"><i data-lucide="wallet"></i></div>
                             <div>
-                                <h4>${isDep ? 'Payment Address' : 'Review Payout'}</h4>
-                                <p>${coin.name} · $${currentAmt.toFixed(2)}${isDep ? ` · ${currentDays}d` : ''}</p>
+                                <h4>${isDep ? 'Payment Details' : 'Review Withdrawal'}</h4>
+                                <p>${coin.key} · $${currentAmt.toFixed(2)}</p>
                             </div>
                         </div>
                         ${isDep ? `
                             <div class="bybit-countdown-banner" id="bybitOrderTimerBanner">
-                                <span>Auto-Reject Window (5m)</span>
+                                <span>Payment Window (5m)</span>
                                 <span id="bybitOrderTimerText">05:00</span>
                             </div>
-                            <button class="btn btn-primary btn-block" type="button" style="margin-bottom:12px;" onclick="launchNowPaymentsInvoice(${currentAmt}, ${currentDays})">
-                                <i data-lucide="external-link" style="width:15px;height:15px;"></i>
-                                Pay $${currentAmt.toFixed(2)} via NOWPayments (Auto IPN)
-                            </button>
+                            ${walletState.invoiceUrl ? `
+                                <a class="btn btn-primary btn-block" href="${walletState.invoiceUrl}" target="_blank" rel="noopener noreferrer" style="margin-bottom:12px;">
+                                    <i data-lucide="external-link" style="width:15px;height:15px;"></i>
+                                    Open Payment Invoice ($${currentAmt.toFixed(2)})
+                                </a>
+                            ` : ''}
                             <div class="inst-addr-box">
                                 <div class="inst-addr-top">
                                     <span>${coin.addressLabel}</span>
                                     <span>${coin.confirmations}</span>
                                 </div>
                                 <div class="inst-addr-row">
-                                    <div class="inst-addr-code">${maskedAddr}</div>
-                                    <button class="inst-chip-btn qr ${walletState.qrOpen ? 'active' : ''}" type="button" onclick="toggleWalletQr()">
-                                        <i data-lucide="qr-code"></i> ${walletState.qrOpen ? 'Hide' : 'QR'}
-                                    </button>
-                                    <button class="inst-chip-btn cp" type="button" onclick="copyText('${walletState.address}', '${coin.name} address (${maskedAddr}) copied!')">
-                                        <i data-lucide="copy"></i> Copy
-                                    </button>
+                                    <div class="inst-addr-code">${activeAddr || 'Pending gateway response — use invoice or confirm below'}</div>
+                                    ${activeAddr ? `
+                                        <button class="inst-chip-btn qr ${walletState.qrOpen ? 'active' : ''}" type="button" onclick="toggleWalletQr()">
+                                            <i data-lucide="qr-code"></i> ${walletState.qrOpen ? 'Hide' : 'QR'}
+                                        </button>
+                                        <button class="inst-chip-btn cp" type="button" onclick="copyText('${activeAddr}', '${coin.key} address copied!')">
+                                            <i data-lucide="copy"></i> Copy
+                                        </button>
+                                    ` : ''}
                                 </div>
-                                <div class="qr-panel ${walletState.qrOpen ? 'open' : ''}">
-                                    <div class="qr-frame">${qrSvg}</div>
-                                    <div class="qr-caption"><strong>${coin.name}</strong> · ${maskedAddr}</div>
-                                </div>
+                                ${activeAddr ? `
+                                    <div class="qr-panel ${walletState.qrOpen ? 'open' : ''}">
+                                        <div class="qr-frame">${qrSvg}</div>
+                                        <div class="qr-caption"><strong>${coin.key}</strong> · ${maskedAddr}</div>
+                                    </div>
+                                ` : ''}
                             </div>
                         ` : `
                             <div class="inst-summary-rows">
-                                <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.name}</span></div>
+                                <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.key}</span></div>
                                 <div class="inst-s-row"><span class="k">Destination</span><span class="v" style="font-family:monospace;font-size:0.7rem;">${walletState.destination}</span></div>
                                 <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${currentAmt.toFixed(2)}</span></div>
                             </div>
@@ -2858,21 +2848,20 @@
                         <div class="inst-panel-head">
                             <div class="inst-panel-icon"><i data-lucide="check-circle"></i></div>
                             <div>
-                                <h4>Confirm ${isDep ? 'Deposit Order' : 'Withdrawal'}</h4>
-                                <p>Final verification before submitting</p>
+                                <h4>Confirm ${isDep ? 'Deposit' : 'Withdrawal'}</h4>
+                                <p>Final verification before updating balance</p>
                             </div>
                         </div>
                         <div class="inst-summary-rows">
                             <div class="inst-s-row"><span class="k">Action</span><span class="v">${isDep ? 'Deposit' : 'Withdraw'}</span></div>
-                            <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.name} (${coin.networkDesc})</span></div>
-                            ${isDep ? `<div class="inst-s-row"><span class="k">Duration</span><span class="v">${currentDays} Days</span></div>` : ''}
+                            <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.key} (${coin.networkDesc})</span></div>
                             <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${currentAmt.toFixed(2)}</span></div>
-                            <div class="inst-s-row"><span class="k">${isDep ? 'Deposit Address' : 'Destination'}</span><span class="v" style="font-family:monospace;font-size:0.72rem;">${isDep ? maskedAddr : walletState.destination}</span></div>
+                            <div class="inst-s-row"><span class="k">${isDep ? 'Gateway Reference' : 'Destination'}</span><span class="v" style="font-family:monospace;font-size:0.72rem;">${isDep ? (walletState.paymentId || maskedAddr) : walletState.destination}</span></div>
                         </div>
                         <div class="inst-btn-row">
                             <button class="inst-sec-btn" type="button" onclick="goWalletStep(3)">← Back</button>
                             <button class="inst-continue-btn" id="wFlowFinalBtn" type="button" onclick="submitWalletFlowFinal()">
-                                <span>${isDep ? 'I SENT PAYMENT' : 'CONFIRM PAYOUT'}</span>
+                                <span>${isDep ? 'CONFIRM PAYMENT' : 'CONFIRM PAYOUT'}</span>
                                 <i data-lucide="shield-check"></i>
                             </button>
                         </div>
@@ -2888,7 +2877,7 @@
                         <div class="inst-brand-icon"><i data-lucide="gem"></i></div>
                         <div>
                             <div class="inst-brand-title">TRONVEX</div>
-                            <div class="inst-brand-sub">BYBIT-GRADE CRYPTO WALLET</div>
+                            <div class="inst-brand-sub">GLOBAL CRYPTO GATEWAY</div>
                         </div>
                     </div>
                     <div class="inst-badge-m">LIVE</div>
@@ -2923,9 +2912,8 @@
         }
 
         async function submitWalletFlowFinal() {
-            const coin = COINS[walletState.network];
+            const coin = COINS[walletState.network] || COINS.usdt_trc20;
             const amount = parseFloat(walletState.amount || '5');
-            const days = Math.min(30, Math.max(5, parseInt(walletState.days, 10) || 30));
             if (isNaN(amount) || amount < 5) {
                 showToast('Minimum amount is $5.00', 'error');
                 return;
@@ -2939,63 +2927,41 @@
 
             try {
                 if (walletState.mode === 'deposit') {
-                    if (walletState.activeOrderExpiresAt && Date.now() >= walletState.activeOrderExpiresAt) {
-                        const expTx = {
-                            id: 'DEP-' + Math.floor(100000 + Math.random() * 900000),
-                            type: 'deposit',
-                            title: `Deposit ${coin.name} (${days}d)`,
-                            method: `${coin.name} (${days}d)`,
-                            network: coin.network,
-                            days: days,
-                            amount: amount,
-                            date: new Date().toLocaleString(),
-                            status: 'rejected',
-                            address: walletState.address,
-                            txHash: 'EXPIRED-5MIN',
-                            expiresAt: walletState.activeOrderExpiresAt
-                        };
-                        TRANSACTIONS.unshift(expTx);
-                        renderHistory();
-                        closeModal();
-                        showToast('5 minutes passed without payment — Deposit rejected.', 'error');
-                        return;
-                    }
-
                     try {
                         await apiRequest('/api/deposits/create', {
                             method: 'POST',
                             body: JSON.stringify({
-                                network: coin.network,
-                                method: `${coin.name} (${days}d)`,
+                                network: coin.key,
+                                pay_currency: coin.key,
+                                method: coin.name,
                                 amount: amount,
-                                days: days,
-                                auto_nowpayments: Boolean(walletState.autoNowPayments),
+                                days: PLAN_DAYS,
+                                payment_id: walletState.paymentId || undefined,
                                 status: 'completed'
                             })
                         });
                     } catch (e) {}
 
                     availableBalance = Number(availableBalance || 0) + amount;
-                    const txId = 'DEP-' + Math.floor(100000 + Math.random() * 900000);
+                    const txId = walletState.paymentId || ('DEP-' + Math.floor(100000 + Math.random() * 900000));
                     TRANSACTIONS.unshift({
                         id: txId,
                         type: 'deposit',
-                        title: `Deposit ${coin.name} (${days}d)`,
-                        method: `${coin.name} (${days}d)`,
-                        network: coin.network,
-                        days: days,
+                        title: `Deposit ${coin.key}`,
+                        method: coin.name,
+                        network: coin.key,
+                        days: PLAN_DAYS,
                         amount: amount,
                         date: new Date().toLocaleString(),
                         status: 'completed',
-                        address: walletState.address,
-                        txHash: '0x' + Math.random().toString(16).slice(2, 18),
-                        expiresAt: Date.now() + DEPOSIT_TIMEOUT_MS
+                        address: walletState.payAddress || 'Gateway Invoice',
+                        txHash: walletState.paymentId || ('TX-' + Math.random().toString(16).slice(2, 14).toUpperCase())
                     });
 
                     syncBalanceUI();
                     renderHistory();
                     closeModal();
-                    showToast(`+$${amount.toFixed(2)} (${days}d) automatically added to your balance!`, 'success');
+                    notifyBalanceUpdated(amount, coin.key, txId);
                 } else {
                     if (amount > availableBalance) {
                         showToast('Insufficient available balance.', 'error');
@@ -3011,7 +2977,8 @@
                         await apiRequest('/api/withdrawals/create', {
                             method: 'POST',
                             body: JSON.stringify({
-                                network: coin.network,
+                                network: coin.key,
+                                pay_currency: coin.key,
                                 method: coin.name,
                                 amount: amount,
                                 address: walletState.destination
@@ -3024,26 +2991,26 @@
                     TRANSACTIONS.unshift({
                         id: txId,
                         type: 'withdraw',
-                        title: `Withdraw ${coin.name}`,
+                        title: `Withdraw ${coin.key}`,
                         method: coin.name,
-                        network: coin.network,
+                        network: coin.key,
                         amount: amount,
                         date: new Date().toLocaleString(),
                         status: 'completed',
                         address: walletState.destination,
-                        txHash: '0x' + Math.random().toString(16).slice(2, 18)
+                        txHash: 'TX-' + Math.random().toString(16).slice(2, 14).toUpperCase()
                     });
 
                     syncBalanceUI();
                     renderHistory();
                     closeModal();
-                    showToast(`Withdrawal of $${amount.toFixed(2)} (${coin.name}) processed!`, 'success');
+                    showToast(`Withdrawal of $${amount.toFixed(2)} (${coin.key}) completed!`, 'success');
                 }
             } catch (err) {
                 showToast(err.message, 'error');
                 if (btn) {
                     btn.disabled = false;
-                    btn.innerHTML = `<span>${walletState.mode === 'deposit' ? 'I SENT PAYMENT' : 'CONFIRM PAYOUT'}</span><i data-lucide="shield-check"></i>`;
+                    btn.innerHTML = `<span>${walletState.mode === 'deposit' ? 'CONFIRM PAYMENT' : 'CONFIRM PAYOUT'}</span><i data-lucide="shield-check"></i>`;
                     lucide.createIcons();
                 }
             }
@@ -3060,7 +3027,7 @@
                     <div class="modal-icon invest"><i data-lucide="trending-up"></i></div>
                     <div class="modal-header-text">
                         <h3>Invest in ${name}</h3>
-                        <p>Available: $${Number(availableBalance||0).toFixed(2)} · $${min.toLocaleString()} – $${max.toLocaleString()} · 5–30 Days</p>
+                        <p>Available: $${Number(availableBalance||0).toFixed(2)} · $${min.toLocaleString()} – $${max.toLocaleString()} · 5 Days</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -3071,18 +3038,12 @@
                     <input type="number" id="investAmount" class="form-control" placeholder="Min $${min} – Max $${max}" min="${min}" max="${max}" oninput="updateInvestCalc()">
                     <div class="error-msg" id="investError">Amount must be between $${min} and $${max}.</div>
                 </div>
-                <div class="form-group">
-                    <label>
-                        <span>Duration (5 – 30 Days)</span>
-                        <span style="color:var(--primary);font-weight:700;" id="investDaysLabel">30 Days</span>
-                    </label>
-                    <input type="range" id="investDaysRange" min="5" max="30" value="30" style="width:100%;accent-color:var(--primary);cursor:pointer;" oninput="document.getElementById('investDaysLabel').textContent = this.value + ' Days'; updateInvestCalc();">
-                </div>
                 <div class="calc-box">
+                    <div class="calc-row"><span class="lbl">Duration</span><span class="val">5 Days</span></div>
                     <div class="calc-row"><span class="lbl">Projected Profit (150%)</span><span class="val text-gold" id="calcProfit">$0.00</span></div>
                     <div class="calc-row"><span class="lbl">Projected Total</span><span class="val" id="calcTotal">$0.00</span></div>
                 </div>
-                <button class="btn btn-primary btn-block" id="investSubmitBtn" onclick="submitInvestment('${name}', ${min}, ${max})">Confirm Investment</button>
+                <button class="btn btn-primary btn-block" id="investSubmitBtn" onclick="submitInvestment('${name}', ${min}, ${max})">Confirm Investment (5 Days)</button>
             `);
         }
 
@@ -3095,10 +3056,9 @@
 
         async function submitInvestment(planName, min, max) {
             const input = document.getElementById('investAmount');
-            const daysRange = document.getElementById('investDaysRange');
             const error = document.getElementById('investError');
             const amount = parseFloat(input.value);
-            const days = daysRange ? Math.min(30, Math.max(5, parseInt(daysRange.value, 10) || 30)) : 30;
+            const days = PLAN_DAYS;
 
             if (isNaN(amount) || amount < min || amount > max) {
                 input.classList.add('error');
@@ -3155,21 +3115,21 @@
                 TRANSACTIONS.unshift({
                     id: 'INV-' + Math.floor(100000 + Math.random() * 900000),
                     type: 'invest',
-                    title: `Invest ${planName} (${days}d)`,
+                    title: `Invest ${planName} (5d)`,
                     method: planName + ' Plan',
-                    network: `${days}-Day Live Cycle`,
+                    network: '5-Day Live Cycle',
                     days: days,
                     amount: amount,
                     date: new Date().toLocaleString(),
                     status: 'completed',
                     address: 'LOCKED-YIELD-POOL',
-                    txHash: '0x' + Math.random().toString(16).slice(2, 18)
+                    txHash: 'INV-' + Math.random().toString(16).slice(2, 14).toUpperCase()
                 });
 
                 syncBalanceUI();
                 renderHistory();
                 closeModal();
-                showToast(`Invested $${amount.toFixed(2)} in ${planName} for ${days} days! Live earning started.`, 'success');
+                showToast(`Invested $${amount.toFixed(2)} in ${planName} for 5 days! Live earning started.`, 'success');
             } catch (err) {
                 showToast(err.message, 'error');
             } finally {
@@ -3214,7 +3174,7 @@
                         <div class="receipt-row"><span class="lbl">Date & Time</span><span class="val">${tx.date}</span></div>
                         <div class="receipt-row"><span class="lbl">Method</span><span class="val">${tx.method}</span></div>
                         <div class="receipt-row"><span class="lbl">Network</span><span class="val" style="color:var(--primary);">${tx.network || '-'}</span></div>
-                        <div class="receipt-row"><span class="lbl">Address</span><span class="val mono">${tx.address || '-'}</span></div>
+                        <div class="receipt-row"><span class="lbl">Reference</span><span class="val mono">${tx.address || '-'}</span></div>
                         <div class="receipt-row"><span class="lbl">TX Hash</span><span class="val mono">${tx.txHash || '-'}</span></div>
                     </div>
                     <div class="receipt-actions">
@@ -3233,6 +3193,9 @@
         }
 
         window.addEventListener('load', async () => {
+            if ('Notification' in window && Notification.permission === 'default') {
+                try { Notification.requestPermission().catch(() => {}); } catch (e) {}
+            }
             loadAuthState();
             syncAuthUI();
             syncBalanceUI();
