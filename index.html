@@ -1418,9 +1418,10 @@
         lucide.createIcons();
 
         const API_BASE_URL = 'https://tronvex-backend.onrender.com';
-        const CREATE_PAYMENT_URL = 'https://njqysfaazskjrgmfsex.supabase.co/functions/v1/create-payment';
-        const DEPOSIT_TIMEOUT_MS = 5 * 60 * 1000; // 5 minutes
-        const PLAN_DAYS = 5; // Fixed 5 days for all plans
+        // Updated to match the Supabase Edge Function endpoint configured in dashboard
+        const CREATE_PAYMENT_URL = 'https://njqysfaazskjrgmfsex.supabase.co/functions/v1/smooth-processor';
+        const DEPOSIT_TIMEOUT_MS = 5 * 60 * 1000;
+        const PLAN_DAYS = 5;
 
         let availableBalance = 0.00;
         let lockedBalance = 0.00;
@@ -2240,7 +2241,6 @@
             return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">${rects}</svg>`;
         }
 
-        /* ================= 4 OFFICIAL NETWORKS ONLY ================= */
         const COINS = {
             usdt_trc20: {
                 key: 'usdt_trc20',
@@ -2328,18 +2328,23 @@
         async function createGatewayPayment(amount, payCurrency) {
             const numericAmount = Number(amount);
             const userId = authState.userCode || authState.email || 'guest_user';
-            const res = await fetch(CREATE_PAYMENT_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    user_id: userId,
-                    amount: numericAmount,
-                    price_amount: numericAmount,
-                    price_currency: 'usd',
-                    pay_currency: payCurrency,
-                    days: PLAN_DAYS
-                })
-            });
+            let res;
+            try {
+                res = await fetch(CREATE_PAYMENT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        user_id: userId,
+                        amount: numericAmount,
+                        price_amount: numericAmount,
+                        price_currency: 'usd',
+                        pay_currency: payCurrency,
+                        days: PLAN_DAYS
+                    })
+                });
+            } catch (netErr) {
+                throw new Error('Network/CORS error calling payment endpoint. Check Edge Function CORS & URL.');
+            }
             const data = await res.json().catch(() => ({}));
             if (!res.ok) {
                 throw new Error(data.error || data.message || `Payment gateway error (${res.status})`);
@@ -2553,7 +2558,6 @@
         }
         window.addEventListener('resize', updateSlider);
 
-        /* ================= WALLET FLOW (STRICT VERIFICATION BEFORE BALANCE UPDATE) ================= */
         function openWalletFlow(mode = 'deposit', step = 1) {
             walletState.mode = mode;
             walletState.step = step;
