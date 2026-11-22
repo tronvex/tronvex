@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRONVEX — Premium USDT Investment Platform</title>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -949,7 +950,6 @@
         .form-group label { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
         .max-btn { color: var(--primary); font-size: 0.7rem; font-weight: 700; cursor: pointer; }
         .max-btn:hover { text-decoration: underline; }
-        .max-btn.disabled-timer { color: var(--text-muted); cursor: not-allowed; text-decoration: none; opacity: 0.75; }
         .form-control {
             width: 100%; padding: 11px 13px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
             border-radius: 11px; color: white; font-size: 0.88rem; transition: var(--transition);
@@ -1048,7 +1048,6 @@
         .receipt-row .lbl { color: var(--text-muted); }
         .receipt-row .val { font-weight: 600; text-align: right; max-width: 60%; word-break: break-all; }
         .receipt-row .val.mono { font-family: 'Courier New', monospace; font-size: 0.72rem; color: var(--primary); }
-        .receipt-footer { text-align: center; font-size: 0.68rem; color: var(--text-muted); padding-top: 16px; border-top: 1px dashed var(--border-dim); line-height: 1.6; }
         .receipt-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
 
         .toast-container { position: fixed; bottom: 100px; right: 16px; z-index: 2000; display: flex; flex-direction: column; gap: 8px; }
@@ -1336,7 +1335,7 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="lock"></i></div>
-                    <div class="feature-text"><h4>Institutional Security</h4><p>Direct wallet settlements & encrypted account tracking.</p></div>
+                    <div class="feature-text"><h4>Institutional Security</h4><p>Direct wallet settlements & Supabase cloud persistence.</p></div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="zap"></i></div>
@@ -1546,7 +1545,20 @@
     <script>
         lucide.createIcons();
 
-        const API_BASE_URL = 'https://tronvex-backend.onrender.com';
+        // ============================================================
+        // 1. SUPABASE CONFIGURATION (KU BEDDEL URL-KAAGA & ANON KEY-GAAGA)
+        // ============================================================
+        const SUPABASE_URL = 'https://YOUR-PROJECT-REF.supabase.co';
+        const SUPABASE_ANON_KEY = 'YOUR-SUPABASE-ANON-PUBLIC-KEY';
+
+        const supabaseClient = (
+            window.supabase &&
+            SUPABASE_URL &&
+            !SUPABASE_URL.includes('YOUR-PROJECT-REF') &&
+            SUPABASE_ANON_KEY &&
+            !SUPABASE_ANON_KEY.includes('YOUR-SUPABASE-ANON-PUBLIC-KEY')
+        ) ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
         const ALLOWED_4_NETWORKS = ['usdt_bep20', 'usdt_trc20', 'usdt_erc20', 'ton'];
         const DEPOSIT_TIMEOUT_MS = 5 * 60 * 1000;
         const PLAN_DAYS = 5;
@@ -1658,6 +1670,122 @@
             } catch (e) {}
         }
 
+        // ============================================================
+        // 2. SUPABASE DATA SYNC HELPERS
+        // ============================================================
+        async function sbSyncProfileToCloud() {
+            if (!supabaseClient || !authState.userId || !authState.email) return;
+            try {
+                await supabaseClient.from('profiles').upsert([{
+                    user_code: authState.userId,
+                    full_name: authState.name || authState.email.split('@')[0],
+                    email: authState.email,
+                    ref_code: authState.refCode || buildRefCode(authState.email),
+                    is_admin: Boolean(authState.isAdmin),
+                    available_balance: Number(availableBalance || 0),
+                    locked_balance: Number(lockedBalance || 0),
+                    total_invested: Number(totalInvestedAmount || 0),
+                    total_profit: Number(totalProfitEarned || 0),
+                    completed_cycles: Number(completedCyclesCount || 0)
+                }], { onConflict: 'email' });
+            } catch (e) {}
+        }
+
+        async function sbLoadUserFromCloud(email) {
+            if (!supabaseClient || !email) return;
+            try {
+                const { data: prof } = await supabaseClient
+                    .from('profiles')
+                    .select('*')
+                    .ilike('email', email)
+                    .maybeSingle();
+
+                if (prof) {
+                    authState.userId = prof.user_code || authState.userId;
+                    authState.name = prof.full_name || authState.name;
+                    authState.email = prof.email || authState.email;
+                    authState.refCode = prof.ref_code || authState.refCode;
+                    authState.isAdmin = Boolean(prof.is_admin) || (email.toLowerCase() === ADMIN_EMAIL.toLowerCase());
+
+                    availableBalance = Number(prof.available_balance ?? availableBalance);
+                    lockedBalance = Number(prof.locked_balance ?? lockedBalance);
+                    totalInvestedAmount = Number(prof.total_invested ?? totalInvestedAmount);
+                    totalProfitEarned = Number(prof.total_profit ?? totalProfitEarned);
+                    completedCyclesCount = Number(prof.completed_cycles ?? completedCyclesCount);
+                    saveAuthState();
+                }
+
+                const userCode = authState.userId;
+                if (userCode) {
+                    const { data: txs } = await supabaseClient
+                        .from('transactions')
+                        .select('*')
+                        .eq('user_code', userCode)
+                        .order('created_at', { ascending: false });
+
+                    if (Array.isArray(txs) && txs.length) {
+                        TRANSACTIONS = txs.map(t => ({
+                            id: t.tx_code,
+                            type: t.tx_type,
+                            title: t.title,
+                            method: t.method,
+                            network: t.network,
+                            amount: Number(t.amount || 0),
+                            date: new Date(t.created_at).toLocaleString(),
+                            status: t.status,
+                            address: t.address || '',
+                            rejectReason: t.reject_reason || ''
+                        }));
+                    }
+
+                    const { data: notifs } = await supabaseClient
+                        .from('notifications')
+                        .select('*')
+                        .eq('user_code', userCode)
+                        .order('created_at', { ascending: false });
+
+                    if (Array.isArray(notifs) && notifs.length) {
+                        USER_NOTIFICATIONS = notifs.map(n => ({
+                            id: n.id,
+                            title: n.title,
+                            message: n.message,
+                            time: new Date(n.created_at).toLocaleString()
+                        }));
+                    }
+                }
+
+                if (authState.isAdmin) {
+                    const { data: deps } = await supabaseClient
+                        .from('deposits')
+                        .select('*')
+                        .eq('status', 'pending')
+                        .order('created_at', { ascending: false });
+
+                    if (Array.isArray(deps)) {
+                        ADMIN_DEPOSIT_REQUESTS = deps.map(d => ({
+                            id: d.id,
+                            txId: d.tx_code,
+                            userId: d.user_code,
+                            userName: d.user_name,
+                            userEmail: d.user_email,
+                            networkKey: d.network_key,
+                            networkLabel: d.network_label,
+                            walletAddress: d.wallet_address,
+                            amount: Number(d.amount || 0),
+                            status: d.status,
+                            expiresAt: d.expires_at ? new Date(d.expires_at).getTime() : null,
+                            createdAt: new Date(d.created_at).toLocaleString()
+                        }));
+                    }
+                }
+
+                saveDatabase();
+                syncAuthUI();
+                syncBalanceUI();
+                renderHistory();
+            } catch (e) {}
+        }
+
         function triggerSmsAlert(title, body, isRejected = false) {
             const banner = document.getElementById('smsPopupBanner');
             const sender = document.getElementById('smsSenderLabel');
@@ -1681,7 +1809,7 @@
             }, 5500);
         }
 
-        function pushNotification(title, message, isSms = false, isRejected = false) {
+        async function pushNotification(title, message, isSms = false, isRejected = false) {
             USER_NOTIFICATIONS.unshift({
                 id: 'NTF-' + Date.now(),
                 title,
@@ -1691,6 +1819,19 @@
             const dot = document.getElementById('notifDot');
             if (dot) dot.classList.add('show');
             saveDatabase();
+
+            if (supabaseClient && authState.userId) {
+                try {
+                    await supabaseClient.from('notifications').insert([{
+                        user_code: authState.userId,
+                        title,
+                        message,
+                        is_sms: Boolean(isSms),
+                        is_rejected: Boolean(isRejected)
+                    }]);
+                } catch (e) {}
+            }
+
             if (isSms) {
                 triggerSmsAlert(title, message, isRejected);
             }
@@ -1725,21 +1866,6 @@
                 </div>
                 <div class="notif-list">${itemsHtml}</div>
             `);
-        }
-
-        async function apiRequest(path, options = {}) {
-            if (!API_BASE_URL) throw new Error('Backend URL not configured.');
-            const headers = {
-                'Content-Type': 'application/json',
-                ...(options.headers || {})
-            };
-            if (authState.token) headers['Authorization'] = `Bearer ${authState.token}`;
-            const res = await fetch(`${API_BASE_URL}${path}`, { ...options, headers });
-            const data = await res.json().catch(() => ({}));
-            if (!res.ok) {
-                throw new Error(data.detail || data.message || `Request failed (${res.status})`);
-            }
-            return data;
         }
 
         function syncAuthUI() {
@@ -2027,29 +2153,22 @@
             await new Promise(r => setTimeout(r, 650));
 
             try {
-                let backendData = null;
-                try {
-                    backendData = await apiRequest('/api/auth/register', {
-                        method: 'POST',
-                        body: JSON.stringify({ full_name: name, email, password })
-                    });
-                } catch (e) {}
-
-                const uniqueUserId = (backendData && backendData.user_id) || generateUniqueUserId();
+                const uniqueUserId = generateUniqueUserId();
                 const isAdminUser = email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
 
                 authState = {
                     isLoggedIn: true,
-                    token: (backendData && backendData.token) || ('sess_' + Date.now()),
+                    token: 'sb_' + Date.now(),
                     userId: uniqueUserId,
-                    name: (backendData && backendData.full_name) || name,
-                    email: (backendData && backendData.email) || email,
-                    refCode: (backendData && backendData.ref_code) || buildRefCode(email),
+                    name: name,
+                    email: email,
+                    refCode: buildRefCode(email),
                     isAdmin: isAdminUser
                 };
 
                 saveAuthState();
                 saveDatabase();
+                await sbSyncProfileToCloud();
                 syncAuthUI();
                 syncBalanceUI();
                 renderHistory();
@@ -2102,14 +2221,6 @@
             await new Promise(r => setTimeout(r, 650));
 
             try {
-                let backendData = null;
-                try {
-                    backendData = await apiRequest('/api/auth/login', {
-                        method: 'POST',
-                        body: JSON.stringify({ email, password })
-                    });
-                } catch (e) {}
-
                 const isAdminUser = email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
                 const preservedId = (authState.email === email && authState.userId)
                     ? authState.userId
@@ -2117,15 +2228,17 @@
 
                 authState = {
                     isLoggedIn: true,
-                    token: (backendData && backendData.token) || ('sess_' + Date.now()),
-                    userId: (backendData && backendData.user_id) || preservedId,
-                    name: (backendData && backendData.full_name) || (authState.email === email && authState.name ? authState.name : email.split('@')[0]),
-                    email: (backendData && backendData.email) || email,
-                    refCode: (backendData && backendData.ref_code) || buildRefCode(email),
+                    token: 'sb_' + Date.now(),
+                    userId: preservedId,
+                    name: (authState.email === email && authState.name ? authState.name : email.split('@')[0]),
+                    email: email,
+                    refCode: buildRefCode(email),
                     isAdmin: isAdminUser
                 };
 
                 saveAuthState();
+                await sbLoadUserFromCloud(email);
+                await sbSyncProfileToCloud();
                 saveDatabase();
                 syncAuthUI();
                 syncBalanceUI();
@@ -2154,12 +2267,16 @@
             showToast('Signed out', 'info');
         }
 
-        function openAdminPanelModal() {
+        async function openAdminPanelModal() {
             if (!authState.isLoggedIn || !authState.isAdmin) {
                 showToast('Admin access only.', 'error');
                 return;
             }
             checkExpiredPendingDeposits();
+            if (supabaseClient) {
+                await sbLoadUserFromCloud(authState.email);
+            }
+
             const modalBox = document.getElementById('modalContent');
             modalBox.classList.remove('auth-pro-modal');
             modalBox.classList.remove('wallet-inst-modal');
@@ -2208,7 +2325,7 @@
             `);
         }
 
-        function adminApproveDeposit(requestId) {
+        async function adminApproveDeposit(requestId) {
             if (!authState.isLoggedIn || !authState.isAdmin) return;
             const req = ADMIN_DEPOSIT_REQUESTS.find(r => r.id === requestId);
             if (!req || req.status !== 'pending') return;
@@ -2220,12 +2337,31 @@
                 tx.status = 'completed';
             }
 
+            let updatedBalance = Number(availableBalance || 0);
             if (authState.userId === req.userId || authState.email === req.userEmail) {
-                availableBalance = Number((Number(availableBalance || 0) + Number(req.amount)).toFixed(2));
+                updatedBalance = Number((updatedBalance + Number(req.amount)).toFixed(2));
+                availableBalance = updatedBalance;
+            }
+
+            if (supabaseClient) {
+                try {
+                    await supabaseClient.from('deposits').update({ status: 'completed' }).eq('tx_code', req.txId);
+                    await supabaseClient.from('transactions').update({ status: 'completed' }).eq('tx_code', req.txId);
+                    const { data: targetProf } = await supabaseClient
+                        .from('profiles')
+                        .select('available_balance')
+                        .eq('user_code', req.userId)
+                        .maybeSingle();
+                    const cloudBal = Number((targetProf && targetProf.available_balance) || 0) + Number(req.amount);
+                    await supabaseClient
+                        .from('profiles')
+                        .update({ available_balance: Number(cloudBal.toFixed(2)) })
+                        .eq('user_code', req.userId);
+                } catch (e) {}
             }
 
             const smsMsg = `Deposit of $${Number(req.amount).toFixed(2)} (${req.networkLabel}) for ID ${req.userId} is COMPLETED and added to balance.`;
-            pushNotification('Deposit Completed (SMS)', smsMsg, true, false);
+            await pushNotification('Deposit Completed (SMS)', smsMsg, true, false);
             saveDatabase();
             syncBalanceUI();
             renderHistory();
@@ -2233,7 +2369,7 @@
             showToast(`Approved $${Number(req.amount).toFixed(2)} for ${req.userId}`, 'success');
         }
 
-        function adminRejectDeposit(requestId) {
+        async function adminRejectDeposit(requestId) {
             if (!authState.isLoggedIn || !authState.isAdmin) return;
             const req = ADMIN_DEPOSIT_REQUESTS.find(r => r.id === requestId);
             if (!req || req.status !== 'pending') return;
@@ -2252,8 +2388,15 @@
                 tx.rejectReason = reason;
             }
 
+            if (supabaseClient) {
+                try {
+                    await supabaseClient.from('deposits').update({ status: 'rejected', reject_reason: reason }).eq('tx_code', req.txId);
+                    await supabaseClient.from('transactions').update({ status: 'rejected', reject_reason: reason }).eq('tx_code', req.txId);
+                } catch (e) {}
+            }
+
             const smsMsg = `Deposit of $${Number(req.amount).toFixed(2)} (${req.networkLabel}) for ID ${req.userId} was REJECTED. Reason: ${reason}`;
-            pushNotification('Deposit Rejected (SMS)', smsMsg, true, true);
+            await pushNotification('Deposit Rejected (SMS)', smsMsg, true, true);
             saveDatabase();
             renderHistory();
             openAdminPanelModal();
@@ -2982,8 +3125,9 @@
                     const expiresAt = Date.now() + DEPOSIT_TIMEOUT_MS;
                     const isExpired = walletState.activeOrderExpiresAt && Date.now() >= walletState.activeOrderExpiresAt;
                     const status = isExpired ? 'rejected' : 'pending';
+                    const rejectReason = isExpired ? 'Payment window expired (5 minutes).' : '';
 
-                    TRANSACTIONS.unshift({
+                    const txObj = {
                         id: txId,
                         type: 'deposit',
                         title: `Deposit ${coin.name}`,
@@ -2996,27 +3140,61 @@
                         address: walletAddr,
                         txHash: txId,
                         expiresAt: expiresAt,
-                        rejectReason: isExpired ? 'Payment window expired (5 minutes).' : ''
-                    });
+                        rejectReason: rejectReason
+                    };
+                    TRANSACTIONS.unshift(txObj);
+
+                    const adminReqObj = {
+                        id: 'REQ-' + Date.now(),
+                        txId: txId,
+                        userId: authState.userId || 'TVX-000000',
+                        userName: authState.name || 'User',
+                        userEmail: authState.email || 'user@tronvex.online',
+                        networkKey: coin.key,
+                        networkLabel: coin.name,
+                        walletAddress: walletAddr,
+                        amount: amount,
+                        status: status,
+                        expiresAt: expiresAt,
+                        rejectReason: rejectReason,
+                        createdAt: new Date().toLocaleString()
+                    };
 
                     if (!isExpired) {
-                        ADMIN_DEPOSIT_REQUESTS.unshift({
-                            id: 'REQ-' + Date.now(),
-                            txId: txId,
-                            userId: authState.userId || 'TVX-000000',
-                            userName: authState.name || 'User',
-                            userEmail: authState.email || 'user@tronvex.online',
-                            networkKey: coin.key,
-                            networkLabel: coin.name,
-                            walletAddress: walletAddr,
-                            amount: amount,
-                            status: 'pending',
-                            expiresAt: expiresAt,
-                            createdAt: new Date().toLocaleString()
-                        });
+                        ADMIN_DEPOSIT_REQUESTS.unshift(adminReqObj);
                     }
 
-                    pushNotification(
+                    if (supabaseClient) {
+                        try {
+                            await supabaseClient.from('deposits').insert([{
+                                tx_code: txId,
+                                user_code: authState.userId || 'TVX-000000',
+                                user_name: authState.name || 'User',
+                                user_email: authState.email || 'user@tronvex.online',
+                                network_key: coin.key,
+                                network_label: coin.name,
+                                wallet_address: walletAddr,
+                                amount: amount,
+                                status: status,
+                                reject_reason: rejectReason || null,
+                                expires_at: new Date(expiresAt).toISOString()
+                            }]);
+                            await supabaseClient.from('transactions').insert([{
+                                tx_code: txId,
+                                user_code: authState.userId || 'TVX-000000',
+                                tx_type: 'deposit',
+                                title: `Deposit ${coin.name}`,
+                                method: coin.name,
+                                network: coin.network,
+                                amount: amount,
+                                status: status,
+                                address: walletAddr,
+                                reject_reason: rejectReason || null
+                            }]);
+                        } catch (e) {}
+                    }
+
+                    await pushNotification(
                         'Deposit Submitted',
                         `Deposit of $${amount.toFixed(2)} (${coin.name}) submitted under ID ${authState.userId}. Status: ${status.toUpperCase()}.`
                     );
@@ -3050,7 +3228,24 @@
                         txHash: 'TX-' + Math.random().toString(16).slice(2, 14).toUpperCase()
                     });
 
-                    pushNotification(
+                    if (supabaseClient) {
+                        try {
+                            await supabaseClient.from('transactions').insert([{
+                                tx_code: txId,
+                                user_code: authState.userId || 'TVX-000000',
+                                tx_type: 'withdraw',
+                                title: `Withdraw ${coin.name}`,
+                                method: coin.name,
+                                network: coin.network,
+                                amount: amount,
+                                status: 'completed',
+                                address: walletState.destination
+                            }]);
+                            await sbSyncProfileToCloud();
+                        } catch (e) {}
+                    }
+
+                    await pushNotification(
                         'Withdrawal Completed',
                         `Withdrawal of $${amount.toFixed(2)} (${coin.name}) to ${walletState.destination} completed.`
                     );
@@ -3144,9 +3339,10 @@
                 const durationMs = days * 24 * 60 * 60 * 1000;
                 const nowMs = Date.now();
                 const endMs = nowMs + durationMs;
+                const invCode = 'INV-' + Math.floor(100000 + Math.random() * 900000);
 
                 ACTIVE_INVESTMENTS.unshift({
-                    id: 'INV-' + Math.floor(100000 + Math.random() * 900000),
+                    id: invCode,
                     plan: planName,
                     amount: amount,
                     days: days,
@@ -3158,7 +3354,7 @@
                 activeInvestmentsCount = ACTIVE_INVESTMENTS.length;
 
                 TRANSACTIONS.unshift({
-                    id: 'INV-' + Math.floor(100000 + Math.random() * 900000),
+                    id: invCode,
                     type: 'invest',
                     title: `Invest ${planName} (5d)`,
                     method: planName + ' Plan',
@@ -3168,10 +3364,37 @@
                     date: new Date().toLocaleString(),
                     status: 'completed',
                     address: 'LOCKED-YIELD-POOL',
-                    txHash: 'INV-' + Math.random().toString(16).slice(2, 14).toUpperCase()
+                    txHash: invCode
                 });
 
-                pushNotification(
+                if (supabaseClient) {
+                    try {
+                        await supabaseClient.from('investments').insert([{
+                            inv_code: invCode,
+                            user_code: authState.userId || 'TVX-000000',
+                            plan_name: planName,
+                            amount: amount,
+                            roi_rate: 1.50,
+                            duration_days: days,
+                            status: 'active',
+                            ends_at: new Date(endMs).toISOString()
+                        }]);
+                        await supabaseClient.from('transactions').insert([{
+                            tx_code: invCode,
+                            user_code: authState.userId || 'TVX-000000',
+                            tx_type: 'invest',
+                            title: `Invest ${planName} (5d)`,
+                            method: planName + ' Plan',
+                            network: '5-Day Live Cycle',
+                            amount: amount,
+                            status: 'completed',
+                            address: 'LOCKED-YIELD-POOL'
+                        }]);
+                        await sbSyncProfileToCloud();
+                    } catch (e) {}
+                }
+
+                await pushNotification(
                     'Investment Active',
                     `Invested $${amount.toFixed(2)} in ${planName} for 5 days. Live earning started.`
                 );
@@ -3243,11 +3466,14 @@
             copyText(text, 'Receipt copied!');
         }
 
-        window.addEventListener('load', () => {
+        window.addEventListener('load', async () => {
             loadAuthState();
             loadDatabase();
             if (authState.email && authState.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
                 authState.isAdmin = true;
+            }
+            if (authState.isLoggedIn && authState.email && supabaseClient) {
+                await sbLoadUserFromCloud(authState.email);
             }
             if (USER_NOTIFICATIONS.length > 0) {
                 const dot = document.getElementById('notifDot');
