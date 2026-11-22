@@ -2184,7 +2184,7 @@
 
         function copyText(text, msg) {
             if (!text) {
-                showToast('No payment address available yet', 'error');
+                showToast('No payment address available', 'error');
                 return;
             }
             if (navigator.clipboard) {
@@ -2240,7 +2240,7 @@
             return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">${rects}</svg>`;
         }
 
-        /* ================= 4 OFFICIAL NETWORKS ONLY (NO HARDCODED FAKE ADDRESSES) ================= */
+        /* ================= 4 OFFICIAL NETWORKS ONLY ================= */
         const COINS = {
             usdt_trc20: {
                 key: 'usdt_trc20',
@@ -2343,6 +2343,12 @@
             const data = await res.json().catch(() => ({}));
             if (!res.ok) {
                 throw new Error(data.error || data.message || `Payment gateway error (${res.status})`);
+            }
+            const hasAddress = Boolean(data.pay_address || data.address);
+            const hasInvoice = Boolean(data.invoice_url || data.payment_url || data.url);
+            const hasPaymentId = Boolean(data.payment_id || data.id);
+            if (!hasAddress && !hasInvoice && !hasPaymentId) {
+                throw new Error('Gateway returned incomplete payment details.');
             }
             return data;
         }
@@ -2547,7 +2553,7 @@
         }
         window.addEventListener('resize', updateSlider);
 
-        /* ================= WALLET FLOW (4 NETWORKS + MIN $5 + PAY NOW + BALANCE NOTIFICATION) ================= */
+        /* ================= WALLET FLOW (STRICT VERIFICATION BEFORE BALANCE UPDATE) ================= */
         function openWalletFlow(mode = 'deposit', step = 1) {
             walletState.mode = mode;
             walletState.step = step;
@@ -2583,6 +2589,10 @@
 
         function goWalletStep(nextStep) {
             if (nextStep < 1 || nextStep > 4) return;
+            if (walletState.mode === 'deposit' && nextStep >= 3 && !walletState.paymentId && !walletState.payAddress && !walletState.invoiceUrl) {
+                showToast('Please enter amount (min $5) and tap PAY NOW first.', 'error');
+                return;
+            }
             walletState.step = nextStep;
             renderWalletFlowModal();
         }
@@ -2635,7 +2645,7 @@
             const payBtn = document.getElementById('payNowBtn');
             if (payBtn) {
                 payBtn.disabled = true;
-                payBtn.innerHTML = '<span>CREATING PAYMENT...</span>';
+                payBtn.innerHTML = '<span>CREATING INVOICE...</span>';
             }
 
             const coin = COINS[walletState.network];
@@ -2645,21 +2655,24 @@
                 const gatewayData = await createGatewayPayment(amtVal, coin.key);
                 walletState.payAddress = gatewayData.pay_address || gatewayData.address || '';
                 walletState.invoiceUrl = gatewayData.invoice_url || gatewayData.payment_url || gatewayData.url || '';
-                walletState.paymentId = gatewayData.payment_id || gatewayData.id || '';
+                walletState.paymentId = gatewayData.payment_id || gatewayData.id || ('NP-' + Date.now());
 
                 if (walletState.invoiceUrl) {
                     window.open(walletState.invoiceUrl, '_blank', 'noopener,noreferrer');
                 }
-                showToast(`Payment created for $${amtVal.toFixed(2)} (${coin.key})`, 'success');
+                showToast(`Payment invoice created for $${amtVal.toFixed(2)} (${coin.key}). Complete payment to credit balance.`, 'info');
                 walletState.step = 3;
                 renderWalletFlowModal();
             } catch (err) {
                 walletState.payAddress = '';
                 walletState.invoiceUrl = '';
                 walletState.paymentId = '';
-                showToast(err.message || 'Unable to generate payment gateway address', 'error');
-                walletState.step = 3;
-                renderWalletFlowModal();
+                showToast(err.message || 'Payment gateway unavailable. Cannot proceed without verified payment session.', 'error');
+                if (payBtn) {
+                    payBtn.disabled = false;
+                    payBtn.innerHTML = '<span>PAY NOW</span><i data-lucide="arrow-right"></i>';
+                    lucide.createIcons();
+                }
             }
         }
 
@@ -2695,7 +2708,7 @@
             const stepTitles = ['NETWORK', 'AMOUNT', 'PAY', 'CONFIRM'];
             const currentAmt = Number(walletState.amount || 5);
             const activeAddr = walletState.payAddress || '';
-            const maskedAddr = activeAddr ? maskAddressShort(activeAddr) : 'Generated upon Pay Now';
+            const maskedAddr = activeAddr ? maskAddressShort(activeAddr) : (walletState.paymentId || 'Invoice Created');
 
             const stepperHtml = `
                 <div class="inst-stepper">
@@ -2809,7 +2822,7 @@
                                     <span>${coin.confirmations}</span>
                                 </div>
                                 <div class="inst-addr-row">
-                                    <div class="inst-addr-code">${activeAddr || 'Pending gateway response — use invoice or confirm below'}</div>
+                                    <div class="inst-addr-code">${activeAddr || ('Invoice ID: ' + (walletState.paymentId || 'Pending'))}</div>
                                     ${activeAddr ? `
                                         <button class="inst-chip-btn qr ${walletState.qrOpen ? 'active' : ''}" type="button" onclick="toggleWalletQr()">
                                             <i data-lucide="qr-code"></i> ${walletState.qrOpen ? 'Hide' : 'QR'}
@@ -2822,7 +2835,7 @@
                                 ${activeAddr ? `
                                     <div class="qr-panel ${walletState.qrOpen ? 'open' : ''}">
                                         <div class="qr-frame">${qrSvg}</div>
-                                        <div class="qr-caption"><strong>${coin.key}</strong> · ${maskedAddr}</div>
+                                        <div class="qr-caption"><strong>${coin.key}</strong> · ${maskAddressShort(activeAddr)}</div>
                                     </div>
                                 ` : ''}
                             </div>
@@ -2848,20 +2861,20 @@
                         <div class="inst-panel-head">
                             <div class="inst-panel-icon"><i data-lucide="check-circle"></i></div>
                             <div>
-                                <h4>Confirm ${isDep ? 'Deposit' : 'Withdrawal'}</h4>
-                                <p>Final verification before updating balance</p>
+                                <h4>Confirm ${isDep ? 'Deposit Submission' : 'Withdrawal'}</h4>
+                                <p>${isDep ? 'Recorded as pending until gateway/IPN confirms payment' : 'Final verification before processing'}</p>
                             </div>
                         </div>
                         <div class="inst-summary-rows">
                             <div class="inst-s-row"><span class="k">Action</span><span class="v">${isDep ? 'Deposit' : 'Withdraw'}</span></div>
                             <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.key} (${coin.networkDesc})</span></div>
                             <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${currentAmt.toFixed(2)}</span></div>
-                            <div class="inst-s-row"><span class="k">${isDep ? 'Gateway Reference' : 'Destination'}</span><span class="v" style="font-family:monospace;font-size:0.72rem;">${isDep ? (walletState.paymentId || maskedAddr) : walletState.destination}</span></div>
+                            <div class="inst-s-row"><span class="k">${isDep ? 'Invoice / Payment ID' : 'Destination'}</span><span class="v" style="font-family:monospace;font-size:0.72rem;">${isDep ? maskedAddr : walletState.destination}</span></div>
                         </div>
                         <div class="inst-btn-row">
                             <button class="inst-sec-btn" type="button" onclick="goWalletStep(3)">← Back</button>
                             <button class="inst-continue-btn" id="wFlowFinalBtn" type="button" onclick="submitWalletFlowFinal()">
-                                <span>${isDep ? 'CONFIRM PAYMENT' : 'CONFIRM PAYOUT'}</span>
+                                <span>${isDep ? 'SUBMIT DEPOSIT' : 'CONFIRM PAYOUT'}</span>
                                 <i data-lucide="shield-check"></i>
                             </button>
                         </div>
@@ -2927,8 +2940,41 @@
 
             try {
                 if (walletState.mode === 'deposit') {
+                    if (!walletState.paymentId && !walletState.payAddress && !walletState.invoiceUrl) {
+                        showToast('No verified payment invoice found. Please start deposit via PAY NOW.', 'error');
+                        if (btn) {
+                            btn.disabled = false;
+                            btn.innerHTML = '<span>SUBMIT DEPOSIT</span><i data-lucide="shield-check"></i>';
+                            lucide.createIcons();
+                        }
+                        return;
+                    }
+
+                    if (walletState.activeOrderExpiresAt && Date.now() >= walletState.activeOrderExpiresAt) {
+                        const expTx = {
+                            id: walletState.paymentId || ('DEP-' + Math.floor(100000 + Math.random() * 900000)),
+                            type: 'deposit',
+                            title: `Deposit ${coin.key}`,
+                            method: coin.name,
+                            network: coin.key,
+                            days: PLAN_DAYS,
+                            amount: amount,
+                            date: new Date().toLocaleString(),
+                            status: 'rejected',
+                            address: walletState.payAddress || walletState.invoiceUrl || 'Gateway Invoice',
+                            txHash: walletState.paymentId || 'EXPIRED-5MIN',
+                            expiresAt: walletState.activeOrderExpiresAt
+                        };
+                        TRANSACTIONS.unshift(expTx);
+                        renderHistory();
+                        closeModal();
+                        showToast('Payment window expired — Deposit rejected.', 'error');
+                        return;
+                    }
+
+                    let backendConfirmed = false;
                     try {
-                        await apiRequest('/api/deposits/create', {
+                        const depRes = await apiRequest('/api/deposits/create', {
                             method: 'POST',
                             body: JSON.stringify({
                                 network: coin.key,
@@ -2936,14 +2982,17 @@
                                 method: coin.name,
                                 amount: amount,
                                 days: PLAN_DAYS,
-                                payment_id: walletState.paymentId || undefined,
-                                status: 'completed'
+                                payment_id: walletState.paymentId
                             })
                         });
+                        if (depRes && (depRes.status === 'completed' || depRes.status === 'finished' || depRes.verified === true)) {
+                            backendConfirmed = true;
+                        }
                     } catch (e) {}
 
-                    availableBalance = Number(availableBalance || 0) + amount;
                     const txId = walletState.paymentId || ('DEP-' + Math.floor(100000 + Math.random() * 900000));
+                    const txStatus = backendConfirmed ? 'completed' : 'pending';
+
                     TRANSACTIONS.unshift({
                         id: txId,
                         type: 'deposit',
@@ -2953,15 +3002,24 @@
                         days: PLAN_DAYS,
                         amount: amount,
                         date: new Date().toLocaleString(),
-                        status: 'completed',
-                        address: walletState.payAddress || 'Gateway Invoice',
-                        txHash: walletState.paymentId || ('TX-' + Math.random().toString(16).slice(2, 14).toUpperCase())
+                        status: txStatus,
+                        address: walletState.payAddress || walletState.invoiceUrl || 'Gateway Invoice',
+                        txHash: txId,
+                        expiresAt: Date.now() + DEPOSIT_TIMEOUT_MS
                     });
 
-                    syncBalanceUI();
-                    renderHistory();
-                    closeModal();
-                    notifyBalanceUpdated(amount, coin.key, txId);
+                    if (backendConfirmed) {
+                        availableBalance = Number(availableBalance || 0) + amount;
+                        syncBalanceUI();
+                        renderHistory();
+                        closeModal();
+                        notifyBalanceUpdated(amount, coin.key, txId);
+                    } else {
+                        syncBalanceUI();
+                        renderHistory();
+                        closeModal();
+                        showToast(`Deposit $${amount.toFixed(2)} (${coin.key}) is PENDING payment verification. Balance updates once confirmed.`, 'info');
+                    }
                 } else {
                     if (amount > availableBalance) {
                         showToast('Insufficient available balance.', 'error');
@@ -3010,7 +3068,7 @@
                 showToast(err.message, 'error');
                 if (btn) {
                     btn.disabled = false;
-                    btn.innerHTML = `<span>${walletState.mode === 'deposit' ? 'CONFIRM PAYMENT' : 'CONFIRM PAYOUT'}</span><i data-lucide="shield-check"></i>`;
+                    btn.innerHTML = `<span>${walletState.mode === 'deposit' ? 'SUBMIT DEPOSIT' : 'CONFIRM PAYOUT'}</span><i data-lucide="shield-check"></i>`;
                     lucide.createIcons();
                 }
             }
