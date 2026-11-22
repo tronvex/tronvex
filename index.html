@@ -501,198 +501,230 @@
         }
         .modal::-webkit-scrollbar { display: none; }
 
-        /* Compact No-Scroll Professional Wallet Modal */
-        .modal.wallet-pro-modal {
-            max-width: 460px;
-            padding: 20px 22px;
-            background:
-                radial-gradient(circle at 85% 8%, rgba(0,255,170,0.08), transparent 45%),
-                radial-gradient(circle at 12% 92%, rgba(0,136,255,0.07), transparent 45%),
-                #061220;
-            border: 1px solid rgba(0,255,170,0.22);
+        /* ================= INSTITUTIONAL 4-STEP WALLET MODAL (LIKE REFERENCE SCREENSHOT) ================= */
+        .modal.wallet-inst-modal {
+            max-width: 450px;
+            padding: 20px;
+            background: #07131f;
+            border: 1px solid rgba(0, 255, 170, 0.2);
             border-radius: 22px;
-            overflow-y: visible;
         }
-        .wallet-top-bar {
+        .inst-brand-header {
             display: flex; align-items: center; justify-content: space-between;
-            gap: 10px; margin-bottom: 12px; padding-right: 30px;
+            padding-bottom: 14px; border-bottom: 1px solid var(--border-dim);
+            margin-bottom: 14px; padding-right: 28px;
         }
-        .wallet-brand-pill {
-            display: inline-flex; align-items: center; gap: 8px;
+        .inst-brand-left { display: flex; align-items: center; gap: 11px; }
+        .inst-brand-icon {
+            width: 40px; height: 40px; border-radius: 12px;
+            background: rgba(0, 255, 170, 0.12);
+            border: 1px solid rgba(0, 255, 170, 0.35);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary); box-shadow: 0 0 18px rgba(0, 255, 170, 0.14);
         }
-        .wallet-brand-pill span {
-            font-size: 0.92rem; font-weight: 800; letter-spacing: -0.3px;
+        .inst-brand-title { font-size: 1rem; font-weight: 800; letter-spacing: 0.3px; line-height: 1.15; }
+        .inst-brand-sub { font-size: 0.62rem; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+        .inst-badge-m {
+            width: 30px; height: 30px; border-radius: 50%;
+            background: rgba(255,255,255,0.05); border: 1px solid var(--border-dim);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem; font-weight: 800; color: var(--text-muted);
         }
-        .wallet-badge-secure {
-            display: inline-flex; align-items: center; gap: 4px;
-            font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
-            color: var(--primary); background: rgba(0,255,170,0.1);
-            border: 1px solid rgba(0,255,170,0.24); padding: 4px 9px; border-radius: 50px;
+
+        .inst-top-bar {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 14px; gap: 8px;
         }
-        .wallet-mode-switch {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
-            background: rgba(0,0,0,0.38); border: 1px solid var(--border-dim);
-            border-radius: 12px; padding: 4px; margin-bottom: 12px;
-        }
-        .wallet-mode-btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-            padding: 8px 10px; border-radius: 9px;
-            font-size: 0.76rem; font-weight: 700; color: var(--text-muted);
+        .inst-back-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 7px 13px; border-radius: 10px;
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
+            color: var(--text-main); font-size: 0.74rem; font-weight: 700;
             transition: var(--transition);
         }
-        .wallet-mode-btn svg { width: 14px; height: 14px; }
-        .wallet-mode-btn.active.dep {
-            background: var(--primary); color: var(--text-dark);
+        .inst-back-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .inst-back-btn svg { width: 14px; height: 14px; }
+        .inst-secure-pill {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 6px 11px; border-radius: 50px;
+            background: rgba(0, 255, 170, 0.08); border: 1px solid rgba(0, 255, 170, 0.25);
+            color: var(--primary); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.7px;
+            text-transform: uppercase;
         }
-        .wallet-mode-btn.active.wdr {
-            background: var(--blue); color: #ffffff;
+        .inst-secure-pill svg { width: 12px; height: 12px; }
+
+        .inst-mode-tabs {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+            background: rgba(0,0,0,0.42); border: 1px solid var(--border-dim);
+            border-radius: 12px; padding: 4px; margin-bottom: 16px;
         }
-        .wallet-stepper {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
-            margin-bottom: 12px; padding: 8px 10px;
-            background: rgba(0,0,0,0.25); border: 1px solid var(--border-dim);
-            border-radius: 11px;
+        .inst-mode-tab {
+            display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+            padding: 9px 12px; border-radius: 9px;
+            font-size: 0.8rem; font-weight: 700; color: var(--text-muted);
+            transition: var(--transition);
         }
-        .w-step {
-            display: flex; align-items: center; justify-content: center; gap: 5px;
-            font-size: 0.64rem; font-weight: 700; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: 0.5px;
+        .inst-mode-tab svg { width: 15px; height: 15px; }
+        .inst-mode-tab.active.dep {
+            background: rgba(255,255,255,0.09); color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.14);
         }
-        .w-step .w-num {
-            width: 17px; height: 17px; border-radius: 50%;
-            display: inline-flex; align-items: center; justify-content: center;
-            font-size: 0.62rem; font-weight: 800;
-            background: rgba(255,255,255,0.06); color: var(--text-muted);
-            border: 1px solid var(--border-dim);
-        }
-        .w-step.active { color: var(--primary); }
-        .w-step.active .w-num {
-            background: var(--primary); color: var(--text-dark); border-color: var(--primary);
+        .inst-mode-tab.active.wdr {
+            background: rgba(0, 136, 255, 0.22); color: #7cc2ff;
+            border: 1px solid rgba(0, 136, 255, 0.4);
         }
 
-        .wallet-section-label {
-            display: flex; justify-content: space-between; align-items: center;
-            font-size: 0.68rem; font-weight: 700; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 7px;
+        .inst-stepper {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
+            margin-bottom: 16px; position: relative;
         }
-
-        .wallet-net-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px;
-            margin-bottom: 12px;
+        .inst-step {
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+            cursor: pointer;
         }
-        .wallet-net-card {
-            display: flex; align-items: center; gap: 9px;
-            background: rgba(255,255,255,0.025); border: 1px solid var(--border-dim);
-            border-radius: 12px; padding: 8px 10px; cursor: pointer;
-            transition: var(--transition); position: relative; text-align: left;
-        }
-        .wallet-net-card:hover {
-            border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05);
-        }
-        .wallet-net-card.active {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, rgba(0,255,170,0.12), rgba(0,136,255,0.05));
-            box-shadow: 0 0 0 1px rgba(0,255,170,0.25);
-        }
-        .wallet-net-logo {
+        .inst-step-circle {
             width: 30px; height: 30px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0; overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+            font-size: 0.78rem; font-weight: 800;
+            background: rgba(255,255,255,0.04); border: 1px solid var(--border-dim);
+            color: var(--text-muted); transition: var(--transition);
         }
-        .wallet-net-logo svg { width: 100%; height: 100%; }
-        .wallet-net-meta { flex: 1; min-width: 0; }
-        .wallet-net-title {
-            font-size: 0.76rem; font-weight: 800; color: var(--text-main);
-            line-height: 1.15; display: block;
+        .inst-step-label {
+            font-size: 0.6rem; font-weight: 800; letter-spacing: 0.6px;
+            text-transform: uppercase; color: var(--text-muted);
         }
-        .wallet-net-sub {
-            font-size: 0.62rem; color: var(--text-muted); font-weight: 500;
-            display: block; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        .inst-step.active .inst-step-circle {
+            background: var(--primary); color: var(--text-dark);
+            border-color: var(--primary); box-shadow: 0 0 14px rgba(0, 255, 170, 0.45);
         }
-        .wallet-net-tick {
-            width: 16px; height: 16px; border-radius: 50%;
-            border: 1.5px solid var(--border-dim);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 9px; font-weight: 800; flex-shrink: 0;
+        .inst-step.active .inst-step-label { color: var(--primary); }
+        .inst-step.done .inst-step-circle {
+            background: rgba(0, 255, 170, 0.16); color: var(--primary);
+            border-color: rgba(0, 255, 170, 0.45);
         }
-        .wallet-net-card.active .wallet-net-tick {
-            background: var(--primary); border-color: var(--primary); color: var(--text-dark);
-        }
+        .inst-step.done .inst-step-label { color: #b8ffea; }
 
-        .wallet-addr-panel {
-            background: rgba(0,0,0,0.34); border: 1px solid rgba(0,255,170,0.2);
-            border-radius: 13px; padding: 10px 12px; margin-bottom: 12px;
+        .inst-panel-card {
+            background: rgba(11, 27, 45, 0.85);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px; padding: 16px;
         }
-        .wallet-addr-head {
+        .inst-panel-head {
+            display: flex; align-items: center; gap: 11px; margin-bottom: 14px;
+        }
+        .inst-panel-icon {
+            width: 36px; height: 36px; border-radius: 10px;
+            background: rgba(0, 255, 170, 0.12); border: 1px solid rgba(0, 255, 170, 0.25);
+            color: var(--primary); display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .inst-panel-icon svg { width: 18px; height: 18px; }
+        .inst-panel-head h4 { font-size: 0.95rem; font-weight: 800; line-height: 1.2; }
+        .inst-panel-head p { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
+
+        .inst-net-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+            margin-bottom: 16px;
+        }
+        .inst-net-tile {
+            position: relative;
+            background: rgba(3, 12, 22, 0.72);
+            border: 1.5px solid rgba(255,255,255,0.08);
+            border-radius: 14px; padding: 12px 6px 10px;
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+            cursor: pointer; transition: var(--transition); text-align: center;
+        }
+        .inst-net-tile:hover {
+            border-color: rgba(255,255,255,0.22);
+            background: rgba(16, 36, 58, 0.85);
+        }
+        .inst-net-tile.active {
+            border-color: var(--primary);
+            background: rgba(0, 255, 170, 0.08);
+            box-shadow: 0 0 18px rgba(0, 255, 170, 0.16);
+        }
+        .inst-net-check {
+            position: absolute; top: -6px; right: -6px;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: var(--primary); color: var(--text-dark);
+            display: none; align-items: center; justify-content: center;
+            font-size: 10px; font-weight: 900;
+            box-shadow: 0 2px 8px rgba(0, 255, 170, 0.5);
+        }
+        .inst-net-tile.active .inst-net-check { display: flex; }
+        .inst-net-logo {
+            width: 32px; height: 32px; border-radius: 50%; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .inst-net-logo svg { width: 100%; height: 100%; }
+        .inst-net-code { font-size: 0.74rem; font-weight: 800; color: #ffffff; letter-spacing: 0.3px; line-height: 1.1; }
+        .inst-net-sub { font-size: 0.58rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; }
+        .inst-net-tile.active .inst-net-sub { color: var(--primary); }
+
+        .inst-continue-btn {
+            width: 100%; padding: 13px 18px; border-radius: 13px;
+            background: linear-gradient(90deg, #00e699 0%, #00c4a7 100%);
+            color: #031214; font-size: 0.82rem; font-weight: 800;
+            letter-spacing: 0.8px; text-transform: uppercase;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 6px 22px rgba(0, 230, 153, 0.25);
+        }
+        .inst-continue-btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+        .inst-continue-btn svg { width: 16px; height: 16px; stroke-width: 2.5; }
+
+        .inst-addr-box {
+            background: rgba(0,0,0,0.35); border: 1px solid rgba(0,255,170,0.22);
+            border-radius: 13px; padding: 12px; margin-bottom: 12px;
+        }
+        .inst-addr-top {
             display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 6px; gap: 6px;
+            font-size: 0.64rem; font-weight: 700; color: var(--primary);
+            text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 7px;
         }
-        .wallet-addr-head span {
-            font-size: 0.63rem; font-weight: 700; color: var(--primary);
-            text-transform: uppercase; letter-spacing: 0.7px;
-        }
-        .wallet-addr-head small {
-            font-size: 0.62rem; color: var(--text-muted); font-weight: 600;
-        }
-        .wallet-addr-line {
+        .inst-addr-row {
             display: flex; align-items: center; justify-content: space-between; gap: 7px;
             background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
-            border-radius: 9px; padding: 7px 9px;
+            border-radius: 9px; padding: 8px 10px;
         }
-        .wallet-addr-code {
-            font-family: 'Courier New', monospace; font-size: 0.71rem;
-            color: var(--text-main); word-break: break-all; flex: 1; line-height: 1.3;
+        .inst-addr-code {
+            font-family: 'Courier New', monospace; font-size: 0.72rem;
+            color: #ffffff; word-break: break-all; flex: 1;
         }
-        .wallet-mini-btn {
+        .inst-chip-btn {
             display: inline-flex; align-items: center; gap: 4px;
-            padding: 5px 8px; border-radius: 7px; font-size: 0.66rem; font-weight: 700;
+            padding: 5px 9px; border-radius: 7px; font-size: 0.66rem; font-weight: 700;
             flex-shrink: 0; transition: var(--transition);
         }
-        .wallet-mini-btn svg { width: 12px; height: 12px; }
-        .wallet-mini-btn.qr {
-            background: rgba(0,136,255,0.14); border: 1px solid rgba(0,136,255,0.3); color: #6abaff;
-        }
-        .wallet-mini-btn.qr:hover, .wallet-mini-btn.qr.active {
-            background: var(--blue); color: #fff; border-color: var(--blue);
-        }
-        .wallet-mini-btn.cp {
-            background: var(--primary-dim); border: 1px solid rgba(0,255,170,0.3); color: var(--primary);
-        }
-        .wallet-mini-btn.cp:hover {
-            background: var(--primary); color: var(--text-dark);
-        }
+        .inst-chip-btn svg { width: 12px; height: 12px; }
+        .inst-chip-btn.cp { background: var(--primary-dim); border: 1px solid rgba(0,255,170,0.3); color: var(--primary); }
+        .inst-chip-btn.cp:hover { background: var(--primary); color: var(--text-dark); }
+        .inst-chip-btn.qr { background: rgba(0,136,255,0.14); border: 1px solid rgba(0,136,255,0.3); color: #6abaff; }
+        .inst-chip-btn.qr:hover, .inst-chip-btn.qr.active { background: var(--blue); color: #fff; }
 
-        .wallet-inline-row {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
-            margin-bottom: 10px;
+        .inst-summary-rows {
+            background: rgba(0,0,0,0.28); border: 1px solid var(--border-dim);
+            border-radius: 12px; padding: 11px 13px; margin-bottom: 14px;
         }
-        .wallet-compact-group {
-            margin-bottom: 10px;
-        }
-        .wallet-compact-group label {
+        .inst-s-row {
             display: flex; justify-content: space-between; align-items: center;
-            font-size: 0.68rem; color: var(--text-muted); margin-bottom: 5px; font-weight: 600;
+            font-size: 0.76rem; padding: 5px 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.06);
         }
-        .wallet-compact-control {
-            width: 100%; padding: 9px 11px;
-            background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
-            border-radius: 10px; color: #fff; font-size: 0.82rem; font-weight: 600;
-            transition: var(--transition);
-        }
-        .wallet-compact-control:focus {
-            outline: none; border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0,255,170,0.08);
-        }
-        .wallet-compact-control.error { border-color: var(--danger); }
+        .inst-s-row:last-child { border-bottom: none; }
+        .inst-s-row .k { color: var(--text-muted); }
+        .inst-s-row .v { font-weight: 700; color: #fff; }
 
-        .wallet-avail-strip {
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,136,255,0.08); border: 1px solid rgba(0,136,255,0.22);
-            border-radius: 10px; padding: 8px 11px; margin-bottom: 10px;
-            font-size: 0.72rem;
+        .inst-btn-row {
+            display: grid; grid-template-columns: 110px 1fr; gap: 8px;
         }
-        .wallet-avail-strip strong { color: var(--primary); font-size: 0.82rem; }
+        .inst-sec-btn {
+            padding: 12px; border-radius: 12px;
+            background: rgba(255,255,255,0.04); border: 1px solid var(--border-dim);
+            color: var(--text-main); font-size: 0.78rem; font-weight: 700;
+            display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+        }
+        .inst-sec-btn:hover { border-color: var(--primary); color: var(--primary); }
 
         .modal.auth-pro-modal {
             max-width: 440px;
@@ -720,19 +752,9 @@
         .auth-title-block h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 4px; }
         .auth-title-block p { font-size: 0.8rem; color: var(--text-muted); }
 
-        .forgot-link-row {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-top: 8px;
-        }
-        .forgot-inline-btn {
-            color: var(--primary); font-size: 0.72rem; font-weight: 700;
-            cursor: pointer; transition: var(--transition);
-        }
-        .forgot-inline-btn:hover { text-decoration: underline; color: var(--primary-hover); }
-
         .modal-overlay.active .modal { transform: translateY(0) scale(1); }
         .modal-close { 
-            position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; 
+            position: absolute; top: 16px; right: 16px; width: 30px; height: 30px; 
             border-radius: 50%; background: var(--bg-glass); color: var(--text-muted); 
             display: flex; align-items: center; justify-content: center; 
             transition: var(--transition); cursor: pointer; z-index: 10;
@@ -745,8 +767,6 @@
             width: 44px; height: 44px; border-radius: 12px;
             display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
-        .modal-icon.deposit { background: var(--primary-dim); color: var(--primary); border: 1px solid rgba(0,255,170,0.2); }
-        .modal-icon.withdraw { background: rgba(0,136,255,0.1); color: var(--blue); border: 1px solid rgba(0,136,255,0.2); }
         .modal-icon.invest { background: var(--primary-dim); color: var(--primary); border: 1px solid rgba(0,255,170,0.2); }
         .modal-icon svg { width: 22px; height: 22px; }
         .modal-header-text h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 1px; }
@@ -763,18 +783,18 @@
         }
         .auth-tab-btn.active { background: var(--primary); color: var(--text-dark); }
 
-        .form-group { margin-bottom: 16px; }
+        .form-group { margin-bottom: 14px; }
         .form-group label { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
         .max-btn { color: var(--primary); font-size: 0.7rem; font-weight: 700; cursor: pointer; }
         .max-btn:hover { text-decoration: underline; }
         .max-btn.disabled-timer { color: var(--text-muted); cursor: not-allowed; text-decoration: none; opacity: 0.75; }
         .form-control {
-            width: 100%; padding: 12px 14px; background: var(--bg-glass); border: 1px solid var(--border-dim);
-            border-radius: 10px; color: white; font-size: 0.9rem; transition: var(--transition);
+            width: 100%; padding: 11px 13px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
+            border-radius: 11px; color: white; font-size: 0.88rem; transition: var(--transition);
         }
         .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0, 255, 170, 0.08); }
         .form-control.error { border-color: var(--danger); }
-        .error-msg { color: var(--danger); font-size: 0.68rem; margin-top: 4px; display: none; font-weight: 600; }
+        .error-msg { color: var(--danger); font-size: 0.7rem; margin-top: 4px; display: none; font-weight: 600; }
 
         .qr-panel {
             display: none; margin-top: 10px; padding-top: 10px;
@@ -785,7 +805,6 @@
         .qr-frame {
             display: inline-flex; flex-direction: column; align-items: center; gap: 6px;
             background: #ffffff; padding: 10px; border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.45);
         }
         .qr-caption { font-size: 0.65rem; color: var(--text-muted); margin-top: 6px; word-break: break-all; }
 
@@ -900,8 +919,10 @@
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-links { justify-content: center; }
             .modal { padding: 20px; }
-            .modal.wallet-pro-modal { padding: 16px; }
-            .wallet-inline-row { grid-template-columns: 1fr; gap: 8px; }
+            .modal.wallet-inst-modal { padding: 16px; }
+            .inst-net-grid { gap: 6px; }
+            .inst-net-tile { padding: 10px 4px 8px; }
+            .inst-net-code { font-size: 0.68rem; }
             .balance-amount .main { font-size: 1.9rem; }
             .balance-stats { padding: 10px; }
             .balance-stats .bs-value { font-size: 0.78rem; }
@@ -973,10 +994,10 @@
                         </div>
                     </div>
                     <div class="balance-actions">
-                        <button class="balance-btn deposit" onclick="requireAuth(() => openDepositModal())">
+                        <button class="balance-btn deposit" onclick="requireAuth(() => openWalletFlow('deposit', 1))">
                             <i data-lucide="arrow-down-to-line"></i> Deposit
                         </button>
-                        <button class="balance-btn withdraw" onclick="requireAuth(() => openWithdrawModal())">
+                        <button class="balance-btn withdraw" onclick="requireAuth(() => openWalletFlow('withdraw', 1))">
                             <i data-lucide="arrow-up-from-line"></i> Withdraw
                         </button>
                     </div>
@@ -1583,7 +1604,7 @@
             const isLogin = mode === 'login';
             const isForgot = mode === 'forgot';
             const modalBox = document.getElementById('modalContent');
-            modalBox.classList.remove('wallet-pro-modal');
+            modalBox.classList.remove('wallet-inst-modal');
             modalBox.classList.add('auth-pro-modal');
 
             openModal(`
@@ -1641,8 +1662,8 @@
                         Reset Password
                     </button>
 
-                    <div class="forgot-link-row">
-                        <span class="forgot-inline-btn" onclick="openAuthModal('login')">← Back to Login</span>
+                    <div style="margin-top:10px;">
+                        <span class="max-btn" onclick="openAuthModal('login')">← Back to Login</span>
                     </div>
                 ` : `
                     <div class="auth-title-block">
@@ -1679,12 +1700,7 @@
                         <label>${isLogin ? 'Password' : 'Create Password'}</label>
                         <input type="password" id="authPasswordInput" class="form-control" placeholder="${isLogin ? 'Enter password' : 'Min 6 characters'}">
                         <div class="error-msg" id="authPassError">Password must be at least 6 characters.</div>
-                        ${isLogin ? `
-                            <div class="forgot-link-row">
-                                <span></span>
-                                <span class="forgot-inline-btn" onclick="openAuthModal('forgot')">Forgot Password?</span>
-                            </div>
-                        ` : ''}
+                        ${isLogin ? `<div style="text-align:right;margin-top:6px;"><span class="max-btn" onclick="openAuthModal('forgot')">Forgot Password?</span></div>` : ''}
                     </div>
 
                     <button class="btn btn-primary btn-block" id="authSubmitBtn" onclick="${isLogin ? 'submitLogin()' : 'submitSignUp()'}">
@@ -1818,11 +1834,7 @@
             try {
                 const data = await apiRequest('/api/auth/forgot-password/reset', {
                     method: 'POST',
-                    body: JSON.stringify({
-                        email,
-                        code,
-                        new_password: newPassword
-                    })
+                    body: JSON.stringify({ email, code, new_password: newPassword })
                 });
                 authState.email = email;
                 saveAuthState();
@@ -2049,7 +2061,8 @@
             USDT_BEP20: {
                 symbol: 'USDT',
                 name: 'USDT BEP20',
-                shortTitle: 'USDT',
+                tileCode: 'USDT',
+                tileSub: 'BEP20',
                 network: 'BEP20',
                 networkDesc: 'BNB Smart Chain',
                 addressLabel: 'BEP20 Deposit Address',
@@ -2061,7 +2074,8 @@
             USDT_TRC20: {
                 symbol: 'USDT',
                 name: 'USDT TRC20',
-                shortTitle: 'USDT',
+                tileCode: 'USDT',
+                tileSub: 'TRC20',
                 network: 'TRC20',
                 networkDesc: 'TRON Network',
                 addressLabel: 'TRC20 Deposit Address',
@@ -2073,19 +2087,21 @@
             BTC: {
                 symbol: 'BTC',
                 name: 'Bitcoin',
-                shortTitle: 'BTC',
+                tileCode: 'BTC',
+                tileSub: 'BTC',
                 network: 'BTC',
                 networkDesc: 'Bitcoin Mainnet',
                 addressLabel: 'BTC Deposit Address',
                 minDeposit: '$5.00',
                 confirmations: '2 Blocks',
                 depositAddress: '1AVqKF2KKCruGcCinouuu7dnREkKMqeznu',
-                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="btcOfficial" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffa61a"/><stop offset="100%" stop-color="#e87a00"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="url(#btcOfficial)"/><path fill="#ffffff" d="M24.8 15.8c.45-2.65-1.65-4.08-4.45-4.98l.9-3.55-2.2-.55-.88 3.45c-.58-.14-1.18-.28-1.77-.41l.89-3.48-2.2-.55-.9 3.54c-.48-.11-.95-.22-1.41-.33l-3.04-.76-.58 2.34s1.64.38 1.6.4c.9.22 1.06.82 1.03 1.29l-2.48 9.95c-.11.28-.39.7-.102.57.02.02-1.6-.4-1.6-.4l-1.1 2.52 2.87.72c.53.13 1.06.27 1.57.4l-.91 3.6 2.2.55.9-3.56c.6.16 1.19.32 1.76.46l-.9 3.54 2.2.55.91-3.59c3.76.71 6.59.42 7.78-2.98.96-2.74-.05-4.32-2.02-5.35 1.44-.33 2.52-1.28 2.81-3.24zm-5.02 7.05c-.68 2.74-5.28 1.26-6.78.89l1.21-4.85c1.5.37 6.28 1.11 5.57 3.96zm.68-7.1c-.62 2.49-4.47 1.22-5.72.91l1.1-4.41c1.25.31 5.26.9 4.62 3.5z"/></svg>`
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="btcOfficial" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffa61a"/><stop offset="100%" stop-color="#e87a00"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="url(#btcOfficial)"/><path fill="#ffffff" d="M24.8 15.8c.45-2.65-1.65-4.08-4.45-4.98l.9-3.55-2.2-.55-.88 3.45c-.58-.14-1.18-.28-1.77-.41l.89-3.48-2.2-.55-.9 3.54c-.48-.11-.95-.22-1.41-.33l-3.04-.76-.58 2.34s1.64.38 1.6.4c.9.22 1.06.82 1.03 1.29l-2.48 9.95c-.11.28-.39.7-1.02.57.02.02-1.6-.4-1.6-.4l-1.1 2.52 2.87.72c.53.13 1.06.27 1.57.4l-.91 3.6 2.2.55.9-3.56c.6.16 1.19.32 1.76.46l-.9 3.54 2.2.55.91-3.59c3.76.71 6.59.42 7.78-2.98.96-2.74-.05-4.32-2.02-5.35 1.44-.33 2.52-1.28 2.81-3.24zm-5.02 7.05c-.68 2.74-5.28 1.26-6.78.89l1.21-4.85c1.5.37 6.28 1.11 5.57 3.96zm.68-7.1c-.62 2.49-4.47 1.22-5.72.91l1.1-4.41c1.25.31 5.26.9 4.62 3.5z"/></svg>`
             },
             BYBIT: {
                 symbol: 'BYBIT',
                 name: 'Bybit UID',
-                shortTitle: 'BYBIT',
+                tileCode: 'BYBIT',
+                tileSub: 'UID',
                 network: 'BYBIT',
                 networkDesc: 'Bybit Instant UID',
                 addressLabel: 'Bybit Transfer UID',
@@ -2097,9 +2113,15 @@
         };
 
         const PAYMENT_METHODS = ['USDT_BEP20', 'USDT_TRC20', 'BTC', 'BYBIT'];
-        let selectedPayMethod = 'USDT_BEP20';
-        let activeDepositAddress = COINS.USDT_BEP20.depositAddress;
-        let qrVisible = false;
+        let walletState = {
+            mode: 'deposit',
+            step: 1,
+            network: 'USDT_BEP20',
+            amount: '',
+            destination: '',
+            address: COINS.USDT_BEP20.depositAddress,
+            qrOpen: false
+        };
         let TRANSACTIONS = [];
 
         function formatAmount(tx) {
@@ -2188,7 +2210,7 @@
             const overlay = document.getElementById('modalOverlay');
             const content = document.getElementById('modalContent');
             content.classList.remove('auth-pro-modal');
-            content.classList.remove('wallet-pro-modal');
+            content.classList.remove('wallet-inst-modal');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
         }
@@ -2289,307 +2311,349 @@
         }
         window.addEventListener('resize', updateSlider);
 
-        function renderWalletNetworkGrid(selectedKey, onSelectFnName) {
-            return PAYMENT_METHODS.map(key => {
-                const coin = COINS[key];
-                const active = key === selectedKey ? ' active' : '';
-                return `
-                    <div class="wallet-net-card${active}" onclick="${onSelectFnName}('${key}')">
-                        <div class="wallet-net-logo">${coin.logo}</div>
-                        <div class="wallet-net-meta">
-                            <span class="wallet-net-title">${coin.name}</span>
-                            <span class="wallet-net-sub">${coin.networkDesc}</span>
-                        </div>
-                        <div class="wallet-net-tick">${key === selectedKey ? '✓' : ''}</div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function toggleDepositQr() {
-            qrVisible = !qrVisible;
-            const panel = document.getElementById('depositQrPanel');
-            const btn = document.getElementById('showQrBtn');
-            if (panel) panel.classList.toggle('open', qrVisible);
-            if (btn) {
-                btn.classList.toggle('active', qrVisible);
-                btn.innerHTML = `<i data-lucide="qr-code"></i> ${qrVisible ? 'Hide' : 'QR'}`;
-                lucide.createIcons();
+        /* ================= 4-STEP INSTITUTIONAL WALLET FLOW ================= */
+        function openWalletFlow(mode = 'deposit', step = 1) {
+            walletState.mode = mode;
+            walletState.step = step;
+            walletState.qrOpen = false;
+            if (!walletState.network || !COINS[walletState.network]) {
+                walletState.network = 'USDT_BEP20';
             }
-        }
+            walletState.address = COINS[walletState.network].depositAddress;
 
-        function renderWalletDepositAddressPanel(key) {
-            const coin = COINS[key];
-            const addr = activeDepositAddress || coin.depositAddress;
-            const qrSvg = generateQrSvg(`${coin.network}:${addr}`, 132);
-            return `
-                <div class="wallet-addr-panel">
-                    <div class="wallet-addr-head">
-                        <span>${coin.addressLabel}</span>
-                        <small>${coin.confirmations} · Min ${coin.minDeposit}</small>
-                    </div>
-                    <div class="wallet-addr-line">
-                        <div class="wallet-addr-code" id="depAddrText">${addr}</div>
-                        <button class="wallet-mini-btn qr ${qrVisible ? 'active' : ''}" id="showQrBtn" type="button" onclick="toggleDepositQr()">
-                            <i data-lucide="qr-code"></i> ${qrVisible ? 'Hide' : 'QR'}
-                        </button>
-                        <button class="wallet-mini-btn cp" type="button" onclick="copyText('${addr}', '${coin.name} address copied!')">
-                            <i data-lucide="copy"></i> Copy
-                        </button>
-                    </div>
-                    <div class="qr-panel ${qrVisible ? 'open' : ''}" id="depositQrPanel">
-                        <div class="qr-frame">${qrSvg}</div>
-                        <div class="qr-caption"><strong>${coin.name}</strong> (${coin.networkDesc}) · ${addr}</div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function selectDepositMethod(key) {
-            selectedPayMethod = key;
-            activeDepositAddress = COINS[key].depositAddress;
-            qrVisible = false;
-            document.getElementById('payMethodGrid').innerHTML = renderWalletNetworkGrid(key, 'selectDepositMethod');
-            document.getElementById('depositAddressContainer').innerHTML = renderWalletDepositAddressPanel(key);
-            lucide.createIcons();
-        }
-
-        function openDepositModal() {
-            selectedPayMethod = 'USDT_BEP20';
-            activeDepositAddress = COINS[selectedPayMethod].depositAddress;
-            qrVisible = false;
             const modalBox = document.getElementById('modalContent');
             modalBox.classList.remove('auth-pro-modal');
-            modalBox.classList.add('wallet-pro-modal');
+            modalBox.classList.add('wallet-inst-modal');
 
-            openModal(`
-                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
-
-                <div class="wallet-top-bar">
-                    <div class="wallet-brand-pill">
-                        <div class="logo-icon" style="width:28px;height:28px;border-radius:8px;">
-                            <i data-lucide="shield-check" style="width:15px;height:15px;"></i>
-                        </div>
-                        <span>TRONVEX WALLET</span>
-                    </div>
-                    <span class="wallet-badge-secure"><i data-lucide="shield-check" style="width:11px;height:11px;"></i> Instant Route</span>
-                </div>
-
-                <div class="wallet-mode-switch">
-                    <button class="wallet-mode-btn active dep" type="button" onclick="openDepositModal()">
-                        <i data-lucide="arrow-down-to-line"></i> Deposit
-                    </button>
-                    <button class="wallet-mode-btn" type="button" onclick="openWithdrawModal()">
-                        <i data-lucide="arrow-up-from-line"></i> Withdraw
-                    </button>
-                </div>
-
-                <div class="wallet-stepper">
-                    <div class="w-step active"><span class="w-num">1</span> Network</div>
-                    <div class="w-step active"><span class="w-num">2</span> Address</div>
-                    <div class="w-step active"><span class="w-num">3</span> Amount</div>
-                </div>
-
-                <div class="wallet-section-label">
-                    <span>Choose Network</span>
-                    <span>Min $5.00</span>
-                </div>
-                <div class="wallet-net-grid" id="payMethodGrid">
-                    ${renderWalletNetworkGrid(selectedPayMethod, 'selectDepositMethod')}
-                </div>
-
-                <div id="depositAddressContainer">
-                    ${renderWalletDepositAddressPanel(selectedPayMethod)}
-                </div>
-
-                <div class="wallet-compact-group">
-                    <label>
-                        <span>Deposit Amount (USD / USDT)</span>
-                        <span>Min $5.00</span>
-                    </label>
-                    <input type="number" id="depositAmount" class="wallet-compact-control" placeholder="Enter amount (min $5.00)" min="5" step="0.01">
-                    <div class="error-msg" id="depositError">Minimum deposit is $5.00.</div>
-                </div>
-
-                <button class="btn btn-primary btn-block" style="border-radius:12px;padding:12px;" id="depositSubmitBtn" onclick="submitDeposit()">
-                    Create Deposit Order
-                </button>
-            `);
+            renderWalletFlowModal();
         }
 
-        async function submitDeposit() {
-            const input = document.getElementById('depositAmount');
-            const error = document.getElementById('depositError');
-            const amount = parseFloat(input.value);
-            if (isNaN(amount) || amount < 5) {
-                input.classList.add('error');
-                error.style.display = 'block';
+        function switchWalletMode(mode) {
+            walletState.mode = mode;
+            walletState.step = 1;
+            walletState.qrOpen = false;
+            renderWalletFlowModal();
+        }
+
+        function selectWalletNetwork(key) {
+            walletState.network = key;
+            walletState.address = COINS[key].depositAddress;
+            walletState.qrOpen = false;
+            renderWalletFlowModal();
+        }
+
+        function goWalletStep(nextStep) {
+            if (nextStep < 1 || nextStep > 4) return;
+            walletState.step = nextStep;
+            renderWalletFlowModal();
+        }
+
+        function handleWalletStep1Continue() {
+            walletState.step = 2;
+            renderWalletFlowModal();
+        }
+
+        function handleWalletStep2Continue() {
+            const amtEl = document.getElementById('wFlowAmount');
+            const destEl = document.getElementById('wFlowDest');
+            const amtErr = document.getElementById('wFlowAmtErr');
+            const destErr = document.getElementById('wFlowDestErr');
+
+            const amtVal = parseFloat(amtEl ? amtEl.value : '');
+            if (isNaN(amtVal) || amtVal < 5) {
+                if (amtEl) amtEl.classList.add('error');
+                if (amtErr) amtErr.style.display = 'block';
                 return;
             }
-            input.classList.remove('error');
-            error.style.display = 'none';
-
-            const btn = document.getElementById('depositSubmitBtn');
-            const originalHtml = btn.innerHTML;
-            btn.innerHTML = '<span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(0,0,0,0.3);border-top-color:#030a12;border-radius:50%;animation:spin 1s linear infinite;"></span> Creating order...';
-            btn.disabled = true;
-
-            const coin = COINS[selectedPayMethod];
-            try {
-                const res = await apiRequest('/api/deposits/create', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        network: coin.network,
-                        method: coin.name,
-                        amount: amount
-                    })
-                });
-                if (res.address) {
-                    activeDepositAddress = res.address;
-                    document.getElementById('depositAddressContainer').innerHTML = renderWalletDepositAddressPanel(selectedPayMethod);
-                    lucide.createIcons();
+            if (walletState.mode === 'withdraw' && amtVal > availableBalance) {
+                if (amtEl) amtEl.classList.add('error');
+                if (amtErr) {
+                    amtErr.textContent = 'Amount exceeds available balance.';
+                    amtErr.style.display = 'block';
                 }
-                await refreshAccountData();
-                closeModal();
-                showToast(`Order ${res.order_id || ''} created for $${amount.toFixed(2)}.`, 'success');
-            } catch (err) {
-                showToast(err.message, 'error');
-            } finally {
-                btn.innerHTML = originalHtml;
-                btn.disabled = false;
+                return;
             }
+            if (amtEl) amtEl.classList.remove('error');
+            if (amtErr) amtErr.style.display = 'none';
+            walletState.amount = amtVal.toFixed(2);
+
+            if (walletState.mode === 'withdraw') {
+                const destVal = destEl ? destEl.value.trim() : '';
+                if (destVal.length < 4) {
+                    if (destEl) destEl.classList.add('error');
+                    if (destErr) destErr.style.display = 'block';
+                    return;
+                }
+                if (destEl) destEl.classList.remove('error');
+                if (destErr) destErr.style.display = 'none';
+                walletState.destination = destVal;
+            }
+
+            walletState.step = 3;
+            renderWalletFlowModal();
         }
 
-        function selectWithdrawMethod(key) {
-            selectedPayMethod = key;
-            document.getElementById('withdrawMethodGrid').innerHTML = renderWalletNetworkGrid(key, 'selectWithdrawMethod');
-            const coin = COINS[key];
-            const addrInput = document.getElementById('withdrawAddress');
-            if (addrInput) {
-                addrInput.placeholder = key === 'BYBIT' ? 'Destination Bybit UID' : `Destination ${coin.network} address`;
-            }
-            lucide.createIcons();
+        function toggleWalletQr() {
+            walletState.qrOpen = !walletState.qrOpen;
+            renderWalletFlowModal();
         }
 
-        function openWithdrawModal() {
-            selectedPayMethod = 'USDT_BEP20';
-            const modalBox = document.getElementById('modalContent');
-            modalBox.classList.remove('auth-pro-modal');
-            modalBox.classList.add('wallet-pro-modal');
+        function renderWalletFlowModal() {
+            const coin = COINS[walletState.network];
+            const isDep = walletState.mode === 'deposit';
+            const stepTitles = ['NETWORK', 'AMOUNT', 'PAY', 'CONFIRM'];
+
+            const stepperHtml = `
+                <div class="inst-stepper">
+                    ${[1,2,3,4].map(num => {
+                        const cls = num === walletState.step ? 'active' : (num < walletState.step ? 'done' : '');
+                        return `
+                            <div class="inst-step ${cls}" onclick="goWalletStep(${num})">
+                                <div class="inst-step-circle">${num}</div>
+                                <span class="inst-step-label">${stepTitles[num - 1]}</span>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+
+            const networkTilesHtml = `
+                <div class="inst-net-grid">
+                    ${PAYMENT_METHODS.map(key => {
+                        const c = COINS[key];
+                        const active = key === walletState.network ? 'active' : '';
+                        return `
+                            <div class="inst-net-tile${active}" onclick="selectWalletNetwork('${key}')">
+                                <span class="inst-net-check">✓</span>
+                                <div class="inst-net-logo">${c.logo}</div>
+                                <span class="inst-net-code">${c.tileCode}</span>
+                                <span class="inst-net-sub">${c.tileSub}</span>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+
+            let bodyHtml = '';
+
+            if (walletState.step === 1) {
+                bodyHtml = `
+                    <div class="inst-panel-card">
+                        <div class="inst-panel-head">
+                            <div class="inst-panel-icon"><i data-lucide="network"></i></div>
+                            <div>
+                                <h4>Choose Network</h4>
+                                <p>Select your preferred network (${coin.name} · ${coin.networkDesc})</p>
+                            </div>
+                        </div>
+                        ${networkTilesHtml}
+                        <button class="inst-continue-btn" type="button" onclick="handleWalletStep1Continue()">
+                            <span>CONTINUE</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                `;
+            } else if (walletState.step === 2) {
+                bodyHtml = `
+                    <div class="inst-panel-card">
+                        <div class="inst-panel-head">
+                            <div class="inst-panel-icon"><i data-lucide="coins"></i></div>
+                            <div>
+                                <h4>${isDep ? 'Deposit Amount' : 'Withdrawal Details'}</h4>
+                                <p>${coin.name} (${coin.networkDesc}) · Min $5.00</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <span>Amount (USD / USDT)</span>
+                                ${!isDep ? `<span class="max-btn" onclick="document.getElementById('wFlowAmount').value=${Number(availableBalance||0).toFixed(2)}">MAX ($${Number(availableBalance||0).toFixed(2)})</span>` : `<span>Min $5.00</span>`}
+                            </label>
+                            <input type="number" id="wFlowAmount" class="form-control" placeholder="Enter amount (min $5.00)" min="5" step="0.01" value="${walletState.amount}">
+                            <div class="error-msg" id="wFlowAmtErr">Minimum amount is $5.00.</div>
+                        </div>
+                        ${!isDep ? `
+                            <div class="form-group">
+                                <label><span>Destination ${coin.network === 'BYBIT' ? 'Bybit UID' : 'Address'}</span></label>
+                                <input type="text" id="wFlowDest" class="form-control" placeholder="${coin.network === 'BYBIT' ? 'Enter Bybit UID' : 'Enter ' + coin.network + ' address'}" value="${walletState.destination}">
+                                <div class="error-msg" id="wFlowDestErr">Valid destination required.</div>
+                            </div>
+                        ` : ''}
+                        <div class="inst-btn-row">
+                            <button class="inst-sec-btn" type="button" onclick="goWalletStep(1)">← Back</button>
+                            <button class="inst-continue-btn" type="button" onclick="handleWalletStep2Continue()">
+                                <span>CONTINUE</span>
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } else if (walletState.step === 3) {
+                const qrSvg = generateQrSvg(`${coin.network}:${walletState.address}`, 128);
+                bodyHtml = `
+                    <div class="inst-panel-card">
+                        <div class="inst-panel-head">
+                            <div class="inst-panel-icon"><i data-lucide="wallet"></i></div>
+                            <div>
+                                <h4>${isDep ? 'Payment Address' : 'Review Payout'}</h4>
+                                <p>${coin.name} · $${Number(walletState.amount || 5).toFixed(2)}</p>
+                            </div>
+                        </div>
+                        ${isDep ? `
+                            <div class="inst-addr-box">
+                                <div class="inst-addr-top">
+                                    <span>${coin.addressLabel}</span>
+                                    <span>${coin.confirmations}</span>
+                                </div>
+                                <div class="inst-addr-row">
+                                    <div class="inst-addr-code">${walletState.address}</div>
+                                    <button class="inst-chip-btn qr ${walletState.qrOpen ? 'active' : ''}" type="button" onclick="toggleWalletQr()">
+                                        <i data-lucide="qr-code"></i> ${walletState.qrOpen ? 'Hide' : 'QR'}
+                                    </button>
+                                    <button class="inst-chip-btn cp" type="button" onclick="copyText('${walletState.address}', '${coin.name} copied!')">
+                                        <i data-lucide="copy"></i> Copy
+                                    </button>
+                                </div>
+                                <div class="qr-panel ${walletState.qrOpen ? 'open' : ''}">
+                                    <div class="qr-frame">${qrSvg}</div>
+                                    <div class="qr-caption"><strong>${coin.name}</strong> · ${walletState.address}</div>
+                                </div>
+                            </div>
+                        ` : `
+                            <div class="inst-summary-rows">
+                                <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.name}</span></div>
+                                <div class="inst-s-row"><span class="k">Destination</span><span class="v" style="font-family:monospace;font-size:0.7rem;">${walletState.destination}</span></div>
+                                <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${Number(walletState.amount || 5).toFixed(2)}</span></div>
+                            </div>
+                        `}
+                        <div class="inst-btn-row">
+                            <button class="inst-sec-btn" type="button" onclick="goWalletStep(2)">← Back</button>
+                            <button class="inst-continue-btn" type="button" onclick="goWalletStep(4)">
+                                <span>CONTINUE</span>
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } else {
+                bodyHtml = `
+                    <div class="inst-panel-card">
+                        <div class="inst-panel-head">
+                            <div class="inst-panel-icon"><i data-lucide="check-circle"></i></div>
+                            <div>
+                                <h4>Confirm ${isDep ? 'Deposit Order' : 'Withdrawal'}</h4>
+                                <p>Final verification before submitting</p>
+                            </div>
+                        </div>
+                        <div class="inst-summary-rows">
+                            <div class="inst-s-row"><span class="k">Action</span><span class="v">${isDep ? 'Deposit' : 'Withdraw'}</span></div>
+                            <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.name} (${coin.networkDesc})</span></div>
+                            <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${Number(walletState.amount || 5).toFixed(2)}</span></div>
+                            <div class="inst-s-row"><span class="k">${isDep ? 'Target Address' : 'Destination'}</span><span class="v" style="font-family:monospace;font-size:0.68rem;">${isDep ? walletState.address : walletState.destination}</span></div>
+                        </div>
+                        <div class="inst-btn-row">
+                            <button class="inst-sec-btn" type="button" onclick="goWalletStep(3)">← Back</button>
+                            <button class="inst-continue-btn" id="wFlowFinalBtn" type="button" onclick="submitWalletFlowFinal()">
+                                <span>${isDep ? 'CREATE ORDER' : 'CONFIRM PAYOUT'}</span>
+                                <i data-lucide="shield-check"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
 
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
 
-                <div class="wallet-top-bar">
-                    <div class="wallet-brand-pill">
-                        <div class="logo-icon" style="width:28px;height:28px;border-radius:8px;">
-                            <i data-lucide="shield-check" style="width:15px;height:15px;"></i>
+                <div class="inst-brand-header">
+                    <div class="inst-brand-left">
+                        <div class="inst-brand-icon"><i data-lucide="gem"></i></div>
+                        <div>
+                            <div class="inst-brand-title">TRONVEX</div>
+                            <div class="inst-brand-sub">INSTITUTIONAL CRYPTO YIELD</div>
                         </div>
-                        <span>TRONVEX WALLET</span>
                     </div>
-                    <span class="wallet-badge-secure"><i data-lucide="shield-check" style="width:11px;height:11px;"></i> Payout Route</span>
+                    <div class="inst-badge-m">M</div>
                 </div>
 
-                <div class="wallet-mode-switch">
-                    <button class="wallet-mode-btn" type="button" onclick="openDepositModal()">
+                <div class="inst-top-bar">
+                    <button class="inst-back-btn" type="button" onclick="${walletState.step > 1 ? `goWalletStep(${walletState.step - 1})` : 'closeModal()'}">
+                        <i data-lucide="arrow-left"></i> Back
+                    </button>
+                    <div class="inst-secure-pill">
+                        <i data-lucide="shield-check"></i> SECURE
+                    </div>
+                </div>
+
+                <div class="inst-mode-tabs">
+                    <button class="inst-mode-tab ${isDep ? 'active dep' : ''}" type="button" onclick="switchWalletMode('deposit')">
                         <i data-lucide="arrow-down-to-line"></i> Deposit
                     </button>
-                    <button class="wallet-mode-btn active wdr" type="button" onclick="openWithdrawModal()">
+                    <button class="inst-mode-tab ${!isDep ? 'active wdr' : ''}" type="button" onclick="switchWalletMode('withdraw')">
                         <i data-lucide="arrow-up-from-line"></i> Withdraw
                     </button>
                 </div>
 
-                <div class="wallet-stepper">
-                    <div class="w-step active"><span class="w-num">1</span> Network</div>
-                    <div class="w-step active"><span class="w-num">2</span> Destination</div>
-                    <div class="w-step active"><span class="w-num">3</span> Amount</div>
-                </div>
-
-                <div class="wallet-avail-strip">
-                    <span>Available Balance</span>
-                    <strong>$${Number(availableBalance || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong>
-                </div>
-
-                <div class="wallet-section-label">
-                    <span>Choose Network</span>
-                    <span>Min $5.00</span>
-                </div>
-                <div class="wallet-net-grid" id="withdrawMethodGrid">
-                    ${renderWalletNetworkGrid(selectedPayMethod, 'selectWithdrawMethod')}
-                </div>
-
-                <div class="wallet-inline-row">
-                    <div class="wallet-compact-group" style="margin-bottom:0;">
-                        <label><span>Destination / UID</span></label>
-                        <input type="text" id="withdrawAddress" class="wallet-compact-control" placeholder="Destination BEP20 address">
-                        <div class="error-msg" id="addressError">Valid destination required.</div>
-                    </div>
-                    <div class="wallet-compact-group" style="margin-bottom:0;">
-                        <label>
-                            <span>Amount (Min $5)</span>
-                            <span class="max-btn" onclick="document.getElementById('withdrawAmount').value=${Number(availableBalance || 0).toFixed(2)}">MAX</span>
-                        </label>
-                        <input type="number" id="withdrawAmount" class="wallet-compact-control" placeholder="Min $5.00" min="5" step="0.01">
-                        <div class="error-msg" id="withdrawError">Min $5.00 / check balance.</div>
-                    </div>
-                </div>
-
-                <button class="btn btn-primary btn-block" style="border-radius:12px;padding:12px;margin-top:12px;" id="withdrawSubmitBtn" onclick="submitWithdraw()">
-                    Submit Withdrawal
-                </button>
+                ${stepperHtml}
+                ${bodyHtml}
             `);
         }
 
-        async function submitWithdraw() {
-            const addrInput = document.getElementById('withdrawAddress');
-            const amtInput = document.getElementById('withdrawAmount');
-            const addrError = document.getElementById('addressError');
-            const amtError = document.getElementById('withdrawError');
+        async function submitWalletFlowFinal() {
+            const coin = COINS[walletState.network];
+            const amount = parseFloat(walletState.amount || '5');
+            if (isNaN(amount) || amount < 5) {
+                showToast('Minimum amount is $5.00', 'error');
+                return;
+            }
 
-            const address = addrInput.value.trim();
-            const amount = parseFloat(amtInput.value);
-            let isValid = true;
+            const btn = document.getElementById('wFlowFinalBtn');
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<span>PROCESSING...</span>';
+            }
 
-            if (address.length < 5) { addrInput.classList.add('error'); addrError.style.display = 'block'; isValid = false; }
-            else { addrInput.classList.remove('error'); addrError.style.display = 'none'; }
-
-            if (isNaN(amount) || amount < 5 || amount > availableBalance) {
-                amtInput.classList.add('error'); amtError.style.display = 'block'; isValid = false;
-            } else { amtInput.classList.remove('error'); amtError.style.display = 'none'; }
-
-            if (!isValid) return;
-
-            const btn = document.getElementById('withdrawSubmitBtn');
-            const originalHtml = btn.innerHTML;
-            btn.innerHTML = '<span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(0,0,0,0.3);border-top-color:#030a12;border-radius:50%;animation:spin 1s linear infinite;"></span> Processing...';
-            btn.disabled = true;
-
-            const coin = COINS[selectedPayMethod];
             try {
-                await apiRequest('/api/withdrawals/create', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        network: coin.network,
-                        method: coin.name,
-                        amount: amount,
-                        address: address
-                    })
-                });
-                await refreshAccountData();
-                closeModal();
-                showToast(`Withdrawal of $${amount.toFixed(2)} (${coin.name}) submitted.`, 'success');
+                if (walletState.mode === 'deposit') {
+                    const res = await apiRequest('/api/deposits/create', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            network: coin.network,
+                            method: coin.name,
+                            amount: amount
+                        })
+                    });
+                    if (res.address) walletState.address = res.address;
+                    await refreshAccountData();
+                    closeModal();
+                    showToast(`Order ${res.order_id || ''} created for $${amount.toFixed(2)}.`, 'success');
+                } else {
+                    await apiRequest('/api/withdrawals/create', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            network: coin.network,
+                            method: coin.name,
+                            amount: amount,
+                            address: walletState.destination
+                        })
+                    });
+                    await refreshAccountData();
+                    closeModal();
+                    showToast(`Withdrawal of $${amount.toFixed(2)} (${coin.name}) submitted.`, 'success');
+                }
             } catch (err) {
                 showToast(err.message, 'error');
-            } finally {
-                btn.innerHTML = originalHtml;
-                btn.disabled = false;
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = `<span>${walletState.mode === 'deposit' ? 'CREATE ORDER' : 'CONFIRM PAYOUT'}</span><i data-lucide="shield-check"></i>`;
+                    lucide.createIcons();
+                }
             }
         }
 
         function openInvestModal(name, min, max) {
             const modalBox = document.getElementById('modalContent');
             modalBox.classList.remove('auth-pro-modal');
-            modalBox.classList.remove('wallet-pro-modal');
+            modalBox.classList.remove('wallet-inst-modal');
 
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
@@ -2661,7 +2725,7 @@
             if (!tx) return;
             const modalBox = document.getElementById('modalContent');
             modalBox.classList.remove('auth-pro-modal');
-            modalBox.classList.remove('wallet-pro-modal');
+            modalBox.classList.remove('wallet-inst-modal');
 
             const isPos = (tx.type === 'deposit' || tx.type === 'profit');
             const typeLabel = { deposit: 'Deposit', withdraw: 'Withdrawal', invest: 'Investment', profit: 'Profit Payout' }[tx.type] || tx.type;
