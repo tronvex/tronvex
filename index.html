@@ -1418,8 +1418,8 @@
         lucide.createIcons();
 
         const API_BASE_URL = 'https://tronvex-backend.onrender.com';
-        // Updated to match the Supabase Edge Function endpoint configured in dashboard
-        const CREATE_PAYMENT_URL = 'https://njqysfaazskjrgmfsex.supabase.co/functions/v1/smooth-processor';
+        const DIRECT_GATEWAY_URL = 'https://nowpayments.io/payment/?iid=4719687929';
+        const ALLOWED_4_NETWORKS = ['usdt_trc20', 'usdt_bep20', 'usdt_erc20', 'trx'];
         const DEPOSIT_TIMEOUT_MS = 5 * 60 * 1000;
         const PLAN_DAYS = 5;
 
@@ -2252,7 +2252,7 @@
                 networkDesc: 'TRON Network',
                 addressLabel: 'TRC20 Gateway Address',
                 minDeposit: '$5.00',
-                confirmations: 'Auto IPN',
+                confirmations: 'NOWPayments',
                 logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="tronRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff2e4d"/><stop offset="100%" stop-color="#c4001e"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#121822"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#tronRing1)" stroke-width="2"/><polygon points="9,10 27,13.5 18.5,27.5" fill="none" stroke="#ff3b5c" stroke-width="2" stroke-linejoin="round"/><line x1="9" y1="10" x2="18.2" y2="15.5" stroke="#ff3b5c" stroke-width="1.8"/><line x1="27" y1="13.5" x2="18.2" y2="15.5" stroke="#ff3b5c" stroke-width="1.8"/><line x1="18.2" y1="15.5" x2="18.5" y2="27.5" stroke="#ff3b5c" stroke-width="1.8"/><circle cx="24.5" cy="24.5" r="8.2" fill="#26a17b" stroke="#121822" stroke-width="1.6"/><path fill="#fff" d="M25.4 23.6v-1.2h2.1v-1.6h-6v1.6h2.1v1.2c-1.7.08-3 .42-3 .85s1.3.77 3 .85v2.9h1.8v-2.9c1.7-.08 3-.42 3-.85s-1.3-.77-3-.85z"/></svg>`
             },
             usdt_bep20: {
@@ -2265,7 +2265,7 @@
                 networkDesc: 'BNB Smart Chain',
                 addressLabel: 'BEP20 Gateway Address',
                 minDeposit: '$5.00',
-                confirmations: 'Auto IPN',
+                confirmations: 'NOWPayments',
                 logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="bscRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f3ba2f"/><stop offset="100%" stop-color="#d99b00"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131a24"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#bscRing1)" stroke-width="2.2"/><circle cx="18" cy="18" r="12.2" fill="#26a17b"/><path fill="#ffffff" d="M19.8 15.1v-2.5h4.5V9.2H11.7v3.4h4.5v2.5c-3.7.17-6.5.9-6.5 1.8s2.8 1.63 6.5 1.8v6.3h3.6v-6.3c3.7-.17 6.5-.9 6.5-1.8s-2.8-1.63-6.5-1.8zm0 3.05c-.2.01-.8.04-1.8.04-1 0-1.6-.03-1.8-.04v-2.25c3.2.15 5.6.7 5.6 1.35s-2.4 1.2-5.6 1.35v-.45z"/></svg>`
             },
             usdt_erc20: {
@@ -2278,7 +2278,7 @@
                 networkDesc: 'Ethereum Network',
                 addressLabel: 'ERC20 Gateway Address',
                 minDeposit: '$5.00',
-                confirmations: 'Auto IPN',
+                confirmations: 'NOWPayments',
                 logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="ethRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#627eea"/><stop offset="100%" stop-color="#3c55c9"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131826"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#ethRing1)" stroke-width="2"/><polygon points="18,6.5 11.5,17.5 18,21.4 24.5,17.5" fill="#8ea4f8"/><polygon points="18,6.5 18,21.4 24.5,17.5" fill="#627eea"/><polygon points="18,22.9 11.5,19 18,29.5 24.5,19" fill="#8ea4f8"/><circle cx="25" cy="25" r="7.5" fill="#26a17b" stroke="#131826" stroke-width="1.5"/><path fill="#fff" d="M25.8 24.2v-1.1h1.9v-1.4h-5.4v1.4h1.9v1.1c-1.5.07-2.7.38-2.7.77s1.2.7 2.7.77v2.6h1.6v-2.6c1.5-.07 2.7-.38 2.7-.77s-1.2-.7-2.7-.77z"/></svg>`
             },
             trx: {
@@ -2291,12 +2291,20 @@
                 networkDesc: 'TRON Mainnet',
                 addressLabel: 'TRX Gateway Address',
                 minDeposit: '$5.00',
-                confirmations: 'Auto IPN',
+                confirmations: 'NOWPayments',
                 logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="trxGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff3355"/><stop offset="100%" stop-color="#cc0022"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="url(#trxGrad)"/><polygon points="8.5,9.5 28.5,13.2 19.2,28" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linejoin="round"/><line x1="8.5" y1="9.5" x2="18.8" y2="15.6" stroke="#ffffff" stroke-width="1.8"/><line x1="28.5" y1="13.2" x2="18.8" y2="15.6" stroke="#ffffff" stroke-width="1.8"/><line x1="18.8" y1="15.6" x2="19.2" y2="28" stroke="#ffffff" stroke-width="1.8"/></svg>`
             }
         };
 
-        const PAYMENT_METHODS = ['usdt_trc20', 'usdt_bep20', 'usdt_erc20', 'trx'];
+        const PAYMENT_METHODS = [...ALLOWED_4_NETWORKS];
+
+        function getAllowedFourNetworks(sourceList = PAYMENT_METHODS) {
+            return (Array.isArray(sourceList) ? sourceList : ALLOWED_4_NETWORKS)
+                .map(n => String(n).toLowerCase().trim())
+                .filter(n => ALLOWED_4_NETWORKS.includes(n) && Boolean(COINS[n]))
+                .slice(0, 4);
+        }
+
         let walletState = {
             mode: 'deposit',
             step: 1,
@@ -2325,37 +2333,9 @@
             }
         }
 
-        async function createGatewayPayment(amount, payCurrency) {
-            const numericAmount = Number(amount);
-            const userId = authState.userCode || authState.email || 'guest_user';
-            let res;
-            try {
-                res = await fetch(CREATE_PAYMENT_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        user_id: userId,
-                        amount: numericAmount,
-                        price_amount: numericAmount,
-                        price_currency: 'usd',
-                        pay_currency: payCurrency,
-                        days: PLAN_DAYS
-                    })
-                });
-            } catch (netErr) {
-                throw new Error('Network/CORS error calling payment endpoint. Check Edge Function CORS & URL.');
-            }
-            const data = await res.json().catch(() => ({}));
-            if (!res.ok) {
-                throw new Error(data.error || data.message || `Payment gateway error (${res.status})`);
-            }
-            const hasAddress = Boolean(data.pay_address || data.address);
-            const hasInvoice = Boolean(data.invoice_url || data.payment_url || data.url);
-            const hasPaymentId = Boolean(data.payment_id || data.id);
-            if (!hasAddress && !hasInvoice && !hasPaymentId) {
-                throw new Error('Gateway returned incomplete payment details.');
-            }
-            return data;
+        function buildNowPaymentsUrl(amountVal, currencyKey) {
+            const sep = DIRECT_GATEWAY_URL.includes('?') ? '&' : '?';
+            return `${DIRECT_GATEWAY_URL}${sep}amount=${encodeURIComponent(Number(amountVal).toFixed(2))}&currency=${encodeURIComponent(currencyKey)}`;
         }
 
         function formatAmount(tx) {
@@ -2563,8 +2543,9 @@
             walletState.step = step;
             walletState.qrOpen = false;
             walletState.days = PLAN_DAYS;
-            if (!walletState.network || !COINS[walletState.network]) {
-                walletState.network = 'usdt_trc20';
+            const allowed = getAllowedFourNetworks();
+            if (!allowed.includes(walletState.network)) {
+                walletState.network = allowed[0] || 'usdt_trc20';
             }
 
             const modalBox = document.getElementById('modalContent');
@@ -2582,21 +2563,15 @@
         }
 
         function selectWalletNetwork(key) {
-            if (!COINS[key]) return;
+            const allowed = getAllowedFourNetworks();
+            if (!allowed.includes(key)) return;
             walletState.network = key;
-            walletState.payAddress = '';
-            walletState.invoiceUrl = '';
-            walletState.paymentId = '';
             walletState.qrOpen = false;
             renderWalletFlowModal();
         }
 
         function goWalletStep(nextStep) {
             if (nextStep < 1 || nextStep > 4) return;
-            if (walletState.mode === 'deposit' && nextStep >= 3 && !walletState.paymentId && !walletState.payAddress && !walletState.invoiceUrl) {
-                showToast('Please enter amount (min $5) and tap PAY NOW first.', 'error');
-                return;
-            }
             walletState.step = nextStep;
             renderWalletFlowModal();
         }
@@ -2606,7 +2581,7 @@
             renderWalletFlowModal();
         }
 
-        async function handlePayNowFromStep2() {
+        function handlePayNowFromStep2() {
             const amtEl = document.getElementById('wFlowAmount');
             const destEl = document.getElementById('wFlowDest');
             const amtErr = document.getElementById('wFlowAmtErr');
@@ -2646,38 +2621,21 @@
                 return;
             }
 
-            const payBtn = document.getElementById('payNowBtn');
-            if (payBtn) {
-                payBtn.disabled = true;
-                payBtn.innerHTML = '<span>CREATING INVOICE...</span>';
-            }
+            const allowed = getAllowedFourNetworks();
+            const chosenNet = allowed.includes(walletState.network) ? walletState.network : allowed[0];
+            walletState.network = chosenNet;
+            const coin = COINS[chosenNet] || COINS.usdt_trc20;
 
-            const coin = COINS[walletState.network];
+            const finalGatewayUrl = buildNowPaymentsUrl(amtVal, coin.key);
+            walletState.invoiceUrl = finalGatewayUrl;
+            walletState.paymentId = 'NP-4719687929-' + Date.now();
+            walletState.payAddress = DIRECT_GATEWAY_URL;
             walletState.activeOrderExpiresAt = Date.now() + DEPOSIT_TIMEOUT_MS;
 
-            try {
-                const gatewayData = await createGatewayPayment(amtVal, coin.key);
-                walletState.payAddress = gatewayData.pay_address || gatewayData.address || '';
-                walletState.invoiceUrl = gatewayData.invoice_url || gatewayData.payment_url || gatewayData.url || '';
-                walletState.paymentId = gatewayData.payment_id || gatewayData.id || ('NP-' + Date.now());
-
-                if (walletState.invoiceUrl) {
-                    window.open(walletState.invoiceUrl, '_blank', 'noopener,noreferrer');
-                }
-                showToast(`Payment invoice created for $${amtVal.toFixed(2)} (${coin.key}). Complete payment to credit balance.`, 'info');
-                walletState.step = 3;
-                renderWalletFlowModal();
-            } catch (err) {
-                walletState.payAddress = '';
-                walletState.invoiceUrl = '';
-                walletState.paymentId = '';
-                showToast(err.message || 'Payment gateway unavailable. Cannot proceed without verified payment session.', 'error');
-                if (payBtn) {
-                    payBtn.disabled = false;
-                    payBtn.innerHTML = '<span>PAY NOW</span><i data-lucide="arrow-right"></i>';
-                    lucide.createIcons();
-                }
-            }
+            window.open(finalGatewayUrl, '_blank', 'noopener,noreferrer');
+            showToast(`Opening NOWPayments ($${amtVal.toFixed(2)} · ${coin.key})...`, 'success');
+            walletState.step = 3;
+            renderWalletFlowModal();
         }
 
         function toggleWalletQr() {
@@ -2707,12 +2665,16 @@
                 walletCountdownInterval = null;
             }
 
+            const allowedFour = getAllowedFourNetworks();
+            if (!allowedFour.includes(walletState.network)) {
+                walletState.network = allowedFour[0] || 'usdt_trc20';
+            }
+
             const coin = COINS[walletState.network] || COINS.usdt_trc20;
             const isDep = walletState.mode === 'deposit';
             const stepTitles = ['NETWORK', 'AMOUNT', 'PAY', 'CONFIRM'];
             const currentAmt = Number(walletState.amount || 5);
-            const activeAddr = walletState.payAddress || '';
-            const maskedAddr = activeAddr ? maskAddressShort(activeAddr) : (walletState.paymentId || 'Invoice Created');
+            const payLink = walletState.invoiceUrl || buildNowPaymentsUrl(currentAmt, coin.key);
 
             const stepperHtml = `
                 <div class="inst-stepper">
@@ -2730,7 +2692,7 @@
 
             const networkTilesHtml = `
                 <div class="inst-net-grid">
-                    ${PAYMENT_METHODS.map(key => {
+                    ${allowedFour.map(key => {
                         const c = COINS[key];
                         const active = key === walletState.network ? 'active' : '';
                         return `
@@ -2754,7 +2716,7 @@
                             <div class="inst-panel-icon"><i data-lucide="network"></i></div>
                             <div>
                                 <h4>Choose Network</h4>
-                                <p>Select from 4 supported networks (${coin.key} · ${coin.networkDesc})</p>
+                                <p>4 selected networks only · ${coin.key} (${coin.networkDesc})</p>
                             </div>
                         </div>
                         ${networkTilesHtml}
@@ -2799,13 +2761,13 @@
                     </div>
                 `;
             } else if (walletState.step === 3) {
-                const qrSvg = activeAddr ? generateQrSvg(activeAddr, 128) : '';
+                const qrSvg = generateQrSvg(payLink, 128);
                 bodyHtml = `
                     <div class="inst-panel-card">
                         <div class="inst-panel-head">
                             <div class="inst-panel-icon"><i data-lucide="wallet"></i></div>
                             <div>
-                                <h4>${isDep ? 'Payment Details' : 'Review Withdrawal'}</h4>
+                                <h4>${isDep ? 'NOWPayments Checkout' : 'Review Withdrawal'}</h4>
                                 <p>${coin.key} · $${currentAmt.toFixed(2)}</p>
                             </div>
                         </div>
@@ -2814,34 +2776,28 @@
                                 <span>Payment Window (5m)</span>
                                 <span id="bybitOrderTimerText">05:00</span>
                             </div>
-                            ${walletState.invoiceUrl ? `
-                                <a class="btn btn-primary btn-block" href="${walletState.invoiceUrl}" target="_blank" rel="noopener noreferrer" style="margin-bottom:12px;">
-                                    <i data-lucide="external-link" style="width:15px;height:15px;"></i>
-                                    Open Payment Invoice ($${currentAmt.toFixed(2)})
-                                </a>
-                            ` : ''}
+                            <a class="btn btn-primary btn-block" href="${payLink}" target="_blank" rel="noopener noreferrer" style="margin-bottom:12px;">
+                                <i data-lucide="external-link" style="width:15px;height:15px;"></i>
+                                Pay Now on NOWPayments ($${currentAmt.toFixed(2)})
+                            </a>
                             <div class="inst-addr-box">
                                 <div class="inst-addr-top">
-                                    <span>${coin.addressLabel}</span>
-                                    <span>${coin.confirmations}</span>
+                                    <span>NOWPayments Invoice Link</span>
+                                    <span>${coin.key}</span>
                                 </div>
                                 <div class="inst-addr-row">
-                                    <div class="inst-addr-code">${activeAddr || ('Invoice ID: ' + (walletState.paymentId || 'Pending'))}</div>
-                                    ${activeAddr ? `
-                                        <button class="inst-chip-btn qr ${walletState.qrOpen ? 'active' : ''}" type="button" onclick="toggleWalletQr()">
-                                            <i data-lucide="qr-code"></i> ${walletState.qrOpen ? 'Hide' : 'QR'}
-                                        </button>
-                                        <button class="inst-chip-btn cp" type="button" onclick="copyText('${activeAddr}', '${coin.key} address copied!')">
-                                            <i data-lucide="copy"></i> Copy
-                                        </button>
-                                    ` : ''}
+                                    <div class="inst-addr-code">${payLink}</div>
+                                    <button class="inst-chip-btn qr ${walletState.qrOpen ? 'active' : ''}" type="button" onclick="toggleWalletQr()">
+                                        <i data-lucide="qr-code"></i> ${walletState.qrOpen ? 'Hide' : 'QR'}
+                                    </button>
+                                    <button class="inst-chip-btn cp" type="button" onclick="copyText('${payLink}', 'NOWPayments link copied!')">
+                                        <i data-lucide="copy"></i> Copy
+                                    </button>
                                 </div>
-                                ${activeAddr ? `
-                                    <div class="qr-panel ${walletState.qrOpen ? 'open' : ''}">
-                                        <div class="qr-frame">${qrSvg}</div>
-                                        <div class="qr-caption"><strong>${coin.key}</strong> · ${maskAddressShort(activeAddr)}</div>
-                                    </div>
-                                ` : ''}
+                                <div class="qr-panel ${walletState.qrOpen ? 'open' : ''}">
+                                    <div class="qr-frame">${qrSvg}</div>
+                                    <div class="qr-caption"><strong>${coin.key}</strong> · $${currentAmt.toFixed(2)}</div>
+                                </div>
                             </div>
                         ` : `
                             <div class="inst-summary-rows">
@@ -2866,14 +2822,14 @@
                             <div class="inst-panel-icon"><i data-lucide="check-circle"></i></div>
                             <div>
                                 <h4>Confirm ${isDep ? 'Deposit Submission' : 'Withdrawal'}</h4>
-                                <p>${isDep ? 'Recorded as pending until gateway/IPN confirms payment' : 'Final verification before processing'}</p>
+                                <p>${isDep ? 'Recorded as pending until payment is verified' : 'Final verification before processing'}</p>
                             </div>
                         </div>
                         <div class="inst-summary-rows">
                             <div class="inst-s-row"><span class="k">Action</span><span class="v">${isDep ? 'Deposit' : 'Withdraw'}</span></div>
                             <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.key} (${coin.networkDesc})</span></div>
                             <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${currentAmt.toFixed(2)}</span></div>
-                            <div class="inst-s-row"><span class="k">${isDep ? 'Invoice / Payment ID' : 'Destination'}</span><span class="v" style="font-family:monospace;font-size:0.72rem;">${isDep ? maskedAddr : walletState.destination}</span></div>
+                            <div class="inst-s-row"><span class="k">${isDep ? 'Gateway' : 'Destination'}</span><span class="v" style="font-family:monospace;font-size:0.72rem;">${isDep ? 'NOWPayments (#4719687929)' : walletState.destination}</span></div>
                         </div>
                         <div class="inst-btn-row">
                             <button class="inst-sec-btn" type="button" onclick="goWalletStep(3)">← Back</button>
@@ -2944,16 +2900,6 @@
 
             try {
                 if (walletState.mode === 'deposit') {
-                    if (!walletState.paymentId && !walletState.payAddress && !walletState.invoiceUrl) {
-                        showToast('No verified payment invoice found. Please start deposit via PAY NOW.', 'error');
-                        if (btn) {
-                            btn.disabled = false;
-                            btn.innerHTML = '<span>SUBMIT DEPOSIT</span><i data-lucide="shield-check"></i>';
-                            lucide.createIcons();
-                        }
-                        return;
-                    }
-
                     if (walletState.activeOrderExpiresAt && Date.now() >= walletState.activeOrderExpiresAt) {
                         const expTx = {
                             id: walletState.paymentId || ('DEP-' + Math.floor(100000 + Math.random() * 900000)),
@@ -2965,7 +2911,7 @@
                             amount: amount,
                             date: new Date().toLocaleString(),
                             status: 'rejected',
-                            address: walletState.payAddress || walletState.invoiceUrl || 'Gateway Invoice',
+                            address: walletState.invoiceUrl || DIRECT_GATEWAY_URL,
                             txHash: walletState.paymentId || 'EXPIRED-5MIN',
                             expiresAt: walletState.activeOrderExpiresAt
                         };
@@ -3007,7 +2953,7 @@
                         amount: amount,
                         date: new Date().toLocaleString(),
                         status: txStatus,
-                        address: walletState.payAddress || walletState.invoiceUrl || 'Gateway Invoice',
+                        address: walletState.invoiceUrl || DIRECT_GATEWAY_URL,
                         txHash: txId,
                         expiresAt: Date.now() + DEPOSIT_TIMEOUT_MS
                     });
@@ -3022,7 +2968,7 @@
                         syncBalanceUI();
                         renderHistory();
                         closeModal();
-                        showToast(`Deposit $${amount.toFixed(2)} (${coin.key}) is PENDING payment verification. Balance updates once confirmed.`, 'info');
+                        showToast(`Deposit $${amount.toFixed(2)} (${coin.key}) recorded as PENDING payment verification.`, 'info');
                     }
                 } else {
                     if (amount > availableBalance) {
