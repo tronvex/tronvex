@@ -64,6 +64,44 @@
         .btn-outline:hover { border-color: var(--primary); background: var(--primary-dim); }
         .btn-block { width: 100%; }
 
+        /* Professional Continue with Google Button */
+        .google-auth-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(180deg, #17181a 0%, #101113 100%);
+            color: #f1f3f4;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 9999px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.94rem;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+            transition: all 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .google-auth-btn:hover:not(:disabled) {
+            background: linear-gradient(180deg, #202226 0%, #16181c 100%);
+            border-color: rgba(0, 255, 170, 0.45);
+            transform: translateY(-1px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55), 0 0 18px rgba(0, 255, 170, 0.12);
+        }
+        .google-auth-btn:active:not(:disabled) {
+            transform: scale(0.985);
+        }
+        .google-auth-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+        .google-g-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
         header {
             position: sticky; top: 0; z-index: 100;
             background: rgba(3, 10, 18, 0.88); backdrop-filter: blur(20px);
@@ -95,23 +133,14 @@
         .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
         .auth-pill-btn {
-            display: inline-flex; align-items: center; gap: 6px;
+            display: inline-flex; align-items: center; gap: 7px;
             padding: 8px 14px; border-radius: 50px;
-            background: var(--primary-dim); border: 1px solid rgba(0,255,170,0.3);
-            color: var(--primary); font-size: 0.74rem; font-weight: 700;
+            background: #141619; border: 1px solid rgba(255,255,255,0.16);
+            color: #ffffff; font-size: 0.74rem; font-weight: 700;
             transition: var(--transition);
         }
-        .auth-pill-btn:hover { background: var(--primary); color: var(--text-dark); }
-        .auth-pill-btn svg { width: 14px; height: 14px; }
-
-        .auth-pill-outline {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 8px 14px; border-radius: 50px;
-            background: var(--bg-glass); border: 1px solid var(--border-dim);
-            color: var(--text-main); font-size: 0.74rem; font-weight: 700;
-            transition: var(--transition);
-        }
-        .auth-pill-outline:hover { border-color: var(--primary); color: var(--primary); }
+        .auth-pill-btn:hover { border-color: var(--primary); background: #1c1f24; }
+        .auth-pill-btn svg { width: 15px; height: 15px; }
 
         .admin-pill-btn {
             display: none; align-items: center; gap: 6px;
@@ -801,20 +830,23 @@
         }
         .inst-sec-btn:hover { border-color: var(--gold); color: var(--gold); }
 
+        /* Single-Option Google Auth Modal */
         .modal.auth-pro-modal {
-            max-width: 440px;
-            padding: 32px 28px;
+            max-width: 410px;
+            padding: 32px 26px;
             background:
-                radial-gradient(circle at 85% 10%, rgba(0,255,170,0.09), transparent 45%),
-                radial-gradient(circle at 15% 90%, rgba(0,136,255,0.08), transparent 45%),
+                radial-gradient(circle at 80% 10%, rgba(0,255,170,0.09), transparent 48%),
+                radial-gradient(circle at 20% 90%, rgba(0,136,255,0.08), transparent 48%),
                 #061220;
-            border: 1px solid rgba(0,255,170,0.25);
+            border: 1px solid rgba(0,255,170,0.24);
             border-radius: 24px;
+            text-align: center;
         }
         .auth-brand-banner {
             display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 20px; padding-bottom: 14px;
+            margin-bottom: 24px; padding-bottom: 14px;
             border-bottom: 1px solid var(--border-dim);
+            text-align: left;
         }
         .auth-brand-left { display: flex; align-items: center; gap: 10px; }
         .auth-brand-badge {
@@ -823,29 +855,27 @@
             background: rgba(0,255,170,0.1); color: var(--primary); border: 1px solid rgba(0,255,170,0.25);
             margin-right: 26px;
         }
-        .auth-title-block { margin-bottom: 18px; }
-        .auth-title-block h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 4px; }
-        .auth-title-block p { font-size: 0.8rem; color: var(--text-muted); }
-
-        .otp-input-box {
-            letter-spacing: 10px;
-            font-size: 1.25rem;
-            font-weight: 800;
-            text-align: center;
-            font-family: 'Courier New', monospace;
+        .auth-single-hero {
+            margin-bottom: 24px;
         }
-        .otp-meta-row {
-            display: flex; justify-content: space-between; align-items: center;
-            font-size: 0.72rem; color: var(--text-muted); margin-top: 8px;
+        .auth-single-hero h3 {
+            font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 8px;
         }
-        .otp-link-btn {
-            color: var(--primary); font-weight: 700; font-size: 0.72rem;
+        .auth-single-hero p {
+            font-size: 0.82rem; color: var(--text-muted); line-height: 1.55;
         }
-        .otp-link-btn:hover { text-decoration: underline; }
+        .auth-security-note {
+            margin-top: 16px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
 
         .btn-spinner {
             display: inline-block; width: 15px; height: 15px;
-            border: 2px solid rgba(3, 10, 18, 0.25); border-top-color: #030a12;
+            border: 2px solid rgba(255, 255, 255, 0.25); border-top-color: #ffffff;
             border-radius: 50%; animation: spin 0.75s linear infinite;
         }
 
@@ -936,17 +966,6 @@
         .modal-icon svg { width: 22px; height: 22px; }
         .modal-header-text h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 1px; }
         .modal-header-text p { font-size: 0.78rem; color: var(--text-muted); }
-
-        .auth-tabs {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
-            background: rgba(0,0,0,0.35); border: 1px solid var(--border-dim);
-            border-radius: 12px; padding: 4px; margin-bottom: 20px;
-        }
-        .auth-tab-btn {
-            padding: 9px; border-radius: 9px; font-size: 0.78rem; font-weight: 700;
-            color: var(--text-muted); transition: var(--transition);
-        }
-        .auth-tab-btn.active { background: var(--primary); color: var(--text-dark); }
 
         .form-group { margin-bottom: 14px; }
         .form-group label { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
@@ -1073,8 +1092,8 @@
             .logo { font-size: 1.05rem; }
             .logo-icon { width: 32px; height: 32px; }
             .logo-icon svg { width: 18px; height: 18px; }
-            .auth-pill-btn span, .auth-pill-outline span, .admin-pill-btn span { display: none; }
-            .auth-pill-btn, .auth-pill-outline, .admin-pill-btn { padding: 8px; border-radius: 50%; width: 34px; height: 34px; justify-content: center; }
+            .auth-pill-btn span, .admin-pill-btn span { display: none; }
+            .auth-pill-btn, .admin-pill-btn { padding: 8px; border-radius: 50%; width: 34px; height: 34px; justify-content: center; }
             .hero-professional { padding: 24px 20px; margin: 20px 0 16px; }
             .hero-professional h1 { font-size: 1.6rem; }
             .hero-stats { grid-template-columns: 1fr; gap: 10px; }
@@ -1131,13 +1150,14 @@
                     <i data-lucide="shield-alert" style="width:14px;height:14px;"></i>
                     <span>Admin Panel</span>
                 </button>
-                <button class="auth-pill-outline" id="headerSignUpBtn" onclick="openAuthModal('signup')">
-                    <i data-lucide="user-plus" style="width:14px;height:14px;"></i>
-                    <span>Sign Up</span>
-                </button>
-                <button class="auth-pill-btn" id="headerAuthBtn" onclick="openAuthModal('login')">
-                    <i data-lucide="log-in"></i>
-                    <span id="headerAuthLabel">OTP Login</span>
+                <button class="auth-pill-btn" id="headerAuthBtn" onclick="openGoogleAuthModal()">
+                    <svg class="google-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"/>
+                    </svg>
+                    <span id="headerAuthLabel">Continue with Google</span>
                 </button>
                 <button class="icon-btn" onclick="openNotificationsModal()">
                     <i data-lucide="bell"></i>
@@ -1305,7 +1325,7 @@
         <div class="container">
             <div class="hero-professional">
                 <div class="hero-content">
-                    <div class="hero-tag"><i data-lucide="shield-check"></i> OTP Protected Platform</div>
+                    <div class="hero-tag"><i data-lucide="shield-check"></i> Google OAuth Protected</div>
                     <h1>Grow your <span class="text-gradient">USDT & TON</span><br>with confidence</h1>
                     <p>4 supported networks (USDT BEP20, USDT TRC20, USDT ERC20, TON) · $5 minimum · Fixed 5-day cycles.</p>
                     <div class="hero-stats">
@@ -1337,7 +1357,7 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="lock"></i></div>
-                    <div class="feature-text"><h4>Email OTP & RLS</h4><p>One-time email verification & Supabase Row Level Security.</p></div>
+                    <div class="feature-text"><h4>Google Sign-In & RLS</h4><p>Instant Google account authentication & Supabase Row Level Security.</p></div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="zap"></i></div>
@@ -1435,8 +1455,8 @@
                     <div class="section-icon"><i data-lucide="user"></i></div>
                     <div class="section-title"><h2>Profile</h2><p>User ID, name, email & referral link</p></div>
                 </div>
-                <button class="btn btn-outline btn-sm" onclick="openAuthModal('login')">
-                    <i data-lucide="refresh-cw" style="width:13px;height:13px;"></i> Switch Account
+                <button class="btn btn-outline btn-sm" onclick="openGoogleAuthModal()">
+                    <i data-lucide="refresh-cw" style="width:13px;height:13px;"></i> Switch Google
                 </button>
             </div>
 
@@ -1490,7 +1510,7 @@
                             <div class="mp-field-icon"><i data-lucide="link"></i></div>
                             <div class="mp-field-text">
                                 <span class="mp-field-label">Referral Link</span>
-                                <span class="mp-field-value mono" id="profileReferralValue">https://tronvex.online/?ref=GUEST01</span>
+                                <span class="mp-field-value mono" id="profileReferralValue">https://tronvex.github.io/tronvex/?ref=GUEST01</span>
                             </div>
                         </div>
                         <button class="mp-copy-btn" type="button" onclick="copyCurrentReferral()">
@@ -1503,7 +1523,7 @@
             <div class="profile-menu">
                 <div class="profile-menu-item" onclick="signOutAccount()">
                     <div class="pm-icon" style="background:rgba(255,68,102,0.12);color:var(--danger);"><i data-lucide="log-out"></i></div>
-                    <div class="pm-text"><h5 style="color:var(--danger);">Sign Out</h5><p>Sign out of your account</p></div>
+                    <div class="pm-text"><h5 style="color:var(--danger);">Sign Out</h5><p>Sign out of your Google account</p></div>
                     <div class="pm-arrow"><i data-lucide="chevron-right"></i></div>
                 </div>
             </div>
@@ -1548,10 +1568,11 @@
         lucide.createIcons();
 
         // ============================================================
-        // 1. SUPABASE CONFIGURATION (KU XIRAN MASHRUUCAAGA)
+        // 1. SUPABASE CONFIGURATION
         // ============================================================
         const SUPABASE_URL = 'https://njqyafoszxskjrgnfsex.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_0SR-U0qekJgjhKJeNB7SIw_e3ereu3P';
+        const REDIRECT_URL = 'https://tronvex.github.io/tronvex/';
 
         const supabaseClient = (
             window.supabase &&
@@ -1599,13 +1620,6 @@
             isAdmin: false
         };
 
-        let otpFlow = {
-            mode: 'login',
-            step: 'email', // 'email' | 'otp'
-            email: '',
-            name: ''
-        };
-
         function generateUniqueUserId() {
             return 'TVX-' + Math.floor(100000 + Math.random() * 900000);
         }
@@ -1619,10 +1633,7 @@
         }
 
         function getReferralLink() {
-            const origin = (window.location.origin && window.location.origin !== 'null')
-                ? window.location.origin + window.location.pathname
-                : 'https://tronvex.online/';
-            const cleanUrl = origin.split('?')[0];
+            const cleanUrl = REDIRECT_URL.split('?')[0];
             return `${cleanUrl}?ref=${authState.refCode || 'GUEST01'}`;
         }
 
@@ -1681,11 +1692,11 @@
         // ============================================================
         // 2. SUPABASE CLOUD SYNC & REALTIME
         // ============================================================
-        async function sbEnsureProfileForUser(user, explicitName = '') {
+        async function sbEnsureProfileForUser(user) {
             if (!supabaseClient || !user || !user.email) return;
             const email = user.email.toLowerCase();
             const isAdminUser = email === ADMIN_EMAIL.toLowerCase();
-            const fallbackName = explicitName || user.user_metadata?.full_name || email.split('@')[0];
+            const googleName = user.user_metadata?.full_name || user.user_metadata?.name || email.split('@')[0];
             const fallbackCode = authState.userId && authState.userId.startsWith('TVX-')
                 ? authState.userId
                 : generateUniqueUserId();
@@ -1702,7 +1713,7 @@
                     await supabaseClient.from('profiles').insert([{
                         id: user.id,
                         user_code: fallbackCode,
-                        full_name: fallbackName,
+                        full_name: googleName,
                         email: user.email,
                         ref_code: fallbackRef,
                         is_admin: isAdminUser,
@@ -1712,11 +1723,6 @@
                         total_profit: Number(totalProfitEarned || 0),
                         completed_cycles: Number(completedCyclesCount || 0)
                     }]);
-                } else if (explicitName && explicitName !== existing.full_name) {
-                    await supabaseClient
-                        .from('profiles')
-                        .update({ full_name: explicitName })
-                        .eq('id', user.id);
                 }
             } catch (e) {}
         }
@@ -1741,6 +1747,7 @@
         async function sbLoadUserFromCloud(user) {
             if (!supabaseClient || !user || !user.email) return;
             const email = user.email.toLowerCase();
+            const googleName = user.user_metadata?.full_name || user.user_metadata?.name || email.split('@')[0];
             try {
                 const { data: prof } = await supabaseClient
                     .from('profiles')
@@ -1751,7 +1758,7 @@
                 if (prof) {
                     authState.authUserId = user.id;
                     authState.userId = prof.user_code || authState.userId || generateUniqueUserId();
-                    authState.name = prof.full_name || authState.name || email.split('@')[0];
+                    authState.name = prof.full_name || googleName;
                     authState.email = prof.email || user.email;
                     authState.refCode = prof.ref_code || authState.refCode || buildRefCode(email);
                     authState.isAdmin = Boolean(prof.is_admin) || (email === ADMIN_EMAIL.toLowerCase());
@@ -1761,6 +1768,14 @@
                     totalInvestedAmount = Number(prof.total_invested ?? 0);
                     totalProfitEarned = Number(prof.total_profit ?? 0);
                     completedCyclesCount = Number(prof.completed_cycles ?? 0);
+                    saveAuthState();
+                } else {
+                    authState.authUserId = user.id;
+                    authState.userId = authState.userId || generateUniqueUserId();
+                    authState.name = googleName;
+                    authState.email = user.email;
+                    authState.refCode = buildRefCode(email);
+                    authState.isAdmin = email === ADMIN_EMAIL.toLowerCase();
                     saveAuthState();
                 }
 
@@ -1996,10 +2011,10 @@
             });
 
             if (authLabel) {
-                authLabel.textContent = authState.isLoggedIn ? (displayName.split(' ')[0] || 'Account') : 'OTP Login';
+                authLabel.textContent = authState.isLoggedIn ? (displayName.split(' ')[0] || 'Account') : 'Continue with Google';
             }
             if (authBtn) {
-                authBtn.onclick = () => authState.isLoggedIn ? switchTab('profile') : openAuthModal('login');
+                authBtn.onclick = () => authState.isLoggedIn ? switchTab('profile') : openGoogleAuthModal();
             }
             if (adminBtn) {
                 adminBtn.classList.toggle('visible', Boolean(authState.isLoggedIn && authState.isAdmin));
@@ -2127,7 +2142,7 @@
             if (authState.isLoggedIn) {
                 callback();
             } else {
-                openAuthModal('signup');
+                openGoogleAuthModal();
             }
         }
 
@@ -2136,14 +2151,9 @@
         }
 
         // ============================================================
-        // 3. EMAIL OTP AUTHENTICATION (SIGN UP & LOGIN WITH OTP)
+        // 3. SINGLE-OPTION GOOGLE AUTHENTICATION ("Continue with Google")
         // ============================================================
-        function openAuthModal(mode = 'signup', step = 'email') {
-            otpFlow.mode = mode;
-            otpFlow.step = step;
-            const isLogin = mode === 'login';
-            const isOtpStep = step === 'otp';
-
+        function openGoogleAuthModal() {
             const modalBox = document.getElementById('modalContent');
             modalBox.classList.remove('wallet-inst-modal');
             modalBox.classList.add('auth-pro-modal');
@@ -2158,205 +2168,64 @@
                         </div>
                         <span style="font-weight:800;font-size:1rem;letter-spacing:-0.4px;">TRONVEX</span>
                     </div>
-                    <span class="auth-brand-badge">${isOtpStep ? 'Email OTP' : (isLogin ? 'OTP Login' : 'OTP Sign Up')}</span>
+                    <span class="auth-brand-badge">Google OAuth</span>
                 </div>
 
-                ${!isOtpStep ? `
-                    <div class="auth-tabs">
-                        <button class="auth-tab-btn ${!isLogin ? 'active' : ''}" type="button" onclick="openAuthModal('signup', 'email')">Sign Up</button>
-                        <button class="auth-tab-btn ${isLogin ? 'active' : ''}" type="button" onclick="openAuthModal('login', 'email')">Login</button>
-                    </div>
+                <div class="auth-single-hero">
+                    <h3>Sign in or Sign up</h3>
+                    <p>Access your TRONVEX wallet, investment plans, and real-time portfolio with your Google account.</p>
+                </div>
 
-                    <div class="auth-title-block">
-                        <h3>${isLogin ? 'Login with Email OTP' : 'Create account with OTP'}</h3>
-                        <p>${isLogin ? 'We will send a 6-digit verification code to your email' : 'Enter your details to receive a one-time email code'}</p>
-                    </div>
+                <button type="button" class="google-auth-btn" id="continueGoogleBtn" onclick="continueWithGoogle()">
+                    <svg class="google-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"/>
+                    </svg>
+                    <span>Continue with Google</span>
+                </button>
 
-                    ${!isLogin ? `
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" id="authNameInput" class="form-control" placeholder="Your full name" value="${otpFlow.name || authState.name}">
-                            <div class="error-msg" id="authNameError">Please enter your full name.</div>
-                        </div>
-                    ` : ''}
-
-                    <div class="form-group">
-                        <label><span>Email Address</span></label>
-                        <input type="email" id="authEmailInput" class="form-control" placeholder="you@example.com" value="${otpFlow.email || authState.email}">
-                        <div class="error-msg" id="authEmailError">Please enter a valid email address.</div>
-                    </div>
-
-                    <button class="btn btn-primary btn-block" id="sendOtpBtn" onclick="sendEmailOtp()">
-                        <i data-lucide="mail-check" style="width:16px;height:16px;"></i>
-                        <span>Send Verification Code (OTP)</span>
-                    </button>
-                ` : `
-                    <div class="auth-title-block">
-                        <h3>Enter Verification Code</h3>
-                        <p>Code sent to <strong style="color:var(--primary);">${otpFlow.email}</strong></p>
-                    </div>
-
-                    <div class="form-group">
-                        <label><span>6-Digit Email OTP</span></label>
-                        <input type="text" id="otpCodeInput" class="form-control otp-input-box" maxlength="8" inputmode="numeric" placeholder="000000" autocomplete="one-time-code">
-                        <div class="error-msg" id="otpCodeError">Please enter the OTP code sent to your email.</div>
-                        <div class="otp-meta-row">
-                            <button type="button" class="otp-link-btn" onclick="openAuthModal('${otpFlow.mode}', 'email')">← Change Email</button>
-                            <button type="button" class="otp-link-btn" id="resendOtpBtn" onclick="sendEmailOtp(true)">Resend OTP</button>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary btn-block" id="verifyOtpBtn" onclick="verifyEmailOtp()">
-                        <i data-lucide="shield-check" style="width:16px;height:16px;"></i>
-                        <span>Verify & Continue</span>
-                    </button>
-                `}
+                <div class="auth-security-note">
+                    <i data-lucide="lock" style="width:13px;height:13px;color:var(--primary);"></i>
+                    <span>Secured via Google & Supabase Authentication</span>
+                </div>
             `);
-
-            if (isOtpStep) {
-                setTimeout(() => document.getElementById('otpCodeInput')?.focus(), 80);
-            }
         }
 
-        async function sendEmailOtp(isResend = false) {
+        async function continueWithGoogle() {
             if (!supabaseClient) {
                 showToast('Supabase client is not configured.', 'error');
                 return;
             }
 
-            if (!isResend || !otpFlow.email) {
-                const nameEl = document.getElementById('authNameInput');
-                const emailEl = document.getElementById('authEmailInput');
-                const name = nameEl ? nameEl.value.trim() : otpFlow.name;
-                const email = emailEl ? emailEl.value.trim().toLowerCase() : '';
-
-                let ok = true;
-                if (otpFlow.mode === 'signup' && (!name || name.length < 2)) {
-                    if (nameEl) nameEl.classList.add('error');
-                    const errEl = document.getElementById('authNameError');
-                    if (errEl) errEl.style.display = 'block';
-                    ok = false;
-                } else if (nameEl) {
-                    nameEl.classList.remove('error');
-                    const errEl = document.getElementById('authNameError');
-                    if (errEl) errEl.style.display = 'none';
-                }
-
-                if (!email.includes('@') || !email.includes('.')) {
-                    if (emailEl) emailEl.classList.add('error');
-                    const errEl = document.getElementById('authEmailError');
-                    if (errEl) errEl.style.display = 'block';
-                    ok = false;
-                } else if (emailEl) {
-                    emailEl.classList.remove('error');
-                    const errEl = document.getElementById('authEmailError');
-                    if (errEl) errEl.style.display = 'none';
-                }
-
-                if (!ok) return;
-
-                otpFlow.name = name || email.split('@')[0];
-                otpFlow.email = email;
-            }
-
-            const btn = document.getElementById(isResend ? 'resendOtpBtn' : 'sendOtpBtn');
-            const origHtml = btn ? btn.innerHTML : '';
-            if (btn && !isResend) {
+            const btn = document.getElementById('continueGoogleBtn');
+            if (btn) {
                 btn.disabled = true;
-                btn.innerHTML = `<span class="btn-spinner"></span> <span>Sending OTP...</span>`;
+                btn.innerHTML = `<span class="btn-spinner"></span> <span>Redirecting to Google...</span>`;
             }
 
             try {
-                const { error } = await supabaseClient.auth.signInWithOtp({
-                    email: otpFlow.email,
+                const { error } = await supabaseClient.auth.signInWithOAuth({
+                    provider: 'google',
                     options: {
-                        shouldCreateUser: true,
-                        data: otpFlow.mode === 'signup' ? { full_name: otpFlow.name } : undefined
+                        redirectTo: REDIRECT_URL
                     }
                 });
                 if (error) throw error;
-
-                showToast(`OTP code sent to ${otpFlow.email}`, 'success');
-                if (!isResend) {
-                    openAuthModal(otpFlow.mode, 'otp');
-                }
             } catch (err) {
-                showToast(err.message || 'Failed to send OTP code.', 'error');
-                if (btn && !isResend) {
-                    btn.disabled = false;
-                    btn.innerHTML = origHtml;
-                    lucide.createIcons();
-                }
-            }
-        }
-
-        async function verifyEmailOtp() {
-            if (!supabaseClient) {
-                showToast('Supabase client is not configured.', 'error');
-                return;
-            }
-
-            const codeEl = document.getElementById('otpCodeInput');
-            const errEl = document.getElementById('otpCodeError');
-            const token = codeEl ? codeEl.value.trim() : '';
-
-            if (token.length < 4) {
-                if (codeEl) codeEl.classList.add('error');
-                if (errEl) errEl.style.display = 'block';
-                return;
-            }
-            if (codeEl) codeEl.classList.remove('error');
-            if (errEl) errEl.style.display = 'none';
-
-            const btn = document.getElementById('verifyOtpBtn');
-            const origHtml = btn ? btn.innerHTML : '';
-            if (btn) {
-                btn.disabled = true;
-                btn.innerHTML = `<span class="btn-spinner"></span> <span>Verifying OTP...</span>`;
-            }
-
-            try {
-                const { data, error } = await supabaseClient.auth.verifyOtp({
-                    email: otpFlow.email,
-                    token,
-                    type: 'email'
-                });
-                if (error) throw error;
-
-                const user = data?.user || data?.session?.user;
-                if (!user) throw new Error('Verification succeeded but user session was not returned.');
-
-                await sbEnsureProfileForUser(user, otpFlow.mode === 'signup' ? otpFlow.name : '');
-
-                authState = {
-                    isLoggedIn: true,
-                    authUserId: user.id,
-                    userId: authState.userId || generateUniqueUserId(),
-                    name: otpFlow.name || user.email.split('@')[0],
-                    email: user.email,
-                    refCode: buildRefCode(user.email),
-                    isAdmin: user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()
-                };
-
-                await sbLoadUserFromCloud(user);
-                subscribeRealtimeUpdates();
-                saveAuthState();
-                syncAuthUI();
-                syncBalanceUI();
-                renderHistory();
-                closeModal();
-
-                await pushNotification(
-                    otpFlow.mode === 'signup' ? 'Account Verified' : 'OTP Login Verified',
-                    `Signed in as ${authState.email} (${authState.userId}).`
-                );
-                showToast(`Verified! Welcome ${authState.name}`, 'success');
-            } catch (err) {
-                showToast(err.message || 'Invalid or expired OTP code.', 'error');
+                showToast(err.message || 'Google sign-in failed.', 'error');
                 if (btn) {
                     btn.disabled = false;
-                    btn.innerHTML = origHtml;
-                    lucide.createIcons();
+                    btn.innerHTML = `
+                        <svg class="google-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/>
+                            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"/>
+                            <path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"/>
+                            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"/>
+                        </svg>
+                        <span>Continue with Google</span>
+                    `;
                 }
             }
         }
@@ -3581,6 +3450,26 @@
 
             if (supabaseClient) {
                 try {
+                    supabaseClient.auth.onAuthStateChange(async (event, session) => {
+                        if (session?.user) {
+                            authState.isLoggedIn = true;
+                            authState.authUserId = session.user.id;
+                            authState.email = session.user.email;
+                            await sbEnsureProfileForUser(session.user);
+                            await sbLoadUserFromCloud(session.user);
+                            subscribeRealtimeUpdates();
+                            if (event === 'SIGNED_IN') {
+                                closeModal();
+                            }
+                        } else if (event === 'SIGNED_OUT') {
+                            authState.isLoggedIn = false;
+                            authState.authUserId = '';
+                            authState.isAdmin = false;
+                            saveAuthState();
+                            syncAuthUI();
+                        }
+                    });
+
                     const { data: { session } } = await supabaseClient.auth.getSession();
                     if (session?.user) {
                         authState.isLoggedIn = true;
