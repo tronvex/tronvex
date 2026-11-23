@@ -28,10 +28,6 @@
             --text-dark: #030a12;
             --success: #00ffaa;
             --danger: #ff4466;
-            --radius-xl: 24px;
-            --radius-lg: 16px;
-            --radius-md: 12px;
-            --radius-sm: 8px;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -145,12 +141,6 @@
         .ent-title-block { margin-bottom: 16px; }
         .ent-title-block h3 { font-size: 1.28rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 4px; }
         .ent-title-block p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
-        .ent-input-wrap { position: relative; }
-        .ent-eye-btn {
-            position: absolute; right: 11px; top: 50%; transform: translateY(-50%);
-            color: var(--text-muted); padding: 4px; display: inline-flex; align-items: center; justify-content: center;
-        }
-        .ent-eye-btn:hover { color: var(--primary); }
         .ent-row-meta {
             display: flex; justify-content: space-between; align-items: center;
             margin-top: -6px; margin-bottom: 16px; font-size: 0.74rem;
@@ -655,7 +645,7 @@
                     <i data-lucide="shield-check"></i>
                     <span id="headerAuthLabel">Sign In</span>
                 </button>
-                <button class="icon-btn" onclick="refreshAllCloudData()" title="Sync Cloud Data">
+                <button class="icon-btn" onclick="refreshAllCloudData()" title="Sync Data">
                     <i data-lucide="refresh-cw"></i>
                 </button>
                 <div class="avatar" onclick="requireAuth(() => switchTab('profile'))">
@@ -820,15 +810,15 @@
         <div class="container">
             <div class="hero-professional">
                 <div class="hero-content">
-                    <div class="hero-tag"><i data-lucide="shield-check"></i> Verified Cloud Account & Admin Settlement</div>
+                    <div class="hero-tag"><i data-lucide="shield-check"></i> Verified Account & Admin Settlement</div>
                     <h1>Grow your <span class="text-gradient">USDT & TON</span><br>with confidence</h1>
-                    <p>One account per verified email, persistent User ID & real-time database settlement across 4 networks.</p>
+                    <p>One account per email, persistent User ID & Admin Panel approval across 4 networks.</p>
                     <div class="hero-stats">
                         <div class="hero-stat-item">
-                            <div class="hero-stat-icon"><i data-lucide="database"></i></div>
+                            <div class="hero-stat-icon"><i data-lucide="shield-check"></i></div>
                             <div>
                                 <div class="hero-stat-value">100%</div>
-                                <div class="hero-stat-label">Supabase Synced</div>
+                                <div class="hero-stat-label">Auto-Resilient</div>
                             </div>
                         </div>
                         <div class="hero-stat-item">
@@ -852,15 +842,15 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="mail-check"></i></div>
-                    <div class="feature-text"><h4>Email Verification</h4><p>Accounts require verified email & block duplicate email registrations.</p></div>
+                    <div class="feature-text"><h4>Unique Email Lock</h4><p>Prevents creating multiple accounts with the same email.</p></div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="shield-alert"></i></div>
                     <div class="feature-text"><h4>Direct Admin Queue</h4><p>Deposits and withdrawals go directly to Admin Panel for approval.</p></div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="cloud"></i></div>
-                    <div class="feature-text"><h4>Cloud Recovery</h4><p>Sign in from any browser or device to restore your User ID & balance.</p></div>
+                    <div class="feature-icon"><i data-lucide="fingerprint"></i></div>
+                    <div class="feature-text"><h4>Saved User ID & Recovery</h4><p>Keeps your User ID, balance & history saved for sign-in recovery.</p></div>
                 </div>
             </div>
         </div>
@@ -871,13 +861,13 @@
             <div class="section-header">
                 <div class="section-title-wrap">
                     <div class="section-icon"><i data-lucide="bar-chart-3"></i></div>
-                    <div class="section-title"><h2>Portfolio Statistics</h2><p>Live account metrics from database</p></div>
+                    <div class="section-title"><h2>Portfolio Statistics</h2><p>Live account metrics</p></div>
                 </div>
             </div>
             <div class="stats-grid">
                 <div class="stats-card"><h4>Total Invested</h4><div class="big-value" id="statTotalInvested">$0.00</div><div class="sub-value positive" id="statProfitEarned">+$0.00 profit earned</div></div>
                 <div class="stats-card"><h4>Cycle ROI</h4><div class="big-value text-gradient">150%</div><div class="sub-value">5-day investment plan ROI</div></div>
-                <div class="stats-card"><h4>Completed Cycles</h4><div class="big-value" id="statCompletedCycles">0</div><div class="sub-value">Recorded in database</div></div>
+                <div class="stats-card"><h4>Completed Cycles</h4><div class="big-value" id="statCompletedCycles">0</div><div class="sub-value">Recorded cycles</div></div>
                 <div class="stats-card"><h4>Active Investments</h4><div class="big-value" id="statActiveCount">0</div><div class="sub-value" id="statLockedAmount">$0.00 locked</div></div>
             </div>
             <div class="chart-card">
@@ -892,7 +882,7 @@
             <div class="section-header">
                 <div class="section-title-wrap">
                     <div class="section-icon"><i data-lucide="history"></i></div>
-                    <div class="section-title"><h2>Transaction History</h2><p>Synced with Supabase database</p></div>
+                    <div class="section-title"><h2>Transaction History</h2><p>All deposits, withdrawals & investments</p></div>
                 </div>
             </div>
             <div class="history-list" id="historyList"></div>
@@ -968,7 +958,7 @@
                         <div class="mp-field-left">
                             <div class="mp-field-icon"><i data-lucide="mail"></i></div>
                             <div class="mp-field-text">
-                                <span class="mp-field-label">Verified Email</span>
+                                <span class="mp-field-label">Email</span>
                                 <span class="mp-field-value" id="profileEmailValue">-</span>
                             </div>
                         </div>
@@ -1042,6 +1032,13 @@
         const ADMIN_EMAIL = 'tronvex0@gmail.com';
         const PLAN_DAYS = 5;
 
+        const STORE_KEYS = {
+            USERS: 'TRONVEX_LOCAL_USERS_V1',
+            SESSION_EMAIL: 'TRONVEX_LOCAL_SESSION_EMAIL_V1',
+            DEPOSITS: 'TRONVEX_LOCAL_DEPOSITS_V1',
+            WITHDRAWALS: 'TRONVEX_LOCAL_WITHDRAWALS_V1'
+        };
+
         const WALLET_ADDRESSES = {
             usdt_bep20: '0xe4484af8794b0fe2eccf433f7da7ac81935fc4a0',
             usdt_trc20: 'TLPVBmQnS6VTV7MwzLzYy7EjUKqsKob7hs',
@@ -1060,6 +1057,7 @@
             ? window.supabase.createClient(SUPABASE_URL.trim(), SUPABASE_ANON_KEY.trim())
             : null;
 
+        let useLocalFallback = false;
         let currentUser = {
             isLoggedIn: false,
             authId: '',
@@ -1082,7 +1080,6 @@
         let activeInvestments = [];
         let adminDeposits = [];
         let adminWithdrawals = [];
-        let liveTicker = null;
 
         function escapeHtml(str) {
             return String(str ?? '')
@@ -1103,6 +1100,24 @@
                 .toUpperCase()
                 .slice(0, 6) || 'USER';
             return `${base}${Math.floor(100 + Math.random() * 900)}`;
+        }
+
+        function readJson(key, fallback) {
+            try {
+                const raw = localStorage.getItem(key);
+                return raw ? JSON.parse(raw) : fallback;
+            } catch (e) {
+                return fallback;
+            }
+        }
+
+        function writeJson(key, val) {
+            try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {}
+        }
+
+        function isFetchError(err) {
+            const msg = String(err?.message || err || '').toLowerCase();
+            return msg.includes('failed to fetch') || msg.includes('networkerror') || msg.includes('load failed');
         }
 
         function showToast(msg, type = 'info') {
@@ -1173,7 +1188,73 @@
         }
 
         // ============================================================
-        // SUPABASE AUTH (1 EMAIL = 1 ACCOUNT + EMAIL VERIFICATION)
+        // LOCAL FALLBACK HELPERS (1 EMAIL = 1 ACCOUNT + USER ID + ADMIN)
+        // ============================================================
+        function saveLocalUserRecord(rec) {
+            const users = readJson(STORE_KEYS.USERS, {});
+            users[rec.email.toLowerCase()] = rec;
+            writeJson(STORE_KEYS.USERS, users);
+        }
+
+        function activateLocalSession(rec) {
+            useLocalFallback = true;
+            localStorage.setItem(STORE_KEYS.SESSION_EMAIL, rec.email.toLowerCase());
+
+            const isAdmin = rec.email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
+            currentUser = {
+                isLoggedIn: true,
+                authId: rec.authId || rec.userCode,
+                userCode: rec.userCode,
+                fullName: rec.fullName,
+                email: rec.email.toLowerCase(),
+                refCode: rec.refCode,
+                isAdmin: isAdmin
+            };
+
+            portfolio = {
+                availableBalance: Number(rec.portfolio?.availableBalance || 0),
+                lockedBalance: Number(rec.portfolio?.lockedBalance || 0),
+                totalInvested: Number(rec.portfolio?.totalInvested || 0),
+                totalProfit: Number(rec.portfolio?.totalProfit || 0),
+                completedCycles: Number(rec.portfolio?.completedCycles || 0)
+            };
+
+            transactions = Array.isArray(rec.transactions) ? rec.transactions : [];
+            activeInvestments = Array.isArray(rec.activeInvestments) ? rec.activeInvestments : [];
+
+            if (isAdmin) {
+                const deps = readJson(STORE_KEYS.DEPOSITS, []);
+                const wdrs = readJson(STORE_KEYS.WITHDRAWALS, []);
+                adminDeposits = deps.filter(d => d.status === 'pending');
+                adminWithdrawals = wdrs.filter(w => w.status === 'pending');
+            } else {
+                adminDeposits = [];
+                adminWithdrawals = [];
+            }
+
+            syncUI();
+        }
+
+        function persistLocalCurrentUser() {
+            if (!currentUser.isLoggedIn) return;
+            const users = readJson(STORE_KEYS.USERS, {});
+            const prev = users[currentUser.email] || {};
+            users[currentUser.email] = {
+                ...prev,
+                authId: currentUser.authId,
+                userCode: currentUser.userCode,
+                fullName: currentUser.fullName,
+                email: currentUser.email,
+                refCode: currentUser.refCode,
+                portfolio: { ...portfolio },
+                transactions: [...transactions],
+                activeInvestments: [...activeInvestments]
+            };
+            writeJson(STORE_KEYS.USERS, users);
+        }
+
+        // ============================================================
+        // AUTH (SUPABASE FIRST + AUTOMATIC FALLBACK WHEN FETCH FAILS)
         // ============================================================
         function openAuthModal(mode = 'signin') {
             const box = document.getElementById('modalContent');
@@ -1189,7 +1270,7 @@
                         </div>
                         <div>
                             <div style="font-weight:800;font-size:0.98rem;line-height:1.1;">TRONVEX</div>
-                            <div style="font-size:0.6rem;color:var(--text-muted);font-weight:700;letter-spacing:0.8px;">VERIFIED CLOUD AUTH</div>
+                            <div style="font-size:0.6rem;color:var(--text-muted);font-weight:700;letter-spacing:0.8px;">ACCOUNT & RECOVERY</div>
                         </div>
                     </div>
                     <span class="ent-auth-pill">1 EMAIL = 1 ID</span>
@@ -1201,8 +1282,8 @@
                 </div>
 
                 <div class="ent-title-block">
-                    <h3>${isSignUp ? 'Create Verified Account' : 'Sign In to TRONVEX'}</h3>
-                    <p>${isSignUp ? 'Each email can only create one account. Email verification is required before using the account.' : 'Enter your verified email and password to load your cloud account.'}</p>
+                    <h3>${isSignUp ? 'Create Account' : 'Sign In to TRONVEX'}</h3>
+                    <p>${isSignUp ? 'One account per email. Your User ID and balance are saved for recovery.' : 'Sign in with your email and password to restore your account.'}</p>
                 </div>
 
                 ${isSignUp ? `
@@ -1227,9 +1308,6 @@
 
                 ${!isSignUp ? `
                     <div class="ent-row-meta">
-                        <button type="button" class="ent-link-btn" onclick="resendVerificationEmail()">
-                            <i data-lucide="mail-check" style="width:13px;height:13px;"></i> Resend verification
-                        </button>
                         <button type="button" class="ent-link-btn" onclick="openForgotPasswordModal()">
                             <i data-lucide="key-round" style="width:13px;height:13px;"></i> Forgot password?
                         </button>
@@ -1238,51 +1316,9 @@
 
                 <button type="button" class="ent-submit-btn" id="authSubmitBtn" onclick="handleAuthSubmit('${isSignUp ? 'signup' : 'signin'}')">
                     <i data-lucide="${isSignUp ? 'user-plus' : 'log-in'}" style="width:16px;height:16px;"></i>
-                    <span>${isSignUp ? 'Create & Send Verification' : 'Sign In'}</span>
+                    <span>${isSignUp ? 'Create Account' : 'Sign In'}</span>
                 </button>
             `);
-        }
-
-        function showEmailVerificationRequiredModal(email) {
-            const box = document.getElementById('modalContent');
-            box.classList.add('enterprise-auth-modal');
-            openModal(`
-                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
-                <div class="ent-title-block">
-                    <h3>Verify Your Email</h3>
-                    <p>Your account requires email verification before signing in.</p>
-                </div>
-                <div class="verify-banner">
-                    We sent a verification link to <strong>${escapeHtml(email)}</strong>. Open your email inbox (and Spam folder), click the confirmation link, then return here and sign in.
-                </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-                    <button type="button" class="btn btn-outline" onclick="resendVerificationEmail('${escapeHtml(email)}')">Resend Email</button>
-                    <button type="button" class="btn btn-primary" onclick="openAuthModal('signin')">Back to Sign In</button>
-                </div>
-            `);
-        }
-
-        async function resendVerificationEmail(explicitEmail = '') {
-            if (!supabaseClient) return;
-            const inputEmail = explicitEmail || (document.getElementById('authEmail')?.value || '').trim().toLowerCase();
-            if (!inputEmail || !inputEmail.includes('@')) {
-                showToast('Enter your email address first.', 'error');
-                return;
-            }
-            try {
-                const { error } = await supabaseClient.auth.resend({
-                    type: 'signup',
-                    email: inputEmail,
-                    options: { emailRedirectTo: REDIRECT_URL }
-                });
-                if (error) {
-                    showToast(error.message, 'error');
-                } else {
-                    showToast(`Verification email sent to ${inputEmail}`, 'success');
-                }
-            } catch (e) {
-                showToast('Could not resend verification email.', 'error');
-            }
         }
 
         function openForgotPasswordModal() {
@@ -1292,8 +1328,8 @@
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
                 <div class="ent-title-block">
-                    <h3>Reset Password</h3>
-                    <p>Enter your registered email to receive a password recovery link.</p>
+                    <h3>Recover / Reset Password</h3>
+                    <p>Enter your registered email to recover access.</p>
                 </div>
                 <div class="form-group">
                     <label><span>Registered Email</span></label>
@@ -1302,54 +1338,41 @@
                 </div>
                 <button type="button" class="ent-submit-btn" id="fpSendBtn" onclick="sendRecoveryEmail()">
                     <i data-lucide="send" style="width:15px;height:15px;"></i>
-                    <span>Send Recovery Link</span>
+                    <span>Send Recovery</span>
                 </button>
             `);
         }
 
         async function sendRecoveryEmail() {
-            if (!supabaseClient) {
-                showToast('Supabase client is not configured.', 'error');
-                return;
-            }
             const el = document.getElementById('fpEmail');
             const err = document.getElementById('fpEmailErr');
             const email = (el?.value || '').trim().toLowerCase();
             if (!email || !email.includes('@') || !email.includes('.')) {
-                el.classList.add('error');
-                err.style.display = 'block';
-                return;
+                el.classList.add('error'); err.style.display = 'block'; return;
             }
-            el.classList.remove('error');
-            err.style.display = 'none';
+            el.classList.remove('error'); err.style.display = 'none';
 
-            const btn = document.getElementById('fpSendBtn');
-            btn.disabled = true;
-            btn.innerHTML = '<span class="btn-spinner"></span> <span>Sending...</span>';
+            if (supabaseClient && !useLocalFallback) {
+                try {
+                    const { error } = await supabaseClient.auth.resetPasswordForEmail(email, { redirectTo: REDIRECT_URL });
+                    if (!error) {
+                        closeModal();
+                        showToast(`Reset link sent to ${email}`, 'success');
+                        return;
+                    }
+                } catch (e) {}
+            }
 
-            try {
-                const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-                    redirectTo: REDIRECT_URL
-                });
-                if (error) {
-                    showToast(error.message, 'error');
-                } else {
-                    closeModal();
-                    showToast(`Password reset link sent to ${email}`, 'success');
-                }
-            } finally {
-                if (document.getElementById('fpSendBtn')) {
-                    document.getElementById('fpSendBtn').disabled = false;
-                }
+            const users = readJson(STORE_KEYS.USERS, {});
+            if (users[email]) {
+                closeModal();
+                showToast(`Account found (${users[email].userCode}). Sign in with your email & password.`, 'success');
+            } else {
+                showToast('No account found with this email.', 'error');
             }
         }
 
         async function handleAuthSubmit(mode) {
-            if (!supabaseClient) {
-                showToast('Supabase is not initialized.', 'error');
-                return;
-            }
-
             const nameEl = document.getElementById('authName');
             const emailEl = document.getElementById('authEmail');
             const passEl = document.getElementById('authPassword');
@@ -1361,26 +1384,17 @@
             let ok = true;
             if (mode === 'signup') {
                 const nameErr = document.getElementById('authNameErr');
-                if (fullName.length < 2) {
-                    nameEl.classList.add('error'); nameErr.style.display = 'block'; ok = false;
-                } else {
-                    nameEl.classList.remove('error'); nameErr.style.display = 'none';
-                }
+                if (fullName.length < 2) { nameEl.classList.add('error'); nameErr.style.display = 'block'; ok = false; }
+                else { nameEl.classList.remove('error'); nameErr.style.display = 'none'; }
             }
 
             const emailErr = document.getElementById('authEmailErr');
-            if (!email || !email.includes('@') || !email.includes('.')) {
-                emailEl.classList.add('error'); emailErr.style.display = 'block'; ok = false;
-            } else {
-                emailEl.classList.remove('error'); emailErr.style.display = 'none';
-            }
+            if (!email || !email.includes('@') || !email.includes('.')) { emailEl.classList.add('error'); emailErr.style.display = 'block'; ok = false; }
+            else { emailEl.classList.remove('error'); emailErr.style.display = 'none'; }
 
             const passErr = document.getElementById('authPassErr');
-            if (password.length < 6) {
-                passEl.classList.add('error'); passErr.style.display = 'block'; ok = false;
-            } else {
-                passEl.classList.remove('error'); passErr.style.display = 'none';
-            }
+            if (password.length < 6) { passEl.classList.add('error'); passErr.style.display = 'block'; ok = false; }
+            else { passEl.classList.remove('error'); passErr.style.display = 'none'; }
 
             if (!ok) return;
 
@@ -1389,120 +1403,141 @@
             btn.innerHTML = `<span class="btn-spinner"></span> <span>${mode === 'signup' ? 'Creating...' : 'Signing In...'}</span>`;
 
             try {
+                if (supabaseClient && !useLocalFallback) {
+                    try {
+                        if (mode === 'signup') {
+                            const { data, error } = await supabaseClient.auth.signUp({
+                                email,
+                                password,
+                                options: { data: { full_name: fullName }, emailRedirectTo: REDIRECT_URL }
+                            });
+                            if (error) {
+                                if (isFetchError(error)) throw error;
+                                const exists = /already registered|already exists|user already/i.test(error.message);
+                                showToast(exists ? 'This email already has an account. Please Sign In.' : error.message, 'error');
+                                return;
+                            }
+                            if (data?.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+                                showToast('This email already has an account. Please Sign In.', 'error');
+                                return;
+                            }
+                            if (data?.session && data?.user) {
+                                await ensureSupabaseProfile(data.user, fullName);
+                                await loadSupabaseState(data.user);
+                                closeModal();
+                                showToast('Account created!', 'success');
+                                return;
+                            }
+                            // Save pending record locally too if email confirmation is pending
+                            const rec = {
+                                authId: data?.user?.id || generateUserCode(),
+                                userCode: generateUserCode(),
+                                fullName,
+                                email,
+                                password,
+                                refCode: generateRefCode(email),
+                                portfolio: { availableBalance: 0, lockedBalance: 0, totalInvested: 0, totalProfit: 0, completedCycles: 0 },
+                                transactions: [],
+                                activeInvestments: []
+                            };
+                            saveLocalUserRecord(rec);
+                            closeModal();
+                            showToast(`Verification sent to ${email}. Confirm email or sign in.`, 'info');
+                            return;
+                        } else {
+                            const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+                            if (error) {
+                                if (isFetchError(error)) throw error;
+                                showToast(error.message, 'error');
+                                return;
+                            }
+                            if (data?.user) {
+                                await ensureSupabaseProfile(data.user, data.user.user_metadata?.full_name || email.split('@')[0]);
+                                await loadSupabaseState(data.user);
+                                closeModal();
+                                showToast(`Signed in as ${currentUser.fullName}`, 'success');
+                                return;
+                            }
+                        }
+                    } catch (netErr) {
+                        if (!isFetchError(netErr)) {
+                            showToast(netErr.message || 'Sign in failed.', 'error');
+                            return;
+                        }
+                        useLocalFallback = true;
+                    }
+                }
+
+                // Local Fallback (1 Email = 1 Account + Persistent User ID + Recovery)
+                const users = readJson(STORE_KEYS.USERS, {});
+                const existing = users[email];
+
                 if (mode === 'signup') {
-                    const { data, error } = await supabaseClient.auth.signUp({
+                    if (existing) {
+                        showToast('This email already has an account. Please Sign In.', 'error');
+                        return;
+                    }
+                    const newRec = {
+                        authId: generateUserCode(),
+                        userCode: generateUserCode(),
+                        fullName,
                         email,
                         password,
-                        options: {
-                            data: { full_name: fullName },
-                            emailRedirectTo: REDIRECT_URL
-                        }
-                    });
-
-                    if (error) {
-                        const alreadyExists = /already registered|already exists|user already/i.test(error.message);
-                        showToast(alreadyExists ? 'This email already has an account. Please Sign In.' : error.message, 'error');
-                        return;
-                    }
-
-                    // Supabase sometimes returns an empty identities array if email is already registered
-                    if (data?.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
-                        showToast('This email is already registered. Please Sign In.', 'error');
-                        return;
-                    }
-
-                    if (data?.session && data?.user && data.user.email_confirmed_at) {
-                        await ensureProfileRow(data.user, fullName);
-                        await loadFullCloudState(data.user);
-                        closeModal();
-                        showToast('Account created and verified!', 'success');
-                    } else {
-                        showEmailVerificationRequiredModal(email);
-                    }
-                } else {
-                    const { data, error } = await supabaseClient.auth.signInWithPassword({
-                        email,
-                        password
-                    });
-
-                    if (error) {
-                        if (/email not confirmed/i.test(error.message)) {
-                            showEmailVerificationRequiredModal(email);
-                        } else {
-                            showToast(error.message, 'error');
-                        }
-                        return;
-                    }
-
-                    if (!data.user?.email_confirmed_at) {
-                        await supabaseClient.auth.signOut();
-                        showEmailVerificationRequiredModal(email);
-                        return;
-                    }
-
-                    const metaName = data.user.user_metadata?.full_name || email.split('@')[0];
-                    await ensureProfileRow(data.user, metaName);
-                    await loadFullCloudState(data.user);
+                        refCode: generateRefCode(email),
+                        portfolio: { availableBalance: 0, lockedBalance: 0, totalInvested: 0, totalProfit: 0, completedCycles: 0 },
+                        transactions: [],
+                        activeInvestments: []
+                    };
+                    saveLocalUserRecord(newRec);
+                    activateLocalSession(newRec);
                     closeModal();
-                    showToast(`Signed in as ${currentUser.fullName}`, 'success');
+                    showToast(`Account created! User ID: ${newRec.userCode}`, 'success');
+                } else {
+                    if (!existing) {
+                        showToast('Account not found. Create an account first.', 'error');
+                        return;
+                    }
+                    if (existing.password && existing.password !== password) {
+                        showToast('Incorrect password.', 'error');
+                        return;
+                    }
+                    activateLocalSession(existing);
+                    closeModal();
+                    showToast(`Welcome back, ${existing.fullName}!`, 'success');
                 }
             } finally {
-                const submitBtn = document.getElementById('authSubmitBtn');
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                }
+                const b = document.getElementById('authSubmitBtn');
+                if (b) b.disabled = false;
             }
         }
 
-        async function ensureProfileRow(user, preferredName = '') {
-            if (!supabaseClient || !user) return;
+        async function ensureSupabaseProfile(user, preferredName = '') {
+            if (!supabaseClient || useLocalFallback || !user) return;
             const email = (user.email || '').toLowerCase();
-            const isAdmin = email === ADMIN_EMAIL.toLowerCase();
-
-            const { data: existing } = await supabaseClient
-                .from('profiles')
-                .select('*')
-                .eq('id', user.id)
-                .maybeSingle();
-
+            const { data: existing } = await supabaseClient.from('profiles').select('*').eq('id', user.id).maybeSingle();
             if (!existing) {
-                const userCode = generateUserCode();
-                const refCode = generateRefCode(email);
-                const cleanName = (preferredName || user.user_metadata?.full_name || email.split('@')[0]).trim();
-
-                const { error } = await supabaseClient.from('profiles').insert([{
+                await supabaseClient.from('profiles').insert([{
                     id: user.id,
-                    user_code: userCode,
-                    full_name: cleanName,
-                    email: email,
-                    ref_code: refCode,
-                    is_admin: isAdmin,
+                    user_code: generateUserCode(),
+                    full_name: (preferredName || user.user_metadata?.full_name || email.split('@')[0]).trim(),
+                    email,
+                    ref_code: generateRefCode(email),
+                    is_admin: email === ADMIN_EMAIL.toLowerCase(),
                     available_balance: 0,
                     locked_balance: 0,
                     total_invested: 0,
                     total_profit: 0,
                     completed_cycles: 0
                 }]);
-
-                if (error && /duplicate|unique/i.test(error.message)) {
-                    showToast('This email is already linked to another profile.', 'error');
-                }
             }
         }
 
-        async function loadFullCloudState(user) {
-            if (!supabaseClient || !user) return;
-
-            const { data: prof } = await supabaseClient
-                .from('profiles')
-                .select('*')
-                .eq('id', user.id)
-                .maybeSingle();
-
+        async function loadSupabaseState(user) {
+            if (!supabaseClient || useLocalFallback || !user) return;
+            const { data: prof } = await supabaseClient.from('profiles').select('*').eq('id', user.id).maybeSingle();
             if (!prof) return;
 
             const isAdmin = Boolean(prof.is_admin) || (prof.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
-
             currentUser = {
                 isLoggedIn: true,
                 authId: user.id,
@@ -1510,9 +1545,8 @@
                 fullName: prof.full_name,
                 email: prof.email,
                 refCode: prof.ref_code,
-                isAdmin: isAdmin
+                isAdmin
             };
-
             portfolio = {
                 availableBalance: Number(prof.available_balance || 0),
                 lockedBalance: Number(prof.locked_balance || 0),
@@ -1522,17 +1556,8 @@
             };
 
             const [{ data: txs }, { data: invs }] = await Promise.all([
-                supabaseClient
-                    .from('transactions')
-                    .select('*')
-                    .eq('user_id', user.id)
-                    .order('created_at', { ascending: false }),
-                supabaseClient
-                    .from('investments')
-                    .select('*')
-                    .eq('user_id', user.id)
-                    .eq('status', 'active')
-                    .order('started_at', { ascending: false })
+                supabaseClient.from('transactions').select('*').eq('user_id', user.id).order('created_at', { ascending: false }),
+                supabaseClient.from('investments').select('*').eq('user_id', user.id).eq('status', 'active')
             ]);
 
             transactions = Array.isArray(txs) ? txs : [];
@@ -1547,57 +1572,53 @@
             }));
 
             if (isAdmin) {
-                await loadAdminQueues();
+                const [{ data: deps }, { data: wdrs }] = await Promise.all([
+                    supabaseClient.from('deposits').select('*').eq('status', 'pending').order('created_at', { ascending: false }),
+                    supabaseClient.from('withdrawals').select('*').eq('status', 'pending').order('created_at', { ascending: false })
+                ]);
+                adminDeposits = Array.isArray(deps) ? deps : [];
+                adminWithdrawals = Array.isArray(wdrs) ? wdrs : [];
             } else {
                 adminDeposits = [];
                 adminWithdrawals = [];
             }
 
+            persistLocalCurrentUser();
             syncUI();
         }
 
-        async function loadAdminQueues() {
-            if (!supabaseClient || !currentUser.isAdmin) return;
-            const [{ data: deps }, { data: wdrs }] = await Promise.all([
-                supabaseClient.from('deposits').select('*').eq('status', 'pending').order('created_at', { ascending: false }),
-                supabaseClient.from('withdrawals').select('*').eq('status', 'pending').order('created_at', { ascending: false })
-            ]);
-            adminDeposits = Array.isArray(deps) ? deps : [];
-            adminWithdrawals = Array.isArray(wdrs) ? wdrs : [];
-        }
-
         async function refreshAllCloudData() {
+            if (useLocalFallback) {
+                const users = readJson(STORE_KEYS.USERS, {});
+                if (currentUser.isLoggedIn && users[currentUser.email]) {
+                    activateLocalSession(users[currentUser.email]);
+                }
+                showToast('Synced', 'success');
+                return;
+            }
             if (!supabaseClient) return;
-            const { data: { session } } = await supabaseClient.auth.getSession();
-            if (session?.user && session.user.email_confirmed_at) {
-                await ensureProfileRow(session.user);
-                await loadFullCloudState(session.user);
-                showToast('Synced with Supabase', 'success');
-            } else {
-                showToast('Sign in to sync your account', 'info');
+            try {
+                const { data: { session } } = await supabaseClient.auth.getSession();
+                if (session?.user) {
+                    await ensureSupabaseProfile(session.user);
+                    await loadSupabaseState(session.user);
+                    showToast('Synced with Supabase', 'success');
+                } else {
+                    showToast('Sign in to sync your account', 'info');
+                }
+            } catch (e) {
+                useLocalFallback = true;
+                showToast('Switched to local mode', 'info');
             }
         }
 
         async function signOutAccount() {
-            if (supabaseClient) {
+            if (supabaseClient && !useLocalFallback) {
                 try { await supabaseClient.auth.signOut(); } catch (e) {}
             }
-            currentUser = {
-                isLoggedIn: false,
-                authId: '',
-                userCode: '',
-                fullName: '',
-                email: '',
-                refCode: '',
-                isAdmin: false
-            };
-            portfolio = {
-                availableBalance: 0,
-                lockedBalance: 0,
-                totalInvested: 0,
-                totalProfit: 0,
-                completedCycles: 0
-            };
+            localStorage.removeItem(STORE_KEYS.SESSION_EMAIL);
+            currentUser = { isLoggedIn: false, authId: '', userCode: '', fullName: '', email: '', refCode: '', isAdmin: false };
+            portfolio = { availableBalance: 0, lockedBalance: 0, totalInvested: 0, totalProfit: 0, completedCycles: 0 };
             transactions = [];
             activeInvestments = [];
             adminDeposits = [];
@@ -1607,22 +1628,8 @@
             showToast('Signed out', 'info');
         }
 
-        async function syncPortfolioToSupabase() {
-            if (!supabaseClient || !currentUser.isLoggedIn || !currentUser.authId) return;
-            await supabaseClient
-                .from('profiles')
-                .update({
-                    available_balance: Number(portfolio.availableBalance.toFixed(2)),
-                    locked_balance: Number(portfolio.lockedBalance.toFixed(2)),
-                    total_invested: Number(portfolio.totalInvested.toFixed(2)),
-                    total_profit: Number(portfolio.totalProfit.toFixed(2)),
-                    completed_cycles: Number(portfolio.completedCycles)
-                })
-                .eq('id', currentUser.authId);
-        }
-
         // ============================================================
-        // REAL LIVE EARNING & PORTFOLIO UI
+        // UI RENDERING
         // ============================================================
         function getLiveAccrued() {
             const now = Date.now();
@@ -1717,7 +1724,7 @@
             const list = document.getElementById('historyList');
             if (!list) return;
             if (!currentUser.isLoggedIn || !transactions.length) {
-                list.innerHTML = `<div class="empty-state"><i data-lucide="inbox"></i><p>${currentUser.isLoggedIn ? 'No transactions in database yet' : 'Sign in to view transaction history'}</p></div>`;
+                list.innerHTML = `<div class="empty-state"><i data-lucide="inbox"></i><p>${currentUser.isLoggedIn ? 'No transactions yet' : 'Sign in to view transaction history'}</p></div>`;
                 lucide.createIcons();
                 return;
             }
@@ -1754,7 +1761,7 @@
         }
 
         // ============================================================
-        // DEPOSIT & WITHDRAWAL -> DIRECTLY TO SUPABASE ADMIN PANEL
+        // DEPOSIT & WITHDRAWAL -> ADMIN PANEL
         // ============================================================
         let walletModalState = { mode: 'deposit', netKey: 'usdt_bep20' };
 
@@ -1832,8 +1839,7 @@
         }
 
         async function submitWalletRequest() {
-            if (!supabaseClient || !currentUser.isLoggedIn) return;
-
+            if (!currentUser.isLoggedIn) return;
             const isDep = walletModalState.mode === 'deposit';
             const netKey = walletModalState.netKey;
             const netInfo = NETWORK_META[netKey];
@@ -1844,21 +1850,12 @@
             const amount = parseFloat(amtEl?.value || '');
 
             if (isNaN(amount) || amount < 5) {
-                amtEl.classList.add('error');
-                amtErr.textContent = 'Minimum amount is $5.00.';
-                amtErr.style.display = 'block';
-                return;
+                amtEl.classList.add('error'); amtErr.textContent = 'Minimum amount is $5.00.'; amtErr.style.display = 'block'; return;
             }
-
             if (!isDep && amount > Number(portfolio.availableBalance || 0)) {
-                amtEl.classList.add('error');
-                amtErr.textContent = 'Insufficient available balance.';
-                amtErr.style.display = 'block';
-                return;
+                amtEl.classList.add('error'); amtErr.textContent = 'Insufficient available balance.'; amtErr.style.display = 'block'; return;
             }
-
-            amtEl.classList.remove('error');
-            amtErr.style.display = 'none';
+            amtEl.classList.remove('error'); amtErr.style.display = 'none';
 
             let destAddr = walletAddr;
             if (!isDep) {
@@ -1866,55 +1863,24 @@
                 const destErr = document.getElementById('wdrDestErr');
                 destAddr = (destEl?.value || '').trim();
                 if (destAddr.length < 6) {
-                    destEl.classList.add('error');
-                    destErr.style.display = 'block';
-                    return;
+                    destEl.classList.add('error'); destErr.style.display = 'block'; return;
                 }
-                destEl.classList.remove('error');
-                destErr.style.display = 'none';
+                destEl.classList.remove('error'); destErr.style.display = 'none';
             }
 
             const btn = document.getElementById('wdrSubmitBtn');
             btn.disabled = true;
-            btn.innerHTML = '<span class="btn-spinner"></span> <span>Saving to Database...</span>';
+            btn.innerHTML = '<span class="btn-spinner"></span> <span>Submitting...</span>';
+
+            const txCode = (isDep ? 'DEP-' : 'WDR-') + Math.floor(100000 + Math.random() * 900000);
+            const nowIso = new Date().toISOString();
 
             try {
-                const txCode = (isDep ? 'DEP-' : 'WDR-') + Math.floor(100000 + Math.random() * 900000);
-
-                if (isDep) {
-                    const { error: depErr } = await supabaseClient.from('deposits').insert([{
-                        tx_code: txCode,
-                        user_id: currentUser.authId,
-                        user_code: currentUser.userCode,
-                        user_name: currentUser.fullName,
-                        user_email: currentUser.email,
-                        network_key: netKey,
-                        network_label: netInfo.label,
-                        wallet_address: walletAddr,
-                        amount: Number(amount.toFixed(2)),
-                        status: 'pending'
-                    }]);
-                    if (depErr) throw new Error(depErr.message);
-                } else {
+                if (!isDep) {
                     portfolio.availableBalance = Number((Number(portfolio.availableBalance) - amount).toFixed(2));
-                    await syncPortfolioToSupabase();
-
-                    const { error: wdrErr } = await supabaseClient.from('withdrawals').insert([{
-                        tx_code: txCode,
-                        user_id: currentUser.authId,
-                        user_code: currentUser.userCode,
-                        user_name: currentUser.fullName,
-                        user_email: currentUser.email,
-                        network_key: netKey,
-                        network_label: netInfo.label,
-                        destination_address: destAddr,
-                        amount: Number(amount.toFixed(2)),
-                        status: 'pending'
-                    }]);
-                    if (wdrErr) throw new Error(wdrErr.message);
                 }
 
-                const { error: txErr } = await supabaseClient.from('transactions').insert([{
+                const txItem = {
                     tx_code: txCode,
                     user_id: currentUser.authId,
                     user_code: currentUser.userCode,
@@ -1924,31 +1890,107 @@
                     network: netInfo.net,
                     amount: Number(amount.toFixed(2)),
                     status: 'pending',
-                    address: destAddr
-                }]);
-                if (txErr) throw new Error(txErr.message);
+                    address: destAddr,
+                    created_at: nowIso
+                };
 
-                await loadFullCloudState({ id: currentUser.authId, email: currentUser.email, user_metadata: { full_name: currentUser.fullName } });
-                closeModal();
-                showToast(`${isDep ? 'Deposit' : 'Withdrawal'} request sent to Admin Panel!`, 'success');
-            } catch (e) {
-                showToast(e.message, 'error');
-            } finally {
-                if (document.getElementById('wdrSubmitBtn')) {
-                    document.getElementById('wdrSubmitBtn').disabled = false;
+                if (supabaseClient && !useLocalFallback) {
+                    try {
+                        if (isDep) {
+                            const { error } = await supabaseClient.from('deposits').insert([{
+                                tx_code: txCode, user_id: currentUser.authId, user_code: currentUser.userCode,
+                                user_name: currentUser.fullName, user_email: currentUser.email,
+                                network_key: netKey, network_label: netInfo.label, wallet_address: walletAddr,
+                                amount: Number(amount.toFixed(2)), status: 'pending'
+                            }]);
+                            if (error) throw error;
+                        } else {
+                            await supabaseClient.from('profiles').update({ available_balance: portfolio.availableBalance }).eq('id', currentUser.authId);
+                            const { error } = await supabaseClient.from('withdrawals').insert([{
+                                tx_code: txCode, user_id: currentUser.authId, user_code: currentUser.userCode,
+                                user_name: currentUser.fullName, user_email: currentUser.email,
+                                network_key: netKey, network_label: netInfo.label, destination_address: destAddr,
+                                amount: Number(amount.toFixed(2)), status: 'pending'
+                            }]);
+                            if (error) throw error;
+                        }
+                        const { error: txErr } = await supabaseClient.from('transactions').insert([txItem]);
+                        if (txErr) throw txErr;
+
+                        await loadSupabaseState({ id: currentUser.authId, email: currentUser.email, user_metadata: { full_name: currentUser.fullName } });
+                        closeModal();
+                        showToast(`${isDep ? 'Deposit' : 'Withdrawal'} sent to Admin Panel!`, 'success');
+                        return;
+                    } catch (err) {
+                        if (!isFetchError(err)) {
+                            showToast(err.message, 'error');
+                            return;
+                        }
+                        useLocalFallback = true;
+                    }
                 }
+
+                // Local Fallback Queue
+                const queueKey = isDep ? STORE_KEYS.DEPOSITS : STORE_KEYS.WITHDRAWALS;
+                const queue = readJson(queueKey, []);
+                queue.unshift({
+                    id: txCode,
+                    tx_code: txCode,
+                    user_id: currentUser.authId,
+                    user_code: currentUser.userCode,
+                    user_name: currentUser.fullName,
+                    user_email: currentUser.email,
+                    network_key: netKey,
+                    network_label: netInfo.label,
+                    wallet_address: walletAddr,
+                    destination_address: destAddr,
+                    amount: Number(amount.toFixed(2)),
+                    status: 'pending',
+                    created_at: nowIso
+                });
+                writeJson(queueKey, queue);
+
+                transactions.unshift(txItem);
+                persistLocalCurrentUser();
+                if (currentUser.isAdmin) {
+                    adminDeposits = readJson(STORE_KEYS.DEPOSITS, []).filter(d => d.status === 'pending');
+                    adminWithdrawals = readJson(STORE_KEYS.WITHDRAWALS, []).filter(w => w.status === 'pending');
+                }
+                syncUI();
+                closeModal();
+                showToast(`${isDep ? 'Deposit' : 'Withdrawal'} sent to Admin Panel!`, 'success');
+            } finally {
+                const b = document.getElementById('wdrSubmitBtn');
+                if (b) b.disabled = false;
             }
         }
 
         // ============================================================
-        // ADMIN PANEL (APPROVE / REJECT DEPOSITS & WITHDRAWALS)
+        // ADMIN PANEL
         // ============================================================
         async function openAdminPanelModal() {
             if (!currentUser.isLoggedIn || !currentUser.isAdmin) {
                 showToast('Admin access only.', 'error');
                 return;
             }
-            await loadAdminQueues();
+
+            if (supabaseClient && !useLocalFallback) {
+                try {
+                    const [{ data: deps }, { data: wdrs }] = await Promise.all([
+                        supabaseClient.from('deposits').select('*').eq('status', 'pending').order('created_at', { ascending: false }),
+                        supabaseClient.from('withdrawals').select('*').eq('status', 'pending').order('created_at', { ascending: false })
+                    ]);
+                    adminDeposits = Array.isArray(deps) ? deps : [];
+                    adminWithdrawals = Array.isArray(wdrs) ? wdrs : [];
+                } catch (e) {
+                    useLocalFallback = true;
+                }
+            }
+
+            if (useLocalFallback) {
+                adminDeposits = readJson(STORE_KEYS.DEPOSITS, []).filter(d => d.status === 'pending');
+                adminWithdrawals = readJson(STORE_KEYS.WITHDRAWALS, []).filter(w => w.status === 'pending');
+            }
 
             const depCards = adminDeposits.length
                 ? adminDeposits.map(d => `
@@ -1965,8 +2007,8 @@
                             <input type="text" id="depReason_${escapeHtml(d.id)}" class="form-control" style="padding:7px 10px;font-size:0.74rem;" placeholder="Optional reject reason">
                         </div>
                         <div class="admin-actions-row">
-                            <button type="button" class="btn-approve" onclick="decideDeposit('${escapeHtml(d.id)}', 'completed')">✓ Approve</button>
-                            <button type="button" class="btn-reject" onclick="decideDeposit('${escapeHtml(d.id)}', 'rejected')">✕ Reject</button>
+                            <button type="button" class="btn-approve" onclick="decideAdminItem('deposit', '${escapeHtml(d.id)}', 'completed')">✓ Approve</button>
+                            <button type="button" class="btn-reject" onclick="decideAdminItem('deposit', '${escapeHtml(d.id)}', 'rejected')">✕ Reject</button>
                         </div>
                     </div>
                 `).join('')
@@ -1988,8 +2030,8 @@
                             <input type="text" id="wdrReason_${escapeHtml(w.id)}" class="form-control" style="padding:7px 10px;font-size:0.74rem;" placeholder="Optional reject reason (refunds balance)">
                         </div>
                         <div class="admin-actions-row">
-                            <button type="button" class="btn-approve" onclick="decideWithdrawal('${escapeHtml(w.id)}', 'completed')">✓ Approve</button>
-                            <button type="button" class="btn-reject" onclick="decideWithdrawal('${escapeHtml(w.id)}', 'rejected')">✕ Reject</button>
+                            <button type="button" class="btn-approve" onclick="decideAdminItem('withdraw', '${escapeHtml(w.id)}', 'completed')">✓ Approve</button>
+                            <button type="button" class="btn-reject" onclick="decideAdminItem('withdraw', '${escapeHtml(w.id)}', 'rejected')">✕ Reject</button>
                         </div>
                     </div>
                 `).join('')
@@ -2003,7 +2045,7 @@
                     </div>
                     <div class="modal-header-text">
                         <h3>Admin Settlement Panel</h3>
-                        <p>Pending deposits & withdrawals from Supabase</p>
+                        <p>Approve or reject pending deposits & withdrawals</p>
                     </div>
                 </div>
                 <h4 style="font-size:0.8rem;color:var(--primary);margin-bottom:8px;text-transform:uppercase;">Pending Deposits</h4>
@@ -2013,80 +2055,60 @@
             `);
         }
 
-        async function decideDeposit(depId, newStatus) {
-            if (!supabaseClient || !currentUser.isAdmin) return;
-            const dep = adminDeposits.find(x => x.id === depId);
-            if (!dep) return;
+        async function decideAdminItem(kind, itemId, newStatus) {
+            const isDep = kind === 'deposit';
+            const item = isDep ? adminDeposits.find(x => x.id === itemId) : adminWithdrawals.find(x => x.id === itemId);
+            if (!item) return;
 
+            const reasonInputId = isDep ? `depReason_${itemId}` : `wdrReason_${itemId}`;
             const reasonVal = newStatus === 'rejected'
-                ? ((document.getElementById(`depReason_${depId}`)?.value || '').trim() || 'Deposit rejected by admin.')
+                ? ((document.getElementById(reasonInputId)?.value || '').trim() || `Rejected by admin.`)
                 : null;
 
-            await supabaseClient
-                .from('deposits')
-                .update({ status: newStatus, reject_reason: reasonVal })
-                .eq('id', dep.id);
+            if (supabaseClient && !useLocalFallback) {
+                try {
+                    const table = isDep ? 'deposits' : 'withdrawals';
+                    await supabaseClient.from(table).update({ status: newStatus, reject_reason: reasonVal }).eq('id', item.id);
+                    await supabaseClient.from('transactions').update({ status: newStatus, reject_reason: reasonVal }).eq('tx_code', item.tx_code);
 
-            await supabaseClient
-                .from('transactions')
-                .update({ status: newStatus, reject_reason: reasonVal })
-                .eq('tx_code', dep.tx_code);
-
-            if (newStatus === 'completed') {
-                const { data: targetProf } = await supabaseClient
-                    .from('profiles')
-                    .select('available_balance')
-                    .eq('id', dep.user_id)
-                    .maybeSingle();
-
-                const nextAvail = Number((Number(targetProf?.available_balance || 0) + Number(dep.amount)).toFixed(2));
-                await supabaseClient
-                    .from('profiles')
-                    .update({ available_balance: nextAvail })
-                    .eq('id', dep.user_id);
+                    if ((isDep && newStatus === 'completed') || (!isDep && newStatus === 'rejected')) {
+                        const { data: targetProf } = await supabaseClient.from('profiles').select('available_balance').eq('id', item.user_id).maybeSingle();
+                        const nextAvail = Number((Number(targetProf?.available_balance || 0) + Number(item.amount)).toFixed(2));
+                        await supabaseClient.from('profiles').update({ available_balance: nextAvail }).eq('id', item.user_id);
+                    }
+                    await loadSupabaseState({ id: currentUser.authId, email: currentUser.email, user_metadata: { full_name: currentUser.fullName } });
+                    await openAdminPanelModal();
+                    showToast(`${isDep ? 'Deposit' : 'Withdrawal'} ${newStatus.toUpperCase()}`, newStatus === 'completed' ? 'success' : 'error');
+                    return;
+                } catch (e) {
+                    useLocalFallback = true;
+                }
             }
 
-            await loadFullCloudState({ id: currentUser.authId, email: currentUser.email, user_metadata: { full_name: currentUser.fullName } });
-            await openAdminPanelModal();
-            showToast(`Deposit ${newStatus.toUpperCase()}`, newStatus === 'completed' ? 'success' : 'error');
-        }
+            // Local Fallback Settlement
+            const queueKey = isDep ? STORE_KEYS.DEPOSITS : STORE_KEYS.WITHDRAWALS;
+            const queue = readJson(queueKey, []);
+            const updatedQueue = queue.map(q => q.id === itemId ? { ...q, status: newStatus, reject_reason: reasonVal } : q);
+            writeJson(queueKey, updatedQueue);
 
-        async function decideWithdrawal(wdrId, newStatus) {
-            if (!supabaseClient || !currentUser.isAdmin) return;
-            const wdr = adminWithdrawals.find(x => x.id === wdrId);
-            if (!wdr) return;
-
-            const reasonVal = newStatus === 'rejected'
-                ? ((document.getElementById(`wdrReason_${wdrId}`)?.value || '').trim() || 'Withdrawal rejected by admin.')
-                : null;
-
-            await supabaseClient
-                .from('withdrawals')
-                .update({ status: newStatus, reject_reason: reasonVal })
-                .eq('id', wdr.id);
-
-            await supabaseClient
-                .from('transactions')
-                .update({ status: newStatus, reject_reason: reasonVal })
-                .eq('tx_code', wdr.tx_code);
-
-            if (newStatus === 'rejected') {
-                const { data: targetProf } = await supabaseClient
-                    .from('profiles')
-                    .select('available_balance')
-                    .eq('id', wdr.user_id)
-                    .maybeSingle();
-
-                const refundedAvail = Number((Number(targetProf?.available_balance || 0) + Number(wdr.amount)).toFixed(2));
-                await supabaseClient
-                    .from('profiles')
-                    .update({ available_balance: refundedAvail })
-                    .eq('id', wdr.user_id);
+            const users = readJson(STORE_KEYS.USERS, {});
+            const targetEmail = (item.user_email || '').toLowerCase();
+            if (users[targetEmail]) {
+                users[targetEmail].transactions = (users[targetEmail].transactions || []).map(t =>
+                    t.tx_code === item.tx_code ? { ...t, status: newStatus, reject_reason: reasonVal } : t
+                );
+                if ((isDep && newStatus === 'completed') || (!isDep && newStatus === 'rejected')) {
+                    users[targetEmail].portfolio = users[targetEmail].portfolio || { availableBalance: 0, lockedBalance: 0, totalInvested: 0, totalProfit: 0, completedCycles: 0 };
+                    users[targetEmail].portfolio.availableBalance = Number((Number(users[targetEmail].portfolio.availableBalance || 0) + Number(item.amount)).toFixed(2));
+                }
+                writeJson(STORE_KEYS.USERS, users);
+                if (currentUser.email === targetEmail) {
+                    activateLocalSession(users[targetEmail]);
+                }
             }
 
-            await loadFullCloudState({ id: currentUser.authId, email: currentUser.email, user_metadata: { full_name: currentUser.fullName } });
             await openAdminPanelModal();
-            showToast(`Withdrawal ${newStatus.toUpperCase()}`, newStatus === 'completed' ? 'success' : 'error');
+            showToast(`${isDep ? 'Deposit' : 'Withdrawal'} ${newStatus.toUpperCase()}`, newStatus === 'completed' ? 'success' : 'error');
         }
 
         // ============================================================
@@ -2127,83 +2149,92 @@
         }
 
         async function confirmInvestment(planName, min, max) {
-            if (!supabaseClient || !currentUser.isLoggedIn) return;
+            if (!currentUser.isLoggedIn) return;
             const input = document.getElementById('investAmtInput');
             const err = document.getElementById('investAmtErr');
             const amt = parseFloat(input?.value || '');
 
             if (isNaN(amt) || amt < min || amt > max) {
-                input.classList.add('error');
-                err.textContent = `Amount must be between $${min} and $${max}.`;
-                err.style.display = 'block';
-                return;
+                input.classList.add('error'); err.textContent = `Amount must be between $${min} and $${max}.`; err.style.display = 'block'; return;
             }
             if (amt > Number(portfolio.availableBalance || 0)) {
-                input.classList.add('error');
-                err.textContent = 'Insufficient available balance.';
-                err.style.display = 'block';
-                return;
+                input.classList.add('error'); err.textContent = 'Insufficient available balance.'; err.style.display = 'block'; return;
             }
-            input.classList.remove('error');
-            err.style.display = 'none';
+            input.classList.remove('error'); err.style.display = 'none';
 
             const btn = document.getElementById('investConfirmBtn');
             btn.disabled = true;
             btn.innerHTML = '<span class="btn-spinner"></span> <span>Saving...</span>';
 
-            try {
-                portfolio.availableBalance = Number((Number(portfolio.availableBalance) - amt).toFixed(2));
-                portfolio.lockedBalance = Number((Number(portfolio.lockedBalance) + amt).toFixed(2));
-                portfolio.totalInvested = Number((Number(portfolio.totalInvested) + amt).toFixed(2));
-                await syncPortfolioToSupabase();
+            portfolio.availableBalance = Number((Number(portfolio.availableBalance) - amt).toFixed(2));
+            portfolio.lockedBalance = Number((Number(portfolio.lockedBalance) + amt).toFixed(2));
+            portfolio.totalInvested = Number((Number(portfolio.totalInvested) + amt).toFixed(2));
 
-                const invCode = 'INV-' + Math.floor(100000 + Math.random() * 900000);
-                const nowMs = Date.now();
-                const endMs = nowMs + (PLAN_DAYS * 24 * 60 * 60 * 1000);
+            const invCode = 'INV-' + Math.floor(100000 + Math.random() * 900000);
+            const nowMs = Date.now();
+            const endMs = nowMs + (PLAN_DAYS * 24 * 60 * 60 * 1000);
 
-                await supabaseClient.from('investments').insert([{
-                    inv_code: invCode,
-                    user_id: currentUser.authId,
-                    user_code: currentUser.userCode,
-                    plan_name: planName,
-                    amount: Number(amt.toFixed(2)),
-                    roi_rate: 1.50,
-                    duration_days: PLAN_DAYS,
-                    status: 'active',
-                    started_at: new Date(nowMs).toISOString(),
-                    ends_at: new Date(endMs).toISOString()
-                }]);
+            const newInv = {
+                id: invCode,
+                plan: planName,
+                amount: Number(amt.toFixed(2)),
+                roiRate: 1.50,
+                durationMs: PLAN_DAYS * 24 * 60 * 60 * 1000,
+                startTime: nowMs,
+                endTime: endMs
+            };
 
-                await supabaseClient.from('transactions').insert([{
-                    tx_code: invCode,
-                    user_id: currentUser.authId,
-                    user_code: currentUser.userCode,
-                    tx_type: 'invest',
-                    title: `Invest ${planName} (5d)`,
-                    method: planName + ' Plan',
-                    network: '5-Day Cycle',
-                    amount: Number(amt.toFixed(2)),
-                    status: 'completed',
-                    address: 'LOCKED-POOL'
-                }]);
+            const newTx = {
+                tx_code: invCode,
+                user_id: currentUser.authId,
+                user_code: currentUser.userCode,
+                tx_type: 'invest',
+                title: `Invest ${planName} (5d)`,
+                method: planName + ' Plan',
+                network: '5-Day Cycle',
+                amount: Number(amt.toFixed(2)),
+                status: 'completed',
+                address: 'LOCKED-POOL',
+                created_at: new Date(nowMs).toISOString()
+            };
 
-                await loadFullCloudState({ id: currentUser.authId, email: currentUser.email, user_metadata: { full_name: currentUser.fullName } });
-                closeModal();
-                showToast(`Invested $${amt.toFixed(2)} in ${planName}!`, 'success');
-            } catch (e) {
-                showToast(e.message, 'error');
-            } finally {
-                if (document.getElementById('investConfirmBtn')) {
-                    document.getElementById('investConfirmBtn').disabled = false;
+            if (supabaseClient && !useLocalFallback) {
+                try {
+                    await supabaseClient.from('profiles').update({
+                        available_balance: portfolio.availableBalance,
+                        locked_balance: portfolio.lockedBalance,
+                        total_invested: portfolio.totalInvested
+                    }).eq('id', currentUser.authId);
+
+                    await supabaseClient.from('investments').insert([{
+                        inv_code: invCode, user_id: currentUser.authId, user_code: currentUser.userCode,
+                        plan_name: planName, amount: Number(amt.toFixed(2)), roi_rate: 1.50,
+                        duration_days: PLAN_DAYS, status: 'active',
+                        started_at: new Date(nowMs).toISOString(), ends_at: new Date(endMs).toISOString()
+                    }]);
+
+                    await supabaseClient.from('transactions').insert([newTx]);
+                    await loadSupabaseState({ id: currentUser.authId, email: currentUser.email, user_metadata: { full_name: currentUser.fullName } });
+                    closeModal();
+                    showToast(`Invested $${amt.toFixed(2)} in ${planName}!`, 'success');
+                    return;
+                } catch (e) {
+                    useLocalFallback = true;
                 }
             }
+
+            activeInvestments.unshift(newInv);
+            transactions.unshift(newTx);
+            persistLocalCurrentUser();
+            syncUI();
+            closeModal();
+            showToast(`Invested $${amt.toFixed(2)} in ${planName}!`, 'success');
         }
 
         // ============================================================
-        // SLIDER
+        // SLIDER & INIT
         // ============================================================
         const slider = document.getElementById('plansSlider');
-        const wrapper = document.getElementById('plansWrapper');
         let currentIndex = 0;
 
         function getVisible() {
@@ -2247,34 +2278,31 @@
         }
         window.addEventListener('resize', updateSlider);
 
-        // ============================================================
-        // INITIALIZATION
-        // ============================================================
         window.addEventListener('load', async () => {
             updateSlider();
             syncUI();
 
             if (supabaseClient) {
-                supabaseClient.auth.onAuthStateChange(async (_event, session) => {
-                    if (session?.user && session.user.email_confirmed_at) {
-                        await ensureProfileRow(session.user);
-                        await loadFullCloudState(session.user);
-                    } else if (!session) {
-                        currentUser.isLoggedIn = false;
-                        syncUI();
-                    }
-                });
-
                 try {
                     const { data: { session } } = await supabaseClient.auth.getSession();
-                    if (session?.user && session.user.email_confirmed_at) {
-                        await ensureProfileRow(session.user);
-                        await loadFullCloudState(session.user);
+                    if (session?.user) {
+                        await ensureSupabaseProfile(session.user);
+                        await loadSupabaseState(session.user);
                     }
-                } catch (e) {}
+                } catch (e) {
+                    useLocalFallback = true;
+                }
             }
 
-            liveTicker = setInterval(() => {
+            if (!currentUser.isLoggedIn) {
+                const savedEmail = (localStorage.getItem(STORE_KEYS.SESSION_EMAIL) || '').toLowerCase();
+                const users = readJson(STORE_KEYS.USERS, {});
+                if (savedEmail && users[savedEmail]) {
+                    activateLocalSession(users[savedEmail]);
+                }
+            }
+
+            setInterval(() => {
                 if (currentUser.isLoggedIn && activeInvestments.length > 0) {
                     syncUI();
                 }
