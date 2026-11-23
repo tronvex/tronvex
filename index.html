@@ -64,43 +64,24 @@
         .btn-outline:hover { border-color: var(--primary); background: var(--primary-dim); }
         .btn-block { width: 100%; }
 
-        /* Professional Continue with Google Button */
         .google-auth-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            padding: 14px 24px;
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+            width: 100%; padding: 14px 24px;
             background: linear-gradient(180deg, #17181a 0%, #101113 100%);
-            color: #f1f3f4;
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 9999px;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 0.94rem;
-            font-weight: 600;
-            letter-spacing: 0.2px;
+            color: #f1f3f4; border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 9999px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.94rem; font-weight: 600; letter-spacing: 0.2px;
             box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.07);
             transition: all 0.24s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .google-auth-btn:hover:not(:disabled) {
             background: linear-gradient(180deg, #202226 0%, #16181c 100%);
-            border-color: rgba(0, 255, 170, 0.45);
-            transform: translateY(-1px);
+            border-color: rgba(0, 255, 170, 0.45); transform: translateY(-1px);
             box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55), 0 0 18px rgba(0, 255, 170, 0.12);
         }
-        .google-auth-btn:active:not(:disabled) {
-            transform: scale(0.985);
-        }
-        .google-auth-btn:disabled {
-            opacity: 0.65;
-            cursor: not-allowed;
-        }
-        .google-g-icon {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
+        .google-auth-btn:active:not(:disabled) { transform: scale(0.985); }
+        .google-auth-btn:disabled { opacity: 0.65; cursor: not-allowed; }
+        .google-g-icon { width: 20px; height: 20px; flex-shrink: 0; }
 
         header {
             position: sticky; top: 0; z-index: 100;
@@ -158,8 +139,7 @@
 
         .account-section { padding: 20px 0 8px; }
         .balance-card {
-            position: relative; overflow: hidden; border-radius: 20px;
-            padding: 24px;
+            position: relative; overflow: hidden; border-radius: 20px; padding: 24px;
             background:
                 linear-gradient(135deg, rgba(0,255,170,0.08), rgba(0,136,255,0.05) 50%, rgba(168,85,247,0.05)),
                 var(--bg-card);
@@ -238,10 +218,7 @@
             background: var(--bg-card); border: 1px solid rgba(0, 255, 170, 0.16);
             border-radius: 18px; padding: 16px 18px;
         }
-        .active-inv-head {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 10px;
-        }
+        .active-inv-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
         .active-inv-head h4 { font-size: 0.84rem; font-weight: 800; display: flex; align-items: center; gap: 7px; }
         .active-inv-list { display: flex; flex-direction: column; gap: 8px; }
         .active-inv-row {
@@ -288,8 +265,7 @@
             background: var(--bg-card); border: 1px solid var(--border-dim);
             border-radius: 18px; padding: 20px; position: relative;
             transition: border-color 0.3s, box-shadow 0.3s;
-            display: flex; flex-direction: column;
-            user-select: none;
+            display: flex; flex-direction: column; user-select: none;
         }
         .plan-card:hover { border-color: var(--border-glow); box-shadow: 0 8px 24px rgba(0,255,170,0.08); }
         .plan-card.tier-1 { border-top: 3px solid var(--primary); }
@@ -354,15 +330,12 @@
         .slider-dot.active { background: var(--primary); width: 20px; border-radius: 3px; }
 
         .hero-professional {
-            position: relative; overflow: hidden;
-            margin: 24px 0 20px;
-            padding: 32px 28px;
+            position: relative; overflow: hidden; margin: 24px 0 20px; padding: 32px 28px;
             border-radius: 20px;
             background:
                 linear-gradient(135deg, rgba(0,255,170,0.06), rgba(0,136,255,0.04) 50%, rgba(168,85,247,0.04)),
                 var(--bg-card);
-            border: 1px solid var(--border-dim);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-dim); box-shadow: 0 8px 32px rgba(0,0,0,0.2);
         }
         .hero-content { position: relative; z-index: 1; }
         .hero-tag {
@@ -373,25 +346,13 @@
             text-transform: uppercase; margin-bottom: 16px;
         }
         .hero-tag svg { width: 12px; height: 12px; }
-        .hero-professional h1 {
-            font-size: 2rem; font-weight: 800; line-height: 1.15;
-            letter-spacing: -1px; margin-bottom: 10px;
-        }
-        .hero-professional p {
-            font-size: 0.88rem; color: var(--text-muted);
-            max-width: 560px; line-height: 1.6; margin-bottom: 24px;
-        }
-        .hero-stats {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-            position: relative; z-index: 1;
-        }
+        .hero-professional h1 { font-size: 2rem; font-weight: 800; line-height: 1.15; letter-spacing: -1px; margin-bottom: 10px; }
+        .hero-professional p { font-size: 0.88rem; color: var(--text-muted); max-width: 560px; line-height: 1.6; margin-bottom: 24px; }
+        .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; position: relative; z-index: 1; }
         .hero-stat-item {
-            display: flex; flex-direction: column; gap: 4px;
-            padding: 16px 18px;
-            background: rgba(0,0,0,0.25);
-            border: 1px solid var(--border-dim);
-            border-radius: 14px;
-            transition: var(--transition);
+            display: flex; flex-direction: column; gap: 4px; padding: 16px 18px;
+            background: rgba(0,0,0,0.25); border: 1px solid var(--border-dim);
+            border-radius: 14px; transition: var(--transition);
         }
         .hero-stat-item:hover { border-color: var(--border-glow); transform: translateY(-2px); }
         .hero-stat-icon {
@@ -420,19 +381,13 @@
         .feature-text p { font-size: 0.73rem; color: var(--text-muted); line-height: 1.5; }
 
         .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 20px; }
-        .stats-card {
-            background: var(--bg-card); border: 1px solid var(--border-dim);
-            border-radius: 18px; padding: 20px;
-        }
+        .stats-card { background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 18px; padding: 20px; }
         .stats-card h4 { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 10px; }
         .stats-card .big-value { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 3px; }
         .stats-card .sub-value { font-size: 0.75rem; color: var(--text-muted); }
         .stats-card .sub-value.positive { color: var(--primary); }
 
-        .chart-card {
-            background: var(--bg-card); border: 1px solid var(--border-dim);
-            border-radius: 18px; padding: 20px; margin-bottom: 14px;
-        }
+        .chart-card { background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 18px; padding: 20px; margin-bottom: 14px; }
         .chart-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
         .chart-card .chart-sub { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 18px; }
         .bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 130px; margin-bottom: 10px; }
@@ -456,29 +411,19 @@
             background:
                 linear-gradient(135deg, rgba(0,255,170,0.08), rgba(0,136,255,0.05) 55%, rgba(168,85,247,0.06)),
                 var(--bg-card);
-            border: 1px solid rgba(0,255,170,0.2);
-            border-radius: 22px;
-            padding: 24px;
-            margin-bottom: 16px;
-            box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+            border: 1px solid rgba(0,255,170,0.2); border-radius: 22px;
+            padding: 24px; margin-bottom: 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.3);
         }
-        .mp-user-top {
-            display: flex; align-items: center; gap: 16px;
-            padding-bottom: 20px; border-bottom: 1px solid var(--border-dim);
-            margin-bottom: 20px;
-        }
+        .mp-user-top { display: flex; align-items: center; gap: 16px; padding-bottom: 20px; border-bottom: 1px solid var(--border-dim); margin-bottom: 20px; }
         .mp-avatar {
-            width: 68px; height: 68px; border-radius: 50%;
-            border: 2.5px solid var(--primary); padding: 2px;
-            background: var(--bg-base); overflow: hidden; flex-shrink: 0;
+            width: 68px; height: 68px; border-radius: 50%; border: 2.5px solid var(--primary);
+            padding: 2px; background: var(--bg-base); overflow: hidden; flex-shrink: 0;
         }
         .mp-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
         .mp-info-list { display: flex; flex-direction: column; gap: 12px; }
         .mp-field-box {
-            background: rgba(0,0,0,0.28);
-            border: 1px solid var(--border-dim);
-            border-radius: 14px;
-            padding: 14px 16px;
+            background: rgba(0,0,0,0.28); border: 1px solid var(--border-dim);
+            border-radius: 14px; padding: 14px 16px;
             display: flex; align-items: center; justify-content: space-between; gap: 12px;
         }
         .mp-field-left { display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1; }
@@ -495,19 +440,13 @@
             text-transform: uppercase; letter-spacing: 0.8px; font-weight: 700;
             display: block; margin-bottom: 2px;
         }
-        .mp-field-value {
-            font-size: 0.9rem; font-weight: 700; color: var(--text-main);
-            word-break: break-all;
-        }
-        .mp-field-value.mono {
-            font-family: 'Courier New', monospace; font-size: 0.8rem; color: var(--primary);
-        }
+        .mp-field-value { font-size: 0.9rem; font-weight: 700; color: var(--text-main); word-break: break-all; }
+        .mp-field-value.mono { font-family: 'Courier New', monospace; font-size: 0.8rem; color: var(--primary); }
         .mp-copy-btn {
             display: inline-flex; align-items: center; gap: 6px;
             background: var(--primary); color: var(--text-dark);
-            font-weight: 700; font-size: 0.74rem;
-            padding: 9px 14px; border-radius: 10px; flex-shrink: 0;
-            transition: var(--transition);
+            font-weight: 700; font-size: 0.74rem; padding: 9px 14px;
+            border-radius: 10px; flex-shrink: 0; transition: var(--transition);
         }
         .mp-copy-btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
         .mp-copy-btn svg { width: 14px; height: 14px; }
@@ -516,8 +455,7 @@
         .profile-menu-item {
             display: flex; align-items: center; gap: 12px;
             background: var(--bg-card); border: 1px solid var(--border-dim);
-            border-radius: 14px; padding: 14px 16px;
-            cursor: pointer; transition: var(--transition);
+            border-radius: 14px; padding: 14px 16px; cursor: pointer; transition: var(--transition);
         }
         .profile-menu-item:hover { border-color: var(--border-glow); background: rgba(0,255,170,0.03); }
         .profile-menu-item .pm-icon {
@@ -553,8 +491,7 @@
         .nav-item.active {
             color: var(--primary);
             background: linear-gradient(135deg, rgba(0,255,170,0.12), rgba(0,136,255,0.06));
-            border: 1px solid rgba(0,255,170,0.2);
-            box-shadow: 0 4px 16px rgba(0,255,170,0.1);
+            border: 1px solid rgba(0,255,170,0.2); box-shadow: 0 4px 16px rgba(0,255,170,0.1);
         }
         .nav-item.active svg { filter: drop-shadow(0 0 6px rgba(0,255,170,0.5)); transform: scale(1.1); }
         .nav-item.active span { color: var(--primary); }
@@ -587,11 +524,8 @@
         .modal::-webkit-scrollbar { display: none; }
 
         .modal.wallet-inst-modal {
-            max-width: 450px;
-            padding: 20px;
-            background: #07131f;
-            border: 1px solid rgba(247, 166, 0, 0.25);
-            border-radius: 22px;
+            max-width: 450px; padding: 20px; background: #07131f;
+            border: 1px solid rgba(247, 166, 0, 0.25); border-radius: 22px;
         }
         .inst-brand-header {
             display: flex; align-items: center; justify-content: space-between;
@@ -601,8 +535,7 @@
         .inst-brand-left { display: flex; align-items: center; gap: 11px; }
         .inst-brand-icon {
             width: 40px; height: 40px; border-radius: 12px;
-            background: rgba(247, 166, 0, 0.12);
-            border: 1px solid rgba(247, 166, 0, 0.35);
+            background: rgba(247, 166, 0, 0.12); border: 1px solid rgba(247, 166, 0, 0.35);
             display: flex; align-items: center; justify-content: center;
             color: var(--gold); box-shadow: 0 0 18px rgba(247, 166, 0, 0.14);
         }
@@ -614,25 +547,18 @@
             font-size: 0.62rem; font-weight: 800; color: var(--gold); letter-spacing: 0.6px;
         }
 
-        .inst-top-bar {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 14px; gap: 8px;
-        }
+        .inst-top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 8px; }
         .inst-back-btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 7px 13px; border-radius: 10px;
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border-radius: 10px;
             background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
-            color: var(--text-main); font-size: 0.74rem; font-weight: 700;
-            transition: var(--transition);
+            color: var(--text-main); font-size: 0.74rem; font-weight: 700; transition: var(--transition);
         }
         .inst-back-btn:hover { border-color: var(--gold); color: var(--gold); }
         .inst-back-btn svg { width: 14px; height: 14px; }
         .inst-secure-pill {
-            display: inline-flex; align-items: center; gap: 5px;
-            padding: 6px 11px; border-radius: 50px;
+            display: inline-flex; align-items: center; gap: 5px; padding: 6px 11px; border-radius: 50px;
             background: rgba(0, 255, 170, 0.08); border: 1px solid rgba(0, 255, 170, 0.25);
-            color: var(--primary); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.7px;
-            text-transform: uppercase;
+            color: var(--primary); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.7px; text-transform: uppercase;
         }
         .inst-secure-pill svg { width: 12px; height: 12px; }
 
@@ -643,30 +569,21 @@
         }
         .inst-mode-tab {
             display: inline-flex; align-items: center; justify-content: center; gap: 7px;
-            padding: 9px 12px; border-radius: 9px;
-            font-size: 0.8rem; font-weight: 700; color: var(--text-muted);
+            padding: 9px 12px; border-radius: 9px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted);
             transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .inst-mode-tab svg { width: 15px; height: 15px; transition: transform 0.28s ease; }
         .inst-mode-tab.active.dep {
             background: rgba(0, 255, 170, 0.14); color: var(--primary);
-            border: 1px solid rgba(0, 255, 170, 0.35);
-            box-shadow: 0 4px 16px rgba(0, 255, 170, 0.12);
+            border: 1px solid rgba(0, 255, 170, 0.35); box-shadow: 0 4px 16px rgba(0, 255, 170, 0.12);
         }
         .inst-mode-tab.active.wdr {
             background: rgba(247, 166, 0, 0.16); color: var(--gold);
-            border: 1px solid rgba(247, 166, 0, 0.4);
-            box-shadow: 0 4px 16px rgba(247, 166, 0, 0.12);
+            border: 1px solid rgba(247, 166, 0, 0.4); box-shadow: 0 4px 16px rgba(247, 166, 0, 0.12);
         }
 
-        .inst-stepper {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
-            margin-bottom: 16px;
-        }
-        .inst-step {
-            display: flex; flex-direction: column; align-items: center; gap: 5px;
-            cursor: pointer;
-        }
+        .inst-stepper { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 16px; }
+        .inst-step { display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
         .inst-step-circle {
             width: 30px; height: 30px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
@@ -674,19 +591,14 @@
             background: rgba(255,255,255,0.04); border: 1px solid var(--border-dim);
             color: var(--text-muted); transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .inst-step-label {
-            font-size: 0.6rem; font-weight: 800; letter-spacing: 0.6px;
-            text-transform: uppercase; color: var(--text-muted);
-        }
+        .inst-step-label { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; color: var(--text-muted); }
         .inst-step.active .inst-step-circle {
-            background: var(--gold); color: var(--text-dark);
-            border-color: var(--gold); box-shadow: 0 0 16px rgba(247, 166, 0, 0.5);
-            transform: scale(1.08);
+            background: var(--gold); color: var(--text-dark); border-color: var(--gold);
+            box-shadow: 0 0 16px rgba(247, 166, 0, 0.5); transform: scale(1.08);
         }
         .inst-step.active .inst-step-label { color: var(--gold); }
         .inst-step.done .inst-step-circle {
-            background: rgba(0, 255, 170, 0.16); color: var(--primary);
-            border-color: rgba(0, 255, 170, 0.45);
+            background: rgba(0, 255, 170, 0.16); color: var(--primary); border-color: rgba(0, 255, 170, 0.45);
         }
         .inst-step.done .inst-step-label { color: #b8ffea; }
 
@@ -695,59 +607,38 @@
             100% { opacity: 1; transform: translateX(0) scale(1); }
         }
         .inst-panel-card {
-            background: rgba(11, 27, 45, 0.88);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 18px; padding: 16px;
-            animation: bybitSlideIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            background: rgba(11, 27, 45, 0.88); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px; padding: 16px; animation: bybitSlideIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
-        .inst-panel-head {
-            display: flex; align-items: center; gap: 11px; margin-bottom: 14px;
-        }
+        .inst-panel-head { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
         .inst-panel-icon {
             width: 36px; height: 36px; border-radius: 10px;
             background: rgba(247, 166, 0, 0.12); border: 1px solid rgba(247, 166, 0, 0.28);
-            color: var(--gold); display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
+            color: var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .inst-panel-icon svg { width: 18px; height: 18px; }
         .inst-panel-head h4 { font-size: 0.95rem; font-weight: 800; line-height: 1.2; }
         .inst-panel-head p { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
 
-        .inst-net-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
-            margin-bottom: 14px;
-        }
+        .inst-net-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
         .inst-net-tile {
-            position: relative;
-            background: rgba(3, 12, 22, 0.72);
-            border: 1.5px solid rgba(255,255,255,0.08);
-            border-radius: 14px; padding: 12px 6px 10px;
+            position: relative; background: rgba(3, 12, 22, 0.72);
+            border: 1.5px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 12px 6px 10px;
             display: flex; flex-direction: column; align-items: center; gap: 5px;
             cursor: pointer; transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1); text-align: center;
         }
-        .inst-net-tile:hover {
-            border-color: rgba(247, 166, 0, 0.35);
-            background: rgba(16, 36, 58, 0.88);
-            transform: translateY(-2px);
-        }
+        .inst-net-tile:hover { border-color: rgba(247, 166, 0, 0.35); background: rgba(16, 36, 58, 0.88); transform: translateY(-2px); }
         .inst-net-tile.active {
-            border-color: var(--gold);
-            background: rgba(247, 166, 0, 0.1);
-            box-shadow: 0 0 18px rgba(247, 166, 0, 0.18);
-            transform: translateY(-2px);
+            border-color: var(--gold); background: rgba(247, 166, 0, 0.1);
+            box-shadow: 0 0 18px rgba(247, 166, 0, 0.18); transform: translateY(-2px);
         }
         .inst-net-check {
-            position: absolute; top: -6px; right: -6px;
-            width: 18px; height: 18px; border-radius: 50%;
-            background: var(--gold); color: var(--text-dark);
-            display: none; align-items: center; justify-content: center;
-            font-size: 10px; font-weight: 900;
+            position: absolute; top: -6px; right: -6px; width: 18px; height: 18px; border-radius: 50%;
+            background: var(--gold); color: var(--text-dark); display: none;
+            align-items: center; justify-content: center; font-size: 10px; font-weight: 900;
         }
         .inst-net-tile.active .inst-net-check { display: flex; }
-        .inst-net-logo {
-            width: 34px; height: 34px; border-radius: 50%; overflow: hidden;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .inst-net-logo { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .inst-net-logo svg { width: 100%; height: 100%; }
         .inst-net-code { font-size: 0.72rem; font-weight: 800; color: #ffffff; letter-spacing: 0.2px; line-height: 1.1; }
         .inst-net-sub { font-size: 0.58rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; }
@@ -759,17 +650,13 @@
             color: #031214; font-size: 0.82rem; font-weight: 800;
             letter-spacing: 0.8px; text-transform: uppercase;
             display: flex; align-items: center; justify-content: center; gap: 8px;
-            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: 0 6px 22px rgba(247, 166, 0, 0.26);
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1); box-shadow: 0 6px 22px rgba(247, 166, 0, 0.26);
         }
         .inst-continue-btn:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.06); }
         .inst-continue-btn:disabled { opacity: 0.55; cursor: not-allowed; }
         .inst-continue-btn svg { width: 16px; height: 16px; stroke-width: 2.5; }
 
-        .inst-addr-box {
-            background: rgba(0,0,0,0.35); border: 1px solid rgba(247, 166, 0, 0.26);
-            border-radius: 13px; padding: 12px; margin-bottom: 12px;
-        }
+        .inst-addr-box { background: rgba(0,0,0,0.35); border: 1px solid rgba(247, 166, 0, 0.26); border-radius: 13px; padding: 12px; margin-bottom: 12px; }
         .inst-addr-top {
             display: flex; justify-content: space-between; align-items: center;
             font-size: 0.64rem; font-weight: 700; color: var(--gold);
@@ -777,17 +664,12 @@
         }
         .inst-addr-row {
             display: flex; align-items: center; justify-content: space-between; gap: 7px;
-            background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
-            border-radius: 9px; padding: 8px 10px;
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim); border-radius: 9px; padding: 8px 10px;
         }
-        .inst-addr-code {
-            font-family: 'Courier New', monospace; font-size: 0.72rem; font-weight: 700;
-            color: #ffffff; word-break: break-all; flex: 1;
-        }
+        .inst-addr-code { font-family: 'Courier New', monospace; font-size: 0.72rem; font-weight: 700; color: #ffffff; word-break: break-all; flex: 1; }
         .inst-chip-btn {
-            display: inline-flex; align-items: center; gap: 4px;
-            padding: 5px 9px; border-radius: 7px; font-size: 0.66rem; font-weight: 700;
-            flex-shrink: 0; transition: var(--transition);
+            display: inline-flex; align-items: center; gap: 4px; padding: 5px 9px;
+            border-radius: 7px; font-size: 0.66rem; font-weight: 700; flex-shrink: 0; transition: var(--transition);
         }
         .inst-chip-btn svg { width: 12px; height: 12px; }
         .inst-chip-btn.cp { background: rgba(247,166,0,0.14); border: 1px solid rgba(247,166,0,0.35); color: var(--gold); }
@@ -802,75 +684,52 @@
             font-size: 0.72rem; font-weight: 700; color: var(--gold);
         }
         .bybit-countdown-banner.expired {
-            background: rgba(255, 68, 102, 0.12); border-color: rgba(255, 68, 102, 0.35);
-            color: var(--danger);
+            background: rgba(255, 68, 102, 0.12); border-color: rgba(255, 68, 102, 0.35); color: var(--danger);
         }
 
-        .inst-summary-rows {
-            background: rgba(0,0,0,0.28); border: 1px solid var(--border-dim);
-            border-radius: 12px; padding: 11px 13px; margin-bottom: 14px;
-        }
+        .inst-summary-rows { background: rgba(0,0,0,0.28); border: 1px solid var(--border-dim); border-radius: 12px; padding: 11px 13px; margin-bottom: 14px; }
         .inst-s-row {
             display: flex; justify-content: space-between; align-items: center;
-            font-size: 0.76rem; padding: 5px 0;
-            border-bottom: 1px dashed rgba(255,255,255,0.06);
+            font-size: 0.76rem; padding: 5px 0; border-bottom: 1px dashed rgba(255,255,255,0.06);
         }
         .inst-s-row:last-child { border-bottom: none; }
         .inst-s-row .k { color: var(--text-muted); }
         .inst-s-row .v { font-weight: 700; color: #fff; }
 
-        .inst-btn-row {
-            display: grid; grid-template-columns: 110px 1fr; gap: 8px;
-        }
+        .inst-btn-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; }
         .inst-sec-btn {
-            padding: 12px; border-radius: 12px;
-            background: rgba(255,255,255,0.04); border: 1px solid var(--border-dim);
-            color: var(--text-main); font-size: 0.78rem; font-weight: 700;
-            display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+            padding: 12px; border-radius: 12px; background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border-dim); color: var(--text-main);
+            font-size: 0.78rem; font-weight: 700; display: inline-flex;
+            align-items: center; justify-content: center; gap: 5px;
         }
         .inst-sec-btn:hover { border-color: var(--gold); color: var(--gold); }
 
-        /* Single-Option Google Auth Modal */
         .modal.auth-pro-modal {
-            max-width: 410px;
-            padding: 32px 26px;
+            max-width: 410px; padding: 32px 26px;
             background:
                 radial-gradient(circle at 80% 10%, rgba(0,255,170,0.09), transparent 48%),
                 radial-gradient(circle at 20% 90%, rgba(0,136,255,0.08), transparent 48%),
                 #061220;
-            border: 1px solid rgba(0,255,170,0.24);
-            border-radius: 24px;
-            text-align: center;
+            border: 1px solid rgba(0,255,170,0.24); border-radius: 24px; text-align: center;
         }
         .auth-brand-banner {
             display: flex; align-items: center; justify-content: space-between;
             margin-bottom: 24px; padding-bottom: 14px;
-            border-bottom: 1px solid var(--border-dim);
-            text-align: left;
+            border-bottom: 1px solid var(--border-dim); text-align: left;
         }
         .auth-brand-left { display: flex; align-items: center; gap: 10px; }
         .auth-brand-badge {
             font-size: 0.62rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
-            padding: 4px 10px; border-radius: 50px;
-            background: rgba(0,255,170,0.1); color: var(--primary); border: 1px solid rgba(0,255,170,0.25);
-            margin-right: 26px;
+            padding: 4px 10px; border-radius: 50px; background: rgba(0,255,170,0.1);
+            color: var(--primary); border: 1px solid rgba(0,255,170,0.25); margin-right: 26px;
         }
-        .auth-single-hero {
-            margin-bottom: 24px;
-        }
-        .auth-single-hero h3 {
-            font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 8px;
-        }
-        .auth-single-hero p {
-            font-size: 0.82rem; color: var(--text-muted); line-height: 1.55;
-        }
+        .auth-single-hero { margin-bottom: 24px; }
+        .auth-single-hero h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 8px; }
+        .auth-single-hero p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
         .auth-security-note {
-            margin-top: 16px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            margin-top: 16px; font-size: 0.7rem; color: var(--text-muted);
+            display: inline-flex; align-items: center; gap: 6px;
         }
 
         .btn-spinner {
@@ -890,24 +749,13 @@
             display: flex; align-items: center; justify-content: center; color: var(--primary);
             animation: pulseLive 1.2s infinite;
         }
-        .transfer-steps-mini {
-            display: flex; flex-direction: column; gap: 6px; text-align: left;
-            margin-top: 12px; font-size: 0.72rem; color: var(--text-muted);
-        }
+        .transfer-steps-mini { display: flex; flex-direction: column; gap: 6px; text-align: left; margin-top: 12px; font-size: 0.72rem; color: var(--text-muted); }
         .transfer-step-line { display: flex; align-items: center; gap: 7px; }
         .transfer-step-line.active { color: var(--primary); font-weight: 700; }
 
-        .admin-item-card {
-            background: rgba(0,0,0,0.32); border: 1px solid var(--border-dim);
-            border-radius: 14px; padding: 12px; margin-bottom: 10px;
-        }
-        .admin-item-top {
-            display: flex; justify-content: space-between; align-items: flex-start;
-            gap: 8px; margin-bottom: 8px; font-size: 0.76rem;
-        }
-        .admin-actions-row {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px;
-        }
+        .admin-item-card { background: rgba(0,0,0,0.32); border: 1px solid var(--border-dim); border-radius: 14px; padding: 12px; margin-bottom: 10px; }
+        .admin-item-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 0.76rem; }
+        .admin-actions-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
         .btn-approve {
             padding: 8px 10px; border-radius: 9px; font-size: 0.72rem; font-weight: 800;
             background: rgba(0,255,170,0.16); color: var(--primary); border: 1px solid rgba(0,255,170,0.35);
@@ -923,26 +771,24 @@
             position: fixed; top: 18px; left: 50%; transform: translateX(-50%) translateY(-130%);
             z-index: 3000; width: calc(100% - 28px); max-width: 430px;
             background: linear-gradient(135deg, #0b2239 0%, #071524 100%);
-            border: 1px solid rgba(0, 255, 170, 0.35);
-            border-radius: 18px; padding: 14px 16px;
+            border: 1px solid rgba(0, 255, 170, 0.35); border-radius: 18px; padding: 14px 16px;
             box-shadow: 0 18px 45px rgba(0,0,0,0.75);
-            transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
-            opacity: 0;
+            transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease; opacity: 0;
         }
         .sms-alert-overlay.show { transform: translateX(-50%) translateY(0); opacity: 1; }
         .sms-alert-overlay.rejected-sms { border-color: rgba(255, 68, 102, 0.45); }
         .sms-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-        .sms-sender { display: flex; align-items: center; gap: 7px; font-size: 0.72rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.6px; }
+        .sms-sender {
+            display: flex; align-items: center; gap: 7px; font-size: 0.72rem;
+            font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.6px;
+        }
         .sms-alert-overlay.rejected-sms .sms-sender { color: var(--danger); }
         .sms-time { font-size: 0.65rem; color: var(--text-muted); }
         .sms-title { font-size: 0.88rem; font-weight: 800; color: #fff; margin-bottom: 3px; }
         .sms-body { font-size: 0.76rem; color: #c7d9ea; line-height: 1.45; }
 
         .notif-list { display: flex; flex-direction: column; gap: 9px; max-height: 360px; overflow-y: auto; }
-        .notif-card {
-            background: rgba(0,0,0,0.3); border: 1px solid var(--border-dim);
-            border-radius: 12px; padding: 11px 13px;
-        }
+        .notif-card { background: rgba(0,0,0,0.3); border: 1px solid var(--border-dim); border-radius: 12px; padding: 11px 13px; }
         .notif-card-title { font-size: 0.8rem; font-weight: 800; color: #fff; margin-bottom: 2px; }
         .notif-card-msg { font-size: 0.72rem; color: var(--text-muted); }
         .notif-card-time { font-size: 0.62rem; color: var(--primary); margin-top: 4px; display: block; }
@@ -979,22 +825,12 @@
         .form-control.error { border-color: var(--danger); }
         .error-msg { color: var(--danger); font-size: 0.7rem; margin-top: 4px; display: none; font-weight: 600; }
 
-        .qr-panel {
-            display: none; margin-top: 10px; padding-top: 10px;
-            border-top: 1px dashed rgba(255,255,255,0.1);
-            text-align: center;
-        }
+        .qr-panel { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.1); text-align: center; }
         .qr-panel.open { display: block; animation: fadeIn 0.25s ease; }
-        .qr-frame {
-            display: inline-flex; flex-direction: column; align-items: center; gap: 6px;
-            background: #ffffff; padding: 10px; border-radius: 12px;
-        }
+        .qr-frame { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; background: #ffffff; padding: 10px; border-radius: 12px; }
         .qr-caption { font-size: 0.65rem; color: var(--text-muted); margin-top: 6px; word-break: break-all; }
 
-        .calc-box {
-            background: rgba(0,0,0,0.25); border: 1px solid var(--border-dim);
-            border-radius: 10px; padding: 14px; margin-bottom: 16px;
-        }
+        .calc-box { background: rgba(0,0,0,0.25); border: 1px solid var(--border-dim); border-radius: 10px; padding: 14px; margin-bottom: 16px; }
         .calc-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.8rem; }
         .calc-row:last-child { margin-bottom: 0; }
         .calc-row.total { border-top: 1px dashed var(--border-dim); padding-top: 8px; margin-top: 8px; font-size: 0.9rem; font-weight: 700; }
@@ -1006,13 +842,10 @@
         .tx-card {
             display: flex; align-items: center; gap: 14px;
             background: var(--bg-card); border: 1px solid var(--border-dim);
-            border-radius: 14px; padding: 14px 16px;
-            transition: var(--transition); cursor: pointer; position: relative;
+            border-radius: 14px; padding: 14px 16px; transition: var(--transition); cursor: pointer; position: relative;
         }
         .tx-card:hover { border-color: var(--border-glow); background: rgba(0,255,170,0.02); }
-        .tx-icon {
-            width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-        }
+        .tx-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .tx-icon.deposit { background: var(--primary-dim); color: var(--primary); }
         .tx-icon.withdraw { background: rgba(255,68,102,0.1); color: var(--danger); }
         .tx-icon.invest { background: rgba(0,136,255,0.1); color: var(--blue); }
@@ -1021,10 +854,7 @@
         .tx-info { flex: 1; min-width: 0; }
         .tx-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .tx-meta { font-size: 0.68rem; color: var(--text-muted); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-        .tx-badge {
-            font-size: 0.58rem; padding: 2px 7px; border-radius: 50px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.4px;
-        }
+        .tx-badge { font-size: 0.58rem; padding: 2px 7px; border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; }
         .tx-badge.completed { background: rgba(0,255,170,0.1); color: var(--primary); border: 1px solid rgba(0,255,170,0.2); }
         .tx-badge.pending { background: rgba(255,187,0,0.1); color: var(--gold); border: 1px solid rgba(255,187,0,0.2); }
         .tx-badge.rejected { background: rgba(255,68,102,0.12); color: var(--danger); border: 1px solid rgba(255,68,102,0.25); }
@@ -1037,27 +867,19 @@
         .empty-state svg { width: 48px; height: 48px; margin: 0 auto 12px; opacity: 0.3; }
         .empty-state p { font-size: 0.85rem; }
 
-        .receipt {
-            background: var(--bg-base); border: 1px solid var(--border-dim);
-            border-radius: 16px; padding: 24px; position: relative;
-        }
+        .receipt { background: var(--bg-base); border: 1px solid var(--border-dim); border-radius: 16px; padding: 24px; position: relative; }
         .receipt::before {
             content: ''; position: absolute; top: 0; left: 20px; right: 20px; height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--blue));
-            border-radius: 0 0 4px 4px;
+            background: linear-gradient(90deg, var(--primary), var(--blue)); border-radius: 0 0 4px 4px;
         }
         .receipt-header { text-align: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px dashed var(--border-dim); }
         .receipt-logo { display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; font-size: 1.1rem; margin-bottom: 8px; }
         .receipt-status {
             display: inline-flex; align-items: center; gap: 5px;
             background: rgba(0,255,170,0.1); border: 1px solid rgba(0,255,170,0.3);
-            color: var(--primary); padding: 5px 12px; border-radius: 50px;
-            font-size: 0.7rem; font-weight: 700;
+            color: var(--primary); padding: 5px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 700;
         }
-        .receipt-status.rejected {
-            background: rgba(255,68,102,0.12); border: 1px solid rgba(255,68,102,0.35);
-            color: var(--danger);
-        }
+        .receipt-status.rejected { background: rgba(255,68,102,0.12); border: 1px solid rgba(255,68,102,0.35); color: var(--danger); }
         .receipt-status svg { width: 12px; height: 12px; }
         .receipt-amount { text-align: center; margin: 18px 0; }
         .receipt-amount .val { font-size: 2rem; font-weight: 800; letter-spacing: -1px; color: var(--text-main); }
@@ -1568,17 +1390,35 @@
         lucide.createIcons();
 
         // ============================================================
-        // 1. SUPABASE CONFIGURATION
+        // 1. SUPABASE CONFIGURATION & HOST VALIDATION
         // ============================================================
         const SUPABASE_URL = 'https://njqyafoszxskjrgnfsex.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_0SR-U0qekJgjhKJeNB7SIw_e3ereu3P';
         const REDIRECT_URL = 'https://tronvex.github.io/tronvex/';
 
+        function isValidSupabaseUrl(urlStr) {
+            try {
+                const u = new URL(String(urlStr || '').trim());
+                return u.protocol === 'https:' && u.hostname.endsWith('.supabase.co') && u.hostname.split('.').length >= 3;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function escapeHtml(str) {
+            return String(str ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
         const supabaseClient = (
             window.supabase &&
-            SUPABASE_URL &&
+            isValidSupabaseUrl(SUPABASE_URL) &&
             SUPABASE_ANON_KEY
-        ) ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+        ) ? window.supabase.createClient(SUPABASE_URL.trim(), SUPABASE_ANON_KEY.trim()) : null;
 
         const ALLOWED_4_NETWORKS = ['usdt_bep20', 'usdt_trc20', 'usdt_erc20', 'ton'];
         const DEPOSIT_TIMEOUT_MS = 5 * 60 * 1000;
@@ -1962,9 +1802,9 @@
             const itemsHtml = USER_NOTIFICATIONS.length
                 ? USER_NOTIFICATIONS.map(n => `
                     <div class="notif-card">
-                        <div class="notif-card-title">${n.title}</div>
-                        <div class="notif-card-msg">${n.message}</div>
-                        <span class="notif-card-time">${n.time}</span>
+                        <div class="notif-card-title">${escapeHtml(n.title)}</div>
+                        <div class="notif-card-msg">${escapeHtml(n.message)}</div>
+                        <span class="notif-card-time">${escapeHtml(n.time)}</span>
                     </div>
                 `).join('')
                 : `<div class="empty-state"><i data-lucide="bell-off"></i><p>No notifications yet</p></div>`;
@@ -2092,7 +1932,7 @@
                 return `
                     <div class="active-inv-row">
                         <div>
-                            <div class="active-inv-plan">${inv.plan} · $${inv.amount.toFixed(2)}</div>
+                            <div class="active-inv-plan">${escapeHtml(inv.plan)} · $${Number(inv.amount).toFixed(2)}</div>
                             <div class="active-inv-meta">Progress: ${pct}% · ${PLAN_DAYS}-Day Cycle</div>
                         </div>
                         <div class="active-inv-live">
@@ -2194,8 +2034,8 @@
         }
 
         async function continueWithGoogle() {
-            if (!supabaseClient) {
-                showToast('Supabase client is not configured.', 'error');
+            if (!supabaseClient || !isValidSupabaseUrl(SUPABASE_URL)) {
+                showToast('Supabase URL or client is invalid. Check your Supabase project settings.', 'error');
                 return;
             }
 
@@ -2214,7 +2054,10 @@
                 });
                 if (error) throw error;
             } catch (err) {
-                showToast(err.message || 'Google sign-in failed.', 'error');
+                const msg = (err && err.message && err.message.toLowerCase().includes('fetch'))
+                    ? 'Cannot reach Supabase server. Check internet/DNS or Supabase project status.'
+                    : (err.message || 'Google sign-in failed.');
+                showToast(msg, 'error');
                 if (btn) {
                     btn.disabled = false;
                     btn.innerHTML = `
@@ -2266,26 +2109,26 @@
 
             const cardsHtml = pendingList.length
                 ? pendingList.map(req => `
-                    <div class="admin-item-card" id="adminReq_${req.id}">
+                    <div class="admin-item-card" id="adminReq_${escapeHtml(req.id)}">
                         <div class="admin-item-top">
                             <div>
-                                <div style="font-weight:800;color:#fff;">${req.userName} · <span style="color:var(--primary);font-family:monospace;">${req.userId}</span></div>
-                                <div style="font-size:0.68rem;color:var(--text-muted);">${req.userEmail}</div>
+                                <div style="font-weight:800;color:#fff;">${escapeHtml(req.userName)} · <span style="color:var(--primary);font-family:monospace;">${escapeHtml(req.userId)}</span></div>
+                                <div style="font-size:0.68rem;color:var(--text-muted);">${escapeHtml(req.userEmail)}</div>
                                 <div style="font-size:0.72rem;color:var(--gold);margin-top:3px;">
-                                    Network: <strong>${req.networkLabel}</strong> · Amount: <strong>$${Number(req.amount).toFixed(2)}</strong>
+                                    Network: <strong>${escapeHtml(req.networkLabel)}</strong> · Amount: <strong>$${Number(req.amount).toFixed(2)}</strong>
                                 </div>
                                 <div style="font-size:0.64rem;color:var(--text-muted);font-family:monospace;word-break:break-all;margin-top:2px;">
-                                    To: ${req.walletAddress}
+                                    To: ${escapeHtml(req.walletAddress)}
                                 </div>
                             </div>
                             <span class="tx-badge pending">PENDING</span>
                         </div>
                         <div class="form-group" style="margin-bottom:6px;">
-                            <input type="text" id="rejectReason_${req.id}" class="form-control" style="padding:7px 10px;font-size:0.75rem;" placeholder="Reject reason (e.g., Payment not received on chain)">
+                            <input type="text" id="rejectReason_${escapeHtml(req.id)}" class="form-control" style="padding:7px 10px;font-size:0.75rem;" placeholder="Reject reason (e.g., Payment not received on chain)">
                         </div>
                         <div class="admin-actions-row">
-                            <button type="button" class="btn-approve" onclick="adminApproveDeposit('${req.id}')">✓ Approve</button>
-                            <button type="button" class="btn-reject" onclick="adminRejectDeposit('${req.id}')">✕ Reject</button>
+                            <button type="button" class="btn-approve" onclick="adminApproveDeposit('${escapeHtml(req.id)}')">✓ Approve</button>
+                            <button type="button" class="btn-reject" onclick="adminRejectDeposit('${escapeHtml(req.id)}')">✕ Reject</button>
                         </div>
                     </div>
                 `).join('')
@@ -2439,47 +2282,23 @@
 
         const COINS = {
             usdt_bep20: {
-                key: 'usdt_bep20',
-                symbol: 'USDT',
-                name: 'USDT BEP20',
-                tileCode: 'USDT',
-                tileSub: 'BEP20',
-                network: 'BEP20',
-                networkDesc: 'BNB Smart Chain',
-                address: USER_WALLET_ADDRESSES.usdt_bep20,
+                key: 'usdt_bep20', symbol: 'USDT', name: 'USDT BEP20', tileCode: 'USDT', tileSub: 'BEP20',
+                network: 'BEP20', networkDesc: 'BNB Smart Chain', address: USER_WALLET_ADDRESSES.usdt_bep20,
                 logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="bscRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f3ba2f"/><stop offset="100%" stop-color="#d99b00"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131a24"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#bscRing1)" stroke-width="2.2"/><circle cx="18" cy="18" r="12.2" fill="#26a17b"/><path fill="#ffffff" d="M19.8 15.1v-2.5h4.5V9.2H11.7v3.4h4.5v2.5c-3.7.17-6.5.9-6.5 1.8s2.8 1.63 6.5 1.8v6.3h3.6v-6.3c3.7-.17 6.5-.9 6.5-1.8s-2.8-1.63-6.5-1.8z"/></svg>`
             },
             usdt_trc20: {
-                key: 'usdt_trc20',
-                symbol: 'USDT',
-                name: 'USDT TRC20',
-                tileCode: 'USDT',
-                tileSub: 'TRC20',
-                network: 'TRC20',
-                networkDesc: 'TRON Network',
-                address: USER_WALLET_ADDRESSES.usdt_trc20,
+                key: 'usdt_trc20', symbol: 'USDT', name: 'USDT TRC20', tileCode: 'USDT', tileSub: 'TRC20',
+                network: 'TRC20', networkDesc: 'TRON Network', address: USER_WALLET_ADDRESSES.usdt_trc20,
                 logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="tronRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff2e4d"/><stop offset="100%" stop-color="#c4001e"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#121822"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#tronRing1)" stroke-width="2"/><polygon points="9,10 27,13.5 18.5,27.5" fill="none" stroke="#ff3b5c" stroke-width="2" stroke-linejoin="round"/><circle cx="24.5" cy="24.5" r="8.2" fill="#26a17b" stroke="#121822" stroke-width="1.6"/><path fill="#fff" d="M25.4 23.6v-1.2h2.1v-1.6h-6v1.6h2.1v1.2c-1.7.08-3 .42-3 .85s1.3.77 3 .85v2.9h1.8v-2.9c1.7-.08 3-.42 3-.85s-1.3-.77-3-.85z"/></svg>`
             },
             usdt_erc20: {
-                key: 'usdt_erc20',
-                symbol: 'USDT',
-                name: 'USDT ERC20',
-                tileCode: 'USDT',
-                tileSub: 'ERC20',
-                network: 'ERC20',
-                networkDesc: 'Ethereum Network',
-                address: USER_WALLET_ADDRESSES.usdt_erc20,
+                key: 'usdt_erc20', symbol: 'USDT', name: 'USDT ERC20', tileCode: 'USDT', tileSub: 'ERC20',
+                network: 'ERC20', networkDesc: 'Ethereum Network', address: USER_WALLET_ADDRESSES.usdt_erc20,
                 logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="ethRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#627eea"/><stop offset="100%" stop-color="#3c55c9"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131826"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#ethRing1)" stroke-width="2"/><polygon points="18,6.5 11.5,17.5 18,21.4 24.5,17.5" fill="#8ea4f8"/><polygon points="18,22.9 11.5,19 18,29.5 24.5,19" fill="#8ea4f8"/></svg>`
             },
             ton: {
-                key: 'ton',
-                symbol: 'TON',
-                name: 'TON',
-                tileCode: 'TON',
-                tileSub: 'TONCOIN',
-                network: 'TON',
-                networkDesc: 'The Open Network',
-                address: USER_WALLET_ADDRESSES.ton,
+                key: 'ton', symbol: 'TON', name: 'TON', tileCode: 'TON', tileSub: 'TONCOIN',
+                network: 'TON', networkDesc: 'The Open Network', address: USER_WALLET_ADDRESSES.ton,
                 logo: `<svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#0088cc"/><path fill="#ffffff" d="M10.2 12.2h15.6c1.2 0 2 1.3 1.4 2.3l-7.2 12.1c-.5.9-1.8.9-2.4 0L8.8 14.5c-.6-1 .2-2.3 1.4-2.3zm6.6 2.2v9.4l5.4-9.4h-5.4zm-2.4 0H9.8l4.6 7.8v-7.8z"/></svg>`
             }
         };
@@ -2494,17 +2313,9 @@
         }
 
         let walletState = {
-            mode: 'deposit',
-            step: 1,
-            network: 'usdt_bep20',
-            amount: '',
-            days: PLAN_DAYS,
-            destination: '',
-            payAddress: USER_WALLET_ADDRESSES.usdt_bep20,
-            paymentId: '',
-            qrOpen: false,
-            activeOrderExpiresAt: null,
-            sendingAnim: false
+            mode: 'deposit', step: 1, network: 'usdt_bep20', amount: '', days: PLAN_DAYS,
+            destination: '', payAddress: USER_WALLET_ADDRESSES.usdt_bep20, paymentId: '',
+            qrOpen: false, activeOrderExpiresAt: null, sendingAnim: false
         };
         let walletCountdownInterval = null;
 
@@ -2537,25 +2348,25 @@
                     remTag = `<span>· ${mm}:${ss}</span>`;
                 }
                 const reasonNote = (tx.status === 'rejected' && tx.rejectReason)
-                    ? `<div style="font-size:0.65rem;color:var(--danger);margin-top:3px;">Reason: ${tx.rejectReason}</div>`
+                    ? `<div style="font-size:0.65rem;color:var(--danger);margin-top:3px;">Reason: ${escapeHtml(tx.rejectReason)}</div>`
                     : '';
                 html += `
                     <div class="tx-card" onclick="requireAuth(() => openReceipt(${idx}))">
                         <div class="tx-icon ${tx.type}"><i data-lucide="${iconMap[tx.type] || 'arrow-down-to-line'}"></i></div>
                         <div class="tx-info">
-                            <div class="tx-title">${tx.title}</div>
+                            <div class="tx-title">${escapeHtml(tx.title)}</div>
                             <div class="tx-meta">
-                                <span>${tx.method}</span>
+                                <span>${escapeHtml(tx.method)}</span>
                                 <span>·</span>
-                                <span>${tx.date}</span>
-                                <span class="tx-badge ${statusClass}">${tx.status}</span>
+                                <span>${escapeHtml(tx.date)}</span>
+                                <span class="tx-badge ${statusClass}">${escapeHtml(tx.status)}</span>
                                 ${remTag}
                             </div>
                             ${reasonNote}
                         </div>
                         <div class="tx-amount ${isPos ? 'positive' : 'negative'}">
                             ${formatAmount(tx)}
-                            <small>${tx.network || tx.method}</small>
+                            <small>${escapeHtml(tx.network || tx.method)}</small>
                         </div>
                     </div>
                 `;
@@ -2587,7 +2398,7 @@
             let icon = 'info', color = 'var(--primary)';
             if (type === 'success') { icon = 'check-circle'; toast.style.borderLeftColor = 'var(--success)'; }
             else if (type === 'error') { icon = 'alert-circle'; color = 'var(--danger)'; toast.style.borderLeftColor = 'var(--danger)'; }
-            toast.innerHTML = `<i data-lucide="${icon}" style="color:${color}; width:18px; height:18px; flex-shrink:0;"></i> <span>${message}</span>`;
+            toast.innerHTML = `<i data-lucide="${icon}" style="color:${color}; width:18px; height:18px; flex-shrink:0;"></i> <span>${escapeHtml(message)}</span>`;
             container.appendChild(toast);
             lucide.createIcons();
             setTimeout(() => {
@@ -2921,13 +2732,13 @@
                                 <span>Amount (USD / ${coin.symbol})</span>
                                 ${!isDep ? `<span class="max-btn" onclick="document.getElementById('wFlowAmount').value=${Number(availableBalance||0).toFixed(2)}">MAX ($${Number(availableBalance||0).toFixed(2)})</span>` : `<span>Min $5.00</span>`}
                             </label>
-                            <input type="number" id="wFlowAmount" class="form-control" placeholder="Enter amount (min $5.00)" min="5" step="0.01" value="${walletState.amount}">
+                            <input type="number" id="wFlowAmount" class="form-control" placeholder="Enter amount (min $5.00)" min="5" step="0.01" value="${escapeHtml(walletState.amount)}">
                             <div class="error-msg" id="wFlowAmtErr">Minimum amount is $5.00.</div>
                         </div>
                         ${!isDep ? `
                             <div class="form-group">
                                 <label><span>Destination Wallet Address (${coin.name})</span></label>
-                                <input type="text" id="wFlowDest" class="form-control" placeholder="Enter ${coin.name} wallet address" value="${walletState.destination}">
+                                <input type="text" id="wFlowDest" class="form-control" placeholder="Enter ${coin.name} wallet address" value="${escapeHtml(walletState.destination)}">
                                 <div class="error-msg" id="wFlowDestErr">Valid destination address required.</div>
                             </div>
                         ` : ''}
@@ -2982,7 +2793,7 @@
                                         <span>${coin.network}</span>
                                     </div>
                                     <div class="inst-addr-row">
-                                        <div class="inst-addr-code">${walletAddr}</div>
+                                        <div class="inst-addr-code">${escapeHtml(walletAddr)}</div>
                                         <button class="inst-chip-btn qr ${walletState.qrOpen ? 'active' : ''}" type="button" onclick="toggleWalletQr()">
                                             <i data-lucide="qr-code"></i> ${walletState.qrOpen ? 'Hide' : 'QR'}
                                         </button>
@@ -2998,7 +2809,7 @@
                             ` : `
                                 <div class="inst-summary-rows">
                                     <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.name}</span></div>
-                                    <div class="inst-s-row"><span class="k">Destination</span><span class="v" style="font-family:monospace;font-size:0.7rem;">${walletState.destination}</span></div>
+                                    <div class="inst-s-row"><span class="k">Destination</span><span class="v" style="font-family:monospace;font-size:0.7rem;">${escapeHtml(walletState.destination)}</span></div>
                                     <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${currentAmt.toFixed(2)}</span></div>
                                 </div>
                             `}
@@ -3023,11 +2834,11 @@
                             </div>
                         </div>
                         <div class="inst-summary-rows">
-                            <div class="inst-s-row"><span class="k">User ID</span><span class="v" style="color:var(--primary);">${authState.userId || '-'}</span></div>
+                            <div class="inst-s-row"><span class="k">User ID</span><span class="v" style="color:var(--primary);">${escapeHtml(authState.userId || '-')}</span></div>
                             <div class="inst-s-row"><span class="k">Action</span><span class="v">${isDep ? 'Deposit' : 'Withdraw'}</span></div>
                             <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.name} (${coin.networkDesc})</span></div>
                             <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${currentAmt.toFixed(2)}</span></div>
-                            <div class="inst-s-row"><span class="k">${isDep ? 'Wallet' : 'Destination'}</span><span class="v" style="font-family:monospace;font-size:0.68rem;">${isDep ? walletAddr : walletState.destination}</span></div>
+                            <div class="inst-s-row"><span class="k">${isDep ? 'Wallet' : 'Destination'}</span><span class="v" style="font-family:monospace;font-size:0.68rem;">${escapeHtml(isDep ? walletAddr : walletState.destination)}</span></div>
                         </div>
                         <div class="inst-btn-row">
                             <button class="inst-sec-btn" type="button" onclick="goWalletStep(3)">← Back</button>
@@ -3106,35 +2917,17 @@
                     const rejectReason = isExpired ? 'Payment window expired (5 minutes).' : '';
 
                     const txObj = {
-                        id: txId,
-                        type: 'deposit',
-                        title: `Deposit ${coin.name}`,
-                        method: coin.name,
-                        network: coin.network,
-                        days: PLAN_DAYS,
-                        amount: amount,
-                        date: new Date().toLocaleString(),
-                        status: status,
-                        address: walletAddr,
-                        txHash: txId,
-                        expiresAt: expiresAt,
-                        rejectReason: rejectReason
+                        id: txId, type: 'deposit', title: `Deposit ${coin.name}`, method: coin.name,
+                        network: coin.network, days: PLAN_DAYS, amount: amount, date: new Date().toLocaleString(),
+                        status: status, address: walletAddr, txHash: txId, expiresAt: expiresAt, rejectReason: rejectReason
                     };
                     TRANSACTIONS.unshift(txObj);
 
                     const adminReqObj = {
-                        id: 'REQ-' + Date.now(),
-                        txId: txId,
-                        userId: authState.userId || 'TVX-000000',
-                        userName: authState.name || 'User',
-                        userEmail: authState.email || 'user@tronvex.online',
-                        networkKey: coin.key,
-                        networkLabel: coin.name,
-                        walletAddress: walletAddr,
-                        amount: amount,
-                        status: status,
-                        expiresAt: expiresAt,
-                        rejectReason: rejectReason,
+                        id: 'REQ-' + Date.now(), txId: txId, userId: authState.userId || 'TVX-000000',
+                        userName: authState.name || 'User', userEmail: authState.email || 'user@tronvex.online',
+                        networkKey: coin.key, networkLabel: coin.name, walletAddress: walletAddr,
+                        amount: amount, status: status, expiresAt: expiresAt, rejectReason: rejectReason,
                         createdAt: new Date().toLocaleString()
                     };
 
@@ -3145,29 +2938,17 @@
                     if (supabaseClient) {
                         try {
                             await supabaseClient.from('deposits').insert([{
-                                tx_code: txId,
-                                user_code: authState.userId || 'TVX-000000',
-                                user_name: authState.name || 'User',
-                                user_email: authState.email || 'user@tronvex.online',
-                                network_key: coin.key,
-                                network_label: coin.name,
-                                wallet_address: walletAddr,
-                                amount: amount,
-                                status: status,
-                                reject_reason: rejectReason || null,
+                                tx_code: txId, user_code: authState.userId || 'TVX-000000',
+                                user_name: authState.name || 'User', user_email: authState.email || 'user@tronvex.online',
+                                network_key: coin.key, network_label: coin.name, wallet_address: walletAddr,
+                                amount: amount, status: status, reject_reason: rejectReason || null,
                                 expires_at: new Date(expiresAt).toISOString()
                             }]);
                             await supabaseClient.from('transactions').insert([{
-                                tx_code: txId,
-                                user_code: authState.userId || 'TVX-000000',
-                                tx_type: 'deposit',
-                                title: `Deposit ${coin.name}`,
-                                method: coin.name,
-                                network: coin.network,
-                                amount: amount,
-                                status: status,
-                                address: walletAddr,
-                                reject_reason: rejectReason || null
+                                tx_code: txId, user_code: authState.userId || 'TVX-000000',
+                                tx_type: 'deposit', title: `Deposit ${coin.name}`, method: coin.name,
+                                network: coin.network, amount: amount, status: status,
+                                address: walletAddr, reject_reason: rejectReason || null
                             }]);
                         } catch (e) {}
                     }
@@ -3194,29 +2975,18 @@
                     availableBalance = Math.max(0, Number((Number(availableBalance || 0) - amount).toFixed(2)));
                     const txId = 'WDR-' + Math.floor(100000 + Math.random() * 900000);
                     TRANSACTIONS.unshift({
-                        id: txId,
-                        type: 'withdraw',
-                        title: `Withdraw ${coin.name}`,
-                        method: coin.name,
-                        network: coin.network,
-                        amount: amount,
-                        date: new Date().toLocaleString(),
-                        status: 'completed',
-                        address: walletState.destination,
+                        id: txId, type: 'withdraw', title: `Withdraw ${coin.name}`, method: coin.name,
+                        network: coin.network, amount: amount, date: new Date().toLocaleString(),
+                        status: 'completed', address: walletState.destination,
                         txHash: 'TX-' + Math.random().toString(16).slice(2, 14).toUpperCase()
                     });
 
                     if (supabaseClient) {
                         try {
                             await supabaseClient.from('transactions').insert([{
-                                tx_code: txId,
-                                user_code: authState.userId || 'TVX-000000',
-                                tx_type: 'withdraw',
-                                title: `Withdraw ${coin.name}`,
-                                method: coin.name,
-                                network: coin.network,
-                                amount: amount,
-                                status: 'completed',
+                                tx_code: txId, user_code: authState.userId || 'TVX-000000',
+                                tx_type: 'withdraw', title: `Withdraw ${coin.name}`, method: coin.name,
+                                network: coin.network, amount: amount, status: 'completed',
                                 address: walletState.destination
                             }]);
                             await sbSyncProfileToCloud();
@@ -3255,7 +3025,7 @@
                 <div class="modal-header">
                     <div class="modal-icon invest"><i data-lucide="trending-up"></i></div>
                     <div class="modal-header-text">
-                        <h3>Invest in ${name}</h3>
+                        <h3>Invest in ${escapeHtml(name)}</h3>
                         <p>Available: $${Number(availableBalance||0).toFixed(2)} · $${min.toLocaleString()} – $${max.toLocaleString()} · 5 Days</p>
                     </div>
                 </div>
@@ -3272,7 +3042,7 @@
                     <div class="calc-row"><span class="lbl">Projected Profit (150%)</span><span class="val text-gold" id="calcProfit">$0.00</span></div>
                     <div class="calc-row"><span class="lbl">Projected Total</span><span class="val" id="calcTotal">$0.00</span></div>
                 </div>
-                <button class="btn btn-primary btn-block" id="investSubmitBtn" onclick="submitInvestment('${name}', ${min}, ${max})">Confirm Investment (5 Days)</button>
+                <button class="btn btn-primary btn-block" id="investSubmitBtn" onclick="submitInvestment('${escapeHtml(name)}', ${min}, ${max})">Confirm Investment (5 Days)</button>
             `);
         }
 
@@ -3320,52 +3090,28 @@
                 const invCode = 'INV-' + Math.floor(100000 + Math.random() * 900000);
 
                 ACTIVE_INVESTMENTS.unshift({
-                    id: invCode,
-                    plan: planName,
-                    amount: amount,
-                    days: days,
-                    roiRate: 1.5,
-                    durationMs: durationMs,
-                    startTime: nowMs,
-                    endTime: endMs
+                    id: invCode, plan: planName, amount: amount, days: days,
+                    roiRate: 1.5, durationMs: durationMs, startTime: nowMs, endTime: endMs
                 });
                 activeInvestmentsCount = ACTIVE_INVESTMENTS.length;
 
                 TRANSACTIONS.unshift({
-                    id: invCode,
-                    type: 'invest',
-                    title: `Invest ${planName} (5d)`,
-                    method: planName + ' Plan',
-                    network: '5-Day Live Cycle',
-                    days: days,
-                    amount: amount,
-                    date: new Date().toLocaleString(),
-                    status: 'completed',
-                    address: 'LOCKED-YIELD-POOL',
-                    txHash: invCode
+                    id: invCode, type: 'invest', title: `Invest ${planName} (5d)`, method: planName + ' Plan',
+                    network: '5-Day Live Cycle', days: days, amount: amount, date: new Date().toLocaleString(),
+                    status: 'completed', address: 'LOCKED-YIELD-POOL', txHash: invCode
                 });
 
                 if (supabaseClient) {
                     try {
                         await supabaseClient.from('investments').insert([{
-                            inv_code: invCode,
-                            user_code: authState.userId || 'TVX-000000',
-                            plan_name: planName,
-                            amount: amount,
-                            roi_rate: 1.50,
-                            duration_days: days,
-                            status: 'active',
-                            ends_at: new Date(endMs).toISOString()
+                            inv_code: invCode, user_code: authState.userId || 'TVX-000000',
+                            plan_name: planName, amount: amount, roi_rate: 1.50,
+                            duration_days: days, status: 'active', ends_at: new Date(endMs).toISOString()
                         }]);
                         await supabaseClient.from('transactions').insert([{
-                            tx_code: invCode,
-                            user_code: authState.userId || 'TVX-000000',
-                            tx_type: 'invest',
-                            title: `Invest ${planName} (5d)`,
-                            method: planName + ' Plan',
-                            network: '5-Day Live Cycle',
-                            amount: amount,
-                            status: 'completed',
+                            tx_code: invCode, user_code: authState.userId || 'TVX-000000',
+                            tx_type: 'invest', title: `Invest ${planName} (5d)`, method: planName + ' Plan',
+                            network: '5-Day Live Cycle', amount: amount, status: 'completed',
                             address: 'LOCKED-YIELD-POOL'
                         }]);
                         await sbSyncProfileToCloud();
@@ -3413,21 +3159,21 @@
                         </div>
                         <div class="receipt-status ${statusClass}">
                             <i data-lucide="${statusIcon}"></i>
-                            ${String(tx.status || 'pending').toUpperCase()}
+                            ${escapeHtml(String(tx.status || 'pending').toUpperCase())}
                         </div>
                     </div>
                     <div class="receipt-amount">
                         <div class="val ${isPos ? 'positive' : ''}">${formatAmount(tx)}</div>
-                        <div class="sub">${typeLabel} · ${tx.method}</div>
+                        <div class="sub">${escapeHtml(typeLabel)} · ${escapeHtml(tx.method)}</div>
                     </div>
                     <div class="receipt-details">
-                        <div class="receipt-row"><span class="lbl">User ID</span><span class="val mono">${authState.userId || '-'}</span></div>
-                        <div class="receipt-row"><span class="lbl">Transaction ID</span><span class="val">${tx.id}</span></div>
-                        <div class="receipt-row"><span class="lbl">Date & Time</span><span class="val">${tx.date}</span></div>
-                        <div class="receipt-row"><span class="lbl">Method</span><span class="val">${tx.method}</span></div>
-                        <div class="receipt-row"><span class="lbl">Network</span><span class="val" style="color:var(--primary);">${tx.network || '-'}</span></div>
-                        <div class="receipt-row"><span class="lbl">Address / Ref</span><span class="val mono">${tx.address || '-'}</span></div>
-                        ${tx.rejectReason ? `<div class="receipt-row"><span class="lbl">Reject Reason</span><span class="val" style="color:var(--danger);">${tx.rejectReason}</span></div>` : ''}
+                        <div class="receipt-row"><span class="lbl">User ID</span><span class="val mono">${escapeHtml(authState.userId || '-')}</span></div>
+                        <div class="receipt-row"><span class="lbl">Transaction ID</span><span class="val">${escapeHtml(tx.id)}</span></div>
+                        <div class="receipt-row"><span class="lbl">Date & Time</span><span class="val">${escapeHtml(tx.date)}</span></div>
+                        <div class="receipt-row"><span class="lbl">Method</span><span class="val">${escapeHtml(tx.method)}</span></div>
+                        <div class="receipt-row"><span class="lbl">Network</span><span class="val" style="color:var(--primary);">${escapeHtml(tx.network || '-')}</span></div>
+                        <div class="receipt-row"><span class="lbl">Address / Ref</span><span class="val mono">${escapeHtml(tx.address || '-')}</span></div>
+                        ${tx.rejectReason ? `<div class="receipt-row"><span class="lbl">Reject Reason</span><span class="val" style="color:var(--danger);">${escapeHtml(tx.rejectReason)}</span></div>` : ''}
                     </div>
                     <div class="receipt-actions">
                         <button class="btn btn-outline btn-block" onclick="closeModal()">Close</button>
