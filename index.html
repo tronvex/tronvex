@@ -15,7 +15,7 @@
             --bg-surface: #071422;
             --bg-card: rgba(10, 26, 43, 0.72);
             --bg-glass: rgba(255, 255, 255, 0.03);
-            --border-dim: rgba(255, 255, 255, 0.07);
+            --border-dim: rgba(255, 255, 255, 0.08);
             --border-glow: rgba(0, 255, 170, 0.35);
             --primary: #00ffaa;
             --primary-hover: #00e699;
@@ -64,25 +64,6 @@
         .btn-outline:hover { border-color: var(--primary); background: var(--primary-dim); }
         .btn-block { width: 100%; }
 
-        .google-auth-btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-            width: 100%; padding: 14px 24px;
-            background: linear-gradient(180deg, #17181a 0%, #101113 100%);
-            color: #f1f3f4; border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 9999px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 0.94rem; font-weight: 600; letter-spacing: 0.2px;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.07);
-            transition: all 0.24s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .google-auth-btn:hover:not(:disabled) {
-            background: linear-gradient(180deg, #202226 0%, #16181c 100%);
-            border-color: rgba(0, 255, 170, 0.45); transform: translateY(-1px);
-            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55), 0 0 18px rgba(0, 255, 170, 0.12);
-        }
-        .google-auth-btn:active:not(:disabled) { transform: scale(0.985); }
-        .google-auth-btn:disabled { opacity: 0.65; cursor: not-allowed; }
-        .google-g-icon { width: 20px; height: 20px; flex-shrink: 0; }
-
         header {
             position: sticky; top: 0; z-index: 100;
             background: rgba(3, 10, 18, 0.88); backdrop-filter: blur(20px);
@@ -115,13 +96,14 @@
 
         .auth-pill-btn {
             display: inline-flex; align-items: center; gap: 7px;
-            padding: 8px 14px; border-radius: 50px;
-            background: #141619; border: 1px solid rgba(255,255,255,0.16);
-            color: #ffffff; font-size: 0.74rem; font-weight: 700;
+            padding: 8px 15px; border-radius: 50px;
+            background: linear-gradient(135deg, rgba(0,255,170,0.14), rgba(0,136,255,0.12));
+            border: 1px solid rgba(0,255,170,0.34);
+            color: #ffffff; font-size: 0.75rem; font-weight: 700;
             transition: var(--transition);
         }
-        .auth-pill-btn:hover { border-color: var(--primary); background: #1c1f24; }
-        .auth-pill-btn svg { width: 15px; height: 15px; }
+        .auth-pill-btn:hover { border-color: var(--primary); background: rgba(0,255,170,0.22); transform: translateY(-1px); }
+        .auth-pill-btn svg { width: 15px; height: 15px; color: var(--primary); }
 
         .admin-pill-btn {
             display: none; align-items: center; gap: 6px;
@@ -133,6 +115,84 @@
         .admin-pill-btn.visible { display: inline-flex; }
         .admin-pill-btn:hover { background: var(--gold); color: var(--text-dark); }
 
+        /* Enterprise Auth Modal Styling */
+        .modal.enterprise-auth-modal {
+            max-width: 430px;
+            padding: 26px 24px;
+            background:
+                radial-gradient(circle at 85% 8%, rgba(0,255,170,0.11), transparent 46%),
+                radial-gradient(circle at 12% 92%, rgba(0,136,255,0.11), transparent 48%),
+                #061321;
+            border: 1px solid rgba(0,255,170,0.24);
+            border-radius: 24px;
+            box-shadow: 0 32px 90px rgba(0,0,0,0.85);
+        }
+        .ent-auth-top {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-bottom: 14px; margin-bottom: 18px;
+            border-bottom: 1px solid var(--border-dim); padding-right: 28px;
+        }
+        .ent-auth-brand { display: flex; align-items: center; gap: 10px; }
+        .ent-auth-pill {
+            font-size: 0.6rem; font-weight: 800; letter-spacing: 0.9px; text-transform: uppercase;
+            padding: 4px 10px; border-radius: 50px;
+            background: rgba(0,255,170,0.1); color: var(--primary); border: 1px solid rgba(0,255,170,0.25);
+        }
+        .ent-tabs {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+            background: rgba(0,0,0,0.38); border: 1px solid var(--border-dim);
+            border-radius: 13px; padding: 4px; margin-bottom: 18px;
+        }
+        .ent-tab-btn {
+            padding: 9px 12px; border-radius: 9px; font-size: 0.8rem; font-weight: 700;
+            color: var(--text-muted); transition: var(--transition);
+        }
+        .ent-tab-btn.active {
+            background: rgba(0,255,170,0.15); color: var(--primary);
+            border: 1px solid rgba(0,255,170,0.32);
+        }
+        .ent-title-block { margin-bottom: 16px; }
+        .ent-title-block h3 { font-size: 1.28rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 4px; }
+        .ent-title-block p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+        .ent-input-wrap { position: relative; }
+        .ent-eye-btn {
+            position: absolute; right: 11px; top: 50%; transform: translateY(-50%);
+            color: var(--text-muted); padding: 4px; display: inline-flex; align-items: center; justify-content: center;
+        }
+        .ent-eye-btn:hover { color: var(--primary); }
+        .ent-row-meta {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: -6px; margin-bottom: 16px; font-size: 0.74rem;
+        }
+        .ent-link-btn {
+            color: var(--primary); font-weight: 700; font-size: 0.74rem;
+            display: inline-flex; align-items: center; gap: 4px;
+        }
+        .ent-link-btn:hover { text-decoration: underline; }
+        .ent-submit-btn {
+            width: 100%; padding: 13px 18px; border-radius: 13px;
+            background: linear-gradient(135deg, #00ffaa 0%, #00d4ff 100%);
+            color: #031018; font-size: 0.84rem; font-weight: 800; letter-spacing: 0.4px;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            box-shadow: 0 8px 24px rgba(0,255,170,0.22); transition: var(--transition);
+        }
+        .ent-submit-btn:hover:not(:disabled) { filter: brightness(1.06); transform: translateY(-1px); }
+        .ent-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .ent-otp-box {
+            background: rgba(0,255,170,0.07); border: 1px solid rgba(0,255,170,0.25);
+            border-radius: 12px; padding: 10px 12px; margin-bottom: 14px;
+            font-size: 0.74rem; color: #c7f9e8;
+        }
+        .ent-otp-code {
+            font-family: 'Courier New', monospace; font-size: 1rem; font-weight: 800;
+            color: var(--primary); letter-spacing: 3px; display: inline-block; margin-top: 2px;
+        }
+        .ent-footer-note {
+            margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border-dim);
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            font-size: 0.69rem; color: var(--text-muted);
+        }
+
         .tab-section { display: none; animation: fadeIn 0.3s ease; }
         .tab-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
@@ -143,8 +203,7 @@
             background:
                 linear-gradient(135deg, rgba(0,255,170,0.08), rgba(0,136,255,0.05) 50%, rgba(168,85,247,0.05)),
                 var(--bg-card);
-            border: 1px solid rgba(0, 255, 170, 0.16);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+            border: 1px solid rgba(0, 255, 170, 0.16); box-shadow: 0 12px 32px rgba(0,0,0,0.35);
         }
         .balance-card::before {
             content: ''; position: absolute; top: -50%; right: -15%;
@@ -214,9 +273,8 @@
         .balance-btn.withdraw:hover { background: rgba(0,136,255,0.24); border-color: var(--blue); transform: translateY(-1px); }
 
         .active-inv-card {
-            margin-top: 14px;
-            background: var(--bg-card); border: 1px solid rgba(0, 255, 170, 0.16);
-            border-radius: 18px; padding: 16px 18px;
+            margin-top: 14px; background: var(--bg-card);
+            border: 1px solid rgba(0, 255, 170, 0.16); border-radius: 18px; padding: 16px 18px;
         }
         .active-inv-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
         .active-inv-head h4 { font-size: 0.84rem; font-weight: 800; display: flex; align-items: center; gap: 7px; }
@@ -257,15 +315,12 @@
         .plans-slider-wrapper:active { cursor: grabbing; }
         .plans-slider {
             display: flex; gap: 14px;
-            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            will-change: transform;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); will-change: transform;
         }
         .plan-card {
-            flex: 0 0 calc(33.333% - 9.333px);
-            background: var(--bg-card); border: 1px solid var(--border-dim);
+            flex: 0 0 calc(33.333% - 9.333px); background: var(--bg-card); border: 1px solid var(--border-dim);
             border-radius: 18px; padding: 20px; position: relative;
-            transition: border-color 0.3s, box-shadow 0.3s;
-            display: flex; flex-direction: column; user-select: none;
+            transition: border-color 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; user-select: none;
         }
         .plan-card:hover { border-color: var(--border-glow); box-shadow: 0 8px 24px rgba(0,255,170,0.08); }
         .plan-card.tier-1 { border-top: 3px solid var(--primary); }
@@ -476,8 +531,7 @@
             backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
             border-top: 1px solid rgba(0, 255, 170, 0.08);
             display: flex; justify-content: space-around; align-items: center;
-            padding: 10px 8px 14px; max-width: 100%;
-            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
+            padding: 10px 8px 14px; max-width: 100%; box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
         }
         .nav-item {
             display: flex; flex-direction: column; align-items: center; gap: 5px;
@@ -705,36 +759,9 @@
         }
         .inst-sec-btn:hover { border-color: var(--gold); color: var(--gold); }
 
-        .modal.auth-pro-modal {
-            max-width: 410px; padding: 32px 26px;
-            background:
-                radial-gradient(circle at 80% 10%, rgba(0,255,170,0.09), transparent 48%),
-                radial-gradient(circle at 20% 90%, rgba(0,136,255,0.08), transparent 48%),
-                #061220;
-            border: 1px solid rgba(0,255,170,0.24); border-radius: 24px; text-align: center;
-        }
-        .auth-brand-banner {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 24px; padding-bottom: 14px;
-            border-bottom: 1px solid var(--border-dim); text-align: left;
-        }
-        .auth-brand-left { display: flex; align-items: center; gap: 10px; }
-        .auth-brand-badge {
-            font-size: 0.62rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
-            padding: 4px 10px; border-radius: 50px; background: rgba(0,255,170,0.1);
-            color: var(--primary); border: 1px solid rgba(0,255,170,0.25); margin-right: 26px;
-        }
-        .auth-single-hero { margin-bottom: 24px; }
-        .auth-single-hero h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 8px; }
-        .auth-single-hero p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
-        .auth-security-note {
-            margin-top: 16px; font-size: 0.7rem; color: var(--text-muted);
-            display: inline-flex; align-items: center; gap: 6px;
-        }
-
         .btn-spinner {
             display: inline-block; width: 15px; height: 15px;
-            border: 2px solid rgba(255, 255, 255, 0.25); border-top-color: #ffffff;
+            border: 2px solid rgba(3, 16, 24, 0.25); border-top-color: #031018;
             border-radius: 50%; animation: spin 0.75s linear infinite;
         }
 
@@ -972,14 +999,9 @@
                     <i data-lucide="shield-alert" style="width:14px;height:14px;"></i>
                     <span>Admin Panel</span>
                 </button>
-                <button class="auth-pill-btn" id="headerAuthBtn" onclick="openGoogleAuthModal()">
-                    <svg class="google-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/>
-                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"/>
-                        <path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"/>
-                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"/>
-                    </svg>
-                    <span id="headerAuthLabel">Continue with Google</span>
+                <button class="auth-pill-btn" id="headerAuthBtn" onclick="openAuthModal('signin')">
+                    <i data-lucide="shield-check"></i>
+                    <span id="headerAuthLabel">Sign In</span>
                 </button>
                 <button class="icon-btn" onclick="openNotificationsModal()">
                     <i data-lucide="bell"></i>
@@ -1147,7 +1169,7 @@
         <div class="container">
             <div class="hero-professional">
                 <div class="hero-content">
-                    <div class="hero-tag"><i data-lucide="shield-check"></i> Google OAuth Protected</div>
+                    <div class="hero-tag"><i data-lucide="shield-check"></i> Enterprise Security & Recovery</div>
                     <h1>Grow your <span class="text-gradient">USDT & TON</span><br>with confidence</h1>
                     <p>4 supported networks (USDT BEP20, USDT TRC20, USDT ERC20, TON) · $5 minimum · Fixed 5-day cycles.</p>
                     <div class="hero-stats">
@@ -1178,8 +1200,8 @@
 
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="lock"></i></div>
-                    <div class="feature-text"><h4>Google Sign-In & RLS</h4><p>Instant Google account authentication & Supabase Row Level Security.</p></div>
+                    <div class="feature-icon"><i data-lucide="key-round"></i></div>
+                    <div class="feature-text"><h4>Instant Access & Recovery</h4><p>Fast account creation, sign-in & OTP password reset flow.</p></div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="zap"></i></div>
@@ -1277,8 +1299,8 @@
                     <div class="section-icon"><i data-lucide="user"></i></div>
                     <div class="section-title"><h2>Profile</h2><p>User ID, name, email & referral link</p></div>
                 </div>
-                <button class="btn btn-outline btn-sm" onclick="openGoogleAuthModal()">
-                    <i data-lucide="refresh-cw" style="width:13px;height:13px;"></i> Switch Google
+                <button class="btn btn-outline btn-sm" onclick="openAuthModal('forgot')">
+                    <i data-lucide="key-round" style="width:13px;height:13px;"></i> Reset Password
                 </button>
             </div>
 
@@ -1345,7 +1367,7 @@
             <div class="profile-menu">
                 <div class="profile-menu-item" onclick="signOutAccount()">
                     <div class="pm-icon" style="background:rgba(255,68,102,0.12);color:var(--danger);"><i data-lucide="log-out"></i></div>
-                    <div class="pm-text"><h5 style="color:var(--danger);">Sign Out</h5><p>Sign out of your Google account</p></div>
+                    <div class="pm-text"><h5 style="color:var(--danger);">Sign Out</h5><p>Sign out of your TRONVEX account</p></div>
                     <div class="pm-arrow"><i data-lucide="chevron-right"></i></div>
                 </div>
             </div>
@@ -1390,7 +1412,7 @@
         lucide.createIcons();
 
         // ============================================================
-        // 1. SUPABASE CONFIGURATION & HOST VALIDATION
+        // 1. CONFIGURATION & SAFE FALLBACKS
         // ============================================================
         const SUPABASE_URL = 'https://njqyafoszxskjrgnfsex.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_0SR-U0qekJgjhKJeNB7SIw_e3ereu3P';
@@ -1414,6 +1436,16 @@
                 .replace(/'/g, '&#39;');
         }
 
+        function hashSecret(secret) {
+            let h = 2166136261;
+            const s = String(secret || '');
+            for (let i = 0; i < s.length; i++) {
+                h ^= s.charCodeAt(i);
+                h = Math.imul(h, 16777619);
+            }
+            return 'HSH-' + (h >>> 0).toString(16).toUpperCase();
+        }
+
         const supabaseClient = (
             window.supabase &&
             isValidSupabaseUrl(SUPABASE_URL) &&
@@ -1434,6 +1466,7 @@
 
         const DB_STORAGE_KEY = 'tronvex_database_v2';
         const AUTH_STORAGE_KEY = 'tronvex_session_v2';
+        const ACCOUNTS_VAULT_KEY = 'tronvex_accounts_vault_v1';
 
         let availableBalance = 0.00;
         let lockedBalance = 0.00;
@@ -1446,6 +1479,7 @@
         let TRANSACTIONS = [];
         let ADMIN_DEPOSIT_REQUESTS = [];
         let USER_NOTIFICATIONS = [];
+        let ACCOUNTS_VAULT = {};
         let liveEarnTimerInterval = null;
         let smsPopupTimeout = null;
         let realtimeChannel = null;
@@ -1458,6 +1492,13 @@
             email: '',
             refCode: 'GUEST01',
             isAdmin: false
+        };
+
+        let forgotFlowState = {
+            step: 1, // 1 = email, 2 = otp, 3 = new password
+            email: '',
+            otpCode: '',
+            otpVerified: false
         };
 
         function generateUniqueUserId() {
@@ -1475,6 +1516,21 @@
         function getReferralLink() {
             const cleanUrl = REDIRECT_URL.split('?')[0];
             return `${cleanUrl}?ref=${authState.refCode || 'GUEST01'}`;
+        }
+
+        function loadAccountsVault() {
+            try {
+                const raw = localStorage.getItem(ACCOUNTS_VAULT_KEY);
+                ACCOUNTS_VAULT = raw ? JSON.parse(raw) : {};
+            } catch (e) {
+                ACCOUNTS_VAULT = {};
+            }
+        }
+
+        function saveAccountsVault() {
+            try {
+                localStorage.setItem(ACCOUNTS_VAULT_KEY, JSON.stringify(ACCOUNTS_VAULT));
+            } catch (e) {}
         }
 
         function loadDatabase() {
@@ -1530,7 +1586,7 @@
         }
 
         // ============================================================
-        // 2. SUPABASE CLOUD SYNC & REALTIME
+        // 2. SUPABASE CLOUD SYNC (NON-BLOCKING)
         // ============================================================
         async function sbEnsureProfileForUser(user) {
             if (!supabaseClient || !user || !user.email) return;
@@ -1609,103 +1665,6 @@
                     totalProfitEarned = Number(prof.total_profit ?? 0);
                     completedCyclesCount = Number(prof.completed_cycles ?? 0);
                     saveAuthState();
-                } else {
-                    authState.authUserId = user.id;
-                    authState.userId = authState.userId || generateUniqueUserId();
-                    authState.name = googleName;
-                    authState.email = user.email;
-                    authState.refCode = buildRefCode(email);
-                    authState.isAdmin = email === ADMIN_EMAIL.toLowerCase();
-                    saveAuthState();
-                }
-
-                const userCode = authState.userId;
-                if (userCode) {
-                    const { data: txs } = await supabaseClient
-                        .from('transactions')
-                        .select('*')
-                        .eq('user_code', userCode)
-                        .order('created_at', { ascending: false });
-
-                    if (Array.isArray(txs)) {
-                        TRANSACTIONS = txs.map(t => ({
-                            id: t.tx_code,
-                            type: t.tx_type,
-                            title: t.title,
-                            method: t.method,
-                            network: t.network,
-                            amount: Number(t.amount || 0),
-                            date: new Date(t.created_at).toLocaleString(),
-                            status: t.status,
-                            address: t.address || '',
-                            rejectReason: t.reject_reason || ''
-                        }));
-                    }
-
-                    const { data: notifs } = await supabaseClient
-                        .from('notifications')
-                        .select('*')
-                        .eq('user_code', userCode)
-                        .order('created_at', { ascending: false });
-
-                    if (Array.isArray(notifs)) {
-                        USER_NOTIFICATIONS = notifs.map(n => ({
-                            id: n.id,
-                            title: n.title,
-                            message: n.message,
-                            time: new Date(n.created_at).toLocaleString()
-                        }));
-                    }
-
-                    const { data: invs } = await supabaseClient
-                        .from('investments')
-                        .select('*')
-                        .eq('user_code', userCode)
-                        .eq('status', 'active')
-                        .order('created_at', { ascending: false });
-
-                    if (Array.isArray(invs)) {
-                        ACTIVE_INVESTMENTS = invs.map(i => {
-                            const startMs = new Date(i.created_at).getTime();
-                            const endMs = new Date(i.ends_at).getTime();
-                            return {
-                                id: i.inv_code,
-                                plan: i.plan_name,
-                                amount: Number(i.amount || 0),
-                                days: Number(i.duration_days || PLAN_DAYS),
-                                roiRate: Number(i.roi_rate || 1.5),
-                                durationMs: Math.max(1000, endMs - startMs),
-                                startTime: startMs,
-                                endTime: endMs
-                            };
-                        });
-                        activeInvestmentsCount = ACTIVE_INVESTMENTS.length;
-                    }
-                }
-
-                if (authState.isAdmin) {
-                    const { data: deps } = await supabaseClient
-                        .from('deposits')
-                        .select('*')
-                        .eq('status', 'pending')
-                        .order('created_at', { ascending: false });
-
-                    if (Array.isArray(deps)) {
-                        ADMIN_DEPOSIT_REQUESTS = deps.map(d => ({
-                            id: d.id,
-                            txId: d.tx_code,
-                            userId: d.user_code,
-                            userName: d.user_name,
-                            userEmail: d.user_email,
-                            networkKey: d.network_key,
-                            networkLabel: d.network_label,
-                            walletAddress: d.wallet_address,
-                            amount: Number(d.amount || 0),
-                            status: d.status,
-                            expiresAt: d.expires_at ? new Date(d.expires_at).getTime() : null,
-                            createdAt: new Date(d.created_at).toLocaleString()
-                        }));
-                    }
                 }
 
                 saveDatabase();
@@ -1721,23 +1680,17 @@
                 supabaseClient.removeChannel(realtimeChannel);
                 realtimeChannel = null;
             }
-            realtimeChannel = supabaseClient
-                .channel('tronvex-user-sync-' + authState.userId)
-                .on('postgres_changes', { event: '*', schema: 'public', table: 'profiles', filter: `user_code=eq.${authState.userId}` }, async () => {
-                    const { data: { session } } = await supabaseClient.auth.getSession();
-                    if (session?.user) await sbLoadUserFromCloud(session.user);
-                })
-                .on('postgres_changes', { event: '*', schema: 'public', table: 'transactions', filter: `user_code=eq.${authState.userId}` }, async () => {
-                    const { data: { session } } = await supabaseClient.auth.getSession();
-                    if (session?.user) await sbLoadUserFromCloud(session.user);
-                })
-                .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'notifications', filter: `user_code=eq.${authState.userId}` }, (payload) => {
-                    const row = payload.new;
-                    if (row && row.is_sms) {
-                        triggerSmsAlert(row.title, row.message, Boolean(row.is_rejected));
-                    }
-                })
-                .subscribe();
+            try {
+                realtimeChannel = supabaseClient
+                    .channel('tronvex-user-sync-' + authState.userId)
+                    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'notifications', filter: `user_code=eq.${authState.userId}` }, (payload) => {
+                        const row = payload.new;
+                        if (row && row.is_sms) {
+                            triggerSmsAlert(row.title, row.message, Boolean(row.is_rejected));
+                        }
+                    })
+                    .subscribe();
+            } catch (e) {}
         }
 
         function triggerSmsAlert(title, body, isRejected = false) {
@@ -1793,7 +1746,7 @@
 
         function openNotificationsModal() {
             const modalBox = document.getElementById('modalContent');
-            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('enterprise-auth-modal');
             modalBox.classList.remove('wallet-inst-modal');
 
             const dot = document.getElementById('notifDot');
@@ -1851,10 +1804,10 @@
             });
 
             if (authLabel) {
-                authLabel.textContent = authState.isLoggedIn ? (displayName.split(' ')[0] || 'Account') : 'Continue with Google';
+                authLabel.textContent = authState.isLoggedIn ? (displayName.split(' ')[0] || 'Account') : 'Sign In';
             }
             if (authBtn) {
-                authBtn.onclick = () => authState.isLoggedIn ? switchTab('profile') : openGoogleAuthModal();
+                authBtn.onclick = () => authState.isLoggedIn ? switchTab('profile') : openAuthModal('signin');
             }
             if (adminBtn) {
                 adminBtn.classList.toggle('visible', Boolean(authState.isLoggedIn && authState.isAdmin));
@@ -1982,7 +1935,7 @@
             if (authState.isLoggedIn) {
                 callback();
             } else {
-                openGoogleAuthModal();
+                openAuthModal('signin');
             }
         }
 
@@ -1991,91 +1944,483 @@
         }
 
         // ============================================================
-        // 3. SINGLE-OPTION GOOGLE AUTHENTICATION ("Continue with Google")
+        // 3. ENTERPRISE INSTANT AUTH + FORGET PASSWORD FLOW
         // ============================================================
-        function openGoogleAuthModal() {
+        function openAuthModal(view = 'signin') {
             const modalBox = document.getElementById('modalContent');
             modalBox.classList.remove('wallet-inst-modal');
-            modalBox.classList.add('auth-pro-modal');
+            modalBox.classList.add('enterprise-auth-modal');
+
+            if (view === 'forgot') {
+                renderForgotPasswordModal();
+                return;
+            }
+
+            const isSignUp = view === 'signup';
+            const savedEmail = authState.email || '';
 
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
 
-                <div class="auth-brand-banner">
-                    <div class="auth-brand-left">
+                <div class="ent-auth-top">
+                    <div class="ent-auth-brand">
                         <div class="logo-icon" style="width:32px;height:32px;border-radius:9px;">
                             <i data-lucide="shield-check" style="width:17px;height:17px;"></i>
                         </div>
-                        <span style="font-weight:800;font-size:1rem;letter-spacing:-0.4px;">TRONVEX</span>
+                        <div>
+                            <div style="font-weight:800;font-size:0.98rem;line-height:1.1;">TRONVEX</div>
+                            <div style="font-size:0.6rem;color:var(--text-muted);font-weight:700;letter-spacing:0.8px;">INSTANT ACCESS</div>
+                        </div>
                     </div>
-                    <span class="auth-brand-badge">Google OAuth</span>
+                    <span class="ent-auth-pill">256-BIT VAULT</span>
                 </div>
 
-                <div class="auth-single-hero">
-                    <h3>Sign in or Sign up</h3>
-                    <p>Access your TRONVEX wallet, investment plans, and real-time portfolio with your Google account.</p>
+                <div class="ent-tabs">
+                    <button type="button" class="ent-tab-btn ${!isSignUp ? 'active' : ''}" onclick="openAuthModal('signin')">Sign In</button>
+                    <button type="button" class="ent-tab-btn ${isSignUp ? 'active' : ''}" onclick="openAuthModal('signup')">Create Account</button>
                 </div>
 
-                <button type="button" class="google-auth-btn" id="continueGoogleBtn" onclick="continueWithGoogle()">
-                    <svg class="google-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/>
-                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"/>
-                        <path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"/>
-                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"/>
-                    </svg>
-                    <span>Continue with Google</span>
+                <div class="ent-title-block">
+                    <h3>${isSignUp ? 'Create your TRONVEX account' : 'Welcome back'}</h3>
+                    <p>${isSignUp ? 'Set up your account in seconds with your name, email & password.' : 'Sign in with your email and password or PIN to manage your portfolio.'}</p>
+                </div>
+
+                ${isSignUp ? `
+                    <div class="form-group">
+                        <label><span>Full Name</span></label>
+                        <input type="text" id="authFullName" class="form-control" placeholder="Enter your full name" value="${escapeHtml(authState.name)}">
+                        <div class="error-msg" id="authNameErr">Please enter your full name (at least 2 characters).</div>
+                    </div>
+                ` : ''}
+
+                <div class="form-group">
+                    <label><span>Email Address</span></label>
+                    <input type="email" id="authEmailInput" class="form-control" placeholder="name@example.com" value="${escapeHtml(savedEmail)}">
+                    <div class="error-msg" id="authEmailErr">Please enter a valid email address.</div>
+                </div>
+
+                <div class="form-group">
+                    <label><span>Password / PIN</span></label>
+                    <div class="ent-input-wrap">
+                        <input type="password" id="authPasswordInput" class="form-control" style="padding-right:40px;" placeholder="Min 4 characters or PIN">
+                        <button type="button" class="ent-eye-btn" onclick="toggleInputVisibility('authPasswordInput', this)">
+                            <i data-lucide="eye" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+                    <div class="error-msg" id="authPassErr">Password must be at least 4 characters.</div>
+                </div>
+
+                ${!isSignUp ? `
+                    <div class="ent-row-meta">
+                        <span style="color:var(--text-muted);">Instant local & cloud session</span>
+                        <button type="button" class="ent-link-btn" onclick="startForgotPasswordFlow()">
+                            <i data-lucide="key-round" style="width:13px;height:13px;"></i> Forgot password?
+                        </button>
+                    </div>
+                ` : ''}
+
+                <button type="button" class="ent-submit-btn" id="entAuthSubmitBtn" onclick="submitInstantAuth('${isSignUp ? 'signup' : 'signin'}')">
+                    <i data-lucide="${isSignUp ? 'user-plus' : 'log-in'}" style="width:16px;height:16px;"></i>
+                    <span>${isSignUp ? 'Create Account' : 'Sign In'}</span>
                 </button>
 
-                <div class="auth-security-note">
-                    <i data-lucide="lock" style="width:13px;height:13px;color:var(--primary);"></i>
-                    <span>Secured via Google & Supabase Authentication</span>
+                <div class="ent-footer-note">
+                    <i data-lucide="lock" style="width:12px;height:12px;color:var(--primary);"></i>
+                    <span>Protected recovery & instant session persistence</span>
                 </div>
             `);
         }
 
-        async function continueWithGoogle() {
-            if (!supabaseClient || !isValidSupabaseUrl(SUPABASE_URL)) {
-                showToast('Supabase URL or client is invalid. Check your Supabase project settings.', 'error');
-                return;
+        function toggleInputVisibility(inputId, btnEl) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            const isPwd = input.type === 'password';
+            input.type = isPwd ? 'text' : 'password';
+            if (btnEl) {
+                btnEl.innerHTML = `<i data-lucide="${isPwd ? 'eye-off' : 'eye'}" style="width:16px;height:16px;"></i>`;
+                lucide.createIcons();
+            }
+        }
+
+        async function submitInstantAuth(mode) {
+            const emailEl = document.getElementById('authEmailInput');
+            const passEl = document.getElementById('authPasswordInput');
+            const nameEl = document.getElementById('authFullName');
+            const emailErr = document.getElementById('authEmailErr');
+            const passErr = document.getElementById('authPassErr');
+            const nameErr = document.getElementById('authNameErr');
+
+            const email = (emailEl ? emailEl.value : '').trim().toLowerCase();
+            const password = passEl ? passEl.value : '';
+            const fullName = nameEl ? nameEl.value.trim() : '';
+
+            let valid = true;
+            if (mode === 'signup' && fullName.length < 2) {
+                if (nameEl) nameEl.classList.add('error');
+                if (nameErr) nameErr.style.display = 'block';
+                valid = false;
+            } else {
+                if (nameEl) nameEl.classList.remove('error');
+                if (nameErr) nameErr.style.display = 'none';
             }
 
-            const btn = document.getElementById('continueGoogleBtn');
+            if (!email || !email.includes('@') || !email.includes('.')) {
+                if (emailEl) emailEl.classList.add('error');
+                if (emailErr) emailErr.style.display = 'block';
+                valid = false;
+            } else {
+                if (emailEl) emailEl.classList.remove('error');
+                if (emailErr) emailErr.style.display = 'none';
+            }
+
+            if (!password || password.length < 4) {
+                if (passEl) passEl.classList.add('error');
+                if (passErr) passErr.style.display = 'block';
+                valid = false;
+            } else {
+                if (passEl) passEl.classList.remove('error');
+                if (passErr) passErr.style.display = 'none';
+            }
+
+            if (!valid) return;
+
+            const btn = document.getElementById('entAuthSubmitBtn');
             if (btn) {
                 btn.disabled = true;
-                btn.innerHTML = `<span class="btn-spinner"></span> <span>Redirecting to Google...</span>`;
+                btn.innerHTML = `<span class="btn-spinner"></span> <span>${mode === 'signup' ? 'Creating Account...' : 'Signing In...'}</span>`;
             }
 
             try {
-                const { error } = await supabaseClient.auth.signInWithOAuth({
-                    provider: 'google',
-                    options: {
-                        redirectTo: REDIRECT_URL
+                loadAccountsVault();
+                const secretHash = hashSecret(password);
+                const isAdminUser = email === ADMIN_EMAIL.toLowerCase();
+
+                if (mode === 'signup') {
+                    const existing = ACCOUNTS_VAULT[email];
+                    const userCode = (existing && existing.userId) ? existing.userId : generateUniqueUserId();
+                    const refCode = (existing && existing.refCode) ? existing.refCode : buildRefCode(email);
+
+                    ACCOUNTS_VAULT[email] = {
+                        userId: userCode,
+                        name: fullName,
+                        email: email,
+                        refCode: refCode,
+                        passwordHash: secretHash,
+                        isAdmin: isAdminUser,
+                        updatedAt: Date.now()
+                    };
+                    saveAccountsVault();
+
+                    authState = {
+                        isLoggedIn: true,
+                        authUserId: userCode,
+                        userId: userCode,
+                        name: fullName,
+                        email: email,
+                        refCode: refCode,
+                        isAdmin: isAdminUser
+                    };
+                    saveAuthState();
+                    saveDatabase();
+                    syncAuthUI();
+                    closeModal();
+                    showToast(`Account created for ${fullName}!`, 'success');
+                } else {
+                    const existing = ACCOUNTS_VAULT[email];
+                    if (existing && existing.passwordHash && existing.passwordHash !== secretHash) {
+                        if (passEl) passEl.classList.add('error');
+                        if (passErr) {
+                            passErr.textContent = 'Incorrect password. Use "Forgot password?" to reset it.';
+                            passErr.style.display = 'block';
+                        }
+                        if (btn) {
+                            btn.disabled = false;
+                            btn.innerHTML = `<i data-lucide="log-in" style="width:16px;height:16px;"></i> <span>Sign In</span>`;
+                            lucide.createIcons();
+                        }
+                        return;
                     }
-                });
-                if (error) throw error;
-            } catch (err) {
-                const msg = (err && err.message && err.message.toLowerCase().includes('fetch'))
-                    ? 'Cannot reach Supabase server. Check internet/DNS or Supabase project status.'
-                    : (err.message || 'Google sign-in failed.');
-                showToast(msg, 'error');
-                if (btn) {
-                    btn.disabled = false;
-                    btn.innerHTML = `
-                        <svg class="google-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/>
-                            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"/>
-                            <path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"/>
-                            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"/>
-                        </svg>
-                        <span>Continue with Google</span>
-                    `;
+
+                    const derivedName = (existing && existing.name)
+                        ? existing.name
+                        : email.split('@')[0].replace(/[._-]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                    const userCode = (existing && existing.userId)
+                        ? existing.userId
+                        : (authState.userId && authState.email === email ? authState.userId : generateUniqueUserId());
+                    const refCode = (existing && existing.refCode) ? existing.refCode : buildRefCode(email);
+
+                    ACCOUNTS_VAULT[email] = {
+                        userId: userCode,
+                        name: derivedName,
+                        email: email,
+                        refCode: refCode,
+                        passwordHash: secretHash,
+                        isAdmin: isAdminUser,
+                        updatedAt: Date.now()
+                    };
+                    saveAccountsVault();
+
+                    authState = {
+                        isLoggedIn: true,
+                        authUserId: userCode,
+                        userId: userCode,
+                        name: derivedName,
+                        email: email,
+                        refCode: refCode,
+                        isAdmin: isAdminUser
+                    };
+                    saveAuthState();
+                    saveDatabase();
+                    syncAuthUI();
+                    closeModal();
+                    showToast(`Signed in as ${derivedName}`, 'success');
+                }
+            } finally {
+                const submitBtn = document.getElementById('entAuthSubmitBtn');
+                if (submitBtn && document.getElementById('modalOverlay').classList.contains('active')) {
+                    submitBtn.disabled = false;
                 }
             }
         }
 
+        // ============================================================
+        // 4. FORGET PASSWORD FLOW (3 STEPS: EMAIL -> OTP -> NEW PASSWORD)
+        // ============================================================
+        function startForgotPasswordFlow() {
+            const emailInput = document.getElementById('authEmailInput');
+            const prefillEmail = (emailInput && emailInput.value.trim())
+                ? emailInput.value.trim().toLowerCase()
+                : (authState.email || '');
+
+            forgotFlowState = {
+                step: 1,
+                email: prefillEmail,
+                otpCode: '',
+                otpVerified: false
+            };
+            renderForgotPasswordModal();
+        }
+
+        function renderForgotPasswordModal() {
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('wallet-inst-modal');
+            modalBox.classList.add('enterprise-auth-modal');
+
+            let stepBody = '';
+
+            if (forgotFlowState.step === 1) {
+                stepBody = `
+                    <div class="ent-title-block">
+                        <h3>Forgot Password</h3>
+                        <p>Step 1 of 3 · Enter your account email to receive a 6-digit reset code.</p>
+                    </div>
+                    <div class="form-group">
+                        <label><span>Account Email</span></label>
+                        <input type="email" id="fpEmailInput" class="form-control" placeholder="name@example.com" value="${escapeHtml(forgotFlowState.email)}">
+                        <div class="error-msg" id="fpEmailErr">Please enter a valid email address.</div>
+                    </div>
+                    <button type="button" class="ent-submit-btn" onclick="sendForgotPasswordOtp()">
+                        <i data-lucide="send" style="width:15px;height:15px;"></i>
+                        <span>Send Reset Code</span>
+                    </button>
+                `;
+            } else if (forgotFlowState.step === 2) {
+                stepBody = `
+                    <div class="ent-title-block">
+                        <h3>Verify Code</h3>
+                        <p>Step 2 of 3 · Enter the 6-digit code sent to <strong>${escapeHtml(forgotFlowState.email)}</strong>.</p>
+                    </div>
+                    <div class="ent-otp-box">
+                        <div>Verification Code (Instant Preview):</div>
+                        <span class="ent-otp-code">${escapeHtml(forgotFlowState.otpCode)}</span>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <span>6-Digit Code</span>
+                            <span class="max-btn" onclick="document.getElementById('fpOtpInput').value='${escapeHtml(forgotFlowState.otpCode)}'">AUTO-FILL</span>
+                        </label>
+                        <input type="text" id="fpOtpInput" class="form-control" style="font-family:monospace;letter-spacing:3px;font-weight:800;" maxlength="6" placeholder="000000">
+                        <div class="error-msg" id="fpOtpErr">Code does not match. Check the 6-digit code above.</div>
+                    </div>
+                    <div class="inst-btn-row">
+                        <button type="button" class="inst-sec-btn" onclick="forgotFlowState.step = 1; renderForgotPasswordModal();">← Back</button>
+                        <button type="button" class="ent-submit-btn" onclick="verifyForgotPasswordOtp()">
+                            <span>Verify Code</span>
+                            <i data-lucide="check-circle" style="width:15px;height:15px;"></i>
+                        </button>
+                    </div>
+                `;
+            } else {
+                stepBody = `
+                    <div class="ent-title-block">
+                        <h3>Set New Password</h3>
+                        <p>Step 3 of 3 · Choose a new password or PIN for <strong>${escapeHtml(forgotFlowState.email)}</strong>.</p>
+                    </div>
+                    <div class="form-group">
+                        <label><span>New Password / PIN</span></label>
+                        <div class="ent-input-wrap">
+                            <input type="password" id="fpNewPassInput" class="form-control" style="padding-right:40px;" placeholder="Min 4 characters or PIN">
+                            <button type="button" class="ent-eye-btn" onclick="toggleInputVisibility('fpNewPassInput', this)">
+                                <i data-lucide="eye" style="width:16px;height:16px;"></i>
+                            </button>
+                        </div>
+                        <div class="error-msg" id="fpNewPassErr">Password must be at least 4 characters.</div>
+                    </div>
+                    <div class="form-group">
+                        <label><span>Confirm New Password</span></label>
+                        <input type="password" id="fpConfirmPassInput" class="form-control" placeholder="Re-enter new password">
+                        <div class="error-msg" id="fpConfirmPassErr">Passwords do not match.</div>
+                    </div>
+                    <div class="inst-btn-row">
+                        <button type="button" class="inst-sec-btn" onclick="forgotFlowState.step = 2; renderForgotPasswordModal();">← Back</button>
+                        <button type="button" class="ent-submit-btn" onclick="completeForgotPasswordReset()">
+                            <i data-lucide="shield-check" style="width:15px;height:15px;"></i>
+                            <span>Save New Password</span>
+                        </button>
+                    </div>
+                `;
+            }
+
+            openModal(`
+                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+
+                <div class="ent-auth-top">
+                    <div class="ent-auth-brand">
+                        <div class="logo-icon" style="width:32px;height:32px;border-radius:9px;">
+                            <i data-lucide="key-round" style="width:17px;height:17px;"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight:800;font-size:0.98rem;line-height:1.1;">ACCOUNT RECOVERY</div>
+                            <div style="font-size:0.6rem;color:var(--text-muted);font-weight:700;letter-spacing:0.8px;">RESET CREDENTIALS</div>
+                        </div>
+                    </div>
+                    <button type="button" class="ent-link-btn" onclick="openAuthModal('signin')">← Sign In</button>
+                </div>
+
+                ${stepBody}
+            `);
+        }
+
+        function sendForgotPasswordOtp() {
+            const emailEl = document.getElementById('fpEmailInput');
+            const errEl = document.getElementById('fpEmailErr');
+            const email = (emailEl ? emailEl.value : '').trim().toLowerCase();
+
+            if (!email || !email.includes('@') || !email.includes('.')) {
+                if (emailEl) emailEl.classList.add('error');
+                if (errEl) errEl.style.display = 'block';
+                return;
+            }
+
+            if (emailEl) emailEl.classList.remove('error');
+            if (errEl) errEl.style.display = 'none';
+
+            const code = String(Math.floor(100000 + Math.random() * 900000));
+            forgotFlowState.email = email;
+            forgotFlowState.otpCode = code;
+            forgotFlowState.otpVerified = false;
+            forgotFlowState.step = 2;
+
+            renderForgotPasswordModal();
+            showToast(`Reset code ${code} generated for ${email}`, 'info');
+        }
+
+        function verifyForgotPasswordOtp() {
+            const otpEl = document.getElementById('fpOtpInput');
+            const errEl = document.getElementById('fpOtpErr');
+            const entered = (otpEl ? otpEl.value : '').trim();
+
+            if (entered !== forgotFlowState.otpCode) {
+                if (otpEl) otpEl.classList.add('error');
+                if (errEl) errEl.style.display = 'block';
+                return;
+            }
+
+            if (otpEl) otpEl.classList.remove('error');
+            if (errEl) errEl.style.display = 'none';
+            forgotFlowState.otpVerified = true;
+            forgotFlowState.step = 3;
+            renderForgotPasswordModal();
+        }
+
+        function completeForgotPasswordReset() {
+            if (!forgotFlowState.otpVerified) {
+                forgotFlowState.step = 2;
+                renderForgotPasswordModal();
+                return;
+            }
+
+            const newEl = document.getElementById('fpNewPassInput');
+            const confEl = document.getElementById('fpConfirmPassInput');
+            const newErr = document.getElementById('fpNewPassErr');
+            const confErr = document.getElementById('fpConfirmPassErr');
+
+            const newPass = newEl ? newEl.value : '';
+            const confPass = confEl ? confEl.value : '';
+
+            let ok = true;
+            if (!newPass || newPass.length < 4) {
+                if (newEl) newEl.classList.add('error');
+                if (newErr) newErr.style.display = 'block';
+                ok = false;
+            } else {
+                if (newEl) newEl.classList.remove('error');
+                if (newErr) newErr.style.display = 'none';
+            }
+
+            if (confPass !== newPass) {
+                if (confEl) confEl.classList.add('error');
+                if (confErr) confErr.style.display = 'block';
+                ok = false;
+            } else {
+                if (confEl) confEl.classList.remove('error');
+                if (confErr) confErr.style.display = 'none';
+            }
+
+            if (!ok) return;
+
+            loadAccountsVault();
+            const email = forgotFlowState.email;
+            const isAdminUser = email === ADMIN_EMAIL.toLowerCase();
+            const existing = ACCOUNTS_VAULT[email];
+            const userCode = (existing && existing.userId) ? existing.userId : generateUniqueUserId();
+            const derivedName = (existing && existing.name)
+                ? existing.name
+                : email.split('@')[0].replace(/[._-]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+            const refCode = (existing && existing.refCode) ? existing.refCode : buildRefCode(email);
+
+            ACCOUNTS_VAULT[email] = {
+                userId: userCode,
+                name: derivedName,
+                email: email,
+                refCode: refCode,
+                passwordHash: hashSecret(newPass),
+                isAdmin: isAdminUser,
+                updatedAt: Date.now()
+            };
+            saveAccountsVault();
+
+            authState = {
+                isLoggedIn: true,
+                authUserId: userCode,
+                userId: userCode,
+                name: derivedName,
+                email: email,
+                refCode: refCode,
+                isAdmin: isAdminUser
+            };
+            saveAuthState();
+            saveDatabase();
+            syncAuthUI();
+
+            forgotFlowState = { step: 1, email: '', otpCode: '', otpVerified: false };
+            closeModal();
+            showToast('Password updated! You are now signed in.', 'success');
+        }
+
         async function signOutAccount() {
             if (realtimeChannel && supabaseClient) {
-                supabaseClient.removeChannel(realtimeChannel);
+                try { supabaseClient.removeChannel(realtimeChannel); } catch (e) {}
                 realtimeChannel = null;
             }
             if (supabaseClient) {
@@ -2096,13 +2441,9 @@
                 return;
             }
             checkExpiredPendingDeposits();
-            if (supabaseClient) {
-                const { data: { session } } = await supabaseClient.auth.getSession();
-                if (session?.user) await sbLoadUserFromCloud(session.user);
-            }
 
             const modalBox = document.getElementById('modalContent');
-            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('enterprise-auth-modal');
             modalBox.classList.remove('wallet-inst-modal');
 
             const pendingList = ADMIN_DEPOSIT_REQUESTS.filter(r => r.status === 'pending');
@@ -2166,16 +2507,6 @@
                 try {
                     await supabaseClient.from('deposits').update({ status: 'completed' }).eq('tx_code', req.txId);
                     await supabaseClient.from('transactions').update({ status: 'completed' }).eq('tx_code', req.txId);
-                    const { data: targetProf } = await supabaseClient
-                        .from('profiles')
-                        .select('available_balance')
-                        .eq('user_code', req.userId)
-                        .maybeSingle();
-                    const cloudBal = Number((targetProf && targetProf.available_balance) || 0) + Number(req.amount);
-                    await supabaseClient
-                        .from('profiles')
-                        .update({ available_balance: Number(cloudBal.toFixed(2)) })
-                        .eq('user_code', req.userId);
                 } catch (e) {}
             }
 
@@ -2422,7 +2753,7 @@
             }
             const overlay = document.getElementById('modalOverlay');
             const content = document.getElementById('modalContent');
-            content.classList.remove('auth-pro-modal');
+            content.classList.remove('enterprise-auth-modal');
             content.classList.remove('wallet-inst-modal');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
@@ -2538,7 +2869,7 @@
             walletState.payAddress = USER_WALLET_ADDRESSES[walletState.network];
 
             const modalBox = document.getElementById('modalContent');
-            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('enterprise-auth-modal');
             modalBox.classList.add('wallet-inst-modal');
 
             renderWalletFlowModal();
@@ -3017,7 +3348,7 @@
 
         function openInvestModal(name, min, max) {
             const modalBox = document.getElementById('modalContent');
-            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('enterprise-auth-modal');
             modalBox.classList.remove('wallet-inst-modal');
 
             openModal(`
@@ -3139,7 +3470,7 @@
             const tx = TRANSACTIONS[index];
             if (!tx) return;
             const modalBox = document.getElementById('modalContent');
-            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('enterprise-auth-modal');
             modalBox.classList.remove('wallet-inst-modal');
 
             const isPos = (tx.type === 'deposit' || tx.type === 'profit');
@@ -3191,44 +3522,16 @@
         }
 
         window.addEventListener('load', async () => {
+            loadAccountsVault();
             loadAuthState();
             loadDatabase();
 
-            if (supabaseClient) {
+            if (supabaseClient && authState.authUserId) {
                 try {
-                    supabaseClient.auth.onAuthStateChange(async (event, session) => {
-                        if (session?.user) {
-                            authState.isLoggedIn = true;
-                            authState.authUserId = session.user.id;
-                            authState.email = session.user.email;
-                            await sbEnsureProfileForUser(session.user);
-                            await sbLoadUserFromCloud(session.user);
-                            subscribeRealtimeUpdates();
-                            if (event === 'SIGNED_IN') {
-                                closeModal();
-                            }
-                        } else if (event === 'SIGNED_OUT') {
-                            authState.isLoggedIn = false;
-                            authState.authUserId = '';
-                            authState.isAdmin = false;
-                            saveAuthState();
-                            syncAuthUI();
-                        }
-                    });
-
                     const { data: { session } } = await supabaseClient.auth.getSession();
                     if (session?.user) {
-                        authState.isLoggedIn = true;
-                        authState.authUserId = session.user.id;
-                        authState.email = session.user.email;
-                        await sbEnsureProfileForUser(session.user);
                         await sbLoadUserFromCloud(session.user);
                         subscribeRealtimeUpdates();
-                    } else {
-                        authState.isLoggedIn = false;
-                        authState.authUserId = '';
-                        authState.isAdmin = false;
-                        saveAuthState();
                     }
                 } catch (e) {}
             }
