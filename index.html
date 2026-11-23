@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRONVEX — Premium USDT Investment Platform</title>
+    <title>TRONVEX — USDT & TON Investment Platform</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,10 +35,10 @@
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { 
+        body {
             background-color: var(--bg-base); color: var(--text-main); overflow-x: hidden;
             line-height: 1.6; padding-bottom: 100px;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 15% 10%, rgba(0, 255, 170, 0.045) 0%, transparent 35%),
                 radial-gradient(circle at 85% 60%, rgba(0, 136, 255, 0.045) 0%, transparent 35%);
             background-attachment: fixed; -webkit-font-smoothing: antialiased;
@@ -71,8 +71,8 @@
         }
         .header-inner { display: flex; justify-content: space-between; align-items: center; height: 72px; }
         .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; }
-        .logo-icon { 
-            width: 38px; height: 38px; background: linear-gradient(135deg, var(--primary), var(--blue)); 
+        .logo-icon {
+            width: 38px; height: 38px; background: linear-gradient(135deg, var(--primary), var(--blue));
             border-radius: 10px; display: flex; align-items: center; justify-content: center;
         }
         .logo-icon svg { color: var(--text-dark); width: 22px; height: 22px; }
@@ -227,9 +227,9 @@
 
         .section-header { display: flex; justify-content: space-between; align-items: center; margin: 24px 0 18px; }
         .section-title-wrap { display: flex; align-items: center; gap: 12px; }
-        .section-icon { 
-            width: 40px; height: 40px; background: var(--primary-dim); border-radius: 10px; 
-            display: flex; align-items: center; justify-content: center; color: var(--primary); 
+        .section-icon {
+            width: 40px; height: 40px; background: var(--primary-dim); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; color: var(--primary);
             border: 1px solid rgba(0, 255, 170, 0.2); flex-shrink: 0;
         }
         .section-icon svg { width: 20px; height: 20px; }
@@ -376,15 +376,15 @@
         .hero-stat-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
 
         .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
-        .feature-card { 
-            background: var(--bg-card); border: 1px solid var(--border-dim); 
-            border-radius: 14px; padding: 18px; display: flex; gap: 12px; align-items: flex-start; 
-            transition: var(--transition); 
+        .feature-card {
+            background: var(--bg-card); border: 1px solid var(--border-dim);
+            border-radius: 14px; padding: 18px; display: flex; gap: 12px; align-items: flex-start;
+            transition: var(--transition);
         }
         .feature-card:hover { border-color: var(--border-glow); transform: translateY(-2px); }
-        .feature-icon { 
-            width: 40px; height: 40px; border-radius: 10px; background: var(--primary-dim); 
-            color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; 
+        .feature-icon {
+            width: 40px; height: 40px; border-radius: 10px; background: var(--primary-dim);
+            color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .feature-icon svg { width: 18px; height: 18px; }
         .feature-text h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 3px; }
@@ -551,7 +551,7 @@
         .modal {
             background: var(--bg-surface); border: 1px solid var(--border-dim);
             border-radius: 20px; width: 100%; max-width: 480px;
-            padding: 24px; position: relative; transform: translateY(20px) scale(0.96); 
+            padding: 24px; position: relative; transform: translateY(20px) scale(0.96);
             transition: var(--transition); box-shadow: 0 30px 80px rgba(0,0,0,0.8);
             max-height: 92vh; overflow-y: auto; scrollbar-width: none;
         }
@@ -564,6 +564,378 @@
             border: 1px solid rgba(247, 166, 0, 0.25);
             border-radius: 22px;
         }
+        .inst-brand-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-bottom: 14px; border-bottom: 1px solid var(--border-dim);
+            margin-bottom: 14px; padding-right: 28px;
+        }
+        .inst-brand-left { display: flex; align-items: center; gap: 11px; }
+        .inst-brand-icon {
+            width: 40px; height: 40px; border-radius: 12px;
+            background: rgba(247, 166, 0, 0.12);
+            border: 1px solid rgba(247, 166, 0, 0.35);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold); box-shadow: 0 0 18px rgba(247, 166, 0, 0.14);
+        }
+        .inst-brand-title { font-size: 1rem; font-weight: 800; letter-spacing: 0.3px; line-height: 1.15; }
+        .inst-brand-sub { font-size: 0.62rem; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+        .inst-badge-m {
+            padding: 3px 9px; border-radius: 50px;
+            background: rgba(247, 166, 0, 0.12); border: 1px solid rgba(247, 166, 0, 0.35);
+            font-size: 0.62rem; font-weight: 800; color: var(--gold); letter-spacing: 0.6px;
+        }
+
+        .inst-top-bar {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 14px; gap: 8px;
+        }
+        .inst-back-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 7px 13px; border-radius: 10px;
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
+            color: var(--text-main); font-size: 0.74rem; font-weight: 700;
+            transition: var(--transition);
+        }
+        .inst-back-btn:hover { border-color: var(--gold); color: var(--gold); }
+        .inst-back-btn svg { width: 14px; height: 14px; }
+        .inst-secure-pill {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 6px 11px; border-radius: 50px;
+            background: rgba(0, 255, 170, 0.08); border: 1px solid rgba(0, 255, 170, 0.25);
+            color: var(--primary); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.7px;
+            text-transform: uppercase;
+        }
+        .inst-secure-pill svg { width: 12px; height: 12px; }
+
+        .inst-mode-tabs {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+            background: rgba(0,0,0,0.42); border: 1px solid var(--border-dim);
+            border-radius: 12px; padding: 4px; margin-bottom: 16px;
+        }
+        .inst-mode-tab {
+            display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+            padding: 9px 12px; border-radius: 9px;
+            font-size: 0.8rem; font-weight: 700; color: var(--text-muted);
+            transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .inst-mode-tab svg { width: 15px; height: 15px; transition: transform 0.28s ease; }
+        .inst-mode-tab.active.dep {
+            background: rgba(0, 255, 170, 0.14); color: var(--primary);
+            border: 1px solid rgba(0, 255, 170, 0.35);
+            box-shadow: 0 4px 16px rgba(0, 255, 170, 0.12);
+        }
+        .inst-mode-tab.active.wdr {
+            background: rgba(247, 166, 0, 0.16); color: var(--gold);
+            border: 1px solid rgba(247, 166, 0, 0.4);
+            box-shadow: 0 4px 16px rgba(247, 166, 0, 0.12);
+        }
+
+        .inst-stepper {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
+            margin-bottom: 16px;
+        }
+        .inst-step {
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+            cursor: pointer;
+        }
+        .inst-step-circle {
+            width: 30px; height: 30px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.78rem; font-weight: 800;
+            background: rgba(255,255,255,0.04); border: 1px solid var(--border-dim);
+            color: var(--text-muted); transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .inst-step-label {
+            font-size: 0.6rem; font-weight: 800; letter-spacing: 0.6px;
+            text-transform: uppercase; color: var(--text-muted);
+        }
+        .inst-step.active .inst-step-circle {
+            background: var(--gold); color: var(--text-dark);
+            border-color: var(--gold); box-shadow: 0 0 16px rgba(247, 166, 0, 0.5);
+            transform: scale(1.08);
+        }
+        .inst-step.active .inst-step-label { color: var(--gold); }
+        .inst-step.done .inst-step-circle {
+            background: rgba(0, 255, 170, 0.16); color: var(--primary);
+            border-color: rgba(0, 255, 170, 0.45);
+        }
+        .inst-step.done .inst-step-label { color: #b8ffea; }
+
+        @keyframes bybitSlideIn {
+            0% { opacity: 0; transform: translateX(18px) scale(0.985); }
+            100% { opacity: 1; transform: translateX(0) scale(1); }
+        }
+        .inst-panel-card {
+            background: rgba(11, 27, 45, 0.88);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px; padding: 16px;
+            animation: bybitSlideIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .inst-panel-head {
+            display: flex; align-items: center; gap: 11px; margin-bottom: 14px;
+        }
+        .inst-panel-icon {
+            width: 36px; height: 36px; border-radius: 10px;
+            background: rgba(247, 166, 0, 0.12); border: 1px solid rgba(247, 166, 0, 0.28);
+            color: var(--gold); display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .inst-panel-icon svg { width: 18px; height: 18px; }
+        .inst-panel-head h4 { font-size: 0.95rem; font-weight: 800; line-height: 1.2; }
+        .inst-panel-head p { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
+
+        .inst-net-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+            margin-bottom: 14px;
+        }
+        .inst-net-tile {
+            position: relative;
+            background: rgba(3, 12, 22, 0.72);
+            border: 1.5px solid rgba(255,255,255,0.08);
+            border-radius: 14px; padding: 12px 6px 10px;
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+            cursor: pointer; transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1); text-align: center;
+        }
+        .inst-net-tile:hover {
+            border-color: rgba(247, 166, 0, 0.35);
+            background: rgba(16, 36, 58, 0.88);
+            transform: translateY(-2px);
+        }
+        .inst-net-tile.active {
+            border-color: var(--gold);
+            background: rgba(247, 166, 0, 0.1);
+            box-shadow: 0 0 18px rgba(247, 166, 0, 0.18);
+            transform: translateY(-2px);
+        }
+        .inst-net-check {
+            position: absolute; top: -6px; right: -6px;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: var(--gold); color: var(--text-dark);
+            display: none; align-items: center; justify-content: center;
+            font-size: 10px; font-weight: 900;
+        }
+        .inst-net-tile.active .inst-net-check { display: flex; }
+        .inst-net-logo {
+            width: 34px; height: 34px; border-radius: 50%; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .inst-net-logo svg { width: 100%; height: 100%; }
+        .inst-net-code { font-size: 0.72rem; font-weight: 800; color: #ffffff; letter-spacing: 0.2px; line-height: 1.1; }
+        .inst-net-sub { font-size: 0.58rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; }
+        .inst-net-tile.active .inst-net-sub { color: var(--gold); }
+
+        .inst-continue-btn {
+            width: 100%; padding: 13px 18px; border-radius: 13px;
+            background: linear-gradient(90deg, #ffbb00 0%, #f7931a 100%);
+            color: #031214; font-size: 0.82rem; font-weight: 800;
+            letter-spacing: 0.8px; text-transform: uppercase;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 6px 22px rgba(247, 166, 0, 0.26);
+        }
+        .inst-continue-btn:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.06); }
+        .inst-continue-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+        .inst-continue-btn svg { width: 16px; height: 16px; stroke-width: 2.5; }
+
+        .inst-addr-box {
+            background: rgba(0,0,0,0.35); border: 1px solid rgba(247, 166, 0, 0.26);
+            border-radius: 13px; padding: 12px; margin-bottom: 12px;
+        }
+        .inst-addr-top {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.64rem; font-weight: 700; color: var(--gold);
+            text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 7px;
+        }
+        .inst-addr-row {
+            display: flex; align-items: center; justify-content: space-between; gap: 7px;
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
+            border-radius: 9px; padding: 8px 10px;
+        }
+        .inst-addr-code {
+            font-family: 'Courier New', monospace; font-size: 0.72rem; font-weight: 700;
+            color: #ffffff; word-break: break-all; flex: 1;
+        }
+        .inst-chip-btn {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 5px 9px; border-radius: 7px; font-size: 0.66rem; font-weight: 700;
+            flex-shrink: 0; transition: var(--transition);
+        }
+        .inst-chip-btn svg { width: 12px; height: 12px; }
+        .inst-chip-btn.cp { background: rgba(247,166,0,0.14); border: 1px solid rgba(247,166,0,0.35); color: var(--gold); }
+        .inst-chip-btn.cp:hover { background: var(--gold); color: var(--text-dark); }
+        .inst-chip-btn.qr { background: rgba(0,136,255,0.14); border: 1px solid rgba(0,136,255,0.3); color: #6abaff; }
+        .inst-chip-btn.qr:hover, .inst-chip-btn.qr.active { background: var(--blue); color: #fff; }
+
+        .bybit-countdown-banner {
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(255, 187, 0, 0.08); border: 1px solid rgba(255, 187, 0, 0.25);
+            border-radius: 10px; padding: 8px 12px; margin-bottom: 12px;
+            font-size: 0.72rem; font-weight: 700; color: var(--gold);
+        }
+        .bybit-countdown-banner.expired {
+            background: rgba(255, 68, 102, 0.12); border-color: rgba(255, 68, 102, 0.35);
+            color: var(--danger);
+        }
+
+        .inst-summary-rows {
+            background: rgba(0,0,0,0.28); border: 1px solid var(--border-dim);
+            border-radius: 12px; padding: 11px 13px; margin-bottom: 14px;
+        }
+        .inst-s-row {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.76rem; padding: 5px 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.06);
+        }
+        .inst-s-row:last-child { border-bottom: none; }
+        .inst-s-row .k { color: var(--text-muted); }
+        .inst-s-row .v { font-weight: 700; color: #fff; }
+
+        .inst-btn-row {
+            display: grid; grid-template-columns: 110px 1fr; gap: 8px;
+        }
+        .inst-sec-btn {
+            padding: 12px; border-radius: 12px;
+            background: rgba(255,255,255,0.04); border: 1px solid var(--border-dim);
+            color: var(--text-main); font-size: 0.78rem; font-weight: 700;
+            display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+        }
+        .inst-sec-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+        .modal.auth-pro-modal {
+            max-width: 440px;
+            padding: 32px 28px;
+            background:
+                radial-gradient(circle at 85% 10%, rgba(0,255,170,0.09), transparent 45%),
+                radial-gradient(circle at 15% 90%, rgba(0,136,255,0.08), transparent 45%),
+                #061220;
+            border: 1px solid rgba(0,255,170,0.25);
+            border-radius: 24px;
+        }
+        .auth-brand-banner {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 20px; padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-dim);
+        }
+        .auth-brand-left { display: flex; align-items: center; gap: 10px; }
+        .auth-brand-badge {
+            font-size: 0.62rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
+            padding: 4px 10px; border-radius: 50px;
+            background: rgba(0,255,170,0.1); color: var(--primary); border: 1px solid rgba(0,255,170,0.25);
+            margin-right: 26px;
+        }
+        .auth-title-block { margin-bottom: 18px; }
+        .auth-title-block h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 4px; }
+        .auth-title-block p { font-size: 0.8rem; color: var(--text-muted); }
+
+        .otp-input-box {
+            letter-spacing: 10px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+        .otp-meta-row {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.72rem; color: var(--text-muted); margin-top: 8px;
+        }
+        .otp-link-btn {
+            color: var(--primary); font-weight: 700; font-size: 0.72rem;
+        }
+        .otp-link-btn:hover { text-decoration: underline; }
+
+        .btn-spinner {
+            display: inline-block; width: 15px; height: 15px;
+            border: 2px solid rgba(3, 10, 18, 0.25); border-top-color: #030a12;
+            border-radius: 50%; animation: spin 0.75s linear infinite;
+        }
+
+        .transfer-anim-box {
+            text-align: center; padding: 18px 12px;
+            background: rgba(0,0,0,0.35); border: 1px solid rgba(0,255,170,0.22);
+            border-radius: 16px; margin-bottom: 12px;
+        }
+        .transfer-pulse-ring {
+            width: 58px; height: 58px; margin: 0 auto 12px; border-radius: 50%;
+            background: rgba(0,255,170,0.12); border: 2px solid var(--primary);
+            display: flex; align-items: center; justify-content: center; color: var(--primary);
+            animation: pulseLive 1.2s infinite;
+        }
+        .transfer-steps-mini {
+            display: flex; flex-direction: column; gap: 6px; text-align: left;
+            margin-top: 12px; font-size: 0.72rem; color: var(--text-muted);
+        }
+        .transfer-step-line { display: flex; align-items: center; gap: 7px; }
+        .transfer-step-line.active { color: var(--primary); font-weight: 700; }
+
+        .admin-item-card {
+            background: rgba(0,0,0,0.32); border: 1px solid var(--border-dim);
+            border-radius: 14px; padding: 12px; margin-bottom: 10px;
+        }
+        .admin-item-top {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            gap: 8px; margin-bottom: 8px; font-size: 0.76rem;
+        }
+        .admin-actions-row {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px;
+        }
+        .btn-approve {
+            padding: 8px 10px; border-radius: 9px; font-size: 0.72rem; font-weight: 800;
+            background: rgba(0,255,170,0.16); color: var(--primary); border: 1px solid rgba(0,255,170,0.35);
+        }
+        .btn-approve:hover { background: var(--primary); color: var(--text-dark); }
+        .btn-reject {
+            padding: 8px 10px; border-radius: 9px; font-size: 0.72rem; font-weight: 800;
+            background: rgba(255,68,102,0.16); color: var(--danger); border: 1px solid rgba(255,68,102,0.35);
+        }
+        .btn-reject:hover { background: var(--danger); color: #fff; }
+
+        .sms-alert-overlay {
+            position: fixed; top: 18px; left: 50%; transform: translateX(-50%) translateY(-130%);
+            z-index: 3000; width: calc(100% - 28px); max-width: 430px;
+            background: linear-gradient(135deg, #0b2239 0%, #071524 100%);
+            border: 1px solid rgba(0, 255, 170, 0.35);
+            border-radius: 18px; padding: 14px 16px;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.75);
+            transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+        .sms-alert-overlay.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        .sms-alert-overlay.rejected-sms { border-color: rgba(255, 68, 102, 0.45); }
+        .sms-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .sms-sender { display: flex; align-items: center; gap: 7px; font-size: 0.72rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.6px; }
+        .sms-alert-overlay.rejected-sms .sms-sender { color: var(--danger); }
+        .sms-time { font-size: 0.65rem; color: var(--text-muted); }
+        .sms-title { font-size: 0.88rem; font-weight: 800; color: #fff; margin-bottom: 3px; }
+        .sms-body { font-size: 0.76rem; color: #c7d9ea; line-height: 1.45; }
+
+        .notif-list { display: flex; flex-direction: column; gap: 9px; max-height: 360px; overflow-y: auto; }
+        .notif-card {
+            background: rgba(0,0,0,0.3); border: 1px solid var(--border-dim);
+            border-radius: 12px; padding: 11px 13px;
+        }
+        .notif-card-title { font-size: 0.8rem; font-weight: 800; color: #fff; margin-bottom: 2px; }
+        .notif-card-msg { font-size: 0.72rem; color: var(--text-muted); }
+        .notif-card-time { font-size: 0.62rem; color: var(--primary); margin-top: 4px; display: block; }
+
+        .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+        .modal-close {
+            position: absolute; top: 16px; right: 16px; width: 30px; height: 30px;
+            border-radius: 50%; background: var(--bg-glass); color: var(--text-muted);
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition); cursor: pointer; z-index: 10;
+        }
+        .modal-close:hover { background: rgba(255, 68, 102, 0.1); color: var(--danger); }
+        .modal-close svg { width: 16px; height: 16px; }
+
+        .modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .modal-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .modal-icon.invest { background: var(--primary-dim); color: var(--primary); border: 1px solid rgba(0,255,170,0.2); }
+        .modal-icon svg { width: 22px; height: 22px; }
+        .modal-header-text h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 1px; }
+        .modal-header-text p { font-size: 0.78rem; color: var(--text-muted); }
 
         .auth-tabs {
             display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
@@ -588,32 +960,28 @@
         .form-control.error { border-color: var(--danger); }
         .error-msg { color: var(--danger); font-size: 0.7rem; margin-top: 4px; display: none; font-weight: 600; }
 
-        .btn-spinner {
-            display: inline-block; width: 15px; height: 15px;
-            border: 2px solid rgba(3, 10, 18, 0.25); border-top-color: #030a12;
-            border-radius: 50%; animation: spin 0.75s linear infinite;
+        .qr-panel {
+            display: none; margin-top: 10px; padding-top: 10px;
+            border-top: 1px dashed rgba(255,255,255,0.1);
+            text-align: center;
         }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .qr-panel.open { display: block; animation: fadeIn 0.25s ease; }
+        .qr-frame {
+            display: inline-flex; flex-direction: column; align-items: center; gap: 6px;
+            background: #ffffff; padding: 10px; border-radius: 12px;
+        }
+        .qr-caption { font-size: 0.65rem; color: var(--text-muted); margin-top: 6px; word-break: break-all; }
 
-        .modal-overlay.active .modal { transform: translateY(0) scale(1); }
-        .modal-close { 
-            position: absolute; top: 16px; right: 16px; width: 30px; height: 30px; 
-            border-radius: 50%; background: var(--bg-glass); color: var(--text-muted); 
-            display: flex; align-items: center; justify-content: center; 
-            transition: var(--transition); cursor: pointer; z-index: 10;
+        .calc-box {
+            background: rgba(0,0,0,0.25); border: 1px solid var(--border-dim);
+            border-radius: 10px; padding: 14px; margin-bottom: 16px;
         }
-        .modal-close:hover { background: rgba(255, 68, 102, 0.1); color: var(--danger); }
-        .modal-close svg { width: 16px; height: 16px; }
-
-        .modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-        .modal-icon {
-            width: 44px; height: 44px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-        }
-        .modal-icon.invest { background: var(--primary-dim); color: var(--primary); border: 1px solid rgba(0,255,170,0.2); }
-        .modal-icon svg { width: 22px; height: 22px; }
-        .modal-header-text h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 1px; }
-        .modal-header-text p { font-size: 0.78rem; color: var(--text-muted); }
+        .calc-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.8rem; }
+        .calc-row:last-child { margin-bottom: 0; }
+        .calc-row.total { border-top: 1px dashed var(--border-dim); padding-top: 8px; margin-top: 8px; font-size: 0.9rem; font-weight: 700; }
+        .calc-row .lbl { color: var(--text-muted); }
+        .calc-row .val { font-weight: 600; }
+        .calc-row.total .val { color: var(--primary); font-weight: 800; }
 
         .history-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
         .tx-card {
@@ -650,6 +1018,40 @@
         .empty-state svg { width: 48px; height: 48px; margin: 0 auto 12px; opacity: 0.3; }
         .empty-state p { font-size: 0.85rem; }
 
+        .receipt {
+            background: var(--bg-base); border: 1px solid var(--border-dim);
+            border-radius: 16px; padding: 24px; position: relative;
+        }
+        .receipt::before {
+            content: ''; position: absolute; top: 0; left: 20px; right: 20px; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--blue));
+            border-radius: 0 0 4px 4px;
+        }
+        .receipt-header { text-align: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px dashed var(--border-dim); }
+        .receipt-logo { display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; font-size: 1.1rem; margin-bottom: 8px; }
+        .receipt-status {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: rgba(0,255,170,0.1); border: 1px solid rgba(0,255,170,0.3);
+            color: var(--primary); padding: 5px 12px; border-radius: 50px;
+            font-size: 0.7rem; font-weight: 700;
+        }
+        .receipt-status.rejected {
+            background: rgba(255,68,102,0.12); border: 1px solid rgba(255,68,102,0.35);
+            color: var(--danger);
+        }
+        .receipt-status svg { width: 12px; height: 12px; }
+        .receipt-amount { text-align: center; margin: 18px 0; }
+        .receipt-amount .val { font-size: 2rem; font-weight: 800; letter-spacing: -1px; color: var(--text-main); }
+        .receipt-amount .val.positive { color: var(--primary); }
+        .receipt-amount .sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+        .receipt-details { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+        .receipt-row { display: flex; justify-content: space-between; font-size: 0.78rem; padding: 8px 0; border-bottom: 1px solid var(--border-dim); }
+        .receipt-row:last-child { border-bottom: none; }
+        .receipt-row .lbl { color: var(--text-muted); }
+        .receipt-row .val { font-weight: 600; text-align: right; max-width: 60%; word-break: break-all; }
+        .receipt-row .val.mono { font-family: 'Courier New', monospace; font-size: 0.72rem; color: var(--primary); }
+        .receipt-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+
         .toast-container { position: fixed; bottom: 100px; right: 16px; z-index: 2000; display: flex; flex-direction: column; gap: 8px; }
         .toast {
             background: var(--bg-surface); border: 1px solid var(--border-dim); border-left: 4px solid var(--primary);
@@ -659,16 +1061,64 @@
         }
         @keyframes slideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
         @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }
-        
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 1100px) {
+            .plan-card { flex: 0 0 calc(50% - 7px); }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
         @media (max-width: 768px) {
+            .header-inner { height: 60px; }
+            .logo { font-size: 1.05rem; }
+            .logo-icon { width: 32px; height: 32px; }
+            .logo-icon svg { width: 18px; height: 18px; }
+            .auth-pill-btn span, .auth-pill-outline span, .admin-pill-btn span { display: none; }
+            .auth-pill-btn, .auth-pill-outline, .admin-pill-btn { padding: 8px; border-radius: 50%; width: 34px; height: 34px; justify-content: center; }
+            .hero-professional { padding: 24px 20px; margin: 20px 0 16px; }
+            .hero-professional h1 { font-size: 1.6rem; }
+            .hero-stats { grid-template-columns: 1fr; gap: 10px; }
+            .hero-stat-item { flex-direction: row; align-items: center; gap: 12px; padding: 14px 16px; }
+            .hero-stat-icon { margin-bottom: 0; flex-shrink: 0; }
+            .hero-stat-value { font-size: 1.2rem; }
             .plan-card { flex: 0 0 calc(100% - 4px); }
             .features-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
             .modal { padding: 20px; }
+            .modal.wallet-inst-modal { padding: 16px; }
+            .inst-net-grid { gap: 6px; }
+            .inst-net-tile { padding: 10px 4px 8px; }
+            .inst-net-code { font-size: 0.64rem; }
             .balance-amount .main { font-size: 1.9rem; }
+            .balance-stats { padding: 10px; }
+            .balance-stats .bs-value { font-size: 0.78rem; }
+            .balance-btn { padding: 10px 12px; font-size: 0.75rem; }
+            .nav-item { padding: 8px 8px; min-height: 54px; max-width: 70px; }
+            .nav-item svg { width: 20px; height: 20px; }
+            .nav-item span { font-size: 0.58rem; }
+            .slider-arrow { width: 30px; height: 30px; }
+            .receipt-actions { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .bottom-nav { padding: 8px 4px 12px; }
+            .nav-item { padding: 8px 6px; min-height: 52px; max-width: 60px; }
+            .nav-item svg { width: 19px; height: 19px; }
+            .nav-item span { font-size: 0.55rem; }
+            .nav-item.active::after { width: 16px; height: 2px; }
         }
     </style>
 </head>
 <body>
+
+    <div class="sms-alert-overlay" id="smsPopupBanner">
+        <div class="sms-top">
+            <div class="sms-sender"><i data-lucide="message-square-text" style="width:14px;height:14px;"></i> <span id="smsSenderLabel">TRONVEX SMS</span></div>
+            <span class="sms-time" id="smsTimeLabel">Just now</span>
+        </div>
+        <div class="sms-title" id="smsTitleText">Notification</div>
+        <div class="sms-body" id="smsBodyText"></div>
+    </div>
 
     <header>
         <div class="container header-inner">
@@ -677,7 +1127,7 @@
                 TRONVEX
             </a>
             <div class="header-actions">
-                <button class="admin-pill-btn" id="headerAdminBtn" onclick="showToast('Admin panel coming soon', 'info')">
+                <button class="admin-pill-btn" id="headerAdminBtn" onclick="openAdminPanelModal()">
                     <i data-lucide="shield-alert" style="width:14px;height:14px;"></i>
                     <span>Admin Panel</span>
                 </button>
@@ -687,9 +1137,9 @@
                 </button>
                 <button class="auth-pill-btn" id="headerAuthBtn" onclick="openAuthModal('login')">
                     <i data-lucide="log-in"></i>
-                    <span id="headerAuthLabel">Login</span>
+                    <span id="headerAuthLabel">OTP Login</span>
                 </button>
-                <button class="icon-btn" onclick="showToast('No new notifications', 'info')">
+                <button class="icon-btn" onclick="openNotificationsModal()">
                     <i data-lucide="bell"></i>
                     <span class="notif-dot" id="notifDot"></span>
                 </button>
@@ -713,6 +1163,14 @@
                         <div class="balance-sub" id="totalBalanceSub">≈ 0.00 USDT · <strong>+$0.00</strong> total profit</div>
                     </div>
 
+                    <div class="live-earn-strip">
+                        <div class="live-earn-left">
+                            <span class="live-dot"></span>
+                            <span>LIVE EARNING</span>
+                        </div>
+                        <div class="live-earn-val" id="liveEarningCounter">+$<span>0.000000</span></div>
+                    </div>
+
                     <div class="balance-stats">
                         <div class="bs-item">
                             <span class="bs-label">Available</span>
@@ -728,13 +1186,21 @@
                         </div>
                     </div>
                     <div class="balance-actions">
-                        <button class="balance-btn deposit" onclick="requireAuth(() => openWalletModal('deposit'))">
+                        <button class="balance-btn deposit" onclick="requireAuth(() => openWalletFlow('deposit', 1))">
                             <i data-lucide="arrow-down-to-line"></i> Deposit
                         </button>
-                        <button class="balance-btn withdraw" onclick="requireAuth(() => openWalletModal('withdraw'))">
+                        <button class="balance-btn withdraw" onclick="requireAuth(() => openWalletFlow('withdraw', 1))">
                             <i data-lucide="arrow-up-from-line"></i> Withdraw
                         </button>
                     </div>
+                </div>
+
+                <div class="active-inv-card" id="activeInvestmentsPanel" style="display:none;">
+                    <div class="active-inv-head">
+                        <h4><i data-lucide="activity" style="width:15px;height:15px;color:var(--primary);"></i> Active Live Investments</h4>
+                        <span style="font-size:0.68rem;color:var(--primary);font-weight:700;">150% / 5d</span>
+                    </div>
+                    <div class="active-inv-list" id="activeInvestmentsList"></div>
                 </div>
             </div>
         </div>
@@ -744,6 +1210,10 @@
                 <div class="section-title-wrap">
                     <div class="section-icon"><i data-lucide="layers"></i></div>
                     <div class="section-title"><h2>Investment Plans</h2><p>Swipe or use arrows to explore</p></div>
+                </div>
+                <div class="slider-arrows">
+                    <button class="slider-arrow" id="prevArrow" onclick="slidePlans(-1)"><i data-lucide="chevron-left"></i></button>
+                    <button class="slider-arrow" id="nextArrow" onclick="slidePlans(1)"><i data-lucide="chevron-right"></i></button>
                 </div>
             </div>
             <div class="plans-slider-wrapper" id="plansWrapper">
@@ -758,9 +1228,16 @@
                             <div class="profit-row"><span class="profit-label">Min</span><span class="profit-value">$5.00</span></div>
                             <div class="profit-row"><span class="profit-label">Max</span><span class="profit-value">$100.00</span></div>
                             <div class="profit-row"><span class="profit-label">Profit (5d)</span><span class="profit-value text-gold">150%</span></div>
+                            <div class="profit-row"><span class="profit-label">Total</span><span class="profit-value text-gradient">Dep+Profit</span></div>
                         </div>
-                        <button class="btn-invest" onclick="requireAuth(() => showToast('Investment logic coming soon', 'info'))">Invest</button>
+                        <ul class="plan-features">
+                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
+                            <li><i data-lucide="check-circle-2"></i> $5 Minimum</li>
+                            <li><i data-lucide="check-circle-2"></i> Verified Settlement</li>
+                        </ul>
+                        <button class="btn-invest" onclick="requireAuth(() => openInvestModal('STARTER', 5, 100))">Invest <i data-lucide="arrow-right" style="width:12px;"></i></button>
                     </div>
+
                     <div class="plan-card tier-2">
                         <div class="plan-badge"><i data-lucide="trending-up" style="width:9px;"></i> Popular</div>
                         <div class="plan-header">
@@ -771,9 +1248,16 @@
                             <div class="profit-row"><span class="profit-label">Min</span><span class="profit-value">$100.00</span></div>
                             <div class="profit-row"><span class="profit-label">Max</span><span class="profit-value">$1,000.00</span></div>
                             <div class="profit-row"><span class="profit-label">Profit (5d)</span><span class="profit-value text-gold">150%</span></div>
+                            <div class="profit-row"><span class="profit-label">Total</span><span class="profit-value text-gradient">Dep+Profit</span></div>
                         </div>
-                        <button class="btn-invest" onclick="requireAuth(() => showToast('Investment logic coming soon', 'info'))">Invest</button>
+                        <ul class="plan-features">
+                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
+                            <li><i data-lucide="check-circle-2"></i> Priority Support</li>
+                            <li><i data-lucide="check-circle-2"></i> Verified Settlement</li>
+                        </ul>
+                        <button class="btn-invest" onclick="requireAuth(() => openInvestModal('GROWTH', 100, 1000))">Invest <i data-lucide="arrow-right" style="width:12px;"></i></button>
                     </div>
+
                     <div class="plan-card tier-3">
                         <div class="plan-badge"><i data-lucide="crown" style="width:9px;"></i> VIP</div>
                         <div class="plan-header">
@@ -784,9 +1268,84 @@
                             <div class="profit-row"><span class="profit-label">Min</span><span class="profit-value">$1,000.00</span></div>
                             <div class="profit-row"><span class="profit-label">Max</span><span class="profit-value">$10,000.00</span></div>
                             <div class="profit-row"><span class="profit-label">Profit (5d)</span><span class="profit-value text-gold">150%</span></div>
+                            <div class="profit-row"><span class="profit-label">Total</span><span class="profit-value text-gradient">Dep+Profit</span></div>
                         </div>
-                        <button class="btn-invest" onclick="requireAuth(() => showToast('Investment logic coming soon', 'info'))">Invest</button>
+                        <ul class="plan-features">
+                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
+                            <li><i data-lucide="check-circle-2"></i> Dedicated Support</li>
+                            <li><i data-lucide="check-circle-2"></i> Verified Settlement</li>
+                        </ul>
+                        <button class="btn-invest" onclick="requireAuth(() => openInvestModal('PREMIUM', 1000, 10000))">Invest <i data-lucide="arrow-right" style="width:12px;"></i></button>
                     </div>
+
+                    <div class="plan-card tier-4">
+                        <div class="plan-badge"><i data-lucide="gem" style="width:9px;"></i> Elite</div>
+                        <div class="plan-header">
+                            <div class="plan-icon"><i data-lucide="diamond"></i></div>
+                            <div class="plan-name"><h3>DIAMOND</h3><p>$10,000 – $50,000 · 5 Days</p></div>
+                        </div>
+                        <div class="plan-profit-box">
+                            <div class="profit-row"><span class="profit-label">Min</span><span class="profit-value">$10,000.00</span></div>
+                            <div class="profit-row"><span class="profit-label">Max</span><span class="profit-value">$50,000.00</span></div>
+                            <div class="profit-row"><span class="profit-label">Profit (5d)</span><span class="profit-value text-gold">150%</span></div>
+                            <div class="profit-row"><span class="profit-label">Total</span><span class="profit-value text-gradient">Dep+Profit</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i data-lucide="check-circle-2"></i> 150% ROI in 5 Days</li>
+                            <li><i data-lucide="check-circle-2"></i> VIP Concierge</li>
+                            <li><i data-lucide="check-circle-2"></i> Verified Settlement</li>
+                        </ul>
+                        <button class="btn-invest" onclick="requireAuth(() => openInvestModal('DIAMOND', 10000, 50000))">Invest <i data-lucide="arrow-right" style="width:12px;"></i></button>
+                    </div>
+                </div>
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="hero-professional">
+                <div class="hero-content">
+                    <div class="hero-tag"><i data-lucide="shield-check"></i> OTP Protected Platform</div>
+                    <h1>Grow your <span class="text-gradient">USDT & TON</span><br>with confidence</h1>
+                    <p>4 supported networks (USDT BEP20, USDT TRC20, USDT ERC20, TON) · $5 minimum · Fixed 5-day cycles.</p>
+                    <div class="hero-stats">
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-icon"><i data-lucide="trending-up"></i></div>
+                            <div>
+                                <div class="hero-stat-value">$4.2M+</div>
+                                <div class="hero-stat-label">Value Locked</div>
+                            </div>
+                        </div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-icon"><i data-lucide="users"></i></div>
+                            <div>
+                                <div class="hero-stat-value">18,400+</div>
+                                <div class="hero-stat-label">Investors</div>
+                            </div>
+                        </div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-icon"><i data-lucide="badge-check"></i></div>
+                            <div>
+                                <div class="hero-stat-value">5 Days</div>
+                                <div class="hero-stat-label">Cycle Length</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="lock"></i></div>
+                    <div class="feature-text"><h4>Email OTP & RLS</h4><p>One-time email verification & Supabase Row Level Security.</p></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="zap"></i></div>
+                    <div class="feature-text"><h4>4 Dedicated Networks</h4><p>USDT BEP20, USDT TRC20, USDT ERC20 & TON from $5.</p></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="headphones"></i></div>
+                    <div class="feature-text"><h4>24/7 Support</h4><p>Experts available around the clock.</p></div>
                 </div>
             </div>
         </div>
@@ -803,6 +1362,28 @@
             <div class="stats-grid">
                 <div class="stats-card"><h4>Total Invested</h4><div class="big-value" id="statTotalInvested">$0.00</div><div class="sub-value positive" id="statProfitEarned">+$0.00 profit earned</div></div>
                 <div class="stats-card"><h4>Average ROI</h4><div class="big-value text-gradient">150%</div><div class="sub-value">Across all active plans</div></div>
+                <div class="stats-card"><h4>Completed Cycles</h4><div class="big-value" id="statCompletedCycles">0</div><div class="sub-value">Tracked in your account</div></div>
+                <div class="stats-card"><h4>Active Investments</h4><div class="big-value" id="statActiveCount">0</div><div class="sub-value" id="statLockedAmount">$0.00 locked</div></div>
+            </div>
+            <div class="chart-card">
+                <h4>Monthly Returns</h4><p class="chart-sub">Last 6 months performance</p>
+                <div class="bar-chart">
+                    <div class="bar-item"><div class="bar" style="height:45%"></div><span class="bar-label">Aug</span></div>
+                    <div class="bar-item"><div class="bar" style="height:60%"></div><span class="bar-label">Sep</span></div>
+                    <div class="bar-item"><div class="bar" style="height:52%"></div><span class="bar-label">Oct</span></div>
+                    <div class="bar-item"><div class="bar" style="height:78%"></div><span class="bar-label">Nov</span></div>
+                    <div class="bar-item"><div class="bar" style="height:88%"></div><span class="bar-label">Dec</span></div>
+                    <div class="bar-item"><div class="bar" style="height:100%"></div><span class="bar-label">Jan</span></div>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h4>Asset Allocation</h4><p class="chart-sub">Where your funds are placed</p>
+                <div class="allocation-list">
+                    <div class="alloc-item"><div class="alloc-top"><span class="name">Premium Plan</span><span class="pct">45%</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:45%; background:var(--purple);"></div></div></div>
+                    <div class="alloc-item"><div class="alloc-top"><span class="name">Growth Plan</span><span class="pct">30%</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:30%; background:var(--blue);"></div></div></div>
+                    <div class="alloc-item"><div class="alloc-top"><span class="name">Starter Plan</span><span class="pct">15%</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:15%; background:var(--primary);"></div></div></div>
+                    <div class="alloc-item"><div class="alloc-top"><span class="name">Available Balance</span><span class="pct">10%</span></div><div class="alloc-bar"><div class="alloc-fill" style="width:10%; background:var(--gold);"></div></div></div>
+                </div>
             </div>
         </div>
     </section>
@@ -815,10 +1396,33 @@
                     <div class="section-title"><h2>Transaction History</h2><p>Pending, completed & rejected records</p></div>
                 </div>
             </div>
-            <div class="history-list" id="historyList">
-                <div class="empty-state">
-                    <i data-lucide="receipt"></i>
-                    <p>No transactions yet</p>
+            <div class="history-list" id="historyList"></div>
+        </div>
+    </section>
+
+    <section class="tab-section" id="tab-support">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <div class="section-icon"><i data-lucide="headphones"></i></div>
+                    <div class="section-title"><h2>Support Center</h2><p>We're here 24/7 to help you</p></div>
+                </div>
+            </div>
+            <div class="profile-menu">
+                <div class="profile-menu-item" onclick="requireAuth(() => showToast('Connecting to live agent...', 'info'))">
+                    <div class="pm-icon"><i data-lucide="message-square"></i></div>
+                    <div class="pm-text"><h5>Live Chat</h5><p>Chat with a support agent in real time</p></div>
+                    <div class="pm-arrow"><i data-lucide="chevron-right"></i></div>
+                </div>
+                <div class="profile-menu-item" onclick="requireAuth(() => showToast('Opening Telegram...', 'info'))">
+                    <div class="pm-icon"><i data-lucide="send"></i></div>
+                    <div class="pm-text"><h5>Telegram Support</h5><p>Join our official Telegram channel</p></div>
+                    <div class="pm-arrow"><i data-lucide="chevron-right"></i></div>
+                </div>
+                <div class="profile-menu-item" onclick="requireAuth(() => copyText('support@tronvex.online', 'Support email copied!'))">
+                    <div class="pm-icon"><i data-lucide="mail"></i></div>
+                    <div class="pm-text"><h5>Email Support</h5><p>support@tronvex.online</p></div>
+                    <div class="pm-arrow"><i data-lucide="chevron-right"></i></div>
                 </div>
             </div>
         </div>
@@ -831,6 +1435,9 @@
                     <div class="section-icon"><i data-lucide="user"></i></div>
                     <div class="section-title"><h2>Profile</h2><p>User ID, name, email & referral link</p></div>
                 </div>
+                <button class="btn btn-outline btn-sm" onclick="openAuthModal('login')">
+                    <i data-lucide="refresh-cw" style="width:13px;height:13px;"></i> Switch Account
+                </button>
             </div>
 
             <div class="minimal-profile-card">
@@ -853,7 +1460,21 @@
                                 <span class="mp-field-value mono" id="profileUserIdValue">TVX-GUEST00</span>
                             </div>
                         </div>
+                        <button class="mp-copy-btn" type="button" onclick="copyText(document.getElementById('profileUserIdValue').textContent, 'User ID copied!')">
+                            <i data-lucide="copy"></i> Copy
+                        </button>
                     </div>
+
+                    <div class="mp-field-box">
+                        <div class="mp-field-left">
+                            <div class="mp-field-icon"><i data-lucide="user"></i></div>
+                            <div class="mp-field-text">
+                                <span class="mp-field-label">Full Name</span>
+                                <span class="mp-field-value" id="profileNameValue">Guest User</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="mp-field-box">
                         <div class="mp-field-left">
                             <div class="mp-field-icon"><i data-lucide="mail"></i></div>
@@ -863,20 +1484,55 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="mp-field-box">
+                        <div class="mp-field-left">
+                            <div class="mp-field-icon"><i data-lucide="link"></i></div>
+                            <div class="mp-field-text">
+                                <span class="mp-field-label">Referral Link</span>
+                                <span class="mp-field-value mono" id="profileReferralValue">https://tronvex.online/?ref=GUEST01</span>
+                            </div>
+                        </div>
+                        <button class="mp-copy-btn" type="button" onclick="copyCurrentReferral()">
+                            <i data-lucide="copy"></i> Copy
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <div class="profile-menu">
-                <div class="profile-menu-item" onclick="signOut()">
+                <div class="profile-menu-item" onclick="signOutAccount()">
                     <div class="pm-icon" style="background:rgba(255,68,102,0.12);color:var(--danger);"><i data-lucide="log-out"></i></div>
                     <div class="pm-text"><h5 style="color:var(--danger);">Sign Out</h5><p>Sign out of your account</p></div>
+                    <div class="pm-arrow"><i data-lucide="chevron-right"></i></div>
                 </div>
             </div>
         </div>
     </section>
 
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <a href="#" class="logo">
+                    <div class="logo-icon" style="width:30px;height:30px;"><i data-lucide="shield-check" style="width:16px;height:16px;"></i></div>
+                    TRONVEX
+                </a>
+                <div class="footer-links">
+                    <a href="#" onclick="event.preventDefault(); requireAuth(() => switchTab('home'));">Home</a>
+                    <a href="#" onclick="event.preventDefault(); requireAuth(() => switchTab('stats'));">Stats</a>
+                    <a href="#" onclick="event.preventDefault(); requireAuth(() => switchTab('history'));">History</a>
+                    <a href="#" onclick="event.preventDefault(); requireAuth(() => switchTab('support'));">Support</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 TRONVEX. All rights reserved. Digital asset investments carry risk; verify all details before transacting.
+            </div>
+        </div>
+    </footer>
+
     <nav class="bottom-nav">
         <div class="nav-item active" data-tab="home" onclick="switchTab('home', this)"><i data-lucide="home"></i><span>Home</span></div>
+        <div class="nav-item" data-tab="plans" onclick="switchTab('home', this); setTimeout(()=>{document.getElementById('plans').scrollIntoView({behavior:'smooth'});}, 100);"><i data-lucide="layers"></i><span>Plans</span></div>
         <div class="nav-item" data-tab="stats" onclick="requireAuth(() => switchTab('stats', this))"><i data-lucide="bar-chart-3"></i><span>Stats</span></div>
         <div class="nav-item" data-tab="history" onclick="requireAuth(() => switchTab('history', this))"><i data-lucide="history"></i><span>History</span></div>
         <div class="nav-item" data-tab="profile" onclick="requireAuth(() => switchTab('profile', this))"><i data-lucide="user"></i><span>Profile</span></div>
@@ -892,456 +1548,2066 @@
         lucide.createIcons();
 
         // ============================================================
-        // 1. SUPABASE CONFIGURATION (KU BEDDEL KEYS-KAAGA)
+        // 1. SUPABASE CONFIGURATION (KU XIRAN MASHRUUCAAGA)
         // ============================================================
-        const SUPABASE_URL = 'https://njqyafoazxskjrgnfsex.supabase.co'; // URL-kaaga dhabta ah
-        const SUPABASE_ANON_KEY = 'sb_publishable_0SR-U0qekJgjhKJeNB7SIw_e3ereu3P'; // Furahaaga dhabta ah
+        const SUPABASE_URL = 'https://njqyafoszxskjrgnfsex.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_0SR-U0qekJgjhKJeNB7SIw_e3ereu3P';
 
-        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabaseClient = (
+            window.supabase &&
+            SUPABASE_URL &&
+            SUPABASE_ANON_KEY
+        ) ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+        const ALLOWED_4_NETWORKS = ['usdt_bep20', 'usdt_trc20', 'usdt_erc20', 'ton'];
+        const DEPOSIT_TIMEOUT_MS = 5 * 60 * 1000;
+        const PLAN_DAYS = 5;
+        const ADMIN_EMAIL = 'tronvex0@gmail.com';
+
+        const USER_WALLET_ADDRESSES = {
+            usdt_bep20: '0xe4484af8794b0fe2eccf433f7da7ac81935fc4a0',
+            usdt_trc20: 'TLPVBmQnS6VTV7MwzLzYy7EjUKqsKob7hs',
+            usdt_erc20: '0xe4484af8794b0fe2eccf433f7da7ac81935fc4a0',
+            ton: 'UQBGo3k-EhMubMv4h3RqHszdcJdqoxttvZnuwDvPHbk8jl6P'
+        };
+
+        const DB_STORAGE_KEY = 'tronvex_database_v2';
+        const AUTH_STORAGE_KEY = 'tronvex_session_v2';
+
+        let availableBalance = 0.00;
+        let lockedBalance = 0.00;
+        let totalProfitEarned = 0.00;
+        let totalInvestedAmount = 0.00;
+        let completedCyclesCount = 0;
+        let activeInvestmentsCount = 0;
+
+        let ACTIVE_INVESTMENTS = [];
+        let TRANSACTIONS = [];
+        let ADMIN_DEPOSIT_REQUESTS = [];
+        let USER_NOTIFICATIONS = [];
+        let liveEarnTimerInterval = null;
+        let smsPopupTimeout = null;
+        let realtimeChannel = null;
 
         let authState = {
             isLoggedIn: false,
+            authUserId: '',
             userId: '',
             name: '',
             email: '',
+            refCode: 'GUEST01',
             isAdmin: false
         };
-        
-        let balanceData = {
-            available: 0,
-            locked: 0,
-            profit: 0
+
+        let otpFlow = {
+            mode: 'login',
+            step: 'email', // 'email' | 'otp'
+            email: '',
+            name: ''
         };
 
+        function generateUniqueUserId() {
+            return 'TVX-' + Math.floor(100000 + Math.random() * 900000);
+        }
+
+        function buildRefCode(email) {
+            const prefix = (email.split('@')[0] || 'USER')
+                .replace(/[^a-zA-Z0-9]/g, '')
+                .toUpperCase()
+                .slice(0, 6) || 'USER';
+            return `${prefix}2026`;
+        }
+
+        function getReferralLink() {
+            const origin = (window.location.origin && window.location.origin !== 'null')
+                ? window.location.origin + window.location.pathname
+                : 'https://tronvex.online/';
+            const cleanUrl = origin.split('?')[0];
+            return `${cleanUrl}?ref=${authState.refCode || 'GUEST01'}`;
+        }
+
+        function loadDatabase() {
+            try {
+                const raw = localStorage.getItem(DB_STORAGE_KEY);
+                if (!raw) return;
+                const db = JSON.parse(raw);
+                if (Array.isArray(db.transactions)) TRANSACTIONS = db.transactions;
+                if (Array.isArray(db.adminRequests)) ADMIN_DEPOSIT_REQUESTS = db.adminRequests;
+                if (Array.isArray(db.notifications)) USER_NOTIFICATIONS = db.notifications;
+                if (Array.isArray(db.activeInvestments)) ACTIVE_INVESTMENTS = db.activeInvestments;
+                if (typeof db.availableBalance === 'number') availableBalance = db.availableBalance;
+                if (typeof db.lockedBalance === 'number') lockedBalance = db.lockedBalance;
+                if (typeof db.totalProfitEarned === 'number') totalProfitEarned = db.totalProfitEarned;
+                if (typeof db.totalInvestedAmount === 'number') totalInvestedAmount = db.totalInvestedAmount;
+                if (typeof db.completedCyclesCount === 'number') completedCyclesCount = db.completedCyclesCount;
+                activeInvestmentsCount = ACTIVE_INVESTMENTS.length;
+            } catch (e) {}
+        }
+
+        function saveDatabase() {
+            try {
+                localStorage.setItem(DB_STORAGE_KEY, JSON.stringify({
+                    userId: authState.userId,
+                    email: authState.email,
+                    availableBalance,
+                    lockedBalance,
+                    totalProfitEarned,
+                    totalInvestedAmount,
+                    completedCyclesCount,
+                    activeInvestments: ACTIVE_INVESTMENTS,
+                    transactions: TRANSACTIONS,
+                    adminRequests: ADMIN_DEPOSIT_REQUESTS,
+                    notifications: USER_NOTIFICATIONS
+                }));
+            } catch (e) {}
+        }
+
+        function saveAuthState() {
+            try {
+                localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(authState));
+            } catch (e) {}
+        }
+
+        function loadAuthState() {
+            try {
+                const raw = localStorage.getItem(AUTH_STORAGE_KEY);
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    authState = { ...authState, ...parsed };
+                }
+            } catch (e) {}
+        }
+
         // ============================================================
-        // 2. UI HELPERS
+        // 2. SUPABASE CLOUD SYNC & REALTIME
         // ============================================================
-        function showToast(msg, type = 'success') {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            if (type === 'error') toast.style.borderLeftColor = 'var(--danger)';
-            if (type === 'info') toast.style.borderLeftColor = 'var(--blue)';
-            toast.innerHTML = `<span>${msg}</span>`;
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.style.animation = 'slideOut 0.3s forwards';
-                setTimeout(() => toast.remove(), 300);
-            }, 3500);
+        async function sbEnsureProfileForUser(user, explicitName = '') {
+            if (!supabaseClient || !user || !user.email) return;
+            const email = user.email.toLowerCase();
+            const isAdminUser = email === ADMIN_EMAIL.toLowerCase();
+            const fallbackName = explicitName || user.user_metadata?.full_name || email.split('@')[0];
+            const fallbackCode = authState.userId && authState.userId.startsWith('TVX-')
+                ? authState.userId
+                : generateUniqueUserId();
+            const fallbackRef = buildRefCode(email);
+
+            try {
+                const { data: existing } = await supabaseClient
+                    .from('profiles')
+                    .select('*')
+                    .eq('id', user.id)
+                    .maybeSingle();
+
+                if (!existing) {
+                    await supabaseClient.from('profiles').insert([{
+                        id: user.id,
+                        user_code: fallbackCode,
+                        full_name: fallbackName,
+                        email: user.email,
+                        ref_code: fallbackRef,
+                        is_admin: isAdminUser,
+                        available_balance: Number(availableBalance || 0),
+                        locked_balance: Number(lockedBalance || 0),
+                        total_invested: Number(totalInvestedAmount || 0),
+                        total_profit: Number(totalProfitEarned || 0),
+                        completed_cycles: Number(completedCyclesCount || 0)
+                    }]);
+                } else if (explicitName && explicitName !== existing.full_name) {
+                    await supabaseClient
+                        .from('profiles')
+                        .update({ full_name: explicitName })
+                        .eq('id', user.id);
+                }
+            } catch (e) {}
+        }
+
+        async function sbSyncProfileToCloud() {
+            if (!supabaseClient || !authState.authUserId || !authState.userId) return;
+            try {
+                await supabaseClient
+                    .from('profiles')
+                    .update({
+                        full_name: authState.name || authState.email.split('@')[0],
+                        available_balance: Number(availableBalance || 0),
+                        locked_balance: Number(lockedBalance || 0),
+                        total_invested: Number(totalInvestedAmount || 0),
+                        total_profit: Number(totalProfitEarned || 0),
+                        completed_cycles: Number(completedCyclesCount || 0)
+                    })
+                    .eq('id', authState.authUserId);
+            } catch (e) {}
+        }
+
+        async function sbLoadUserFromCloud(user) {
+            if (!supabaseClient || !user || !user.email) return;
+            const email = user.email.toLowerCase();
+            try {
+                const { data: prof } = await supabaseClient
+                    .from('profiles')
+                    .select('*')
+                    .eq('id', user.id)
+                    .maybeSingle();
+
+                if (prof) {
+                    authState.authUserId = user.id;
+                    authState.userId = prof.user_code || authState.userId || generateUniqueUserId();
+                    authState.name = prof.full_name || authState.name || email.split('@')[0];
+                    authState.email = prof.email || user.email;
+                    authState.refCode = prof.ref_code || authState.refCode || buildRefCode(email);
+                    authState.isAdmin = Boolean(prof.is_admin) || (email === ADMIN_EMAIL.toLowerCase());
+
+                    availableBalance = Number(prof.available_balance ?? 0);
+                    lockedBalance = Number(prof.locked_balance ?? 0);
+                    totalInvestedAmount = Number(prof.total_invested ?? 0);
+                    totalProfitEarned = Number(prof.total_profit ?? 0);
+                    completedCyclesCount = Number(prof.completed_cycles ?? 0);
+                    saveAuthState();
+                }
+
+                const userCode = authState.userId;
+                if (userCode) {
+                    const { data: txs } = await supabaseClient
+                        .from('transactions')
+                        .select('*')
+                        .eq('user_code', userCode)
+                        .order('created_at', { ascending: false });
+
+                    if (Array.isArray(txs)) {
+                        TRANSACTIONS = txs.map(t => ({
+                            id: t.tx_code,
+                            type: t.tx_type,
+                            title: t.title,
+                            method: t.method,
+                            network: t.network,
+                            amount: Number(t.amount || 0),
+                            date: new Date(t.created_at).toLocaleString(),
+                            status: t.status,
+                            address: t.address || '',
+                            rejectReason: t.reject_reason || ''
+                        }));
+                    }
+
+                    const { data: notifs } = await supabaseClient
+                        .from('notifications')
+                        .select('*')
+                        .eq('user_code', userCode)
+                        .order('created_at', { ascending: false });
+
+                    if (Array.isArray(notifs)) {
+                        USER_NOTIFICATIONS = notifs.map(n => ({
+                            id: n.id,
+                            title: n.title,
+                            message: n.message,
+                            time: new Date(n.created_at).toLocaleString()
+                        }));
+                    }
+
+                    const { data: invs } = await supabaseClient
+                        .from('investments')
+                        .select('*')
+                        .eq('user_code', userCode)
+                        .eq('status', 'active')
+                        .order('created_at', { ascending: false });
+
+                    if (Array.isArray(invs)) {
+                        ACTIVE_INVESTMENTS = invs.map(i => {
+                            const startMs = new Date(i.created_at).getTime();
+                            const endMs = new Date(i.ends_at).getTime();
+                            return {
+                                id: i.inv_code,
+                                plan: i.plan_name,
+                                amount: Number(i.amount || 0),
+                                days: Number(i.duration_days || PLAN_DAYS),
+                                roiRate: Number(i.roi_rate || 1.5),
+                                durationMs: Math.max(1000, endMs - startMs),
+                                startTime: startMs,
+                                endTime: endMs
+                            };
+                        });
+                        activeInvestmentsCount = ACTIVE_INVESTMENTS.length;
+                    }
+                }
+
+                if (authState.isAdmin) {
+                    const { data: deps } = await supabaseClient
+                        .from('deposits')
+                        .select('*')
+                        .eq('status', 'pending')
+                        .order('created_at', { ascending: false });
+
+                    if (Array.isArray(deps)) {
+                        ADMIN_DEPOSIT_REQUESTS = deps.map(d => ({
+                            id: d.id,
+                            txId: d.tx_code,
+                            userId: d.user_code,
+                            userName: d.user_name,
+                            userEmail: d.user_email,
+                            networkKey: d.network_key,
+                            networkLabel: d.network_label,
+                            walletAddress: d.wallet_address,
+                            amount: Number(d.amount || 0),
+                            status: d.status,
+                            expiresAt: d.expires_at ? new Date(d.expires_at).getTime() : null,
+                            createdAt: new Date(d.created_at).toLocaleString()
+                        }));
+                    }
+                }
+
+                saveDatabase();
+                syncAuthUI();
+                syncBalanceUI();
+                renderHistory();
+            } catch (e) {}
+        }
+
+        function subscribeRealtimeUpdates() {
+            if (!supabaseClient || !authState.userId) return;
+            if (realtimeChannel) {
+                supabaseClient.removeChannel(realtimeChannel);
+                realtimeChannel = null;
+            }
+            realtimeChannel = supabaseClient
+                .channel('tronvex-user-sync-' + authState.userId)
+                .on('postgres_changes', { event: '*', schema: 'public', table: 'profiles', filter: `user_code=eq.${authState.userId}` }, async () => {
+                    const { data: { session } } = await supabaseClient.auth.getSession();
+                    if (session?.user) await sbLoadUserFromCloud(session.user);
+                })
+                .on('postgres_changes', { event: '*', schema: 'public', table: 'transactions', filter: `user_code=eq.${authState.userId}` }, async () => {
+                    const { data: { session } } = await supabaseClient.auth.getSession();
+                    if (session?.user) await sbLoadUserFromCloud(session.user);
+                })
+                .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'notifications', filter: `user_code=eq.${authState.userId}` }, (payload) => {
+                    const row = payload.new;
+                    if (row && row.is_sms) {
+                        triggerSmsAlert(row.title, row.message, Boolean(row.is_rejected));
+                    }
+                })
+                .subscribe();
+        }
+
+        function triggerSmsAlert(title, body, isRejected = false) {
+            const banner = document.getElementById('smsPopupBanner');
+            const sender = document.getElementById('smsSenderLabel');
+            const timeEl = document.getElementById('smsTimeLabel');
+            const titleEl = document.getElementById('smsTitleText');
+            const bodyEl = document.getElementById('smsBodyText');
+            if (!banner || !titleEl || !bodyEl) return;
+
+            sender.textContent = isRejected ? 'TRONVEX SMS · REJECTED' : 'TRONVEX SMS · VERIFIED';
+            timeEl.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            titleEl.textContent = title;
+            bodyEl.textContent = body;
+
+            banner.classList.toggle('rejected-sms', Boolean(isRejected));
+            banner.classList.add('show');
+            lucide.createIcons();
+
+            if (smsPopupTimeout) clearTimeout(smsPopupTimeout);
+            smsPopupTimeout = setTimeout(() => {
+                banner.classList.remove('show');
+            }, 5500);
+        }
+
+        async function pushNotification(title, message, isSms = false, isRejected = false) {
+            USER_NOTIFICATIONS.unshift({
+                id: 'NTF-' + Date.now(),
+                title,
+                message,
+                time: new Date().toLocaleString()
+            });
+            const dot = document.getElementById('notifDot');
+            if (dot) dot.classList.add('show');
+            saveDatabase();
+
+            if (supabaseClient && authState.userId) {
+                try {
+                    await supabaseClient.from('notifications').insert([{
+                        user_code: authState.userId,
+                        title,
+                        message,
+                        is_sms: Boolean(isSms),
+                        is_rejected: Boolean(isRejected)
+                    }]);
+                } catch (e) {}
+            }
+
+            if (isSms) {
+                triggerSmsAlert(title, message, isRejected);
+            }
+        }
+
+        function openNotificationsModal() {
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('wallet-inst-modal');
+
+            const dot = document.getElementById('notifDot');
+            if (dot) dot.classList.remove('show');
+
+            const itemsHtml = USER_NOTIFICATIONS.length
+                ? USER_NOTIFICATIONS.map(n => `
+                    <div class="notif-card">
+                        <div class="notif-card-title">${n.title}</div>
+                        <div class="notif-card-msg">${n.message}</div>
+                        <span class="notif-card-time">${n.time}</span>
+                    </div>
+                `).join('')
+                : `<div class="empty-state"><i data-lucide="bell-off"></i><p>No notifications yet</p></div>`;
+
+            openModal(`
+                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+                <div class="modal-header">
+                    <div class="modal-icon invest"><i data-lucide="bell"></i></div>
+                    <div class="modal-header-text">
+                        <h3>Notifications</h3>
+                        <p>Deposit, withdrawal & investment alerts</p>
+                    </div>
+                </div>
+                <div class="notif-list">${itemsHtml}</div>
+            `);
+        }
+
+        function syncAuthUI() {
+            const displayName = authState.name || 'Guest User';
+            const displayEmail = authState.email || 'guest@tronvex.online';
+            const displayUserId = authState.userId || 'TVX-GUEST00';
+            const refLink = getReferralLink();
+            const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=00ffaa&color=030a12&bold=true`;
+
+            const headerName = document.getElementById('profileHeaderName');
+            const headerEmail = document.getElementById('profileHeaderEmail');
+            const pUserId = document.getElementById('profileUserIdValue');
+            const pName = document.getElementById('profileNameValue');
+            const pEmail = document.getElementById('profileEmailValue');
+            const pRef = document.getElementById('profileReferralValue');
+            const authLabel = document.getElementById('headerAuthLabel');
+            const authBtn = document.getElementById('headerAuthBtn');
+            const adminBtn = document.getElementById('headerAdminBtn');
+
+            if (headerName) headerName.textContent = displayName;
+            if (headerEmail) headerEmail.textContent = displayEmail;
+            if (pUserId) pUserId.textContent = displayUserId;
+            if (pName) pName.textContent = displayName;
+            if (pEmail) pEmail.textContent = displayEmail;
+            if (pRef) pRef.textContent = refLink;
+
+            document.querySelectorAll('.avatar img, #profileAvatarImg, #headerAvatarImg').forEach(img => {
+                img.src = avatarUrl;
+            });
+
+            if (authLabel) {
+                authLabel.textContent = authState.isLoggedIn ? (displayName.split(' ')[0] || 'Account') : 'OTP Login';
+            }
+            if (authBtn) {
+                authBtn.onclick = () => authState.isLoggedIn ? switchTab('profile') : openAuthModal('login');
+            }
+            if (adminBtn) {
+                adminBtn.classList.toggle('visible', Boolean(authState.isLoggedIn && authState.isAdmin));
+            }
+
+            lucide.createIcons();
+        }
+
+        function computeLiveAccruedProfit() {
+            const now = Date.now();
+            let accrued = 0;
+            ACTIVE_INVESTMENTS.forEach(inv => {
+                const dur = inv.durationMs || (PLAN_DAYS * 24 * 60 * 60 * 1000);
+                const elapsed = Math.max(0, Math.min(now - inv.startTime, dur));
+                accrued += (inv.amount * inv.roiRate) * (elapsed / dur);
+            });
+            return accrued;
+        }
+
+        function syncBalanceUI() {
+            const liveAccrued = computeLiveAccruedProfit();
+            const displayProfit = Number(totalProfitEarned || 0) + liveAccrued;
+            const total = Number(availableBalance || 0) + Number(lockedBalance || 0) + liveAccrued;
+            const whole = Math.floor(total).toLocaleString();
+            const cents = (total % 1).toFixed(2).substring(1);
+
+            const mainEl = document.getElementById('totalBalanceMain');
+            const subEl = document.getElementById('totalBalanceSub');
+            const availEl = document.getElementById('availBalanceText');
+            const lockedEl = document.getElementById('lockedBalanceText');
+            const liveCounterEl = document.getElementById('liveEarningCounter');
+
+            if (mainEl) mainEl.innerHTML = `$${whole}<span>${cents}</span>`;
+            if (subEl) subEl.innerHTML = `≈ ${total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USDT · <strong>+$${displayProfit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong> total profit`;
+            if (availEl) availEl.textContent = '$' + Number(availableBalance || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            if (lockedEl) lockedEl.textContent = '$' + Number(lockedBalance || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            if (liveCounterEl) {
+                const fixed6 = liveAccrued.toFixed(6);
+                const [intPart, decPart] = fixed6.split('.');
+                liveCounterEl.innerHTML = `+$${intPart}.<span>${decPart}</span>`;
+            }
+
+            const invEl = document.getElementById('statTotalInvested');
+            const profEl = document.getElementById('statProfitEarned');
+            const cycEl = document.getElementById('statCompletedCycles');
+            const actEl = document.getElementById('statActiveCount');
+            const lockStatEl = document.getElementById('statLockedAmount');
+
+            if (invEl) invEl.textContent = '$' + Number(totalInvestedAmount || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            if (profEl) profEl.textContent = '+$' + displayProfit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' profit earned';
+            if (cycEl) cycEl.textContent = String(completedCyclesCount || 0);
+            if (actEl) actEl.textContent = String(ACTIVE_INVESTMENTS.length || activeInvestmentsCount || 0);
+            if (lockStatEl) lockStatEl.textContent = '$' + Number(lockedBalance || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' locked';
+
+            renderActiveInvestmentsList();
+        }
+
+        function renderActiveInvestmentsList() {
+            const panel = document.getElementById('activeInvestmentsPanel');
+            const list = document.getElementById('activeInvestmentsList');
+            if (!panel || !list) return;
+
+            if (!ACTIVE_INVESTMENTS.length) {
+                panel.style.display = 'none';
+                return;
+            }
+            panel.style.display = 'block';
+            const now = Date.now();
+            list.innerHTML = ACTIVE_INVESTMENTS.map(inv => {
+                const dur = inv.durationMs || (PLAN_DAYS * 24 * 60 * 60 * 1000);
+                const elapsed = Math.max(0, Math.min(now - inv.startTime, dur));
+                const pct = ((elapsed / dur) * 100).toFixed(2);
+                const earned = (inv.amount * inv.roiRate * (elapsed / dur)).toFixed(6);
+                return `
+                    <div class="active-inv-row">
+                        <div>
+                            <div class="active-inv-plan">${inv.plan} · $${inv.amount.toFixed(2)}</div>
+                            <div class="active-inv-meta">Progress: ${pct}% · ${PLAN_DAYS}-Day Cycle</div>
+                        </div>
+                        <div class="active-inv-live">
+                            +$${earned}
+                            <small>LIVE EARN</small>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function startLiveEarningTicker() {
+            if (liveEarnTimerInterval) clearInterval(liveEarnTimerInterval);
+            liveEarnTimerInterval = setInterval(() => {
+                const changed = checkExpiredPendingDeposits();
+                if (changed) {
+                    saveDatabase();
+                    renderHistory();
+                }
+                if (ACTIVE_INVESTMENTS.length > 0) {
+                    syncBalanceUI();
+                }
+            }, 250);
+        }
+
+        function checkExpiredPendingDeposits() {
+            const now = Date.now();
+            let anyChanged = false;
+            TRANSACTIONS.forEach(tx => {
+                if (tx.type === 'deposit' && tx.status === 'pending' && tx.expiresAt && now >= tx.expiresAt) {
+                    tx.status = 'rejected';
+                    tx.rejectReason = 'Payment window expired (5 minutes).';
+                    anyChanged = true;
+                }
+            });
+            ADMIN_DEPOSIT_REQUESTS.forEach(req => {
+                if (req.status === 'pending' && req.expiresAt && now >= req.expiresAt) {
+                    req.status = 'rejected';
+                    req.rejectReason = 'Payment window expired (5 minutes).';
+                    anyChanged = true;
+                }
+            });
+            return anyChanged;
         }
 
         function requireAuth(callback) {
             if (authState.isLoggedIn) {
                 callback();
             } else {
-                openAuthModal('login');
+                openAuthModal('signup');
             }
         }
 
-        function switchTab(tabId, el = null) {
-            document.querySelectorAll('.tab-section').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            document.getElementById('tab-' + tabId).classList.add('active');
-            if (el) {
-                el.classList.add('active');
-            } else {
-                document.querySelector(`.nav-item[data-tab="${tabId}"]`)?.classList.add('active');
-            }
-        }
-
-        function openModal(html) {
-            document.getElementById('modalContent').innerHTML = html;
-            document.getElementById('modalOverlay').classList.add('active');
-            lucide.createIcons();
-        }
-
-        function closeModal() {
-            document.getElementById('modalOverlay').classList.remove('active');
+        function copyCurrentReferral() {
+            copyText(getReferralLink(), 'Referral link copied!');
         }
 
         // ============================================================
-        // 3. AUTH LOGIC (Supabase)
+        // 3. EMAIL OTP AUTHENTICATION (SIGN UP & LOGIN WITH OTP)
         // ============================================================
-        function openAuthModal(mode = 'login') {
+        function openAuthModal(mode = 'signup', step = 'email') {
+            otpFlow.mode = mode;
+            otpFlow.step = step;
             const isLogin = mode === 'login';
+            const isOtpStep = step === 'otp';
+
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('wallet-inst-modal');
+            modalBox.classList.add('auth-pro-modal');
+
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
-                <div class="modal-header">
-                    <div class="modal-icon invest"><i data-lucide="shield-check"></i></div>
-                    <div class="modal-header-text">
-                        <h3>${isLogin ? 'Welcome Back' : 'Create Account'}</h3>
-                        <p>${isLogin ? 'Login to access your dashboard' : 'Sign up to start earning'}</p>
+
+                <div class="auth-brand-banner">
+                    <div class="auth-brand-left">
+                        <div class="logo-icon" style="width:32px;height:32px;border-radius:9px;">
+                            <i data-lucide="shield-check" style="width:17px;height:17px;"></i>
+                        </div>
+                        <span style="font-weight:800;font-size:1rem;letter-spacing:-0.4px;">TRONVEX</span>
                     </div>
+                    <span class="auth-brand-badge">${isOtpStep ? 'Email OTP' : (isLogin ? 'OTP Login' : 'OTP Sign Up')}</span>
                 </div>
 
-                <div class="auth-tabs">
-                    <button class="auth-tab-btn ${!isLogin ? 'active' : ''}" onclick="openAuthModal('signup')">Sign Up</button>
-                    <button class="auth-tab-btn ${isLogin ? 'active' : ''}" onclick="openAuthModal('login')">Login</button>
-                </div>
+                ${!isOtpStep ? `
+                    <div class="auth-tabs">
+                        <button class="auth-tab-btn ${!isLogin ? 'active' : ''}" type="button" onclick="openAuthModal('signup', 'email')">Sign Up</button>
+                        <button class="auth-tab-btn ${isLogin ? 'active' : ''}" type="button" onclick="openAuthModal('login', 'email')">Login</button>
+                    </div>
 
-                ${!isLogin ? `
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="authName" class="form-control" placeholder="Your full name">
-                </div>` : ''}
+                    <div class="auth-title-block">
+                        <h3>${isLogin ? 'Login with Email OTP' : 'Create account with OTP'}</h3>
+                        <p>${isLogin ? 'We will send a 6-digit verification code to your email' : 'Enter your details to receive a one-time email code'}</p>
+                    </div>
 
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="authEmail" class="form-control" placeholder="you@example.com">
-                </div>
+                    ${!isLogin ? `
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="authNameInput" class="form-control" placeholder="Your full name" value="${otpFlow.name || authState.name}">
+                            <div class="error-msg" id="authNameError">Please enter your full name.</div>
+                        </div>
+                    ` : ''}
 
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="authPass" class="form-control" placeholder="Min 6 characters">
-                </div>
+                    <div class="form-group">
+                        <label><span>Email Address</span></label>
+                        <input type="email" id="authEmailInput" class="form-control" placeholder="you@example.com" value="${otpFlow.email || authState.email}">
+                        <div class="error-msg" id="authEmailError">Please enter a valid email address.</div>
+                    </div>
 
-                <div style="text-align:right; margin-bottom:15px;">
-                    <a href="#" onclick="event.preventDefault(); openForgotPasswordModal()" style="color:var(--primary); font-size:0.75rem; font-weight:600;">Forgot password?</a>
-                </div>
+                    <button class="btn btn-primary btn-block" id="sendOtpBtn" onclick="sendEmailOtp()">
+                        <i data-lucide="mail-check" style="width:16px;height:16px;"></i>
+                        <span>Send Verification Code (OTP)</span>
+                    </button>
+                ` : `
+                    <div class="auth-title-block">
+                        <h3>Enter Verification Code</h3>
+                        <p>Code sent to <strong style="color:var(--primary);">${otpFlow.email}</strong></p>
+                    </div>
 
-                <button class="btn btn-primary btn-block" id="authSubmitBtn" onclick="${isLogin ? 'doLogin()' : 'doSignUp()'}">
-                    ${isLogin ? 'Login' : 'Sign Up'}
-                </button>
+                    <div class="form-group">
+                        <label><span>6-Digit Email OTP</span></label>
+                        <input type="text" id="otpCodeInput" class="form-control otp-input-box" maxlength="8" inputmode="numeric" placeholder="000000" autocomplete="one-time-code">
+                        <div class="error-msg" id="otpCodeError">Please enter the OTP code sent to your email.</div>
+                        <div class="otp-meta-row">
+                            <button type="button" class="otp-link-btn" onclick="openAuthModal('${otpFlow.mode}', 'email')">← Change Email</button>
+                            <button type="button" class="otp-link-btn" id="resendOtpBtn" onclick="sendEmailOtp(true)">Resend OTP</button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" id="verifyOtpBtn" onclick="verifyEmailOtp()">
+                        <i data-lucide="shield-check" style="width:16px;height:16px;"></i>
+                        <span>Verify & Continue</span>
+                    </button>
+                `}
             `);
+
+            if (isOtpStep) {
+                setTimeout(() => document.getElementById('otpCodeInput')?.focus(), 80);
+            }
         }
 
-        async function doSignUp() {
-            const name = document.getElementById('authName').value.trim();
-            const email = document.getElementById('authEmail').value.trim();
-            const pass = document.getElementById('authPass').value.trim();
-            const btn = document.getElementById('authSubmitBtn');
-
-            if (name.length < 2 || !email.includes('@') || pass.length < 6) {
-                showToast('Please fill all fields correctly', 'error'); return;
+        async function sendEmailOtp(isResend = false) {
+            if (!supabaseClient) {
+                showToast('Supabase client is not configured.', 'error');
+                return;
             }
 
-            btn.disabled = true;
-            btn.innerHTML = `<span class="btn-spinner"></span> Creating...`;
+            if (!isResend || !otpFlow.email) {
+                const nameEl = document.getElementById('authNameInput');
+                const emailEl = document.getElementById('authEmailInput');
+                const name = nameEl ? nameEl.value.trim() : otpFlow.name;
+                const email = emailEl ? emailEl.value.trim().toLowerCase() : '';
+
+                let ok = true;
+                if (otpFlow.mode === 'signup' && (!name || name.length < 2)) {
+                    if (nameEl) nameEl.classList.add('error');
+                    const errEl = document.getElementById('authNameError');
+                    if (errEl) errEl.style.display = 'block';
+                    ok = false;
+                } else if (nameEl) {
+                    nameEl.classList.remove('error');
+                    const errEl = document.getElementById('authNameError');
+                    if (errEl) errEl.style.display = 'none';
+                }
+
+                if (!email.includes('@') || !email.includes('.')) {
+                    if (emailEl) emailEl.classList.add('error');
+                    const errEl = document.getElementById('authEmailError');
+                    if (errEl) errEl.style.display = 'block';
+                    ok = false;
+                } else if (emailEl) {
+                    emailEl.classList.remove('error');
+                    const errEl = document.getElementById('authEmailError');
+                    if (errEl) errEl.style.display = 'none';
+                }
+
+                if (!ok) return;
+
+                otpFlow.name = name || email.split('@')[0];
+                otpFlow.email = email;
+            }
+
+            const btn = document.getElementById(isResend ? 'resendOtpBtn' : 'sendOtpBtn');
+            const origHtml = btn ? btn.innerHTML : '';
+            if (btn && !isResend) {
+                btn.disabled = true;
+                btn.innerHTML = `<span class="btn-spinner"></span> <span>Sending OTP...</span>`;
+            }
 
             try {
-                const { data, error } = await supabaseClient.auth.signUp({
-                    email, password: pass,
-                    options: { data: { full_name: name } }
+                const { error } = await supabaseClient.auth.signInWithOtp({
+                    email: otpFlow.email,
+                    options: {
+                        shouldCreateUser: true,
+                        data: otpFlow.mode === 'signup' ? { full_name: otpFlow.name } : undefined
+                    }
                 });
                 if (error) throw error;
-                
-                // Sug in trigger-ku abuuro profile-ka
-                await new Promise(r => setTimeout(r, 1200));
-                await fetchProfile(email);
-                closeModal();
-                showToast('Account created successfully!', 'success');
+
+                showToast(`OTP code sent to ${otpFlow.email}`, 'success');
+                if (!isResend) {
+                    openAuthModal(otpFlow.mode, 'otp');
+                }
             } catch (err) {
-                showToast(err.message, 'error');
-                btn.disabled = false;
-                btn.innerHTML = 'Sign Up';
+                showToast(err.message || 'Failed to send OTP code.', 'error');
+                if (btn && !isResend) {
+                    btn.disabled = false;
+                    btn.innerHTML = origHtml;
+                    lucide.createIcons();
+                }
             }
         }
 
-        async function doLogin() {
-            const email = document.getElementById('authEmail').value.trim();
-            const pass = document.getElementById('authPass').value.trim();
-            const btn = document.getElementById('authSubmitBtn');
-
-            if (!email.includes('@') || pass.length < 6) {
-                showToast('Invalid email or password', 'error'); return;
+        async function verifyEmailOtp() {
+            if (!supabaseClient) {
+                showToast('Supabase client is not configured.', 'error');
+                return;
             }
 
-            btn.disabled = true;
-            btn.innerHTML = `<span class="btn-spinner"></span> Logging in...`;
+            const codeEl = document.getElementById('otpCodeInput');
+            const errEl = document.getElementById('otpCodeError');
+            const token = codeEl ? codeEl.value.trim() : '';
+
+            if (token.length < 4) {
+                if (codeEl) codeEl.classList.add('error');
+                if (errEl) errEl.style.display = 'block';
+                return;
+            }
+            if (codeEl) codeEl.classList.remove('error');
+            if (errEl) errEl.style.display = 'none';
+
+            const btn = document.getElementById('verifyOtpBtn');
+            const origHtml = btn ? btn.innerHTML : '';
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = `<span class="btn-spinner"></span> <span>Verifying OTP...</span>`;
+            }
 
             try {
-                const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password: pass });
-                if (error) throw error;
-                await fetchProfile(email);
-                closeModal();
-                showToast('Logged in successfully!', 'success');
-            } catch (err) {
-                showToast(err.message, 'error');
-                btn.disabled = false;
-                btn.innerHTML = 'Login';
-            }
-        }
-
-        function openForgotPasswordModal() {
-            openModal(`
-                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
-                <div class="modal-header">
-                    <div class="modal-icon invest"><i data-lucide="key"></i></div>
-                    <div class="modal-header-text">
-                        <h3>Reset Password</h3>
-                        <p>We'll send a reset link to your email</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="resetEmail" class="form-control" placeholder="you@example.com">
-                </div>
-                <button class="btn btn-primary btn-block" id="resetBtn" onclick="doResetPassword()">Send Reset Link</button>
-            `);
-        }
-
-        async function doResetPassword() {
-            const email = document.getElementById('resetEmail').value.trim();
-            const btn = document.getElementById('resetBtn');
-            if (!email.includes('@')) { showToast('Invalid email', 'error'); return; }
-
-            btn.disabled = true;
-            btn.innerHTML = `<span class="btn-spinner"></span> Sending...`;
-
-            try {
-                const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-                    redirectTo: window.location.origin + window.location.pathname
+                const { data, error } = await supabaseClient.auth.verifyOtp({
+                    email: otpFlow.email,
+                    token,
+                    type: 'email'
                 });
                 if (error) throw error;
+
+                const user = data?.user || data?.session?.user;
+                if (!user) throw new Error('Verification succeeded but user session was not returned.');
+
+                await sbEnsureProfileForUser(user, otpFlow.mode === 'signup' ? otpFlow.name : '');
+
+                authState = {
+                    isLoggedIn: true,
+                    authUserId: user.id,
+                    userId: authState.userId || generateUniqueUserId(),
+                    name: otpFlow.name || user.email.split('@')[0],
+                    email: user.email,
+                    refCode: buildRefCode(user.email),
+                    isAdmin: user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()
+                };
+
+                await sbLoadUserFromCloud(user);
+                subscribeRealtimeUpdates();
+                saveAuthState();
+                syncAuthUI();
+                syncBalanceUI();
+                renderHistory();
                 closeModal();
-                showToast('Check your email for the reset link', 'success');
+
+                await pushNotification(
+                    otpFlow.mode === 'signup' ? 'Account Verified' : 'OTP Login Verified',
+                    `Signed in as ${authState.email} (${authState.userId}).`
+                );
+                showToast(`Verified! Welcome ${authState.name}`, 'success');
             } catch (err) {
-                showToast(err.message, 'error');
-                btn.disabled = false;
-                btn.innerHTML = 'Send Reset Link';
+                showToast(err.message || 'Invalid or expired OTP code.', 'error');
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = origHtml;
+                    lucide.createIcons();
+                }
             }
         }
 
-        async function signOut() {
-            await supabaseClient.auth.signOut();
-            authState = { isLoggedIn: false, userId: '', name: '', email: '', isAdmin: false };
-            balanceData = { available: 0, locked: 0, profit: 0 };
-            updateUI();
+        async function signOutAccount() {
+            if (realtimeChannel && supabaseClient) {
+                supabaseClient.removeChannel(realtimeChannel);
+                realtimeChannel = null;
+            }
+            if (supabaseClient) {
+                try { await supabaseClient.auth.signOut(); } catch (e) {}
+            }
+            authState.isLoggedIn = false;
+            authState.authUserId = '';
+            authState.isAdmin = false;
+            saveAuthState();
+            syncAuthUI();
             switchTab('home');
             showToast('Signed out', 'info');
         }
 
-        // ============================================================
-        // 4. DATA FETCHING (XOGTA SUPABASE)
-        // ============================================================
-        async function fetchProfile(email) {
-            const { data: prof, error } = await supabaseClient
-                .from('profiles')
-                .select('*')
-                .eq('email', email)
-                .single();
-
-            if (prof) {
-                authState = {
-                    isLoggedIn: true,
-                    userId: prof.user_code,
-                    name: prof.full_name,
-                    email: prof.email,
-                    isAdmin: prof.is_admin
-                };
-                balanceData = {
-                    available: Number(prof.available_balance || 0),
-                    locked: Number(prof.locked_balance || 0),
-                    profit: Number(prof.total_profit || 0)
-                };
-                updateUI();
-                fetchTransactions();
+        async function openAdminPanelModal() {
+            if (!authState.isLoggedIn || !authState.isAdmin) {
+                showToast('Admin access only.', 'error');
+                return;
             }
-        }
-
-        async function fetchTransactions() {
-            if (!authState.userId) return;
-            const { data: txs } = await supabaseClient
-                .from('transactions')
-                .select('*')
-                .eq('user_code', authState.userId)
-                .order('created_at', { ascending: false });
-
-            const list = document.getElementById('historyList');
-            if (!txs || txs.length === 0) {
-                list.innerHTML = `<div class="empty-state"><i data-lucide="receipt"></i><p>No transactions yet</p></div>`;
-                lucide.createIcons(); return;
+            checkExpiredPendingDeposits();
+            if (supabaseClient) {
+                const { data: { session } } = await supabaseClient.auth.getSession();
+                if (session?.user) await sbLoadUserFromCloud(session.user);
             }
 
-            list.innerHTML = txs.map(t => {
-                const isPos = t.tx_type === 'deposit' || t.tx_type === 'profit';
-                const badgeClass = t.status === 'completed' ? 'completed' : (t.status === 'pending' ? 'pending' : 'rejected');
-                return `
-                <div class="tx-card">
-                    <div class="tx-icon ${t.tx_type}"><i data-lucide="${isPos ? 'arrow-down-left' : 'arrow-up-right'}"></i></div>
-                    <div class="tx-info">
-                        <div class="tx-title">${t.title}</div>
-                        <div class="tx-meta">
-                            <span>${new Date(t.created_at).toLocaleDateString()}</span>
-                            <span class="tx-badge ${badgeClass}">${t.status}</span>
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('wallet-inst-modal');
+
+            const pendingList = ADMIN_DEPOSIT_REQUESTS.filter(r => r.status === 'pending');
+
+            const cardsHtml = pendingList.length
+                ? pendingList.map(req => `
+                    <div class="admin-item-card" id="adminReq_${req.id}">
+                        <div class="admin-item-top">
+                            <div>
+                                <div style="font-weight:800;color:#fff;">${req.userName} · <span style="color:var(--primary);font-family:monospace;">${req.userId}</span></div>
+                                <div style="font-size:0.68rem;color:var(--text-muted);">${req.userEmail}</div>
+                                <div style="font-size:0.72rem;color:var(--gold);margin-top:3px;">
+                                    Network: <strong>${req.networkLabel}</strong> · Amount: <strong>$${Number(req.amount).toFixed(2)}</strong>
+                                </div>
+                                <div style="font-size:0.64rem;color:var(--text-muted);font-family:monospace;word-break:break-all;margin-top:2px;">
+                                    To: ${req.walletAddress}
+                                </div>
+                            </div>
+                            <span class="tx-badge pending">PENDING</span>
+                        </div>
+                        <div class="form-group" style="margin-bottom:6px;">
+                            <input type="text" id="rejectReason_${req.id}" class="form-control" style="padding:7px 10px;font-size:0.75rem;" placeholder="Reject reason (e.g., Payment not received on chain)">
+                        </div>
+                        <div class="admin-actions-row">
+                            <button type="button" class="btn-approve" onclick="adminApproveDeposit('${req.id}')">✓ Approve</button>
+                            <button type="button" class="btn-reject" onclick="adminRejectDeposit('${req.id}')">✕ Reject</button>
                         </div>
                     </div>
-                    <div class="tx-amount ${isPos ? 'positive' : 'negative'}">
-                        ${isPos ? '+' : '-'}$${Number(t.amount).toFixed(2)}
-                        <small>${t.method || 'Crypto'}</small>
-                    </div>
-                </div>`;
-            }).join('');
-            lucide.createIcons();
-        }
+                `).join('')
+                : `<div class="empty-state"><i data-lucide="check-circle"></i><p>No pending deposit requests right now</p></div>`;
 
-        // ============================================================
-        // 5. UI UPDATES
-        // ============================================================
-        function updateUI() {
-            const authLabel = document.getElementById('headerAuthLabel');
-            const avatarImg = document.getElementById('headerAvatarImg');
-            const adminBtn = document.getElementById('headerAdminBtn');
-            
-            if (authState.isLoggedIn) {
-                authLabel.textContent = authState.name.split(' ')[0];
-                document.getElementById('headerSignUpBtn').style.display = 'none';
-                avatarImg.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(authState.name)}&background=00ffaa&color=030a12&bold=true`;
-                
-                document.getElementById('profileHeaderName').textContent = authState.name;
-                document.getElementById('profileHeaderEmail').textContent = authState.email;
-                document.getElementById('profileUserIdValue').textContent = authState.userId;
-                document.getElementById('profileEmailValue').textContent = authState.email;
-                document.getElementById('profileAvatarImg').src = avatarImg.src;
-
-                if (authState.isAdmin) adminBtn.classList.add('visible');
-            } else {
-                authLabel.textContent = 'Login';
-                document.getElementById('headerSignUpBtn').style.display = 'inline-flex';
-                avatarImg.src = `https://ui-avatars.com/api/?name=Guest+User&background=00ffaa&color=030a12&bold=true`;
-                adminBtn.classList.remove('visible');
-                
-                document.getElementById('profileHeaderName').textContent = 'Guest User';
-                document.getElementById('profileHeaderEmail').textContent = 'guest@tronvex.online';
-                document.getElementById('profileUserIdValue').textContent = 'TVX-GUEST00';
-                document.getElementById('profileEmailValue').textContent = 'guest@tronvex.online';
-            }
-
-            document.getElementById('headerAuthBtn').onclick = () => authState.isLoggedIn ? switchTab('profile') : openAuthModal('login');
-
-            // Balance
-            const total = balanceData.available + balanceData.locked + balanceData.profit;
-            document.getElementById('totalBalanceMain').innerHTML = `$${total.toFixed(2).split('.')[0]}<span>.${total.toFixed(2).split('.')[1]}</span>`;
-            document.getElementById('totalBalanceSub').innerHTML = `≈ ${total.toFixed(2)} USDT · <strong>+$${balanceData.profit.toFixed(2)}</strong> total profit`;
-            document.getElementById('availBalanceText').textContent = `$${balanceData.available.toFixed(2)}`;
-            document.getElementById('lockedBalanceText').textContent = `$${balanceData.locked.toFixed(2)}`;
-            
-            document.getElementById('statTotalInvested').textContent = `$${balanceData.locked.toFixed(2)}`;
-            document.getElementById('statProfitEarned').textContent = `+$${balanceData.profit.toFixed(2)} profit earned`;
-        }
-
-        // ============================================================
-        // 6. DEPOSIT & WITHDRAW
-        // ============================================================
-        function openWalletModal(type) {
-            const isDep = type === 'deposit';
-            const color = isDep ? 'var(--primary)' : 'var(--blue)';
-            const title = isDep ? 'Deposit Funds' : 'Withdraw Funds';
-            
             openModal(`
                 <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
                 <div class="modal-header">
-                    <div class="modal-icon" style="background:${color}20; color:${color}; border:1px solid ${color}50;">
-                        <i data-lucide="${isDep ? 'arrow-down-to-line' : 'arrow-up-from-line'}"></i>
+                    <div class="modal-icon invest" style="background:rgba(255,187,0,0.14);color:var(--gold);border-color:rgba(255,187,0,0.35);">
+                        <i data-lucide="shield-alert"></i>
                     </div>
                     <div class="modal-header-text">
-                        <h3>${title}</h3>
-                        <p>${isDep ? 'Min $5.00' : 'Min $10.00'} USDT</p>
+                        <h3>Admin Deposit Panel</h3>
+                        <p>Verify user details & approve or reject deposits</p>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label>Amount (USDT)</label>
-                    <input type="number" id="walletAmount" class="form-control" placeholder="Enter amount" min="${isDep ? 5 : 10}" step="0.01">
-                </div>
-
-                ${isDep ? `
-                <div class="form-group">
-                    <label>Network</label>
-                    <select id="walletNetwork" class="form-control">
-                        <option value="usdt_bep20">USDT (BEP20)</option>
-                        <option value="usdt_trc20">USDT (TRC20)</option>
-                        <option value="ton">TON</option>
-                    </select>
-                </div>
-                <div style="background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; margin-bottom:15px; font-size:0.75rem; color:var(--text-muted);">
-                    Send funds to the address generated on the next screen.
-                </div>` : `
-                <div class="form-group">
-                    <label>Wallet Address (TRC20)</label>
-                    <input type="text" id="walletAddress" class="form-control" placeholder="TLPVBmQnS6VTV7MwzLzYy7EjUKqsKob7hs">
-                </div>`}
-
-                <button class="btn btn-primary btn-block" id="walletSubmitBtn" onclick="${isDep ? 'doDeposit()' : 'doWithdraw()'}" style="background:${color}; color:${isDep ? 'black' : 'white'}">
-                    Confirm ${isDep ? 'Deposit' : 'Withdraw'}
-                </button>
+                <div>${cardsHtml}</div>
             `);
         }
 
-        async function doDeposit() {
-            const amount = parseFloat(document.getElementById('walletAmount').value);
-            const network = document.getElementById('walletNetwork').value;
-            const btn = document.getElementById('walletSubmitBtn');
+        async function adminApproveDeposit(requestId) {
+            if (!authState.isLoggedIn || !authState.isAdmin) return;
+            const req = ADMIN_DEPOSIT_REQUESTS.find(r => r.id === requestId);
+            if (!req || req.status !== 'pending') return;
 
-            if (!amount || amount < 5) { showToast('Minimum deposit is $5', 'error'); return; }
+            req.status = 'completed';
+            const tx = TRANSACTIONS.find(t => t.id === req.txId);
+            if (tx) tx.status = 'completed';
 
-            btn.disabled = true;
-            btn.innerHTML = `<span class="btn-spinner"></span> Processing...`;
+            if (authState.userId === req.userId || authState.email === req.userEmail) {
+                availableBalance = Number((Number(availableBalance || 0) + Number(req.amount)).toFixed(2));
+            }
 
-            try {
-                const { data, error } = await supabaseClient.rpc('submit_deposit', {
-                    p_amount: amount,
-                    p_network_key: network,
-                    p_network_label: network.toUpperCase(),
-                    p_wallet_address: 'Generated Address'
-                });
+            if (supabaseClient) {
+                try {
+                    await supabaseClient.from('deposits').update({ status: 'completed' }).eq('tx_code', req.txId);
+                    await supabaseClient.from('transactions').update({ status: 'completed' }).eq('tx_code', req.txId);
+                    const { data: targetProf } = await supabaseClient
+                        .from('profiles')
+                        .select('available_balance')
+                        .eq('user_code', req.userId)
+                        .maybeSingle();
+                    const cloudBal = Number((targetProf && targetProf.available_balance) || 0) + Number(req.amount);
+                    await supabaseClient
+                        .from('profiles')
+                        .update({ available_balance: Number(cloudBal.toFixed(2)) })
+                        .eq('user_code', req.userId);
+                } catch (e) {}
+            }
 
-                if (error) throw error;
-                if (!data.ok) throw new Error(data.error);
+            const smsMsg = `Deposit of $${Number(req.amount).toFixed(2)} (${req.networkLabel}) for ID ${req.userId} is COMPLETED and added to balance.`;
+            await pushNotification('Deposit Completed (SMS)', smsMsg, true, false);
+            saveDatabase();
+            syncBalanceUI();
+            renderHistory();
+            openAdminPanelModal();
+            showToast(`Approved $${Number(req.amount).toFixed(2)} for ${req.userId}`, 'success');
+        }
 
-                closeModal();
-                showToast('Deposit request created. Pending admin approval.', 'success');
-                fetchTransactions();
-            } catch (err) {
-                showToast(err.message, 'error');
-                btn.disabled = false;
-                btn.innerHTML = 'Confirm Deposit';
+        async function adminRejectDeposit(requestId) {
+            if (!authState.isLoggedIn || !authState.isAdmin) return;
+            const req = ADMIN_DEPOSIT_REQUESTS.find(r => r.id === requestId);
+            if (!req || req.status !== 'pending') return;
+
+            const reasonInput = document.getElementById(`rejectReason_${requestId}`);
+            const reason = (reasonInput && reasonInput.value.trim())
+                ? reasonInput.value.trim()
+                : 'Deposit verification failed or payment not received.';
+
+            req.status = 'rejected';
+            req.rejectReason = reason;
+
+            const tx = TRANSACTIONS.find(t => t.id === req.txId);
+            if (tx) {
+                tx.status = 'rejected';
+                tx.rejectReason = reason;
+            }
+
+            if (supabaseClient) {
+                try {
+                    await supabaseClient.from('deposits').update({ status: 'rejected', reject_reason: reason }).eq('tx_code', req.txId);
+                    await supabaseClient.from('transactions').update({ status: 'rejected', reject_reason: reason }).eq('tx_code', req.txId);
+                } catch (e) {}
+            }
+
+            const smsMsg = `Deposit of $${Number(req.amount).toFixed(2)} (${req.networkLabel}) for ID ${req.userId} was REJECTED. Reason: ${reason}`;
+            await pushNotification('Deposit Rejected (SMS)', smsMsg, true, true);
+            saveDatabase();
+            renderHistory();
+            openAdminPanelModal();
+            showToast(`Rejected deposit ${requestId}`, 'error');
+        }
+
+        function copyText(text, msg) {
+            if (!text) {
+                showToast('No address available', 'error');
+                return;
+            }
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => showToast(msg, 'success'));
+            } else {
+                showToast(msg, 'success');
             }
         }
 
-        async function doWithdraw() {
-            const amount = parseFloat(document.getElementById('walletAmount').value);
-            const address = document.getElementById('walletAddress').value.trim();
-            const btn = document.getElementById('walletSubmitBtn');
-
-            if (!amount || amount < 10) { showToast('Minimum withdrawal is $10', 'error'); return; }
-            if (address.length < 10) { showToast('Invalid wallet address', 'error'); return; }
-            if (amount > balanceData.available) { showToast('Insufficient available balance', 'error'); return; }
-
-            btn.disabled = true;
-            btn.innerHTML = `<span class="btn-spinner"></span> Processing...`;
-
-            try {
-                const { data, error } = await supabaseClient.rpc('submit_withdraw', {
-                    p_amount: amount,
-                    p_wallet_address: address
-                });
-
-                if (error) throw error;
-                if (!data.ok) throw new Error(data.error);
-
-                closeModal();
-                showToast('Withdrawal request submitted.', 'success');
-                await fetchProfile(authState.email);
-                fetchTransactions();
-            } catch (err) {
-                showToast(err.message, 'error');
-                btn.disabled = false;
-                btn.innerHTML = 'Confirm Withdraw';
+        function generateQrSvg(text, size = 136) {
+            const cells = 21;
+            const moduleSize = size / cells;
+            let hash = 2166136261;
+            for (let i = 0; i < text.length; i++) {
+                hash ^= text.charCodeAt(i);
+                hash = Math.imul(hash, 16777619);
             }
+
+            const isFinder = (r, c) => {
+                const inTopLeft = r < 7 && c < 7;
+                const inTopRight = r < 7 && c >= cells - 7;
+                const inBottomLeft = r >= cells - 7 && c < 7;
+                return inTopLeft || inTopRight || inBottomLeft;
+            };
+
+            const finderFilled = (r, c) => {
+                const lr = r >= cells - 7 ? r - (cells - 7) : r;
+                const lc = c >= cells - 7 ? c - (cells - 7) : c;
+                if (lr === 0 || lr === 6 || lc === 0 || lc === 6) return true;
+                if (lr >= 2 && lr <= 4 && lc >= 2 && lc <= 4) return true;
+                return false;
+            };
+
+            let rects = '';
+            for (let r = 0; r < cells; r++) {
+                for (let c = 0; c < cells; c++) {
+                    let dark = false;
+                    if (isFinder(r, c)) {
+                        dark = finderFilled(r, c);
+                    } else {
+                        const seed = hash ^ Math.imul(r + 1, 2654435761) ^ Math.imul(c + 1, 1597334677);
+                        dark = ((seed >>> 0) % 100) < 47;
+                    }
+                    if (dark) {
+                        const x = (c * moduleSize).toFixed(2);
+                        const y = (r * moduleSize).toFixed(2);
+                        const w = (moduleSize + 0.15).toFixed(2);
+                        rects += `<rect x="${x}" y="${y}" width="${w}" height="${w}" fill="#030a12"/>`;
+                    }
+                }
+            }
+
+            return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">${rects}</svg>`;
         }
 
-        // ============================================================
-        // 7. INIT (Marka boggu soo baxo)
-        // ============================================================
-        window.addEventListener('DOMContentLoaded', async () => {
+        const COINS = {
+            usdt_bep20: {
+                key: 'usdt_bep20',
+                symbol: 'USDT',
+                name: 'USDT BEP20',
+                tileCode: 'USDT',
+                tileSub: 'BEP20',
+                network: 'BEP20',
+                networkDesc: 'BNB Smart Chain',
+                address: USER_WALLET_ADDRESSES.usdt_bep20,
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="bscRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f3ba2f"/><stop offset="100%" stop-color="#d99b00"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131a24"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#bscRing1)" stroke-width="2.2"/><circle cx="18" cy="18" r="12.2" fill="#26a17b"/><path fill="#ffffff" d="M19.8 15.1v-2.5h4.5V9.2H11.7v3.4h4.5v2.5c-3.7.17-6.5.9-6.5 1.8s2.8 1.63 6.5 1.8v6.3h3.6v-6.3c3.7-.17 6.5-.9 6.5-1.8s-2.8-1.63-6.5-1.8z"/></svg>`
+            },
+            usdt_trc20: {
+                key: 'usdt_trc20',
+                symbol: 'USDT',
+                name: 'USDT TRC20',
+                tileCode: 'USDT',
+                tileSub: 'TRC20',
+                network: 'TRC20',
+                networkDesc: 'TRON Network',
+                address: USER_WALLET_ADDRESSES.usdt_trc20,
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="tronRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff2e4d"/><stop offset="100%" stop-color="#c4001e"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#121822"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#tronRing1)" stroke-width="2"/><polygon points="9,10 27,13.5 18.5,27.5" fill="none" stroke="#ff3b5c" stroke-width="2" stroke-linejoin="round"/><circle cx="24.5" cy="24.5" r="8.2" fill="#26a17b" stroke="#121822" stroke-width="1.6"/><path fill="#fff" d="M25.4 23.6v-1.2h2.1v-1.6h-6v1.6h2.1v1.2c-1.7.08-3 .42-3 .85s1.3.77 3 .85v2.9h1.8v-2.9c1.7-.08 3-.42 3-.85s-1.3-.77-3-.85z"/></svg>`
+            },
+            usdt_erc20: {
+                key: 'usdt_erc20',
+                symbol: 'USDT',
+                name: 'USDT ERC20',
+                tileCode: 'USDT',
+                tileSub: 'ERC20',
+                network: 'ERC20',
+                networkDesc: 'Ethereum Network',
+                address: USER_WALLET_ADDRESSES.usdt_erc20,
+                logo: `<svg viewBox="0 0 36 36"><defs><linearGradient id="ethRing1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#627eea"/><stop offset="100%" stop-color="#3c55c9"/></linearGradient></defs><circle cx="18" cy="18" r="18" fill="#131826"/><circle cx="18" cy="18" r="16" fill="none" stroke="url(#ethRing1)" stroke-width="2"/><polygon points="18,6.5 11.5,17.5 18,21.4 24.5,17.5" fill="#8ea4f8"/><polygon points="18,22.9 11.5,19 18,29.5 24.5,19" fill="#8ea4f8"/></svg>`
+            },
+            ton: {
+                key: 'ton',
+                symbol: 'TON',
+                name: 'TON',
+                tileCode: 'TON',
+                tileSub: 'TONCOIN',
+                network: 'TON',
+                networkDesc: 'The Open Network',
+                address: USER_WALLET_ADDRESSES.ton,
+                logo: `<svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#0088cc"/><path fill="#ffffff" d="M10.2 12.2h15.6c1.2 0 2 1.3 1.4 2.3l-7.2 12.1c-.5.9-1.8.9-2.4 0L8.8 14.5c-.6-1 .2-2.3 1.4-2.3zm6.6 2.2v9.4l5.4-9.4h-5.4zm-2.4 0H9.8l4.6 7.8v-7.8z"/></svg>`
+            }
+        };
+
+        const PAYMENT_METHODS = [...ALLOWED_4_NETWORKS];
+
+        function getAllowedFourNetworks(sourceList = PAYMENT_METHODS) {
+            return (Array.isArray(sourceList) ? sourceList : ALLOWED_4_NETWORKS)
+                .map(n => String(n).toLowerCase().trim())
+                .filter(n => ALLOWED_4_NETWORKS.includes(n) && Boolean(COINS[n]))
+                .slice(0, 4);
+        }
+
+        let walletState = {
+            mode: 'deposit',
+            step: 1,
+            network: 'usdt_bep20',
+            amount: '',
+            days: PLAN_DAYS,
+            destination: '',
+            payAddress: USER_WALLET_ADDRESSES.usdt_bep20,
+            paymentId: '',
+            qrOpen: false,
+            activeOrderExpiresAt: null,
+            sendingAnim: false
+        };
+        let walletCountdownInterval = null;
+
+        function formatAmount(tx) {
+            const amt = Number(tx.amount || 0);
+            if (tx.type === 'deposit' || tx.type === 'profit') return '+$' + amt.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            if (tx.type === 'withdraw' || tx.type === 'invest') return '-$' + amt.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            return '$' + amt.toFixed(2);
+        }
+
+        function renderHistory() {
+            checkExpiredPendingDeposits();
+            const list = document.getElementById('historyList');
+            if (!list) return;
+            if (!TRANSACTIONS || TRANSACTIONS.length === 0) {
+                list.innerHTML = `<div class="empty-state"><i data-lucide="inbox"></i><p>No transactions yet</p></div>`;
+                lucide.createIcons();
+                return;
+            }
+            let html = '';
+            TRANSACTIONS.forEach((tx, idx) => {
+                const iconMap = { deposit: 'arrow-down-to-line', withdraw: 'arrow-up-from-line', invest: 'trending-up', profit: 'dollar-sign' };
+                const isPos = (tx.type === 'deposit' || tx.type === 'profit');
+                const statusClass = ['completed', 'pending', 'rejected'].includes(tx.status) ? tx.status : 'pending';
+                let remTag = '';
+                if (tx.type === 'deposit' && tx.status === 'pending' && tx.expiresAt) {
+                    const leftSec = Math.max(0, Math.ceil((tx.expiresAt - Date.now()) / 1000));
+                    const mm = String(Math.floor(leftSec / 60)).padStart(2, '0');
+                    const ss = String(leftSec % 60).padStart(2, '0');
+                    remTag = `<span>· ${mm}:${ss}</span>`;
+                }
+                const reasonNote = (tx.status === 'rejected' && tx.rejectReason)
+                    ? `<div style="font-size:0.65rem;color:var(--danger);margin-top:3px;">Reason: ${tx.rejectReason}</div>`
+                    : '';
+                html += `
+                    <div class="tx-card" onclick="requireAuth(() => openReceipt(${idx}))">
+                        <div class="tx-icon ${tx.type}"><i data-lucide="${iconMap[tx.type] || 'arrow-down-to-line'}"></i></div>
+                        <div class="tx-info">
+                            <div class="tx-title">${tx.title}</div>
+                            <div class="tx-meta">
+                                <span>${tx.method}</span>
+                                <span>·</span>
+                                <span>${tx.date}</span>
+                                <span class="tx-badge ${statusClass}">${tx.status}</span>
+                                ${remTag}
+                            </div>
+                            ${reasonNote}
+                        </div>
+                        <div class="tx-amount ${isPos ? 'positive' : 'negative'}">
+                            ${formatAmount(tx)}
+                            <small>${tx.network || tx.method}</small>
+                        </div>
+                    </div>
+                `;
+            });
+            list.innerHTML = html;
             lucide.createIcons();
-            const { data: { session } } = await supabaseClient.auth.getSession();
-            if (session) {
-                await fetchProfile(session.user.email);
+        }
+
+        function switchTab(tabName, el) {
+            document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+            document.getElementById('tab-' + tabName).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            if (el) el.classList.add('active');
+            else {
+                const target = document.querySelector(`.nav-item[data-tab="${tabName}"]`);
+                if (target) target.classList.add('active');
             }
+            if (tabName === 'history') renderHistory();
+            if (tabName === 'profile') syncAuthUI();
+            if (tabName === 'stats') syncBalanceUI();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(updateSlider, 50);
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast`;
+            let icon = 'info', color = 'var(--primary)';
+            if (type === 'success') { icon = 'check-circle'; toast.style.borderLeftColor = 'var(--success)'; }
+            else if (type === 'error') { icon = 'alert-circle'; color = 'var(--danger)'; toast.style.borderLeftColor = 'var(--danger)'; }
+            toast.innerHTML = `<i data-lucide="${icon}" style="color:${color}; width:18px; height:18px; flex-shrink:0;"></i> <span>${message}</span>`;
+            container.appendChild(toast);
+            lucide.createIcons();
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+                setTimeout(() => toast.remove(), 400);
+            }, 3800);
+        }
+
+        function openModal(html) {
+            const overlay = document.getElementById('modalOverlay');
+            document.getElementById('modalContent').innerHTML = html;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            if (walletCountdownInterval) {
+                clearInterval(walletCountdownInterval);
+                walletCountdownInterval = null;
+            }
+            const overlay = document.getElementById('modalOverlay');
+            const content = document.getElementById('modalContent');
+            content.classList.remove('auth-pro-modal');
+            content.classList.remove('wallet-inst-modal');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
         });
 
+        const slider = document.getElementById('plansSlider');
+        const wrapper = document.getElementById('plansWrapper');
+        let currentIndex = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startTranslate = 0;
+        let currentTranslate = 0;
+
+        function getVisible() {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1100) return 2;
+            return 3;
+        }
+        function getStep() {
+            const cards = document.querySelectorAll('.plan-card');
+            if (!cards.length) return 0;
+            return cards[0].offsetWidth + 14;
+        }
+        function getMaxIndex() {
+            const cards = document.querySelectorAll('.plan-card');
+            return Math.max(0, cards.length - getVisible());
+        }
+        function updateSlider() {
+            const cards = document.querySelectorAll('.plan-card');
+            if (!cards.length || !slider) return;
+            const maxIndex = getMaxIndex();
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            if (currentIndex < 0) currentIndex = 0;
+            currentTranslate = -currentIndex * getStep();
+            slider.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            slider.style.transform = `translateX(${currentTranslate}px)`;
+            renderDots(maxIndex);
+            updateArrows(maxIndex);
+        }
+        function renderDots(maxIndex) {
+            const dotsWrap = document.getElementById('sliderDots');
+            if (!dotsWrap) return;
+            dotsWrap.innerHTML = '';
+            for (let i = 0; i <= maxIndex; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot' + (i === currentIndex ? ' active' : '');
+                dot.onclick = () => { currentIndex = i; updateSlider(); };
+                dotsWrap.appendChild(dot);
+            }
+        }
+        function updateArrows(maxIndex) {
+            const prev = document.getElementById('prevArrow');
+            const next = document.getElementById('nextArrow');
+            if (prev) prev.disabled = currentIndex === 0;
+            if (next) next.disabled = currentIndex >= maxIndex;
+        }
+        function slidePlans(dir) {
+            const maxIndex = getMaxIndex();
+            currentIndex += dir;
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            updateSlider();
+        }
+        function onDragStart(e) {
+            isDragging = true;
+            startX = (e.type.includes('mouse')) ? e.pageX : e.touches[0].clientX;
+            startTranslate = currentTranslate;
+            slider.style.transition = 'none';
+        }
+        function onDragMove(e) {
+            if (!isDragging) return;
+            const x = (e.type.includes('mouse')) ? e.pageX : e.touches[0].clientX;
+            const diff = x - startX;
+            currentTranslate = startTranslate + diff;
+            slider.style.transform = `translateX(${currentTranslate}px)`;
+        }
+        function onDragEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            const movedBy = currentTranslate - (-currentIndex * getStep());
+            const threshold = getStep() * 0.2;
+            if (movedBy < -threshold) currentIndex++;
+            else if (movedBy > threshold) currentIndex--;
+            const maxIndex = getMaxIndex();
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            updateSlider();
+        }
+        if (wrapper) {
+            wrapper.addEventListener('mousedown', onDragStart);
+            window.addEventListener('mousemove', onDragMove);
+            window.addEventListener('mouseup', onDragEnd);
+            wrapper.addEventListener('touchstart', onDragStart, { passive: true });
+            wrapper.addEventListener('touchmove', onDragMove, { passive: true });
+            wrapper.addEventListener('touchend', onDragEnd);
+        }
+        window.addEventListener('resize', updateSlider);
+
+        function openWalletFlow(mode = 'deposit', step = 1) {
+            walletState.mode = mode;
+            walletState.step = step;
+            walletState.qrOpen = false;
+            walletState.sendingAnim = false;
+            walletState.days = PLAN_DAYS;
+            const allowed = getAllowedFourNetworks();
+            if (!allowed.includes(walletState.network)) {
+                walletState.network = allowed[0] || 'usdt_bep20';
+            }
+            walletState.payAddress = USER_WALLET_ADDRESSES[walletState.network];
+
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.add('wallet-inst-modal');
+
+            renderWalletFlowModal();
+        }
+
+        function switchWalletMode(mode) {
+            walletState.mode = mode;
+            walletState.step = 1;
+            walletState.qrOpen = false;
+            walletState.sendingAnim = false;
+            renderWalletFlowModal();
+        }
+
+        function selectWalletNetwork(key) {
+            const allowed = getAllowedFourNetworks();
+            if (!allowed.includes(key)) return;
+            walletState.network = key;
+            walletState.payAddress = USER_WALLET_ADDRESSES[key] || '';
+            walletState.qrOpen = false;
+            renderWalletFlowModal();
+        }
+
+        function goWalletStep(nextStep) {
+            if (nextStep < 1 || nextStep > 4) return;
+            walletState.step = nextStep;
+            renderWalletFlowModal();
+        }
+
+        function handleWalletStep1Continue() {
+            walletState.step = 2;
+            renderWalletFlowModal();
+        }
+
+        async function handlePayNowFromStep2() {
+            const amtEl = document.getElementById('wFlowAmount');
+            const destEl = document.getElementById('wFlowDest');
+            const amtErr = document.getElementById('wFlowAmtErr');
+            const destErr = document.getElementById('wFlowDestErr');
+
+            const amtVal = parseFloat(amtEl ? amtEl.value : '');
+            if (isNaN(amtVal) || amtVal < 5) {
+                if (amtEl) amtEl.classList.add('error');
+                if (amtErr) amtErr.style.display = 'block';
+                return;
+            }
+            if (walletState.mode === 'withdraw' && amtVal > availableBalance) {
+                if (amtEl) amtEl.classList.add('error');
+                if (amtErr) {
+                    amtErr.textContent = 'Amount exceeds available balance.';
+                    amtErr.style.display = 'block';
+                }
+                return;
+            }
+            if (amtEl) amtEl.classList.remove('error');
+            if (amtErr) amtErr.style.display = 'none';
+            walletState.amount = amtVal.toFixed(2);
+            walletState.days = PLAN_DAYS;
+
+            if (walletState.mode === 'withdraw') {
+                const destVal = destEl ? destEl.value.trim() : '';
+                if (destVal.length < 6) {
+                    if (destEl) destEl.classList.add('error');
+                    if (destErr) destErr.style.display = 'block';
+                    return;
+                }
+                if (destEl) destEl.classList.remove('error');
+                if (destErr) destErr.style.display = 'none';
+                walletState.destination = destVal;
+                walletState.step = 3;
+                renderWalletFlowModal();
+                return;
+            }
+
+            const allowed = getAllowedFourNetworks();
+            const chosenNet = allowed.includes(walletState.network) ? walletState.network : allowed[0];
+            walletState.network = chosenNet;
+            const coin = COINS[chosenNet] || COINS.usdt_bep20;
+
+            walletState.payAddress = USER_WALLET_ADDRESSES[chosenNet] || '';
+            walletState.paymentId = 'TVX-DEP-' + Date.now();
+            walletState.activeOrderExpiresAt = Date.now() + DEPOSIT_TIMEOUT_MS;
+            walletState.sendingAnim = true;
+            walletState.step = 3;
+            renderWalletFlowModal();
+
+            await new Promise(r => setTimeout(r, 950));
+            walletState.sendingAnim = false;
+            renderWalletFlowModal();
+        }
+
+        function toggleWalletQr() {
+            walletState.qrOpen = !walletState.qrOpen;
+            renderWalletFlowModal();
+        }
+
+        function updateWalletCountdownUI() {
+            const el = document.getElementById('bybitOrderTimerText');
+            const banner = document.getElementById('bybitOrderTimerBanner');
+            if (!el || !walletState.activeOrderExpiresAt) return;
+            const remSec = Math.max(0, Math.ceil((walletState.activeOrderExpiresAt - Date.now()) / 1000));
+            const mm = String(Math.floor(remSec / 60)).padStart(2, '0');
+            const ss = String(remSec % 60).padStart(2, '0');
+            if (remSec <= 0) {
+                el.textContent = '00:00 — Expired';
+                if (banner) banner.classList.add('expired');
+            } else {
+                el.textContent = `${mm}:${ss}`;
+                if (banner) banner.classList.remove('expired');
+            }
+        }
+
+        function renderWalletFlowModal() {
+            if (walletCountdownInterval) {
+                clearInterval(walletCountdownInterval);
+                walletCountdownInterval = null;
+            }
+
+            const allowedFour = getAllowedFourNetworks();
+            if (!allowedFour.includes(walletState.network)) {
+                walletState.network = allowedFour[0] || 'usdt_bep20';
+            }
+
+            const coin = COINS[walletState.network] || COINS.usdt_bep20;
+            const walletAddr = USER_WALLET_ADDRESSES[coin.key] || '';
+            const isDep = walletState.mode === 'deposit';
+            const stepTitles = ['NETWORK', 'AMOUNT', 'PAY', 'CONFIRM'];
+            const currentAmt = Number(walletState.amount || 5);
+
+            const stepperHtml = `
+                <div class="inst-stepper">
+                    ${[1,2,3,4].map(num => {
+                        const cls = num === walletState.step ? 'active' : (num < walletState.step ? 'done' : '');
+                        return `
+                            <div class="inst-step ${cls}" onclick="goWalletStep(${num})">
+                                <div class="inst-step-circle">${num}</div>
+                                <span class="inst-step-label">${stepTitles[num - 1]}</span>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+
+            const networkTilesHtml = `
+                <div class="inst-net-grid">
+                    ${allowedFour.map(key => {
+                        const c = COINS[key];
+                        const active = key === walletState.network ? 'active' : '';
+                        return `
+                            <div class="inst-net-tile${active}" onclick="selectWalletNetwork('${key}')">
+                                <span class="inst-net-check">✓</span>
+                                <div class="inst-net-logo">${c.logo}</div>
+                                <span class="inst-net-code">${c.tileCode}</span>
+                                <span class="inst-net-sub">${c.tileSub}</span>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+
+            let bodyHtml = '';
+
+            if (walletState.step === 1) {
+                bodyHtml = `
+                    <div class="inst-panel-card">
+                        <div class="inst-panel-head">
+                            <div class="inst-panel-icon"><i data-lucide="network"></i></div>
+                            <div>
+                                <h4>Choose Network</h4>
+                                <p>4 networks only · ${coin.name} (${coin.networkDesc})</p>
+                            </div>
+                        </div>
+                        ${networkTilesHtml}
+                        <button class="inst-continue-btn" type="button" onclick="handleWalletStep1Continue()">
+                            <span>CONTINUE</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                `;
+            } else if (walletState.step === 2) {
+                bodyHtml = `
+                    <div class="inst-panel-card">
+                        <div class="inst-panel-head">
+                            <div class="inst-panel-icon"><i data-lucide="coins"></i></div>
+                            <div>
+                                <h4>${isDep ? 'Enter Amount' : 'Withdrawal Amount'}</h4>
+                                <p>Network: ${coin.name} · Min $5.00</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <span>Amount (USD / ${coin.symbol})</span>
+                                ${!isDep ? `<span class="max-btn" onclick="document.getElementById('wFlowAmount').value=${Number(availableBalance||0).toFixed(2)}">MAX ($${Number(availableBalance||0).toFixed(2)})</span>` : `<span>Min $5.00</span>`}
+                            </label>
+                            <input type="number" id="wFlowAmount" class="form-control" placeholder="Enter amount (min $5.00)" min="5" step="0.01" value="${walletState.amount}">
+                            <div class="error-msg" id="wFlowAmtErr">Minimum amount is $5.00.</div>
+                        </div>
+                        ${!isDep ? `
+                            <div class="form-group">
+                                <label><span>Destination Wallet Address (${coin.name})</span></label>
+                                <input type="text" id="wFlowDest" class="form-control" placeholder="Enter ${coin.name} wallet address" value="${walletState.destination}">
+                                <div class="error-msg" id="wFlowDestErr">Valid destination address required.</div>
+                            </div>
+                        ` : ''}
+                        <div class="inst-btn-row">
+                            <button class="inst-sec-btn" type="button" onclick="goWalletStep(1)">← Back</button>
+                            <button class="inst-continue-btn" id="payNowBtn" type="button" onclick="handlePayNowFromStep2()">
+                                <span>PAY NOW</span>
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } else if (walletState.step === 3) {
+                if (isDep && walletState.sendingAnim) {
+                    bodyHtml = `
+                        <div class="inst-panel-card">
+                            <div class="transfer-anim-box">
+                                <div class="transfer-pulse-ring">
+                                    <i data-lucide="send" style="width:26px;height:26px;"></i>
+                                </div>
+                                <div style="font-size:0.95rem;font-weight:800;color:#fff;">Preparing ${coin.name} Transfer</div>
+                                <div style="font-size:0.74rem;color:var(--text-muted);margin-top:3px;">
+                                    Routing $${currentAmt.toFixed(2)} to ${coin.network} address...
+                                </div>
+                                <div class="transfer-steps-mini">
+                                    <div class="transfer-step-line active">✓ Verifying network route (${coin.network})</div>
+                                    <div class="transfer-step-line active">✓ Generating QR & direct wallet address</div>
+                                    <div class="transfer-step-line">• Awaiting transfer confirmation</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    const qrSvg = generateQrSvg(walletAddr, 128);
+                    bodyHtml = `
+                        <div class="inst-panel-card">
+                            <div class="inst-panel-head">
+                                <div class="inst-panel-icon"><i data-lucide="wallet"></i></div>
+                                <div>
+                                    <h4>${isDep ? 'Direct Wallet Transfer' : 'Review Withdrawal'}</h4>
+                                    <p>${coin.name} · $${currentAmt.toFixed(2)}</p>
+                                </div>
+                            </div>
+                            ${isDep ? `
+                                <div class="bybit-countdown-banner" id="bybitOrderTimerBanner">
+                                    <span>Payment Window (5m)</span>
+                                    <span id="bybitOrderTimerText">05:00</span>
+                                </div>
+                                <div class="inst-addr-box">
+                                    <div class="inst-addr-top">
+                                        <span>${coin.name} Deposit Address</span>
+                                        <span>${coin.network}</span>
+                                    </div>
+                                    <div class="inst-addr-row">
+                                        <div class="inst-addr-code">${walletAddr}</div>
+                                        <button class="inst-chip-btn qr ${walletState.qrOpen ? 'active' : ''}" type="button" onclick="toggleWalletQr()">
+                                            <i data-lucide="qr-code"></i> ${walletState.qrOpen ? 'Hide' : 'QR'}
+                                        </button>
+                                        <button class="inst-chip-btn cp" type="button" onclick="copyText('${walletAddr}', '${coin.name} address copied!')">
+                                            <i data-lucide="copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <div class="qr-panel ${walletState.qrOpen ? 'open' : ''}">
+                                        <div class="qr-frame">${qrSvg}</div>
+                                        <div class="qr-caption"><strong>${coin.name}</strong> · $${currentAmt.toFixed(2)}</div>
+                                    </div>
+                                </div>
+                            ` : `
+                                <div class="inst-summary-rows">
+                                    <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.name}</span></div>
+                                    <div class="inst-s-row"><span class="k">Destination</span><span class="v" style="font-family:monospace;font-size:0.7rem;">${walletState.destination}</span></div>
+                                    <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${currentAmt.toFixed(2)}</span></div>
+                                </div>
+                            `}
+                            <div class="inst-btn-row">
+                                <button class="inst-sec-btn" type="button" onclick="goWalletStep(2)">← Back</button>
+                                <button class="inst-continue-btn" type="button" onclick="goWalletStep(4)">
+                                    <span>CONTINUE</span>
+                                    <i data-lucide="arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+            } else {
+                bodyHtml = `
+                    <div class="inst-panel-card">
+                        <div class="inst-panel-head">
+                            <div class="inst-panel-icon"><i data-lucide="check-circle"></i></div>
+                            <div>
+                                <h4>Confirm ${isDep ? 'Deposit Request' : 'Withdrawal'}</h4>
+                                <p>${isDep ? 'Sent to pending history & admin verification queue' : 'Final verification before processing'}</p>
+                            </div>
+                        </div>
+                        <div class="inst-summary-rows">
+                            <div class="inst-s-row"><span class="k">User ID</span><span class="v" style="color:var(--primary);">${authState.userId || '-'}</span></div>
+                            <div class="inst-s-row"><span class="k">Action</span><span class="v">${isDep ? 'Deposit' : 'Withdraw'}</span></div>
+                            <div class="inst-s-row"><span class="k">Network</span><span class="v">${coin.name} (${coin.networkDesc})</span></div>
+                            <div class="inst-s-row"><span class="k">Amount</span><span class="v" style="color:var(--primary);">$${currentAmt.toFixed(2)}</span></div>
+                            <div class="inst-s-row"><span class="k">${isDep ? 'Wallet' : 'Destination'}</span><span class="v" style="font-family:monospace;font-size:0.68rem;">${isDep ? walletAddr : walletState.destination}</span></div>
+                        </div>
+                        <div class="inst-btn-row">
+                            <button class="inst-sec-btn" type="button" onclick="goWalletStep(3)">← Back</button>
+                            <button class="inst-continue-btn" id="wFlowFinalBtn" type="button" onclick="submitWalletFlowFinal()">
+                                <span>${isDep ? 'SUBMIT DEPOSIT' : 'CONFIRM PAYOUT'}</span>
+                                <i data-lucide="shield-check"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            openModal(`
+                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+
+                <div class="inst-brand-header">
+                    <div class="inst-brand-left">
+                        <div class="inst-brand-icon"><i data-lucide="gem"></i></div>
+                        <div>
+                            <div class="inst-brand-title">TRONVEX</div>
+                            <div class="inst-brand-sub">4-NETWORK DIRECT WALLET</div>
+                        </div>
+                    </div>
+                    <div class="inst-badge-m">LIVE</div>
+                </div>
+
+                <div class="inst-top-bar">
+                    <button class="inst-back-btn" type="button" onclick="${walletState.step > 1 ? `goWalletStep(${walletState.step - 1})` : 'closeModal()'}">
+                        <i data-lucide="arrow-left"></i> Back
+                    </button>
+                    <div class="inst-secure-pill">
+                        <i data-lucide="shield-check"></i> SECURE
+                    </div>
+                </div>
+
+                <div class="inst-mode-tabs">
+                    <button class="inst-mode-tab ${isDep ? 'active dep' : ''}" type="button" onclick="switchWalletMode('deposit')">
+                        <i data-lucide="arrow-down-to-line"></i> Deposit
+                    </button>
+                    <button class="inst-mode-tab ${!isDep ? 'active wdr' : ''}" type="button" onclick="switchWalletMode('withdraw')">
+                        <i data-lucide="arrow-up-from-line"></i> Withdraw
+                    </button>
+                </div>
+
+                ${stepperHtml}
+                ${bodyHtml}
+            `);
+
+            if (isDep && walletState.step === 3 && !walletState.sendingAnim && walletState.activeOrderExpiresAt) {
+                updateWalletCountdownUI();
+                walletCountdownInterval = setInterval(updateWalletCountdownUI, 500);
+            }
+        }
+
+        async function submitWalletFlowFinal() {
+            const coin = COINS[walletState.network] || COINS.usdt_bep20;
+            const walletAddr = USER_WALLET_ADDRESSES[coin.key] || '';
+            const amount = parseFloat(walletState.amount || '5');
+            if (isNaN(amount) || amount < 5) {
+                showToast('Minimum amount is $5.00', 'error');
+                return;
+            }
+
+            const btn = document.getElementById('wFlowFinalBtn');
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = `<span class="btn-spinner"></span> <span>PROCESSING...</span>`;
+            }
+
+            try {
+                if (walletState.mode === 'deposit') {
+                    const txId = walletState.paymentId || ('TVX-DEP-' + Date.now());
+                    const expiresAt = Date.now() + DEPOSIT_TIMEOUT_MS;
+                    const isExpired = walletState.activeOrderExpiresAt && Date.now() >= walletState.activeOrderExpiresAt;
+                    const status = isExpired ? 'rejected' : 'pending';
+                    const rejectReason = isExpired ? 'Payment window expired (5 minutes).' : '';
+
+                    const txObj = {
+                        id: txId,
+                        type: 'deposit',
+                        title: `Deposit ${coin.name}`,
+                        method: coin.name,
+                        network: coin.network,
+                        days: PLAN_DAYS,
+                        amount: amount,
+                        date: new Date().toLocaleString(),
+                        status: status,
+                        address: walletAddr,
+                        txHash: txId,
+                        expiresAt: expiresAt,
+                        rejectReason: rejectReason
+                    };
+                    TRANSACTIONS.unshift(txObj);
+
+                    const adminReqObj = {
+                        id: 'REQ-' + Date.now(),
+                        txId: txId,
+                        userId: authState.userId || 'TVX-000000',
+                        userName: authState.name || 'User',
+                        userEmail: authState.email || 'user@tronvex.online',
+                        networkKey: coin.key,
+                        networkLabel: coin.name,
+                        walletAddress: walletAddr,
+                        amount: amount,
+                        status: status,
+                        expiresAt: expiresAt,
+                        rejectReason: rejectReason,
+                        createdAt: new Date().toLocaleString()
+                    };
+
+                    if (!isExpired) {
+                        ADMIN_DEPOSIT_REQUESTS.unshift(adminReqObj);
+                    }
+
+                    if (supabaseClient) {
+                        try {
+                            await supabaseClient.from('deposits').insert([{
+                                tx_code: txId,
+                                user_code: authState.userId || 'TVX-000000',
+                                user_name: authState.name || 'User',
+                                user_email: authState.email || 'user@tronvex.online',
+                                network_key: coin.key,
+                                network_label: coin.name,
+                                wallet_address: walletAddr,
+                                amount: amount,
+                                status: status,
+                                reject_reason: rejectReason || null,
+                                expires_at: new Date(expiresAt).toISOString()
+                            }]);
+                            await supabaseClient.from('transactions').insert([{
+                                tx_code: txId,
+                                user_code: authState.userId || 'TVX-000000',
+                                tx_type: 'deposit',
+                                title: `Deposit ${coin.name}`,
+                                method: coin.name,
+                                network: coin.network,
+                                amount: amount,
+                                status: status,
+                                address: walletAddr,
+                                reject_reason: rejectReason || null
+                            }]);
+                        } catch (e) {}
+                    }
+
+                    await pushNotification(
+                        'Deposit Submitted',
+                        `Deposit of $${amount.toFixed(2)} (${coin.name}) submitted under ID ${authState.userId}. Status: ${status.toUpperCase()}.`
+                    );
+                    saveDatabase();
+                    renderHistory();
+                    closeModal();
+                    showToast(`Deposit $${amount.toFixed(2)} (${coin.name}) recorded as ${status.toUpperCase()}.`, status === 'rejected' ? 'error' : 'info');
+                } else {
+                    if (amount > availableBalance) {
+                        showToast('Insufficient available balance.', 'error');
+                        if (btn) {
+                            btn.disabled = false;
+                            btn.innerHTML = '<span>CONFIRM PAYOUT</span><i data-lucide="shield-check"></i>';
+                            lucide.createIcons();
+                        }
+                        return;
+                    }
+
+                    availableBalance = Math.max(0, Number((Number(availableBalance || 0) - amount).toFixed(2)));
+                    const txId = 'WDR-' + Math.floor(100000 + Math.random() * 900000);
+                    TRANSACTIONS.unshift({
+                        id: txId,
+                        type: 'withdraw',
+                        title: `Withdraw ${coin.name}`,
+                        method: coin.name,
+                        network: coin.network,
+                        amount: amount,
+                        date: new Date().toLocaleString(),
+                        status: 'completed',
+                        address: walletState.destination,
+                        txHash: 'TX-' + Math.random().toString(16).slice(2, 14).toUpperCase()
+                    });
+
+                    if (supabaseClient) {
+                        try {
+                            await supabaseClient.from('transactions').insert([{
+                                tx_code: txId,
+                                user_code: authState.userId || 'TVX-000000',
+                                tx_type: 'withdraw',
+                                title: `Withdraw ${coin.name}`,
+                                method: coin.name,
+                                network: coin.network,
+                                amount: amount,
+                                status: 'completed',
+                                address: walletState.destination
+                            }]);
+                            await sbSyncProfileToCloud();
+                        } catch (e) {}
+                    }
+
+                    await pushNotification(
+                        'Withdrawal Recorded',
+                        `Withdrawal of $${amount.toFixed(2)} (${coin.name}) to ${walletState.destination} recorded.`
+                    );
+                    saveDatabase();
+                    syncBalanceUI();
+                    renderHistory();
+                    closeModal();
+                    showToast(`Withdrawal of $${amount.toFixed(2)} (${coin.name}) recorded!`, 'success');
+                }
+            } catch (err) {
+                showToast(err.message, 'error');
+            } finally {
+                const finalBtn = document.getElementById('wFlowFinalBtn');
+                if (finalBtn) {
+                    finalBtn.disabled = false;
+                    finalBtn.innerHTML = `<span>${walletState.mode === 'deposit' ? 'SUBMIT DEPOSIT' : 'CONFIRM PAYOUT'}</span><i data-lucide="shield-check"></i>`;
+                    lucide.createIcons();
+                }
+            }
+        }
+
+        function openInvestModal(name, min, max) {
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('wallet-inst-modal');
+
+            openModal(`
+                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+                <div class="modal-header">
+                    <div class="modal-icon invest"><i data-lucide="trending-up"></i></div>
+                    <div class="modal-header-text">
+                        <h3>Invest in ${name}</h3>
+                        <p>Available: $${Number(availableBalance||0).toFixed(2)} · $${min.toLocaleString()} – $${max.toLocaleString()} · 5 Days</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span>Investment Amount (USDT)</span>
+                        <span class="max-btn" onclick="document.getElementById('investAmount').value=${Math.min(max, Number(availableBalance||0)).toFixed(2)}; updateInvestCalc();">MAX</span>
+                    </label>
+                    <input type="number" id="investAmount" class="form-control" placeholder="Min $${min} – Max $${max}" min="${min}" max="${max}" oninput="updateInvestCalc()">
+                    <div class="error-msg" id="investError">Amount must be between $${min} and $${max}.</div>
+                </div>
+                <div class="calc-box">
+                    <div class="calc-row"><span class="lbl">Duration</span><span class="val">5 Days</span></div>
+                    <div class="calc-row"><span class="lbl">Projected Profit (150%)</span><span class="val text-gold" id="calcProfit">$0.00</span></div>
+                    <div class="calc-row"><span class="lbl">Projected Total</span><span class="val" id="calcTotal">$0.00</span></div>
+                </div>
+                <button class="btn btn-primary btn-block" id="investSubmitBtn" onclick="submitInvestment('${name}', ${min}, ${max})">Confirm Investment (5 Days)</button>
+            `);
+        }
+
+        function updateInvestCalc() {
+            const amount = parseFloat(document.getElementById('investAmount').value) || 0;
+            const profit = amount * 1.5;
+            document.getElementById('calcProfit').textContent = '$' + profit.toFixed(2);
+            document.getElementById('calcTotal').textContent = '$' + (amount + profit).toFixed(2);
+        }
+
+        async function submitInvestment(planName, min, max) {
+            const input = document.getElementById('investAmount');
+            const error = document.getElementById('investError');
+            const amount = parseFloat(input.value);
+            const days = PLAN_DAYS;
+
+            if (isNaN(amount) || amount < min || amount > max) {
+                input.classList.add('error');
+                error.textContent = `Amount must be between $${min} and $${max}.`;
+                error.style.display = 'block';
+                return;
+            }
+            if (amount > availableBalance) {
+                input.classList.add('error');
+                error.textContent = `Insufficient available balance ($${Number(availableBalance||0).toFixed(2)}). Please deposit first.`;
+                error.style.display = 'block';
+                return;
+            }
+            input.classList.remove('error');
+            error.style.display = 'none';
+
+            const btn = document.getElementById('investSubmitBtn');
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<span class="btn-spinner"></span> <span>Processing...</span>';
+            btn.disabled = true;
+
+            try {
+                availableBalance = Math.max(0, Number((Number(availableBalance || 0) - amount).toFixed(2)));
+                lockedBalance = Number((Number(lockedBalance || 0) + amount).toFixed(2));
+                totalInvestedAmount = Number((Number(totalInvestedAmount || 0) + amount).toFixed(2));
+
+                const durationMs = days * 24 * 60 * 60 * 1000;
+                const nowMs = Date.now();
+                const endMs = nowMs + durationMs;
+                const invCode = 'INV-' + Math.floor(100000 + Math.random() * 900000);
+
+                ACTIVE_INVESTMENTS.unshift({
+                    id: invCode,
+                    plan: planName,
+                    amount: amount,
+                    days: days,
+                    roiRate: 1.5,
+                    durationMs: durationMs,
+                    startTime: nowMs,
+                    endTime: endMs
+                });
+                activeInvestmentsCount = ACTIVE_INVESTMENTS.length;
+
+                TRANSACTIONS.unshift({
+                    id: invCode,
+                    type: 'invest',
+                    title: `Invest ${planName} (5d)`,
+                    method: planName + ' Plan',
+                    network: '5-Day Live Cycle',
+                    days: days,
+                    amount: amount,
+                    date: new Date().toLocaleString(),
+                    status: 'completed',
+                    address: 'LOCKED-YIELD-POOL',
+                    txHash: invCode
+                });
+
+                if (supabaseClient) {
+                    try {
+                        await supabaseClient.from('investments').insert([{
+                            inv_code: invCode,
+                            user_code: authState.userId || 'TVX-000000',
+                            plan_name: planName,
+                            amount: amount,
+                            roi_rate: 1.50,
+                            duration_days: days,
+                            status: 'active',
+                            ends_at: new Date(endMs).toISOString()
+                        }]);
+                        await supabaseClient.from('transactions').insert([{
+                            tx_code: invCode,
+                            user_code: authState.userId || 'TVX-000000',
+                            tx_type: 'invest',
+                            title: `Invest ${planName} (5d)`,
+                            method: planName + ' Plan',
+                            network: '5-Day Live Cycle',
+                            amount: amount,
+                            status: 'completed',
+                            address: 'LOCKED-YIELD-POOL'
+                        }]);
+                        await sbSyncProfileToCloud();
+                    } catch (e) {}
+                }
+
+                await pushNotification(
+                    'Investment Active',
+                    `Invested $${amount.toFixed(2)} in ${planName} for 5 days. Live earning started.`
+                );
+                saveDatabase();
+                syncBalanceUI();
+                renderHistory();
+                closeModal();
+                showToast(`Invested $${amount.toFixed(2)} in ${planName} for 5 days!`, 'success');
+            } catch (err) {
+                showToast(err.message, 'error');
+            } finally {
+                btn.innerHTML = originalHtml;
+                btn.disabled = false;
+            }
+        }
+
+        function openReceipt(index) {
+            const tx = TRANSACTIONS[index];
+            if (!tx) return;
+            const modalBox = document.getElementById('modalContent');
+            modalBox.classList.remove('auth-pro-modal');
+            modalBox.classList.remove('wallet-inst-modal');
+
+            const isPos = (tx.type === 'deposit' || tx.type === 'profit');
+            const typeLabel = { deposit: 'Deposit', withdraw: 'Withdrawal', invest: 'Investment', profit: 'Profit Payout' }[tx.type] || tx.type;
+            const statusIcon = tx.status === 'completed' ? 'check-circle' : (tx.status === 'rejected' ? 'x-circle' : 'clock');
+            const statusClass = tx.status === 'completed' ? 'completed' : (tx.status === 'rejected' ? 'rejected' : 'pending');
+
+            openModal(`
+                <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+                <div class="receipt">
+                    <div class="receipt-header">
+                        <div class="receipt-logo">
+                            <div class="logo-icon" style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#00ffaa,#0088ff);display:flex;align-items:center;justify-content:center;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#030a12" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            TRONVEX
+                        </div>
+                        <div class="receipt-status ${statusClass}">
+                            <i data-lucide="${statusIcon}"></i>
+                            ${String(tx.status || 'pending').toUpperCase()}
+                        </div>
+                    </div>
+                    <div class="receipt-amount">
+                        <div class="val ${isPos ? 'positive' : ''}">${formatAmount(tx)}</div>
+                        <div class="sub">${typeLabel} · ${tx.method}</div>
+                    </div>
+                    <div class="receipt-details">
+                        <div class="receipt-row"><span class="lbl">User ID</span><span class="val mono">${authState.userId || '-'}</span></div>
+                        <div class="receipt-row"><span class="lbl">Transaction ID</span><span class="val">${tx.id}</span></div>
+                        <div class="receipt-row"><span class="lbl">Date & Time</span><span class="val">${tx.date}</span></div>
+                        <div class="receipt-row"><span class="lbl">Method</span><span class="val">${tx.method}</span></div>
+                        <div class="receipt-row"><span class="lbl">Network</span><span class="val" style="color:var(--primary);">${tx.network || '-'}</span></div>
+                        <div class="receipt-row"><span class="lbl">Address / Ref</span><span class="val mono">${tx.address || '-'}</span></div>
+                        ${tx.rejectReason ? `<div class="receipt-row"><span class="lbl">Reject Reason</span><span class="val" style="color:var(--danger);">${tx.rejectReason}</span></div>` : ''}
+                    </div>
+                    <div class="receipt-actions">
+                        <button class="btn btn-outline btn-block" onclick="closeModal()">Close</button>
+                        <button class="btn btn-primary btn-block" onclick="copyReceipt(${index})"><i data-lucide="copy" style="width:14px;height:14px;"></i> Copy</button>
+                    </div>
+                </div>
+            `);
+        }
+
+        function copyReceipt(index) {
+            const tx = TRANSACTIONS[index];
+            if (!tx) return;
+            const text = `TRONVEX Receipt\nUser ID: ${authState.userId || '-'}\nTransaction: ${tx.id}\nType: ${tx.type}\nAmount: ${formatAmount(tx)}\nMethod: ${tx.method}\nDate: ${tx.date}\nStatus: ${tx.status}`;
+            copyText(text, 'Receipt copied!');
+        }
+
+        window.addEventListener('load', async () => {
+            loadAuthState();
+            loadDatabase();
+
+            if (supabaseClient) {
+                try {
+                    const { data: { session } } = await supabaseClient.auth.getSession();
+                    if (session?.user) {
+                        authState.isLoggedIn = true;
+                        authState.authUserId = session.user.id;
+                        authState.email = session.user.email;
+                        await sbEnsureProfileForUser(session.user);
+                        await sbLoadUserFromCloud(session.user);
+                        subscribeRealtimeUpdates();
+                    } else {
+                        authState.isLoggedIn = false;
+                        authState.authUserId = '';
+                        authState.isAdmin = false;
+                        saveAuthState();
+                    }
+                } catch (e) {}
+            }
+
+            if (USER_NOTIFICATIONS.length > 0) {
+                const dot = document.getElementById('notifDot');
+                if (dot) dot.classList.add('show');
+            }
+            syncAuthUI();
+            syncBalanceUI();
+            renderHistory();
+            updateSlider();
+            startLiveEarningTicker();
+        });
     </script>
 </body>
 </html>
